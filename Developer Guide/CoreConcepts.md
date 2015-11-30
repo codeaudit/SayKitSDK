@@ -13,7 +13,7 @@ If the application needs a yes or no confirmation, the application can issue a `
 
 [insert flow of a simple request with diagram]
 
-For more information, skip straight to the [Voice Request section](../VoiceRequests/).
+For more information, skip straight to the [Voice Request section](../voice-requests/).
 
 ## Producing Audio
 
@@ -23,7 +23,7 @@ In essence, an `AudioTrack`  is a queue of `AudioEvent`s. Such an event can take
 
 [insert visualization of a track with a few events]
 
-By managing a collection of `AudioTrack`s, SayKit allows developers to define complex audible feedback for users via a simple programming interface with predictable behavior. For more details, skip to the [Audio Production section](../AudioProduction/).
+By managing a collection of `AudioTrack`s, SayKit allows developers to define complex audible feedback for users via a simple programming interface with predictable behavior. For more details, skip to the [Audio Production section](../audio-production/).
 
 ## User Commands
 
@@ -35,6 +35,6 @@ SayKit offers a collection of tools to help manage this dynamic command processi
 
 [insert simple command pipeline visualization]
 
-For more information, skip to the [Handling User Commands section](../HandlingUserCommands/).
+For more information, skip to the [Handling User Commands section](../handling-user-commands/).
 
-Next
+[Next - Voice Requests](../voice-requests)
