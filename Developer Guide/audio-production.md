@@ -7,9 +7,9 @@ A key way SayKit helps encourage maintainable audio output is by wrapping up all
 ## Audio Out Anatomy
 
 All audio production by SayKit revolves around the following classes:
-`AudioTrack`: manages a queue of `AudioEvent` instances
-`AudioEvent`: represents an audible message
-`AudioOperation`: carries out the actual mechanics to send information to the speaker
+- `AudioTrack`: manages a queue of `AudioEvent` instances
+- `AudioEvent`: represents an audible message
+- `AudioOperation`: carries out the actual mechanics to send information to the speaker
 
 [insert class diagram: AudioEvent, AudioOperation, & AudioTrack]
 
