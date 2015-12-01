@@ -102,7 +102,9 @@ The **responder** can do anything it wishes with the results of speech recogniti
 First, note that the recognized speech provided to the `voiceRequest:receivedData:error:` method is of type id. This is because the request’s **recognitionService** and responder are directly uncoupled, but must deal in the same type of speech recognition data. The request forwards the result fetched from the **recogntionService** directly to the **responder**. As a result, when replacing either of these components, ensure that the types match up. Check the documentation for each `VoiceRequest` subclass to verify what result data type it uses.
 
 Secondly, in many cases, the responder represents the the last step in the request lifecycle. As a result, it has the responsibility to trigger the dismissal of the request when appropriate. In some cases, failing to take an action to affect the lifecycle can put the request into an permanently idle (but still presented) state.
-Changing the presented view
+
+#### Changing the presented view
+
 A custom visual component can be added to a presented request by setting the **contentViewController** property on the request’s **viewController**. The associated subview is displayed front-and-center in the request’s view.
 
 Oftentimes, this subview will have interactive components that allow the user to respond to a request with a touch event. The custom view controller can interpret these events as appropriate and integrate them into the voice request flow as needed. One common pattern is to add functionality to the associated **responder** instance to handle these events in addition to the received speech recognition data. This way, both voice and graphical UI event handling are localized in the same place.
