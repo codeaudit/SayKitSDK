@@ -89,11 +89,13 @@ For simple apps, the default flat registries involved with text resolution and c
 
 In graphical applications, this kind of context management is implicit in the view hierarchy. Virtually all user interactions are restricted to which controls are on the screen. In voice applications, the developer must be much more diligent in controlling command interpretations and responses based on the context.
 
-[insert discussion of context management]
+[insert discussion of context management...]
 
 ### Mirroring view hierarchies
 
 For SayKit apps with visual components, oftentimes these contexts will map well to the view hierarchy present on screen. To aid in synchronizing these logical hierarchies, SayKit offers tools to relate command contexts with UIKit structures that manage application hierarchy (think `UIViewController` and `UIStoryboard`).
+
+[insert more details...]
 
 ## Command Bar
 
