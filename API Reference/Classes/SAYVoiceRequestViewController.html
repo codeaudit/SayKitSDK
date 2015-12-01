@@ -1,0 +1,1157 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>SAYVoiceRequestViewController Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2.1 (build 1333)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">SayKit </a></h1>
+				<a id="developerHome" href="../index.html">Conversant Labs</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">SAYVoiceRequestViewController Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/cancelButton">&nbsp;&nbsp;&nbsp;&nbsp;cancelButton</option>
+	
+	<option value="//api/name/contentViewContainer">&nbsp;&nbsp;&nbsp;&nbsp;contentViewContainer</option>
+	
+	<option value="//api/name/contentViewController">&nbsp;&nbsp;&nbsp;&nbsp;contentViewController</option>
+	
+	<option value="//api/name/controlsDelegate">&nbsp;&nbsp;&nbsp;&nbsp;controlsDelegate</option>
+	
+	<option value="//api/name/microphoneButton">&nbsp;&nbsp;&nbsp;&nbsp;microphoneButton</option>
+	
+	<option value="//api/name/overlayBlurEffectStyle">&nbsp;&nbsp;&nbsp;&nbsp;overlayBlurEffectStyle</option>
+	
+	<option value="//api/name/partialTranscriptLabel">&nbsp;&nbsp;&nbsp;&nbsp;partialTranscriptLabel</option>
+	
+	<option value="//api/name/promptLabel">&nbsp;&nbsp;&nbsp;&nbsp;promptLabel</option>
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/disableMicrophoneInteraction">&nbsp;&nbsp;&nbsp;&nbsp;- disableMicrophoneInteraction</option>
+	
+	<option value="//api/name/displayErrorMessage:">&nbsp;&nbsp;&nbsp;&nbsp;- displayErrorMessage:</option>
+	
+	<option value="//api/name/displayMicrophoneLevel:">&nbsp;&nbsp;&nbsp;&nbsp;- displayMicrophoneLevel:</option>
+	
+	<option value="//api/name/displayPartialTranscript:">&nbsp;&nbsp;&nbsp;&nbsp;- displayPartialTranscript:</option>
+	
+	<option value="//api/name/displayPromptAttributedText:">&nbsp;&nbsp;&nbsp;&nbsp;- displayPromptAttributedText:</option>
+	
+	<option value="//api/name/displayPromptText:">&nbsp;&nbsp;&nbsp;&nbsp;- displayPromptText:</option>
+	
+	<option value="//api/name/enableMicrophoneInteraction">&nbsp;&nbsp;&nbsp;&nbsp;- enableMicrophoneInteraction</option>
+	
+	<option value="//api/name/microphoneLevelUpdatesDidStop">&nbsp;&nbsp;&nbsp;&nbsp;- microphoneLevelUpdatesDidStop</option>
+	
+	<option value="//api/name/microphoneLevelUpdatesWillStart">&nbsp;&nbsp;&nbsp;&nbsp;- microphoneLevelUpdatesWillStart</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancelButton">cancelButton</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/contentViewContainer">contentViewContainer</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/contentViewController">contentViewController</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/controlsDelegate">controlsDelegate</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/microphoneButton">microphoneButton</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/overlayBlurEffectStyle">overlayBlurEffectStyle</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/partialTranscriptLabel">partialTranscriptLabel</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/promptLabel">promptLabel</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/disableMicrophoneInteraction">disableMicrophoneInteraction</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/displayErrorMessage:">displayErrorMessage:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/displayMicrophoneLevel:">displayMicrophoneLevel:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/displayPartialTranscript:">displayPartialTranscript:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/displayPromptAttributedText:">displayPromptAttributedText:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/displayPromptText:">displayPromptText:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/enableMicrophoneInteraction">enableMicrophoneInteraction</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/microphoneLevelUpdatesDidStop">microphoneLevelUpdatesDidStop</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/microphoneLevelUpdatesWillStart">microphoneLevelUpdatesWillStart</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="SAYVoiceRequestViewController Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">SAYVoiceRequestViewController Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">UIViewController</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">SAYVoiceRequestViewController.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<ul>
+<li><p>The <code>SAYVoiceRequestViewController</code> provides a visual interface that communicates to the user the request’s purpose, gives feedback about the ongoing microphone activity, and provides interactive control over the session.</p>
+
+<p> In addition to displaying these basics, the <code>SAYVoiceRequestViewController</code> can contain a supplemental view controller to add a more robust visual interface for the corresponding request. This supplemental view controller can be used to provide touch based interaction to a request.</p></li>
+</ul>
+
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/promptLabel">&nbsp;&nbsp;promptLabel</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cancelButton">&nbsp;&nbsp;cancelButton</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/microphoneButton">&nbsp;&nbsp;microphoneButton</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/partialTranscriptLabel">&nbsp;&nbsp;partialTranscriptLabel</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/contentViewContainer">&nbsp;&nbsp;contentViewContainer</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/overlayBlurEffectStyle">&nbsp;&nbsp;overlayBlurEffectStyle</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/contentViewController">&nbsp;&nbsp;contentViewController</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/controlsDelegate">&nbsp;&nbsp;controlsDelegate</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/displayPromptText:">&ndash;&nbsp;displayPromptText:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/displayPromptAttributedText:">&ndash;&nbsp;displayPromptAttributedText:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/enableMicrophoneInteraction">&ndash;&nbsp;enableMicrophoneInteraction</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/disableMicrophoneInteraction">&ndash;&nbsp;disableMicrophoneInteraction</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/microphoneLevelUpdatesWillStart">&ndash;&nbsp;microphoneLevelUpdatesWillStart</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/microphoneLevelUpdatesDidStop">&ndash;&nbsp;microphoneLevelUpdatesDidStop</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/displayMicrophoneLevel:">&ndash;&nbsp;displayMicrophoneLevel:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/displayPartialTranscript:">&ndash;&nbsp;displayPartialTranscript:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/displayErrorMessage:">&ndash;&nbsp;displayErrorMessage:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/cancelButton" title="cancelButton"></a>
+	<h3 class="subsubtitle method-title">cancelButton</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Button to immediately cancel the request</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) UIButton *cancelButton</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Button to immediately cancel the request</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/contentViewContainer" title="contentViewContainer"></a>
+	<h3 class="subsubtitle method-title">contentViewContainer</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>View containing the <code>contentViewContainer</code></p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) UIView *contentViewContainer</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>View containing the <code>contentViewContainer</code></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/contentViewController" title="contentViewController"></a>
+	<h3 class="subsubtitle method-title">contentViewController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>An optional supplemental view controller</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) UIViewController *contentViewController</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>An optional supplemental view controller</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/controlsDelegate" title="controlsDelegate"></a>
+	<h3 class="subsubtitle method-title">controlsDelegate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Delegate to receive messages from control interaction (i.e. microphone tap)</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (weak, nullable) id&lt;SAYVoiceRequestControlsDelegate&gt; controlsDelegate</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Delegate to receive messages from control interaction (i.e. microphone tap)</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/microphoneButton" title="microphoneButton"></a>
+	<h3 class="subsubtitle method-title">microphoneButton</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Button to control microphone activity</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) UIButton *microphoneButton</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Button to control microphone activity</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/overlayBlurEffectStyle" title="overlayBlurEffectStyle"></a>
+	<h3 class="subsubtitle method-title">overlayBlurEffectStyle</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Customizable style for the overlay underlying the request view</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) UIBlurEffectStyle overlayBlurEffectStyle</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Customizable style for the overlay underlying the request view</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/partialTranscriptLabel" title="partialTranscriptLabel"></a>
+	<h3 class="subsubtitle method-title">partialTranscriptLabel</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Displays a partial transcript received from the speech recognition service</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) UILabel *partialTranscriptLabel</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Displays a partial transcript received from the speech recognition service</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/promptLabel" title="promptLabel"></a>
+	<h3 class="subsubtitle method-title">promptLabel</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Displays the current prompt text</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) UILabel *promptLabel</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Displays the current prompt text</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/disableMicrophoneInteraction" title="disableMicrophoneInteraction"></a>
+	<h3 class="subsubtitle method-title">disableMicrophoneInteraction</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Disables the microphone button</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)disableMicrophoneInteraction</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Disables the microphone button</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/displayErrorMessage:" title="displayErrorMessage:"></a>
+	<h3 class="subsubtitle method-title">displayErrorMessage:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Displays the given error message</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)displayErrorMessage:(NSString *)<em>errorMessage</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Displays the given error message</p>
+
+<p>@param errorMessage</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/displayMicrophoneLevel:" title="displayMicrophoneLevel:"></a>
+	<h3 class="subsubtitle method-title">displayMicrophoneLevel:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Update the microphone visualization with the given level</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)displayMicrophoneLevel:(float)<em>audioLevel</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Update the microphone visualization with the given level</p>
+
+<p>@param audioLevel</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/displayPartialTranscript:" title="displayPartialTranscript:"></a>
+	<h3 class="subsubtitle method-title">displayPartialTranscript:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Displays a partial transcript during the recognition process</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)displayPartialTranscript:(NSString *)<em>text</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Displays a partial transcript during the recognition process</p>
+
+<p>@param text</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/displayPromptAttributedText:" title="displayPromptAttributedText:"></a>
+	<h3 class="subsubtitle method-title">displayPromptAttributedText:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Displays the given attributed string as a prompt</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)displayPromptAttributedText:(NSAttributedString *)<em>attributedString</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Displays the given attributed string as a prompt</p>
+
+<p>@param attributedString</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/displayPromptText:" title="displayPromptText:"></a>
+	<h3 class="subsubtitle method-title">displayPromptText:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Displays the given string as a prompt</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)displayPromptText:(NSString *)<em>string</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Displays the given string as a prompt</p>
+
+<p>@param string</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/enableMicrophoneInteraction" title="enableMicrophoneInteraction"></a>
+	<h3 class="subsubtitle method-title">enableMicrophoneInteraction</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Enables the microphone button</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)enableMicrophoneInteraction</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Enables the microphone button</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/microphoneLevelUpdatesDidStop" title="microphoneLevelUpdatesDidStop"></a>
+	<h3 class="subsubtitle method-title">microphoneLevelUpdatesDidStop</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Called to inform the receiver that the microphone is inactive and audio updates have stopped</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)microphoneLevelUpdatesDidStop</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Called to inform the receiver that the microphone is inactive and audio updates have stopped</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/microphoneLevelUpdatesWillStart" title="microphoneLevelUpdatesWillStart"></a>
+	<h3 class="subsubtitle method-title">microphoneLevelUpdatesWillStart</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Called to inform the receiver that the microphone is active and audio updates will begin streaming in</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)microphoneLevelUpdatesWillStart</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Called to inform the receiver that the microphone is active and audio updates will begin streaming in</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+                    
+                    
+
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2015 Conversant Labs. All rights reserved. (Last updated: 2015-11-30)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
