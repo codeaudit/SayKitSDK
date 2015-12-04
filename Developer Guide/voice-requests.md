@@ -8,11 +8,11 @@ SayKit includes a collection of pre-built `VoiceRequest` types to handle many co
 
 ## Request Lifecycle
 
-[insert overview of lifecycle that doesn't include too much collaborator detail]
+[insert VR Figure 1: overview of lifecycle that doesn't include too much collaborator detail]
 
 ## Anatomy of a Request
 
-[insert class diagram]
+[insert VR Figure 2: class diagram]
 
 ### Components
 
@@ -24,7 +24,7 @@ While a voice request is underway, its **viewController** is presented to the sc
 
 In addition to displaying these basics, the `VoiceRequestViewController` can act as a container for another view controller. By setting the **contentViewController** property on its **viewController**, a request ensures a supplemental view will appear on-screen while the request is active. For example, the built-in `SelectRequest` uses this feature to insert a `UITableView` onto the screen to display potential responses to the user.
 
-[insert screen shot of a basic VRVC]
+[insert VR Figure 3: screen shot of a basic VRVC]
 
 #### VoiceRequestSoundBoard
 
@@ -111,7 +111,7 @@ Oftentimes, this subview will have interactive components that allow the user to
 
 For example, consider a `VoiceRequest` subclass called `RatingRequest`, which asks the user for a rating from 1 to 10. This request could display a `UIPickerView` to allow for touch interaction. Here’s one approach to designing this class:
 
-[insert class diagram that includes `UIPickerViewDelegate` hooked to a `PickNumberResponder` class extending the `VoiceRequestResponder` protocol]
+[insert VR Figure 4: class diagram that includes `UIPickerViewDelegate` hooked to a `PickNumberResponder` class extending the `VoiceRequestResponder` protocol]
 
 #### Changing feedback sounds
 
