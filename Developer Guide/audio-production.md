@@ -31,11 +31,11 @@ Tracks can be suspended and resumed. When suspended, their currently executing o
 
 SayKit comes pre-packaged with a collection of useful `AudioEvent` classes. The `AudioEvent` type is actually a protocol, to which the following classes conform.
 
-`SpeechEvent`: produces an operation that uses the system’s `AVSpeechSynthesizer` to speech text utterances
-`ToneEvent`: plays a sound contained in an audio file
-`MusicalEvent`: similar to a `ToneEvent`, but for longer clips that will repeat continuously
-`SilenceEvent`: produces an operation that does nothing (and therefore keeps the speaker idle) for a specified duration
-`CompositeEvent`: packages up multiple events into a single divisible unit
+- `SpeechEvent`: produces an operation that uses the system’s `AVSpeechSynthesizer` to speech text utterances
+- `ToneEvent`: plays a sound contained in an audio file
+- `MusicalEvent`: similar to a `ToneEvent`, but for longer clips that will repeat continuously
+- `SilenceEvent`: produces an operation that does nothing (and therefore keeps the speaker idle) for a specified duration
+- `CompositeEvent`: packages up multiple events into a single divisible unit
 
 ### Custom Events
 
@@ -47,9 +47,9 @@ For simple purposes, a single application-wide `AudioTrack` might be all that is
 
 For example, most SayKit applications have at least 3 different sources of audio output. Let’s discuss these in the context of a theoretical e-mail application.
 
-The basic application audio; this could be used for speaking subject lines or reading email bodies.
-Notification audio; to be used for short notifications, e.g. when a new message is received
-`VoiceRequest`-related audio; this includes microphone activity tones or direct questions prompts
+1. The basic application audio; this could be used for speaking subject lines or reading email bodies.
+2. Notification audio; to be used for short notifications, e.g. when a new message is received
+3. `VoiceRequest`-related audio; this includes microphone activity tones or direct questions prompts
 
 Each of these sources takes priority over the preceding source. The first is baseline audio, the second is a timely notification, and the third produces realtime audio feedback. A reasonable design choice would only allow one of them to produce sounds at a time, temporarily pausing lower priority sources until higher priority sources are idle.
 
