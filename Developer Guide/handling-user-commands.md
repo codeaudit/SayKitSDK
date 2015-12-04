@@ -10,7 +10,7 @@ While basic verbal user commands could be implemented in SayKit with a simple `S
 
 SayKit’s user command processing pipeline is similar in spirit to UIKit’s UIEvent processing paradigm. Like UIKit, the process is split between recognition and delivery phases. Unlike UIKit, SayKit’s pipeline is general enough to handle all kinds of command sources and responders, not just GUI- or device-centric ones.
 
-[insert high-level pipeline for example command].
+[insert Figure UC 1: high-level pipeline for example command].
 
 ### SAYCommand
 
@@ -32,7 +32,7 @@ The `CommandResponder` protocol describes an interface for declaring an ability 
 
 The `CommandDispatcher` class defines a simple search strategy to match the best potential command with the best responder for the job. It cycles through each command from the provided `CommandEnumerator` and for each one, it walks down the responder chain until it finds a responder able to act on the command. Once that responder is found, the command is dispatched to it and the search ends.
 
-[insert diagram of command search]
+[insert Figure UC 2: diagram of command search]
 
 ### System Dispatcher
 
@@ -46,7 +46,7 @@ Nothing in SayKit’s core command processing paradigm is explicitly bound to ha
 
 `VerbalCommandRequests` are rarely initiated directly because their component commandResolver and commandDispatcher properties are typically application-level systems. Instead, SayKit provides a default factory to manage the references to these systems, the `VerbalCommandRequestManager`, that constructs the requests. This manager is itself customizable, so few applications will have a need to use other means to build `VerbalCommandRequest`s.
 
-[insert diagram of typical VerbalCommandRequest pipeline]
+[insert Figure UC 3: diagram of typical VerbalCommandRequest pipeline]
 
 ### Resolution
 
@@ -101,6 +101,6 @@ For SayKit apps with visual components, oftentimes these contexts will map well 
 
 SayKit includes the `CommandBar`, a `UIView` that gives users an interface to trigger `VerbalCommandRequests` directly. Its corresponding `UIViewController`, the `CommandBarController`, has a **requestManager** (typically the default `VerbalCommandRequestManager`) which is used to spawn new request sessions.
 
-[insert screenshot of command bar]
+[insert Figure UC 4: screenshot of command bar]
 
 In addition, the `CommandBarController` can be used to provide a visible menu of available commands in the current application context. Choosing a command will instantiate a SAYCommand of the corresponding type and send it directly to the **requestManager**'s command dispatcher.
