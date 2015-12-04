@@ -11,7 +11,7 @@ All audio production by SayKit revolves around the following classes:
 - `AudioEvent`: represents an audible message
 - `AudioOperation`: carries out the actual mechanics to send information to the speaker
 
-[insert class diagram: AudioEvent, AudioOperation, & AudioTrack]
+[insert Figure AP 1: class diagram: AudioEvent, AudioOperation, & AudioTrack]
 
 ### Audio Events & Operations
 
@@ -57,7 +57,7 @@ It is difficult to use a single track to sequence and suspend events from these 
 
 Applications typically have a single `AudioTrackCoordinator`, which acts as the system-wide traffic cop for managing the application’s tracks. Only one track has permission to access the speaker at a time. Each track is assigned a priority, and a track is given permission to send its queued events to the device speaker as long as no higher-priority tracks are live.
 
-[insert diagram of three channels being coordinated into a output single stream]
+[insert Figure AP 2: diagram of three channels being coordinated into a output single stream]
 
 ## Improving Generated Speech
 
@@ -73,6 +73,6 @@ In conversation apps with a heavy visual component, spoken information is often 
 
 As a result, SayKit offers functionality to bridge the gap so as to avoid specifying application content more than once. For a simple example, a `UILabel` can be designated to fire a `SpeechEvent` to speak its contents when first displayed. Even complex UIKit structures that take advantage of delegation to derive their content can be bridged to SayKit audio. For example, SayKit offers `SAYTableDataSource` as a protocol derived from `UITableViewDataSource`, which allows an existing table view’s **dataSource** to provide a spoken interface with very little modification.
 
-<insert diagrams or code samples of multi-modal presentation examples>
+[insert diagrams or code samples of multi-modal presentation examples]
 
 [Next - Handling User Commands](../handling-user-commands/)
