@@ -197,6 +197,26 @@
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>manager</em></dt>
+			<dd><p>Manager facilitating the recognition session</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>responseData</em></dt>
+			<dd><p>Response data (type depends on underlying <a href="../Protocols/SAYSpeechRecognitionService.html"><code>SAYSpeechRecognitionService</code></a>). Will be nil if error occurs.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>If non-nil, error describing why a recognition response could not be received</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	
@@ -206,10 +226,6 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Sent as a session concludes with either successful response data, or error information.</p>
-
-<p>@param manager
-@param responseData
-@param error</p>
 	</div>
 	
 	
@@ -242,6 +258,21 @@
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>manager</em></dt>
+			<dd><p>Manager facilitating the recognition session</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>text</em></dt>
+			<dd><p>Partial transcript text content</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	
@@ -251,9 +282,6 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Partial text recognition results that are forwarded on from the <a href="../Protocols/SAYSpeechRecognitionService.html"><code>SAYSpeechRecognitionService</code></a>.</p>
-
-<p>@param manager
-@param text</p>
 	</div>
 	
 	
@@ -286,6 +314,21 @@
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>manager</em></dt>
+			<dd><p>Manager facilitating the recognition session</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>audioLevel</em></dt>
+			<dd><p>Raw decibel level of the input audio</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	
@@ -295,9 +338,6 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Audio level change messages that are forwarded on from the <a href="../Protocols/SAYSpeechRecognitionService.html"><code>SAYSpeechRecognitionService</code></a>.</p>
-
-<p>@param manager
-@param audioLevel</p>
 	</div>
 	
 	
@@ -330,6 +370,21 @@
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>manager</em></dt>
+			<dd><p>Manager facilitating the recognition session</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>state</em></dt>
+			<dd><p>New state of manager&rsquo;s active session</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	
@@ -339,9 +394,6 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Sent when the state of the manager&rsquo;s active session changes.</p>
-
-<p>@param manager
-@param state</p>
 	</div>
 	
 	

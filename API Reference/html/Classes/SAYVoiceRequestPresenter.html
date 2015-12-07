@@ -489,6 +489,21 @@
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>manager</em></dt>
+			<dd><p>Manager to run speech recognition sessions</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>audioTrack</em></dt>
+			<dd><p>Track to send audio events to</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	<div class="method-subsection return">
@@ -503,9 +518,6 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Initiates a <code>SAYVoiceRequestPresenter</code> with the given request manager and output audio track.</p>
-
-<p>@param manager
-@param audioTrack</p>
 	</div>
 	
 	
@@ -538,6 +550,16 @@
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>request</em></dt>
+			<dd><p>Request to be presented</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	
@@ -546,9 +568,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Convenience method for <a href="#//api/name/presentRequest:fromViewController:"><code>presentRequest:fromViewController:</code></a>. Uses the application&rsquo;s root view controller.</p>
-
-<p>@param request</p><div class="warning"><p><strong>Warning:</strong> Because this method presents a <code>UIViewController</code>, it must be called on the main thread.</p></div>
+		<p>Convenience method for <a href="#//api/name/presentRequest:fromViewController:"><code>presentRequest:fromViewController:</code></a>. Uses the application&rsquo;s root view controller.</p><div class="warning"><p><strong>Warning:</strong> Because this method presents a <code>UIViewController</code>, it must be called on the main thread.</p></div>
 	</div>
 	
 	
@@ -572,13 +592,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<ul>
-<li>Presents and activates the given request. This includes connecting the <code>outputTrack</code> to the request&rsquo;s <code>soundBoard</code> and using the <code>UIViewController</code> argument to present the request&rsquo;s <code>viewController</code>. Only after the interfaces are connected will the request activate.
-*</li>
-<li>@param request</li>
-<li>@param presentingViewController</li>
-</ul>
-
+		<p>Presents and activates the given request. This includes connecting the <a href="#//api/name/outputTrack"><code>outputTrack</code></a> to the request&rsquo;s <code>soundBoard</code> and using the <code>UIViewController</code> argument to present the request&rsquo;s <code>viewController</code>. Only after the interfaces are connected will the request activate.</p>
 	</div>		
 	
     
@@ -586,6 +600,21 @@
 	<div class="method-subsection method-declaration"><code>- (void)presentRequest:(SAYVoiceRequest *)<em>request</em> fromViewController:(nullable UIViewController *)<em>presentingViewController</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>request</em></dt>
+			<dd><p>Request to be presented</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>presentingViewController</em></dt>
+			<dd><p>View controller from which to modally present request&rsquo;s visual component</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -595,13 +624,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<ul>
-<li>Presents and activates the given request. This includes connecting the <code>outputTrack</code> to the request&rsquo;s <code>soundBoard</code> and using the <code>UIViewController</code> argument to present the request&rsquo;s <code>viewController</code>. Only after the interfaces are connected will the request activate.
-*</li>
-<li>@param request</li>
-<li>@param presentingViewController</li>
-</ul>
-<div class="warning"><p><strong>Warning:</strong> Because this method presents a <code>UIViewController</code>, it must be called on the main thread.</p></div>
+		<p>Presents and activates the given request. This includes connecting the <a href="#//api/name/outputTrack"><code>outputTrack</code></a> to the request&rsquo;s <code>soundBoard</code> and using the <code>UIViewController</code> argument to present the request&rsquo;s <code>viewController</code>. Only after the interfaces are connected will the request activate.</p><div class="warning"><p><strong>Warning:</strong> Because this method presents a <code>UIViewController</code>, it must be called on the main thread.</p></div>
 	</div>
 	
 	

@@ -536,10 +536,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<ul>
-<li>Called to start a new request session.</li>
-</ul>
-
+		<p>Called to start a new request session.</p>
 	</div>		
 	
     
@@ -547,6 +544,16 @@
 	<div class="method-subsection method-declaration"><code>- (void)activateWithRecognitionManager:(SAYSpeechRecognitionManager *)<em>manager</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>manager</em></dt>
+			<dd><p>Agent capable of managing the details of the speech recognition session</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -556,14 +563,9 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<ul>
-<li><p>Called to start a new request session.</p>
+		<p>Called to start a new request session.</p>
 
-<p> Subclasses should not override this method. The <a href="#//api/name/didActivate"><code>didActivate</code></a> method is available if a subclass requires additional behavior during activation.</p></li>
-</ul>
-<div class="warning"><p><strong>Warning:</strong> The manager included in this message should be idle. If it is not, an exception is thrown because. If the manager is not idle, the application could enter an unstable state because the request assumes complete control over its recognition session.
-*
-*  @param manager</p></div>
+<p>Subclasses should not override this method. The <a href="#//api/name/didActivate"><code>didActivate</code></a> method is available if a subclass requires additional behavior during activation.</p><div class="warning"><p><strong>Warning:</strong> The manager included in this message should be idle. If it is not, an exception is thrown because. If the manager is not idle, the application could enter an unstable state because the request assumes complete control over its recognition session.</p></div>
 	</div>
 	
 	
@@ -678,6 +680,21 @@
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>recognitionService</em></dt>
+			<dd><p>Agent responsible for communicating with speech recognition service</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>responder</em></dt>
+			<dd><p>Agent responsible for responding to recognized speech (or recognition error)</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	<div class="method-subsection return">
@@ -692,9 +709,6 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Initiates a voice request using the given recognition service and recognized speech <a href="../Classes/SAYVoiceRequest.html#//api/name/responder">responder</a>.</p>
-
-<p>@param <a href="../Classes/SAYVoiceRequest.html#//api/name/recognitionService">recognitionService</a>
-@param <a href="../Classes/SAYVoiceRequest.html#//api/name/responder">responder</a></p>
 	</div>
 	
 	

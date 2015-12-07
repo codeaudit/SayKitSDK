@@ -178,8 +178,13 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
+			<dt><em>synthProxy</em></dt>
+			<dd><p>Synthesizer proxy whose utterance just completed</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
 			<dt><em>didFinish</em></dt>
-			<dd><p>YES if the utterance was spoken to completion, NO if it was cancelled before it could complete.</p></dd>
+			<dd><p>YES if the utterance was spoken to completion, NO if it was cancelled before it could complete</p></dd>
 		</dl>
 		
 	</div>
@@ -193,8 +198,6 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Called when the synthesizer is finished speaking its utterance.</p>
-
-<p>@param synthProxy</p>
 	</div>
 	
 	
@@ -218,10 +221,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<ul>
-<li>Called when the synthesizer is interrupted when another <a href="../Classes/SAYSpeechSynthesizerProxy.html"><code>SAYSpeechSynthesizerProxy</code></a> instance that uses the same underlying managed synthesizer starts speaking an utterance.</li>
-</ul>
-
+		<p>Called when the synthesizer is interrupted when another <a href="../Classes/SAYSpeechSynthesizerProxy.html"><code>SAYSpeechSynthesizerProxy</code></a> instance that uses the same underlying managed synthesizer starts speaking an utterance.</p>
 	</div>		
 	
     
@@ -229,6 +229,16 @@
 	<div class="method-subsection method-declaration"><code>- (void)synthesizerProxyDidReceiveInterruptedMessage:(SAYSpeechSynthesizerProxy *)<em>synthProxy</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>synthProxy</em></dt>
+			<dd><p>Synthesizer proxy whose utterance was just interrupted</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -238,14 +248,9 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<ul>
-<li><p>Called when the synthesizer is interrupted when another <code>SAYSpeechSynthesizerProxy</code> instance that uses the same underlying managed synthesizer starts speaking an utterance.</p>
+		<p>Called when the synthesizer is interrupted when another <a href="../Classes/SAYSpeechSynthesizerProxy.html"><code>SAYSpeechSynthesizerProxy</code></a> instance that uses the same underlying managed synthesizer starts speaking an utterance.</p>
 
-<p> It is important to note that this is not to signify that the utterance was cancelled. Rather, it is a message marking a potentially temporary interruption.
-*</p></li>
-<li>@param synthProxy</li>
-</ul>
-
+<p>It is important to note that this is not to signify that the utterance was cancelled. Rather, it is a message marking a potentially temporary interruption.</p>
 	</div>
 	
 	

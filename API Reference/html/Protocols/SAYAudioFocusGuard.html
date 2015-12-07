@@ -168,10 +168,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<ul>
-<li>Caller is requesting audio focus. It is the responsibility of the receiver to call <code>focusGuardGrantsFocus:</code> on the caller as soon as possible (i.e. once all higher priority requesters have yielded their focus).</li>
-</ul>
-
+		<p>Caller is requesting audio focus. It is the responsibility of the receiver to call <code>focusGuardGrantsFocus:</code> on the caller as soon as possible (i.e. once all higher priority requesters have yielded their focus).</p>
 	</div>		
 	
     
@@ -179,6 +176,16 @@
 	<div class="method-subsection method-declaration"><code>- (void)focusRequesterRequestsFocus:(id&lt;SAYAudioFocusRequester&gt;)<em>requester</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>requester</em></dt>
+			<dd><p>Agent requesting focus</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -188,14 +195,9 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<ul>
-<li><p>Caller is requesting audio focus. It is the responsibility of the receiver to call <code>focusGuardGrantsFocus:</code> on the caller as soon as possible (i.e. once all higher priority requesters have yielded their focus).</p>
+		<p>Caller is requesting audio focus. It is the responsibility of the receiver to call <code>focusGuardGrantsFocus:</code> on the caller as soon as possible (i.e. once all higher priority requesters have yielded their focus).</p>
 
-<p> The guard reserves the right to retain a reference to any object that makes a request to it.
-*</p></li>
-<li>@param requester</li>
-</ul>
-
+<p>The guard reserves the right to retain a reference to any object that makes a request to it.</p>
 	</div>
 	
 	
@@ -228,6 +230,16 @@
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>requester</em></dt>
+			<dd><p>Agent requesting focus</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	
@@ -237,8 +249,6 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Request no longer needs audio focus. Note that it is still the responsiblity of the receiver to call <code>focusGuardRevokesFocus:</code> in response to this message. As a result, it is safe for the requester to only internally release focus upon receiving a revoke message.</p>
-
-<p>@param requester</p>
 	</div>
 	
 	

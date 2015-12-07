@@ -240,6 +240,11 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
+			<dt><em>utterance</em></dt>
+			<dd><p>Utterance to be spoken</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
 			<dt><em>handler</em></dt>
 			<dd><p>Delegate reference that will be retained for the lifetime of utterance (until cancelled or finished)</p></dd>
 		</dl>
@@ -255,8 +260,6 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Same as base class <code>speakUtterance:</code> method, except the delegate for events specific to the given utterance is provided directly in the call. The synthesizer guarantees that all delegate callbacks will be applicable to the given utterance only.</p>
-
-<p>@param utterance</p>
 	</div>
 	
 	

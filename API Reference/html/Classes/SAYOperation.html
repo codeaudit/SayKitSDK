@@ -296,6 +296,16 @@ Similarly, an operation should never have to send itself a `cancel` message. If 
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>observer</em></dt>
+			<dd><p>Agent to subscribe to operation state updates</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	
@@ -305,8 +315,6 @@ Similarly, an operation should never have to send itself a `cancel` message. If 
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Add object as a subscriber to execution state changes on the receiver.</p>
-
-<p>@param observer</p>
 	</div>
 	
 	
@@ -637,6 +645,16 @@ Similarly, an operation should never have to send itself a `cancel` message. If 
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>observer</em></dt>
+			<dd><p>Agent to unsubscribe to operation state updates</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	
@@ -646,8 +664,6 @@ Similarly, an operation should never have to send itself a `cancel` message. If 
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Remove object as subscriber. Not typically necessary for memory management reasons, since the receiver&rsquo;s lifetime is typically limited.</p>
-
-<p>@param observer</p>
 	</div>
 	
 	

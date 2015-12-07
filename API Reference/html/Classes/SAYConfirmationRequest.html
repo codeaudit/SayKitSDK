@@ -26,6 +26,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -63,6 +65,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -127,6 +131,14 @@
 					
                     
                     
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Describes a voice request used to receive yes-or-no messages from the user. The request attempts to reduce recognized speech to boolean values.</p>
+					</div>
+					
+					
 					
 					
 					
@@ -392,6 +404,21 @@
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>recognitionService</em></dt>
+			<dd><p>Agent responsible for communicating with speech recognition service</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>responder</em></dt>
+			<dd><p>Agent responsible for responding to recognized speech (or recognition error)</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	<div class="method-subsection return">
@@ -406,9 +433,6 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Initiates a voice request using the given recognition service and recognized speech <a href="../Classes/SAYVoiceRequest.html#//api/name/responder">responder</a>.</p>
-
-<p>@param <a href="../Classes/SAYVoiceRequest.html#//api/name/recognitionService">recognitionService</a>
-@param <a href="../Classes/SAYVoiceRequest.html#//api/name/responder">responder</a></p>
 	</div>
 	
 	

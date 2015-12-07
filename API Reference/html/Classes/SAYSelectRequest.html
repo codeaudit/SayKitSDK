@@ -26,6 +26,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -40,6 +42,8 @@
 	<option value="//api/name/completionBlock">&nbsp;&nbsp;&nbsp;&nbsp;completionBlock</option>
 	
 	<option value="//api/name/followupPromptText">&nbsp;&nbsp;&nbsp;&nbsp;followupPromptText</option>
+	
+	<option value="//api/name/options">&nbsp;&nbsp;&nbsp;&nbsp;options</option>
 	
 	<option value="//api/name/promptText">&nbsp;&nbsp;&nbsp;&nbsp;promptText</option>
 	
@@ -65,6 +69,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -81,6 +87,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/completionBlock">completionBlock</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/followupPromptText">followupPromptText</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/options">options</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/promptText">promptText</a></span></li>
 	
@@ -132,6 +140,14 @@
                     
                     
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>This request prompts the a user to make a choice between a pre-defined list of <a href="#//api/name/options">options</a>. It includes an optional visual component to allow the user to tap an option directly.</p>
+					</div>
+					
+					
+					
 					
 					
 					<div class="section section-tasks">
@@ -144,6 +160,12 @@
 
 						<ul class="task-list">
 							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/options">&nbsp;&nbsp;options</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/promptText">&nbsp;&nbsp;promptText</a></code>
 	</span>
@@ -275,6 +297,47 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/options" title="options"></a>
+	<h3 class="subsubtitle method-title">options</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Array of options the user must choose between</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSArray&lt;SAYSelectOption*&gt; *options</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Array of options the user must choose between</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYSelectRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/promptText" title="promptText"></a>
 	<h3 class="subsubtitle method-title">promptText</h3>
 	
@@ -332,7 +395,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Convenience initializer to create a new request with basic string options (i.e. no aliases)</p>
+		<p>Convenience initializer to create a new request with basic string <a href="#//api/name/options">options</a> (i.e. no aliases)</p>
 	</div>		
 	
     
@@ -374,7 +437,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Convenience initializer to create a new request with basic string options (i.e. no aliases)</p>
+		<p>Convenience initializer to create a new request with basic string <a href="#//api/name/options">options</a> (i.e. no aliases)</p>
 	</div>
 	
 	
@@ -398,7 +461,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Initializes new request with full options</p>
+		<p>Initializes new request with full <a href="#//api/name/options">options</a></p>
 	</div>		
 	
     
@@ -411,6 +474,11 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
+			<dt><em>options</em></dt>
+			<dd><p>String values for the user to choose</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
 			<dt><em>promptText</em></dt>
 			<dd><p>Message to present to the user when the prompt begins</p></dd>
 		</dl>
@@ -418,11 +486,6 @@
 		<dl class="argument-def parameter-def">
 			<dt><em>completionBlock</em></dt>
 			<dd><p>Block to deliver result to</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>option</em></dt>
-			<dd><p>String values for the user to choose</p></dd>
 		</dl>
 		
 	</div>
@@ -440,7 +503,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializes new request with full options</p>
+		<p>Initializes new request with full <a href="#//api/name/options">options</a></p>
 	</div>
 	
 	
@@ -473,6 +536,21 @@
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>recognitionService</em></dt>
+			<dd><p>Agent responsible for communicating with speech recognition service</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>responder</em></dt>
+			<dd><p>Agent responsible for responding to recognized speech (or recognition error)</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	<div class="method-subsection return">
@@ -487,9 +565,6 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Initiates a voice request using the given recognition service and recognized speech <a href="../Classes/SAYVoiceRequest.html#//api/name/responder">responder</a>.</p>
-
-<p>@param <a href="../Classes/SAYVoiceRequest.html#//api/name/recognitionService">recognitionService</a>
-@param <a href="../Classes/SAYVoiceRequest.html#//api/name/responder">responder</a></p>
 	</div>
 	
 	

@@ -26,6 +26,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -43,6 +45,12 @@
 	
 	<option value="//api/name/operationDidFinish:">&nbsp;&nbsp;&nbsp;&nbsp;- operationDidFinish:</option>
 	
+	<option value="//api/name/operationDidResume:">&nbsp;&nbsp;&nbsp;&nbsp;- operationDidResume:</option>
+	
+	<option value="//api/name/operationDidStart:">&nbsp;&nbsp;&nbsp;&nbsp;- operationDidStart:</option>
+	
+	<option value="//api/name/operationDidSuspend:">&nbsp;&nbsp;&nbsp;&nbsp;- operationDidSuspend:</option>
+	
 	
 	
 </select>
@@ -52,6 +60,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -70,6 +80,12 @@
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/operationDidFinish:">operationDidFinish:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/operationDidResume:">operationDidResume:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/operationDidStart:">operationDidStart:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/operationDidSuspend:">operationDidSuspend:</a></span></li>
 	
 </ul></li>
 
@@ -105,6 +121,14 @@
                     
                     
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Descripts a protocol for classes interested in operation lifecycle events.</p>
+					</div>
+					
+					
+					
 					
 					
 					<div class="section section-tasks">
@@ -117,6 +141,24 @@
 
 						<ul class="task-list">
 							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/operationDidStart:">&ndash;&nbsp;operationDidStart:</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/operationDidSuspend:">&ndash;&nbsp;operationDidSuspend:</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/operationDidResume:">&ndash;&nbsp;operationDidResume:</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/operationDidFinish:">&ndash;&nbsp;operationDidFinish:</a></code>
 	</span>
@@ -155,6 +197,16 @@
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>operation</em></dt>
+			<dd><p>Operation that just finished its execution</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	
@@ -164,8 +216,159 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Called when the operation finishes. Note that there is no guarantee that this method will be called before subsequent operations in a  queue are started.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYOperation.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/operationDidResume:" title="operationDidResume:"></a>
+	<h3 class="subsubtitle method-title">operationDidResume:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Message sent when an operation leaves a suspended state and resumes executing.</p>
+	</div>		
+	
+    
 
-<p>@param operation</p>
+	<div class="method-subsection method-declaration"><code>- (void)operationDidResume:(SAYOperation *)<em>operation</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>operation</em></dt>
+			<dd><p>Operation that just resumed execution</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Message sent when an operation leaves a suspended state and resumes executing.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYOperation.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/operationDidStart:" title="operationDidStart:"></a>
+	<h3 class="subsubtitle method-title">operationDidStart:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Message sent when an operation begins executing.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)operationDidStart:(SAYOperation *)<em>operation</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>operation</em></dt>
+			<dd><p>Operation that just started execution</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Message sent when an operation begins executing.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYOperation.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/operationDidSuspend:" title="operationDidSuspend:"></a>
+	<h3 class="subsubtitle method-title">operationDidSuspend:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Message sent when an operation enters a suspended state.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)operationDidSuspend:(SAYOperation *)<em>operation</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>operation</em></dt>
+			<dd><p>Operation that is now suspended</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Message sent when an operation enters a suspended state.</p>
 	</div>
 	
 	

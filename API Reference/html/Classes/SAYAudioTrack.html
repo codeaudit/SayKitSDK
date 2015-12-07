@@ -26,6 +26,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -71,6 +73,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -146,6 +150,19 @@
 					
                     
                     
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<ul>
+<li><p>The <code>SAYAudioTrack</code> class provides a queue for <a href="../Protocols/SAYAudioEvent.html"><code>SAYAudioEvent</code></a> instances to be posted to. When events are added, their corresponding operations are executed in serial order. These operations contain the actual execution logic for presenting audio to the speaker.</p>
+
+<p> As long as a track has operations that have not yet completed, it is considered &ldquo;live&rdquo;,</p></li>
+</ul>
+
+					</div>
+					
+					
 					
 					
 					
@@ -382,6 +399,16 @@
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>event</em></dt>
+			<dd><p>Event to add to the end of the track</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	
@@ -391,8 +418,6 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Convenience method for <a href="#//api/name/addEvent:completion:">addEvent:completion:</a> that uses an empty completion block</p>
-
-<p>@param event</p>
 	</div>
 	
 	
@@ -429,8 +454,13 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
+			<dt><em>event</em></dt>
+			<dd><p>Event to add to the end of the track</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
 			<dt><em>completionBlock</em></dt>
-			<dd><p>Completion block run after. No guarantees are made about it&rsquo;s execution context (i.e. thread, synchronicity).</p></dd>
+			<dd><p>Completion block run after event&rsquo;s operations complete. No guarantees are made about it&rsquo;s execution context (i.e. thread, synchronicity).</p></dd>
 		</dl>
 		
 	</div>
@@ -444,8 +474,6 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Adds an event to the track&rsquo;s queue with the given block running after the event&rsquo;s operations complete.</p>
-
-<p>@param event</p>
 	</div>
 	
 	
@@ -478,6 +506,16 @@
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>events</em></dt>
+			<dd><p>Events to add to the end of the track</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	
@@ -487,8 +525,6 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Adds a series of events to the track</p>
-
-<p>@param events</p>
 	</div>
 	
 	
@@ -598,6 +634,21 @@
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>priority</em></dt>
+			<dd><p>Priority of track. This comes into play when multiple tracks are being coordinated by a <a href="../Classes/SAYAudioTrackCoordinator.html"><code>SAYAudioTrackCoordinator</code></a>. The coordinator allows higher <a href="#//api/name/priority">priority</a> live tracks to present their events first.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>focusGuard</em></dt>
+			<dd><p>Agent in charge of coordinating track &ldquo;focus&rdquo; (typically a <a href="../Classes/SAYAudioTrackCoordinator.html"><code>SAYAudioTrackCoordinator</code></a>)</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	<div class="method-subsection return">
@@ -612,9 +663,6 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Initalizes a new track with the given <a href="#//api/name/priority">priority</a> and focus guard.</p>
-
-<p>@param <a href="#//api/name/priority">priority</a>
-@param focusGuard</p>
 	</div>
 	
 	

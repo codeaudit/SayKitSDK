@@ -306,10 +306,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<ul>
-<li>Registers a validation block with the registry.</li>
-</ul>
-
+		<p>Registers a validation block with the registry.</p>
 	</div>		
 	
     
@@ -317,6 +314,21 @@
 	<div class="method-subsection method-declaration"><code>- (void)addValidatorForCommandType:(NSString *)<em>type</em> validator:(SAYCommandValidationBlock)<em>block</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>type</em></dt>
+			<dd><p>Command type</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>Function capable of determining whether or not the given command can be responded to</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -326,17 +338,11 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<ul>
-<li><p>Registers a validation block with the registry.</p>
+		<p>Registers a validation block with the registry.</p>
 
-<p> Validators are often used to verify the parameters of a command are of a proper format. If the parameters do not provide enough context to respond to the command, a validator allows the registry to respond correctly to <code>canRespondToCommand:</code> inquiries made on it.</p>
+<p>Validators are often used to verify the parameters of a command are of a proper format. If the parameters do not provide enough context to respond to the command, a validator allows the registry to respond correctly to <code>canRespondToCommand:</code> inquiries made on it.</p>
 
-<p> For example, if the registry has a registered block capable of acting on a &ldquo;Call&rdquo; command (representing a request to begin phone call), the block may only be able to respond if a &ldquo;phoneNumber&rdquo; parameters is provided with the command. If that is the case, a validator function can do this check up-front, allowing the registry to correctly inform callers that it is not able to handle these ill-formed commands.
-*</p></li>
-<li>@param type  Command type</li>
-<li>@param block Function capable of determining whether or not the given command can be responded to</li>
-</ul>
-
+<p>For example, if the registry has a registered block capable of acting on a &ldquo;Call&rdquo; command (representing a request to begin phone call), the block may only be able to respond if a &ldquo;phoneNumber&rdquo; parameters is provided with the command. If that is the case, a validator function can do this check up-front, allowing the registry to correctly inform callers that it is not able to handle these ill-formed commands.</p>
 	</div>
 	
 	

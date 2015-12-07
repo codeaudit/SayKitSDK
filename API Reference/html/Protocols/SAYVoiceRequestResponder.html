@@ -168,10 +168,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<ul>
-<li>Handle the response (or error) from the a speech recognition service. Exactly one of the <code>responseData</code> or <code>error</code> is guaranteed to be non-nil. The data type of the <code>responseData</code> argument depends on the recognition service used by associated request object.</li>
-</ul>
-
+		<p>Handle the response (or error) from the a speech recognition service. Exactly one of the <code>responseData</code> or <code>error</code> is guaranteed to be non-nil. The data type of the <code>responseData</code> argument depends on the recognition service used by associated request object.</p>
 	</div>		
 	
     
@@ -179,6 +176,26 @@
 	<div class="method-subsection method-declaration"><code>- (void)voiceRequest:(SAYVoiceRequest *)<em>voiceRequest</em> receivedData:(nullable id)<em>responseData</em> error:(nullable NSError *)<em>error</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>voiceRequest</em></dt>
+			<dd><p>Request that received data/error</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>responseData</em></dt>
+			<dd><p>Response data (type depends on underlying <a href="../Protocols/SAYSpeechRecognitionService.html"><code>SAYSpeechRecognitionService</code></a>). Will be nil if error occurs.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>If non-nil, error describing why a recognition response could not be received</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -188,16 +205,9 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<ul>
-<li><p>Handle the response (or error) from the a speech recognition service. Exactly one of the <code>responseData</code> or <code>error</code> is guaranteed to be non-nil. The data type of the <code>responseData</code> argument depends on the recognition service used by associated request object.</p>
+		<p>Handle the response (or error) from the a speech recognition service. Exactly one of the <code>responseData</code> or <code>error</code> is guaranteed to be non-nil. The data type of the <code>responseData</code> argument depends on the recognition service used by associated request object.</p>
 
-<p> Due to this close interaction with the lifecycle and its request-specific logic, a <code>VoiceRequestResponder</code> conformer is typically bound tightly to the type of VoiceRequest it serves.</p></li>
-</ul>
-<div class="warning"><p><strong>Warning:</strong> If a request cycle ends with this message, it is the receiver&rsquo;s duty to end the request’s lifecycle as part of its response to this message.
-*
-*  @param voiceRequest
-*  @param responseData
-*  @param error</p></div>
+<p>Due to this close interaction with the lifecycle and its request-specific logic, a <code>VoiceRequestResponder</code> conformer is typically bound tightly to the type of VoiceRequest it serves.</p><div class="warning"><p><strong>Warning:</strong> If a request cycle ends with this message, it is the receiver&rsquo;s duty to end the request’s lifecycle as part of its response to this message.</p></div>
 	</div>
 	
 	
@@ -221,10 +231,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<ul>
-<li>Handle the cancellation process of the request. This is typically triggered by the user manually canceling the request via the GUI.</li>
-</ul>
-
+		<p>Handle the cancellation process of the request. This is typically triggered by the user manually canceling the request via the GUI.</p>
 	</div>		
 	
     
@@ -232,6 +239,16 @@
 	<div class="method-subsection method-declaration"><code>- (void)voiceRequestWasCancelled:(SAYVoiceRequest *)<em>voiceRequest</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>voiceRequest</em></dt>
+			<dd><p>Request that was cancelled</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -241,12 +258,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<ul>
-<li>Handle the cancellation process of the request. This is typically triggered by the user manually canceling the request via the GUI.</li>
-</ul>
-<div class="warning"><p><strong>Warning:</strong> The method is responsible for triggering the actual dismissal of the request. Allowing the request&rsquo;s lifecycle to continue after this method is not expected behavior.
-*
-*  @param voiceRequest</p></div>
+		<p>Handle the cancellation process of the request. This is typically triggered by the user manually canceling the request via the GUI.</p><div class="warning"><p><strong>Warning:</strong> The method is responsible for triggering the actual dismissal of the request. Allowing the request&rsquo;s lifecycle to continue after this method is not expected behavior.</p></div>
 	</div>
 	
 	
