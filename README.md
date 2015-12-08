@@ -18,10 +18,8 @@ You can follow along and create your own project, or skip to the bottom for a li
 - Navigate to where you downloaded the framework, and select `SayKitSDK.framework`. The framework should now appear on the left, in Xcode's Project Navigator pane.
 - Select the project in the Navigator pane, select your target, and go to the Build Phases tab.
 - Under "Link Binary With Libraries", make sure `SayKitSDK.framework` is in the list.
+- Under "Embed Frameworks", make sure `SayKitSDK.framework` is in the list.
 - If using Swift, create a bridging header that includes "SayKit.h" 		// TODO - Add details
-
-### Import Wit Framework
-One of the speech recognition services that SayKit can use out-of-the-box is Wit. You can manually add [the Wit framework](https://github.com/wit-ai/wit-ios-sdk/releases) using the same procedure as above, or by using CocoaPods. Check out [Wit's Quickstart guide](https://wit.ai/docs/ios) for a detailed walkthrough.
 
 ## 3. Create a Voice Request
 We're going to make a simple Magic 8 Ball app that listens to the user's yes-or-no question, and randomly replies with one of several responses that we'll define below.
