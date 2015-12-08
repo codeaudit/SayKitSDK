@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E5B0F21AE9E252EEF40A51435D47E5923FBA084B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E5B0F21AE9E252EEF40A51435D47E5923FBA084B" : 0,
+    "2C6C258288D6629EC7DAE9EB1A9ED2999B413CC0" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "CB1D6A4A-3715-42F5-8C26-2D0710978184",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E5B0F21AE9E252EEF40A51435D47E5923FBA084B" : "SayKitSDK\/",
+    "2C6C258288D6629EC7DAE9EB1A9ED2999B413CC0" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SayKitHelloWorld",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Getting Started\/SayKitHelloWorld.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ConversantLabs\/conversantlabs.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2C6C258288D6629EC7DAE9EB1A9ED2999B413CC0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ConversantLabs\/SayKitSDK",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E5B0F21AE9E252EEF40A51435D47E5923FBA084B"
+    }
+  ]
+}
