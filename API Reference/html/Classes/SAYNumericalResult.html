@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>SAYStringRequestResult Class Reference</title>
+		<title>SAYNumericalResult Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">SAYStringRequestResult Class Reference</h1>
+				<h1 class="hideInXcode">SAYNumericalResult Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -41,7 +41,7 @@
 	
 	<option value="//api/name/error">&nbsp;&nbsp;&nbsp;&nbsp;error</option>
 	
-	<option value="//api/name/transcription">&nbsp;&nbsp;&nbsp;&nbsp;transcription</option>
+	<option value="//api/name/number">&nbsp;&nbsp;&nbsp;&nbsp;number</option>
 	
 	
 	
@@ -52,7 +52,7 @@
 	
 	<option value="//api/name/initWithError:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithError:</option>
 	
-	<option value="//api/name/initWithTranscription:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithTranscription:</option>
+	<option value="//api/name/initWithNumber:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithNumber:</option>
 	
 	
 	
@@ -80,7 +80,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/error">error</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/transcription">transcription</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/number">number</a></span></li>
 	
 </ul></li>
 
@@ -92,7 +92,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithError:">initWithError:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithTranscription:">initWithTranscription:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithNumber:">initWithNumber:</a></span></li>
 	
 </ul></li>
 
@@ -101,7 +101,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="SAYStringRequestResult Class Reference" name="top"></a>
+				<a title="SAYNumericalResult Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -110,7 +110,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">SAYStringRequestResult Class Reference</h1>
+						<h1 class="title title-header">SAYNumericalResult Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -121,7 +121,7 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">SAYStringRequestResult.h</td>
+	<td class="specification-value">SAYNumericalResult.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -131,7 +131,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Encapsulates result data from a completed <a href="../Classes/SAYStringRequest.html"><code>SAYStringRequest</code></a></p>
+						<p>Encapsulates result data from a completed <a href="../Classes/SAYNumericalRequest.html"><code>SAYNumericalRequest</code></a></p>
 					</div>
 					
 					
@@ -149,7 +149,7 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/transcription">&nbsp;&nbsp;transcription</a></code>
+		<code><a href="#//api/name/number">&nbsp;&nbsp;number</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -161,7 +161,7 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithTranscription:">&ndash;&nbsp;initWithTranscription:</a></code>
+		<code><a href="#//api/name/initWithNumber:">&ndash;&nbsp;initWithNumber:</a></code>
 	</span>
 	
 	
@@ -219,25 +219,25 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYStringRequestResult.h</code><br />
+		<code class="declared-in-ref">SAYNumericalResult.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/transcription" title="transcription"></a>
-	<h3 class="subsubtitle method-title">transcription</h3>
+	<a name="//api/name/number" title="number"></a>
+	<h3 class="subsubtitle method-title">number</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Transcription of user speech. If nil, no speech was recognized.</p>
+		<p>Result represented as a number. If nil, no number could be interpreted from user input.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly, nullable) NSString *transcription</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly, nullable) NSNumber *number</code></div>
 
     
 	
@@ -249,7 +249,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Transcription of user speech. If nil, no speech was recognized.</p>
+		<p>Result represented as a number. If nil, no number could be interpreted from user input.</p>
 	</div>
 	
 	
@@ -260,7 +260,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYStringRequestResult.h</code><br />
+		<code class="declared-in-ref">SAYNumericalResult.h</code><br />
 	</div>				
 	
 	
@@ -283,7 +283,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Initializer for a new <code>SAYStringRequestResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
+		<p>Initializer for a new <code>SAYNumericalResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
 	</div>		
 	
     
@@ -306,7 +306,7 @@
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The newly-initiated <code>SAYStringRequestResult</code></p>
+		<p>The newly-initiated <code>SAYNumericalResult</code></p>
 	</div>
 	
 	
@@ -315,7 +315,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializer for a new <code>SAYStringRequestResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
+		<p>Initializer for a new <code>SAYNumericalResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
 	</div>
 	
 	
@@ -326,25 +326,25 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYStringRequestResult.h</code><br />
+		<code class="declared-in-ref">SAYNumericalResult.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/initWithTranscription:" title="initWithTranscription:"></a>
-	<h3 class="subsubtitle method-title">initWithTranscription:</h3>
+	<a name="//api/name/initWithNumber:" title="initWithNumber:"></a>
+	<h3 class="subsubtitle method-title">initWithNumber:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Initializer for a new <code>SAYStringRequestResult</code> representing a request with a successfully recognized text transcript.</p>
+		<p>Initializer for a new <code>SAYNumericalResult</code> representing a request with a successful boolean result.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (instancetype)initWithTranscription:(NSString *)<em>transcription</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (instancetype)initWithNumber:(NSNumber *)<em>number</em></code></div>
 
     
 	
@@ -352,8 +352,8 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>transcription</em></dt>
-			<dd><p>String representing of recognized speech</p></dd>
+			<dt><em>number</em></dt>
+			<dd><p>Number representing user&rsquo;s numerical response</p></dd>
 		</dl>
 		
 	</div>
@@ -362,7 +362,7 @@
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The newly-initiated <code>SAYStringRequestResult</code></p>
+		<p>The newly-initiated <code>SAYNumericalResult</code></p>
 	</div>
 	
 	
@@ -371,7 +371,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializer for a new <code>SAYStringRequestResult</code> representing a request with a successfully recognized text transcript.</p>
+		<p>Initializer for a new <code>SAYNumericalResult</code> representing a request with a successful boolean result.</p>
 	</div>
 	
 	
@@ -382,7 +382,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYStringRequestResult.h</code><br />
+		<code class="declared-in-ref">SAYNumericalResult.h</code><br />
 	</div>				
 	
 	
@@ -406,7 +406,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 Conversant Labs. All rights reserved. (Last updated: 2015-12-07)</span><br />
+						<p><span class="copyright">&copy; 2015 Conversant Labs. All rights reserved. (Last updated: 2015-12-09)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</span></p>
 						

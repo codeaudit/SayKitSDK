@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>SAYSelectRequestResult Class Reference</title>
+		<title>SAYStringResult Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">SAYSelectRequestResult Class Reference</h1>
+				<h1 class="hideInXcode">SAYStringResult Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -41,9 +41,7 @@
 	
 	<option value="//api/name/error">&nbsp;&nbsp;&nbsp;&nbsp;error</option>
 	
-	<option value="//api/name/selectedIndex">&nbsp;&nbsp;&nbsp;&nbsp;selectedIndex</option>
-	
-	<option value="//api/name/selectedOption">&nbsp;&nbsp;&nbsp;&nbsp;selectedOption</option>
+	<option value="//api/name/transcription">&nbsp;&nbsp;&nbsp;&nbsp;transcription</option>
 	
 	
 	
@@ -54,7 +52,7 @@
 	
 	<option value="//api/name/initWithError:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithError:</option>
 	
-	<option value="//api/name/initWithSelectedIndex:selectedOption:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithSelectedIndex:selectedOption:</option>
+	<option value="//api/name/initWithTranscription:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithTranscription:</option>
 	
 	
 	
@@ -82,9 +80,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/error">error</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/selectedIndex">selectedIndex</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/selectedOption">selectedOption</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/transcription">transcription</a></span></li>
 	
 </ul></li>
 
@@ -96,7 +92,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithError:">initWithError:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithSelectedIndex:selectedOption:">initWithSelectedIndex:selectedOption:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithTranscription:">initWithTranscription:</a></span></li>
 	
 </ul></li>
 
@@ -105,7 +101,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="SAYSelectRequestResult Class Reference" name="top"></a>
+				<a title="SAYStringResult Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -114,7 +110,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">SAYSelectRequestResult Class Reference</h1>
+						<h1 class="title title-header">SAYStringResult Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -125,7 +121,7 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">SAYSelectRequestResult.h</td>
+	<td class="specification-value">SAYStringResult.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -135,7 +131,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Encapsulates result data from a completed <a href="../Classes/SAYSelectRequest.html"><code>SAYSelectRequest</code></a></p>
+						<p>Encapsulates result data from a completed <a href="../Classes/SAYStringRequest.html"><code>SAYStringRequest</code></a></p>
 					</div>
 					
 					
@@ -153,13 +149,7 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/selectedOption">&nbsp;&nbsp;selectedOption</a></code>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/selectedIndex">&nbsp;&nbsp;selectedIndex</a></code>
+		<code><a href="#//api/name/transcription">&nbsp;&nbsp;transcription</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -171,7 +161,7 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithSelectedIndex:selectedOption:">&ndash;&nbsp;initWithSelectedIndex:selectedOption:</a></code>
+		<code><a href="#//api/name/initWithTranscription:">&ndash;&nbsp;initWithTranscription:</a></code>
 	</span>
 	
 	
@@ -229,25 +219,25 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYSelectRequestResult.h</code><br />
+		<code class="declared-in-ref">SAYStringResult.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/selectedIndex" title="selectedIndex"></a>
-	<h3 class="subsubtitle method-title">selectedIndex</h3>
+	<a name="//api/name/transcription" title="transcription"></a>
+	<h3 class="subsubtitle method-title">transcription</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Index of selected option. Set to NSNotFound when no selection was made.</p>
+		<p>Transcription of user speech. If nil, no speech was recognized.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSUInteger selectedIndex</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly, nullable) NSString *transcription</code></div>
 
     
 	
@@ -259,7 +249,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Index of selected option. Set to NSNotFound when no selection was made.</p>
+		<p>Transcription of user speech. If nil, no speech was recognized.</p>
 	</div>
 	
 	
@@ -270,48 +260,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYSelectRequestResult.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/selectedOption" title="selectedOption"></a>
-	<h3 class="subsubtitle method-title">selectedOption</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Full representation of option selected by the user. Is nil when no selection was made.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly, nullable) SAYSelectOption *selectedOption</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Full representation of option selected by the user. Is nil when no selection was made.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYSelectRequestResult.h</code><br />
+		<code class="declared-in-ref">SAYStringResult.h</code><br />
 	</div>				
 	
 	
@@ -334,7 +283,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Initializer for a new <code>SAYSelectOptionResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
+		<p>Initializer for a new <code>SAYStringResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
 	</div>		
 	
     
@@ -357,7 +306,7 @@
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The newly-initiated <code>SAYSelectOptionResult</code></p>
+		<p>The newly-initiated <code>SAYStringResult</code></p>
 	</div>
 	
 	
@@ -366,7 +315,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializer for a new <code>SAYSelectOptionResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
+		<p>Initializer for a new <code>SAYStringResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
 	</div>
 	
 	
@@ -377,25 +326,25 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYSelectRequestResult.h</code><br />
+		<code class="declared-in-ref">SAYStringResult.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/initWithSelectedIndex:selectedOption:" title="initWithSelectedIndex:selectedOption:"></a>
-	<h3 class="subsubtitle method-title">initWithSelectedIndex:selectedOption:</h3>
+	<a name="//api/name/initWithTranscription:" title="initWithTranscription:"></a>
+	<h3 class="subsubtitle method-title">initWithTranscription:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Initializer for a new <code>SAYSelectOptionResult</code> representing a successful selection.</p>
+		<p>Initializer for a new <code>SAYStringResult</code> representing a request with a successfully recognized text transcript.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (instancetype)initWithSelectedIndex:(NSUInteger)<em>selectedIndex</em> selectedOption:(SAYSelectOption *)<em>selectedOption</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (instancetype)initWithTranscription:(NSString *)<em>transcription</em></code></div>
 
     
 	
@@ -403,13 +352,8 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>selectedIndex</em></dt>
-			<dd><p>Index of selected option</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>selectedOption</em></dt>
-			<dd><p>Selected option itself</p></dd>
+			<dt><em>transcription</em></dt>
+			<dd><p>String representing of recognized speech</p></dd>
 		</dl>
 		
 	</div>
@@ -418,7 +362,7 @@
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The newly-initiated <code>SAYSelectOptionResult</code></p>
+		<p>The newly-initiated <code>SAYStringResult</code></p>
 	</div>
 	
 	
@@ -427,7 +371,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializer for a new <code>SAYSelectOptionResult</code> representing a successful selection.</p>
+		<p>Initializer for a new <code>SAYStringResult</code> representing a request with a successfully recognized text transcript.</p>
 	</div>
 	
 	
@@ -438,7 +382,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYSelectRequestResult.h</code><br />
+		<code class="declared-in-ref">SAYStringResult.h</code><br />
 	</div>				
 	
 	
@@ -462,7 +406,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 Conversant Labs. All rights reserved. (Last updated: 2015-12-07)</span><br />
+						<p><span class="copyright">&copy; 2015 Conversant Labs. All rights reserved. (Last updated: 2015-12-09)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</span></p>
 						

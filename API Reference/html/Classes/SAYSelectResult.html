@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>SAYConfirmationRequestResult Class Reference</title>
+		<title>SAYSelectResult Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">SAYConfirmationRequestResult Class Reference</h1>
+				<h1 class="hideInXcode">SAYSelectResult Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -39,9 +39,11 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/confirmed">&nbsp;&nbsp;&nbsp;&nbsp;confirmed</option>
-	
 	<option value="//api/name/error">&nbsp;&nbsp;&nbsp;&nbsp;error</option>
+	
+	<option value="//api/name/selectedIndex">&nbsp;&nbsp;&nbsp;&nbsp;selectedIndex</option>
+	
+	<option value="//api/name/selectedOption">&nbsp;&nbsp;&nbsp;&nbsp;selectedOption</option>
 	
 	
 	
@@ -50,9 +52,9 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/initWithConfirmation:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithConfirmation:</option>
-	
 	<option value="//api/name/initWithError:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithError:</option>
+	
+	<option value="//api/name/initWithSelectedIndex:selectedOption:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithSelectedIndex:selectedOption:</option>
 	
 	
 	
@@ -78,9 +80,11 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/confirmed">confirmed</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/error">error</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/selectedIndex">selectedIndex</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/selectedOption">selectedOption</a></span></li>
 	
 </ul></li>
 
@@ -90,9 +94,9 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithConfirmation:">initWithConfirmation:</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithError:">initWithError:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithSelectedIndex:selectedOption:">initWithSelectedIndex:selectedOption:</a></span></li>
 	
 </ul></li>
 
@@ -101,7 +105,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="SAYConfirmationRequestResult Class Reference" name="top"></a>
+				<a title="SAYSelectResult Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -110,7 +114,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">SAYConfirmationRequestResult Class Reference</h1>
+						<h1 class="title title-header">SAYSelectResult Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -121,7 +125,7 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">SAYConfirmationRequestResult.h</td>
+	<td class="specification-value">SAYSelectResult.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -131,7 +135,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Encapsulates result data from a completed <a href="../Classes/SAYConfirmationRequest.html"><code>SAYConfirmationRequest</code></a></p>
+						<p>Encapsulates result data from a completed <a href="../Classes/SAYSelectRequest.html"><code>SAYSelectRequest</code></a></p>
 					</div>
 					
 					
@@ -149,7 +153,13 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/confirmed">&nbsp;&nbsp;confirmed</a></code>
+		<code><a href="#//api/name/selectedOption">&nbsp;&nbsp;selectedOption</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/selectedIndex">&nbsp;&nbsp;selectedIndex</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -161,7 +171,7 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithConfirmation:">&ndash;&nbsp;initWithConfirmation:</a></code>
+		<code><a href="#//api/name/initWithSelectedIndex:selectedOption:">&ndash;&nbsp;initWithSelectedIndex:selectedOption:</a></code>
 	</span>
 	
 	
@@ -183,47 +193,6 @@
 					<div class="section section-methods">
 						<a title="Properties" name="properties"></a>
 						<h2 class="subtitle subtitle-methods">Properties</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/confirmed" title="confirmed"></a>
-	<h3 class="subsubtitle method-title">confirmed</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Boolean result wrapped up as an <code>NSNumber</code>. Value will always be @0, @1, or nil.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, nullable) NSNumber *confirmed</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Boolean result wrapped up as an <code>NSNumber</code>. Value will always be @0, @1, or nil.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYConfirmationRequestResult.h</code><br />
-	</div>				
-	
-	
-</div>
 						
 						<div class="section-method">
 	<a name="//api/name/error" title="error"></a>
@@ -260,7 +229,89 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYConfirmationRequestResult.h</code><br />
+		<code class="declared-in-ref">SAYSelectResult.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/selectedIndex" title="selectedIndex"></a>
+	<h3 class="subsubtitle method-title">selectedIndex</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Index of selected option. Set to NSNotFound when no selection was made.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSUInteger selectedIndex</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Index of selected option. Set to NSNotFound when no selection was made.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYSelectResult.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/selectedOption" title="selectedOption"></a>
+	<h3 class="subsubtitle method-title">selectedOption</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Full representation of option selected by the user. Is nil when no selection was made.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly, nullable) SAYSelectOption *selectedOption</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Full representation of option selected by the user. Is nil when no selection was made.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYSelectResult.h</code><br />
 	</div>				
 	
 	
@@ -277,69 +328,13 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/initWithConfirmation:" title="initWithConfirmation:"></a>
-	<h3 class="subsubtitle method-title">initWithConfirmation:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Initializer for a new <code>SAYConfirmationRequestResult</code> representing a request with a successful boolean result.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (instancetype)initWithConfirmation:(BOOL)<em>confirmed</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>confirmed</em></dt>
-			<dd><p>YES if user answered affirmatively, NO otherwise.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The newly-initiated <code>SAYConfirmationRequestResult</code></p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializer for a new <code>SAYConfirmationRequestResult</code> representing a request with a successful boolean result.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYConfirmationRequestResult.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/initWithError:" title="initWithError:"></a>
 	<h3 class="subsubtitle method-title">initWithError:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Initializer for a new <code>SAYConfirmationRequestResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
+		<p>Initializer for a new <code>SAYSelectOptionResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
 	</div>		
 	
     
@@ -362,7 +357,7 @@
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The newly-initiated <code>SAYConfirmationRequestResult</code></p>
+		<p>The newly-initiated <code>SAYSelectOptionResult</code></p>
 	</div>
 	
 	
@@ -371,7 +366,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializer for a new <code>SAYConfirmationRequestResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
+		<p>Initializer for a new <code>SAYSelectOptionResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
 	</div>
 	
 	
@@ -382,7 +377,68 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYConfirmationRequestResult.h</code><br />
+		<code class="declared-in-ref">SAYSelectResult.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithSelectedIndex:selectedOption:" title="initWithSelectedIndex:selectedOption:"></a>
+	<h3 class="subsubtitle method-title">initWithSelectedIndex:selectedOption:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initializer for a new <code>SAYSelectOptionResult</code> representing a successful selection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (instancetype)initWithSelectedIndex:(NSUInteger)<em>selectedIndex</em> selectedOption:(SAYSelectOption *)<em>selectedOption</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>selectedIndex</em></dt>
+			<dd><p>Index of selected option</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>selectedOption</em></dt>
+			<dd><p>Selected option itself</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The newly-initiated <code>SAYSelectOptionResult</code></p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Initializer for a new <code>SAYSelectOptionResult</code> representing a successful selection.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYSelectResult.h</code><br />
 	</div>				
 	
 	
@@ -406,7 +462,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 Conversant Labs. All rights reserved. (Last updated: 2015-12-07)</span><br />
+						<p><span class="copyright">&copy; 2015 Conversant Labs. All rights reserved. (Last updated: 2015-12-09)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</span></p>
 						

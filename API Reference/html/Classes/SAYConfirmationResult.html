@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>SAYNumericalRequestResult Class Reference</title>
+		<title>SAYConfirmationResult Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">SAYNumericalRequestResult Class Reference</h1>
+				<h1 class="hideInXcode">SAYConfirmationResult Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -39,9 +39,9 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/error">&nbsp;&nbsp;&nbsp;&nbsp;error</option>
+	<option value="//api/name/confirmed">&nbsp;&nbsp;&nbsp;&nbsp;confirmed</option>
 	
-	<option value="//api/name/number">&nbsp;&nbsp;&nbsp;&nbsp;number</option>
+	<option value="//api/name/error">&nbsp;&nbsp;&nbsp;&nbsp;error</option>
 	
 	
 	
@@ -50,9 +50,9 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/initWithError:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithError:</option>
+	<option value="//api/name/initWithConfirmation:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithConfirmation:</option>
 	
-	<option value="//api/name/initWithNumber:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithNumber:</option>
+	<option value="//api/name/initWithError:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithError:</option>
 	
 	
 	
@@ -78,9 +78,9 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/error">error</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/confirmed">confirmed</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/number">number</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/error">error</a></span></li>
 	
 </ul></li>
 
@@ -90,9 +90,9 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithError:">initWithError:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithConfirmation:">initWithConfirmation:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithNumber:">initWithNumber:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithError:">initWithError:</a></span></li>
 	
 </ul></li>
 
@@ -101,7 +101,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="SAYNumericalRequestResult Class Reference" name="top"></a>
+				<a title="SAYConfirmationResult Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -110,7 +110,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">SAYNumericalRequestResult Class Reference</h1>
+						<h1 class="title title-header">SAYConfirmationResult Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -121,7 +121,7 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">SAYNumericalRequestResult.h</td>
+	<td class="specification-value">SAYConfirmationResult.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -131,7 +131,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Encapsulates result data from a completed <a href="../Classes/SAYNumericalRequest.html"><code>SAYNumericalRequest</code></a></p>
+						<p>Encapsulates result data from a completed <a href="../Classes/SAYConfirmationRequest.html"><code>SAYConfirmationRequest</code></a></p>
 					</div>
 					
 					
@@ -149,7 +149,7 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/number">&nbsp;&nbsp;number</a></code>
+		<code><a href="#//api/name/confirmed">&nbsp;&nbsp;confirmed</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -161,7 +161,7 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithNumber:">&ndash;&nbsp;initWithNumber:</a></code>
+		<code><a href="#//api/name/initWithConfirmation:">&ndash;&nbsp;initWithConfirmation:</a></code>
 	</span>
 	
 	
@@ -183,6 +183,47 @@
 					<div class="section section-methods">
 						<a title="Properties" name="properties"></a>
 						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/confirmed" title="confirmed"></a>
+	<h3 class="subsubtitle method-title">confirmed</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Boolean result wrapped up as an <code>NSNumber</code>. Value will always be @0, @1, or nil.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, nullable) NSNumber *confirmed</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Boolean result wrapped up as an <code>NSNumber</code>. Value will always be @0, @1, or nil.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYConfirmationResult.h</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/error" title="error"></a>
@@ -219,48 +260,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYNumericalRequestResult.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/number" title="number"></a>
-	<h3 class="subsubtitle method-title">number</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Result represented as a number. If nil, no number could be interpreted from user input.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly, nullable) NSNumber *number</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Result represented as a number. If nil, no number could be interpreted from user input.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYNumericalRequestResult.h</code><br />
+		<code class="declared-in-ref">SAYConfirmationResult.h</code><br />
 	</div>				
 	
 	
@@ -277,13 +277,69 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/initWithConfirmation:" title="initWithConfirmation:"></a>
+	<h3 class="subsubtitle method-title">initWithConfirmation:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initializer for a new <code>SAYConfirmationResult</code> representing a request with a successful boolean result.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (instancetype)initWithConfirmation:(BOOL)<em>confirmed</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>confirmed</em></dt>
+			<dd><p>YES if user answered affirmatively, NO otherwise.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The newly-initiated <code>SAYConfirmationResult</code></p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Initializer for a new <code>SAYConfirmationResult</code> representing a request with a successful boolean result.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYConfirmationResult.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/initWithError:" title="initWithError:"></a>
 	<h3 class="subsubtitle method-title">initWithError:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Initializer for a new <code>SAYNumericalRequestResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
+		<p>Initializer for a new <code>SAYConfirmationResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
 	</div>		
 	
     
@@ -306,7 +362,7 @@
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The newly-initiated <code>SAYNumericalRequestResult</code></p>
+		<p>The newly-initiated <code>SAYConfirmationResult</code></p>
 	</div>
 	
 	
@@ -315,7 +371,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializer for a new <code>SAYNumericalRequestResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
+		<p>Initializer for a new <code>SAYConfirmationResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
 	</div>
 	
 	
@@ -326,63 +382,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYNumericalRequestResult.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithNumber:" title="initWithNumber:"></a>
-	<h3 class="subsubtitle method-title">initWithNumber:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Initializer for a new <code>SAYNumericalRequestResult</code> representing a request with a successful boolean result.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (instancetype)initWithNumber:(NSNumber *)<em>number</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>number</em></dt>
-			<dd><p>Number representing user&rsquo;s numerical response</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The newly-initiated <code>SAYNumericalRequestResult</code></p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializer for a new <code>SAYNumericalRequestResult</code> representing a request with a successful boolean result.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYNumericalRequestResult.h</code><br />
+		<code class="declared-in-ref">SAYConfirmationResult.h</code><br />
 	</div>				
 	
 	
@@ -406,7 +406,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 Conversant Labs. All rights reserved. (Last updated: 2015-12-07)</span><br />
+						<p><span class="copyright">&copy; 2015 Conversant Labs. All rights reserved. (Last updated: 2015-12-09)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</span></p>
 						
