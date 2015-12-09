@@ -1,5 +1,21 @@
 # SayKitSDK
-Framework for building voice enabled applications on iOS
+Framework for building voice enabled applications on iOS. Currently deployed as Version 0.6.
+
+# Roadmap
+
+This is a private beta release of the SayKit framework, with new features and API changes being rolled out continuously in this repository.
+
+More specifically, the planned release timeline includes:
+
+- Version 0.6 (early-December)
+  - All foundational tools necessary for an end-to-end conversational user interface
+- Version 0.7 (mid-December)
+  - Turn-taking (back-and-forth) dialogue tools to more directly define a back-and-forth dialogue between user and application.
+- Version 0.8 (early-January)
+  - Hierarchical application state to support conditional command availability and layered speech output from different application contexts
+  - UIKit binding tools for multi-modal interfaces
+- Version 0.9 (mid-January)
+  - Command resolution improvements, including support for third-party intent recognition services
 
 # Getting Started
 ## 1. Get the SDK!
@@ -166,5 +182,7 @@ You're done! Build and run the app. Tap the "Start Request" button and the app s
 Download the full [Magic 8 Ball app]() to get you started. // TODO - Link
 
 Check out our [tutorial series]() that walks you through the creation of a Recipe app. // TODO - Link
+
+Learn more about SayKit's design and capabilities. // TODO - link to dev guide
 
 Read through SayKit's [full documentation](https://github.com/ConversantLabs/SayKitSDK/tree/master/Developer%20Guide).
