@@ -8,14 +8,14 @@ This is a private beta release of the SayKit framework, with new features and AP
 More specifically, the planned release timeline includes:
 
 - Version 0.6 (early-December)
-  - All foundational tools necessary for an end-to-end conversational user interface
+  - All **foundational tools** necessary for an end-to-end conversational user interface
 - Version 0.7 (mid-December)
-  - Turn-taking (back-and-forth) dialogue tools to more directly define a back-and-forth dialogue between user and application.
+  - **Turn-taking (back-and-forth) dialogue** management to more directly define a back-and-forth dialogue between user and application
 - Version 0.8 (early-January)
-  - Hierarchical application state to support conditional command availability and layered speech output from different application contexts
-  - UIKit binding tools for multi-modal interfaces
+  - Hierarchical application state features to support **conditional command availability** and **layered speech output** from different application contexts
+  - **UIKit binding** tools for multi-modal interfaces
 - Version 0.9 (mid-January)
-  - Command resolution improvements, including support for third-party intent recognition services
+  - Command resolution improvements, including **support for third-party intent recognition services**
 
 # Getting Started
 ## 1. Get the SDK!
