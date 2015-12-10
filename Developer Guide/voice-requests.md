@@ -55,7 +55,7 @@ While active, a request has its presenter property set to the instance of `Voice
 
 Voice applications often have a need to ask the user simple yes-or-no questions, often to confirm an impending action. SayKit offers the `ConfirmationRequest` class for this purpose. It will reduce a wide variety of affirmative (e.g. “yes”, “sure”, “OK”) or negative responses (e.g. “no”, “nope”, “nah”) into a simple Boolean value. In addition, its **viewController** includes buttons to allow the user to respond silently with a tap.
 
-```
+```swift
 let request = SAYConfirmationRequest(promptText:"Are you sure?") { result in
     result?.confirmed == true ? print("You're sure!") : print("You're not sure!")
 }
@@ -65,7 +65,7 @@ let request = SAYConfirmationRequest(promptText:"Are you sure?") { result in
 
 When the application needs to ask the user to make a selection from a set of choices, the `SelectRequest` can be used. Its **viewController** includes a visual table of the choices from which a selection can be made with a tap. In addition to accepting verbatim responses from a set, choices can be customized to provide more robust interpretation (e.g. providing a set of aliases for each choice). Refer to the `SelectOption` class documentation for more details.
 
-```
+```swift
 let options = [SAYSelectOption(label:"Cash", aliases:["Dollars", "Bills"]),
                SAYSelectOption(label:"Credit", aliases:["Visa", "Card", "Charge"])]
 
@@ -83,7 +83,7 @@ To allow the user to speak a direct command to the application, a `VoiceCommandR
 ### StringRequest
 To prompt the user for any kind of open-ended short speech, use the `StringRequest` class. Any intelligible speech input will be reduced to a simple string.
 
-```
+```swift
 let request = SAYStringRequest(promptText:"What is your destination address?") { result in
     if let address = result?.transcription {
     	print("Your destination address is \(address)")
@@ -95,7 +95,7 @@ let request = SAYStringRequest(promptText:"What is your destination address?") {
 
 Similarly, to prompt the user for a strictly numerical response (e.g. "one", "third"), use the `NumericalRequest` class. This request is designed to handle both number (e.g. "two", "three point one") and ordinal (e.g. "first", "fourth") responses. The result of a `NumericalRequest` is an `NSNumber` instance.
 
-```
+```swift
 let request = SAYNumericalRequest(promptText:"What is the zip code?") { result in
 	if let zipCode = result?.number {
 		print("The zip code is \(zipCode)")
@@ -106,7 +106,7 @@ let request = SAYNumericalRequest(promptText:"What is the zip code?") { result i
 ### PatternMatchRequest
 If the user’s speech input should follow a particular form, a `PatternMatchRequest` can be used. By declaring a set of patterns for it to handle, the request can both constrain acceptable responses to speech matching the patterns and isolate and extract values from that speech. If the user issues speech that does not match an expected pattern, the prompt will repeat until they do. These requests use a special templating format, which is described more fully here [insert link when section is complete].
 
-```
+```swift
 let prompt = "What move would you like to make? (e.g. Bishop to F 7)"
 let templates = ["@piece to @row @column:Number",
     			 "@piece to row @row and column @column:Number",

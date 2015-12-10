@@ -46,7 +46,7 @@ We'll add a button that we can press to launch the request, as well as some labe
 - Open `Main.storyboard`
 - Add a UIButton with the title "Start Request" to the view controller.
 - Create an action outlet for the button in `ViewController.m`:
-```
+```objc
 - (IBAction)voiceRequestButtonTapped:(id)sender
 {
     /* ... */
@@ -56,7 +56,7 @@ We'll add a button that we can press to launch the request, as well as some labe
 - Add a "Results" UILabel to display the app's response to the user.
 - Add an "Echo" UILabel to display what the user just said.
 - Create outlets for the "Results" and "Echo" labels in `ViewController.m`:
-```
+```objc
 @property (strong, nonatomic) IBOutlet UILabel *resultsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *echoLabel;
 ```
@@ -66,7 +66,7 @@ We'll add a button that we can press to launch the request, as well as some labe
 
 ### Prepare app logic
 - Define an array where we can store our Magic 8 Ball responses:
-```
+```objc
 @interface ViewController ()
 
 /* ... */
@@ -77,7 +77,7 @@ We'll add a button that we can press to launch the request, as well as some labe
 ```
 
 - and initialize them in `viewDidLoad`:
-```
+```objc
 _responseStrings = @[@"It is certain",
                      @"It is decidedly so",
                      @"Without a doubt",
@@ -101,7 +101,7 @@ _responseStrings = @[@"It is certain",
 ```
 
 - Create a helper method `getResponseString` that randomly returns one of the strings in our response list:
-```
+```objc
 - (NSString *)getResponseString
 {
     u_int32_t upperBound = (u_int32_t)self.responseStrings.count;
@@ -113,13 +113,13 @@ _responseStrings = @[@"It is certain",
 
 ### Instantiate the request
 - In `ViewController.m`, import SayKit:
-```
+```objc
 #import "ViewController.h"
 #import <SayKit/SayKit.h>
 ```
 
 - In `voiceRequestButtonTapped:`, add a call to an upcoming helper function, `beginVoiceRequest`:
-```
+```objc
 - (IBAction)voiceRequestButtonTapped:(id)sender
 {
     [self beginVoiceRequest];
@@ -129,13 +129,13 @@ _responseStrings = @[@"It is certain",
 - Create a helper function, `beginVoiceRequest`.
 
 Here we create the voice request using a subclass of `SAYVoiceRequest`, `SAYStringRequest`. It takes a string, `promptText`, to speak and display to the user, as well as a completion block that contains the result of the request:
-```
+```objc
 NSString *promptText = @"Ask me anything! The Magic 8 Ball knows all.";
 SAYStringRequest *request = [[SAYStringRequest alloc] initWithPromptText:promptText completionBlock:^(SAYStringRequestResult *result) { /* ... */ }
 ```
 
 Within the completion block, we can respond to any errors and contents of the result. In this case, we're interested in the transcript of recognized speech. Depending on the request type, a result may also contain additional parameters for your app to consume.
-```
+```objc
 NSString *promptText = @"Ask me anything! The Magic 8 Ball knows all.";
 SAYStringRequest *request = [[SAYStringRequest alloc] initWithPromptText:promptText completionBlock:^(SAYStringRequestResult *result) {
     if (result.error) {
@@ -150,12 +150,12 @@ SAYStringRequest *request = [[SAYStringRequest alloc] initWithPromptText:promptT
 ```
 
 Finally, present the request using `SAYVoiceRequestPresenter`'s `defaultPresenter`.
-```
+```objc
 [[SAYVoiceRequestPresenter defaultPresenter] presentRequest:request];
 ```
 
 `beginVoiceRequest` should now look like this:
-```
+```objc
 - (void)beginVoiceRequest
 {
     NSString *promptText = @"Ask me anything! The Magic 8 Ball knows all.";
