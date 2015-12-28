@@ -21,8 +21,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    SAYCommandResponseRegistry *commandRegistry = [SAYCommandResponseRegistry sharedInstance];
+    [self respondToAvailableCommands];
+    [self respondToSearchCommand];
+}
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Private Helpers
+
+- (void)respondToAvailableCommands
+{
+    SAYCommandResponseRegistry *commandRegistry = [SAYCommandResponseRegistry sharedInstance];
+    
     // Respond to speech that asks about available commands, such as "What can I say?" and "Available Commands".
     [commandRegistry addResponseForCommandType:SAYStandardCommandAvailableCommands responseBlock:^(SAYCommand * _Nonnull command) {
         // Calls to UIKit should be done on the main thread.
@@ -32,6 +45,11 @@
     }];
     
     // TODO: Update `recognizedSpeechLabel` with transcript (add observer?)
+}
+
+- (void)respondToSearchCommand
+{
+    SAYCommandResponseRegistry *commandRegistry = [SAYCommandResponseRegistry sharedInstance];
     
     // Respond to a search query, such as "Search for Chinese food" or "I want Italian".
     [commandRegistry addResponseForCommandType:SAYStandardCommandSearch responseBlock:^(SAYCommand * _Nonnull command) {
@@ -42,11 +60,8 @@
             self.resultLabel.text = [NSString stringWithFormat:@"Received command: Search for %@", query];
         });
     }];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    // TODO: Update `recognizedSpeechLabel` with transcript (add observer?)
 }
 
 @end
