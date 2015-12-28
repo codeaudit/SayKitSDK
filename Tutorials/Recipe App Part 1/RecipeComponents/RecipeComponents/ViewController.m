@@ -21,13 +21,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self respondToAvailableCommands];
-    [self respondToSearchCommand];
+//    [self respondToAvailableCommands];
+//    [self respondToSearchCommand];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - SAYCommandBarDelegate Methods
+
+- (void)commandBarDidSelectMicrophone:(SAYCommandBar *)commandBar
+{
+    SAYStringRequest *request = [[SAYStringRequest alloc] initWithPromptText:@"What recipe would you like to search for?" completionBlock:^(SAYStringResult * _Nullable result) {
+        NSString *query = result.transcription;
+        [self handleSearchCommandForQuery:query];
+    }];
+    
+    [[SAYVoiceRequestPresenter defaultPresenter] presentRequest:request];
+}
+
+- (void)commandBarDidSelectCommandMenu:(SAYCommandBar *)commandBar
+{
+    // Do nothing for now.
 }
 
 #pragma mark - Private Helpers
@@ -38,13 +55,8 @@
     
     // Respond to speech that asks about available commands, such as "What can I say?" and "Available Commands".
     [commandRegistry addResponseForCommandType:SAYStandardCommandAvailableCommands responseBlock:^(SAYCommand * _Nonnull command) {
-        // Calls to UIKit should be done on the main thread.
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.resultLabel.text = @"Received command: Available Commands";
-        });
+        [self handleAvailableCommandsCommand];
     }];
-    
-    // TODO: Update `recognizedSpeechLabel` with transcript (add observer?)
 }
 
 - (void)respondToSearchCommand
@@ -55,11 +67,26 @@
     [commandRegistry addResponseForCommandType:SAYStandardCommandSearch responseBlock:^(SAYCommand * _Nonnull command) {
         NSString *query = command.parameters[SAYStandardCommandSearchParameterQuery];
         
-        // Calls to UIKit should be done on the main thread.
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.resultLabel.text = [NSString stringWithFormat:@"Received command: Search for %@", query];
-        });
+        [self handleSearchCommandForQuery:query];
     }];
+}
+
+- (void)handleAvailableCommandsCommand
+{
+    // Calls to UIKit should be done on the main thread.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.resultLabel.text = @"Received command: Available Commands";
+    });
+    
+    // TODO: Update `recognizedSpeechLabel` with transcript (add observer?)
+}
+
+- (void)handleSearchCommandForQuery:(NSString *)query
+{
+    // Calls to UIKit should be done on the main thread.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.resultLabel.text = [NSString stringWithFormat:@"Received command: Search for %@", query];
+    });
     
     // TODO: Update `recognizedSpeechLabel` with transcript (add observer?)
 }

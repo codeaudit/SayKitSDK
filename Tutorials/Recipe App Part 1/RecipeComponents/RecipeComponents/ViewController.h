@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <SayKit/SayKit.h>
 
-@interface ViewController : UIViewController //<SAYCommandBarDelegate>
+@interface ViewController : UIViewController <SAYCommandBarDelegate>
 
 
 @end
