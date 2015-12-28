@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E5B0F21AE9E252EEF40A51435D47E5923FBA084B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E5B0F21AE9E252EEF40A51435D47E5923FBA084B" : 0,
+    "10ED70BE4D85F69FCB41A8CCED12FD4961D577C9" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "9E464598-2ED5-4C12-9847-DD347F5D3959",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E5B0F21AE9E252EEF40A51435D47E5923FBA084B" : "SayKitSDK\/",
+    "10ED70BE4D85F69FCB41A8CCED12FD4961D577C9" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "RecipeComponents",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Tutorials\/Recipe App Part 1\/RecipeComponents\/RecipeComponents.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ConversantLabs\/sayshopping.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "10ED70BE4D85F69FCB41A8CCED12FD4961D577C9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ConversantLabs\/SayKitSDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E5B0F21AE9E252EEF40A51435D47E5923FBA084B"
+    }
+  ]
+}
