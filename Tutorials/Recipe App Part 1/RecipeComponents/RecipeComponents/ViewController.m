@@ -22,6 +22,7 @@
 
 //    [self respondToAvailableCommands];
 //    [self respondToSearchCommand];
+    [self respondToCustomPatternResolver];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,6 +89,30 @@
     }];
 }
 
+- (void)respondToCustomPatternResolver
+{
+    // Build and register a domain with the pattern resolver.
+    NSArray<NSString *> *templates = @[@"How much @ingredient do I need?",
+                                       @"How many @ingredient in the recipe?"];
+    SAYPatternTextResolver *resolver = [[SAYPatternTextResolver alloc] initWithTemplates:templates forCommandType:@"RecipeIngredientQuery"];
+    
+    SAYDomain* domain = [[SAYDomain alloc] init];
+    [domain registerResolver:resolver];
+    
+    SAYDomainRegistry *domainRegistry = [SAYVerbalCommandRequestManager defaultManager].customCommandResolver;
+    
+    [domainRegistry addDomain:domain];
+    
+    
+    // Add a response for the newly-created command type.
+    SAYCommandResponseRegistry *commandRegistry = [SAYCommandResponseRegistry sharedInstance];
+    
+    [commandRegistry addResponseForCommandType:@"RecipeIngredientQuery" responseBlock:^(SAYCommand * _Nonnull command) {
+        NSString *ingredient = command.parameters[@"ingredient"];
+        [self handleRecipeIngredientQueryForIngredient:ingredient];
+    }];
+}
+
 - (void)handleAvailableCommandsCommand
 {
     // Calls to UIKit should be done on the main thread.
@@ -103,6 +128,16 @@
     // Calls to UIKit should be done on the main thread.
     dispatch_async(dispatch_get_main_queue(), ^{
         self.resultLabel.text = [NSString stringWithFormat:@"Received command: Search for %@", query];
+    });
+    
+    // TODO: Update `recognizedSpeechLabel` with transcript (add observer?)
+}
+
+- (void)handleRecipeIngredientQueryForIngredient:(NSString *)ingredient
+{
+    // Calls to UIKit should be done on the main thread.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.resultLabel.text = [self ingredientLookupForIngredient:ingredient];
     });
     
     // TODO: Update `recognizedSpeechLabel` with transcript (add observer?)
@@ -125,6 +160,16 @@
     });
     
     // TODO: Update `recognizedSpeechLabel` with transcript (add observer?)
+}
+
+- (NSString *)ingredientLookupForIngredient:(NSString *)ingredient
+{
+    // ...insert app logic here to determine how much of the ingredient we need...
+    
+    NSString *units = @"cups";
+    NSString *quantity = @"5";
+    
+    return [NSString stringWithFormat:@"You need %@ %@ of %@.", quantity, units, ingredient];
 }
 
 @end
