@@ -33,13 +33,26 @@
 
 - (void)commandBarDidSelectMicrophone:(SAYCommandBar *)commandBar
 {
-    SAYStringRequest *request = [[SAYStringRequest alloc] initWithPromptText:@"What recipe would you like to search for?" completionBlock:^(SAYStringResult * _Nullable result) {
+//    SAYStringRequest *request = [[SAYStringRequest alloc] initWithPromptText:@"What recipe would you like to search for?" completionBlock:^(SAYStringResult * _Nullable result) {
+//        if (result.error) {
+//            // Handle error
+//        }
+//        else {
+//            NSString *query = result.transcription;
+//            [self handleSearchCommandForQuery:query];
+//        }
+//    }];
+    
+    NSArray<NSString *> *itemLabels = [self retrieveSavedRecipeLabels];
+    SAYSelectRequest *request = [[SAYSelectRequest alloc] initWithItemLabels:itemLabels promptText:@"Which of your saved recipes would you like details on?" completionBlock:^(SAYSelectResult * _Nullable result) {
         if (result.error) {
             // Handle error
         }
         else {
-            NSString *query = result.transcription;
-            [self handleSearchCommandForQuery:query];
+            SAYSelectOption *selectedOption = result.selectedOption;
+            NSUInteger selectedIndex = result.selectedIndex;
+            
+            [self handleSelectResultWithOption:selectedOption atIndex:selectedIndex];
         }
     }];
     
@@ -90,6 +103,25 @@
     // Calls to UIKit should be done on the main thread.
     dispatch_async(dispatch_get_main_queue(), ^{
         self.resultLabel.text = [NSString stringWithFormat:@"Received command: Search for %@", query];
+    });
+    
+    // TODO: Update `recognizedSpeechLabel` with transcript (add observer?)
+}
+
+- (NSArray<NSString *> *)retrieveSavedRecipeLabels
+{
+    return @[@"Chocolate Butterscotch Cookies",
+             @"Beef Lasagna",
+             @"Tuna Casserole"];
+}
+
+- (void)handleSelectResultWithOption:(SAYSelectOption *)selectedOption atIndex:(NSUInteger)selectedIndex
+{
+    NSString *recipeName = selectedOption.label;
+    
+    // Calls to UIKit should be done on the main thread.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.resultLabel.text = [NSString stringWithFormat:@"Selected \"%@\" (Index %lu)", recipeName, selectedIndex];
     });
     
     // TODO: Update `recognizedSpeechLabel` with transcript (add observer?)
