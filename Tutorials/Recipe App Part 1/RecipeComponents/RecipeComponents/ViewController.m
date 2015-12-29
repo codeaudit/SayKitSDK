@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import <SayKit/SayKit.h>
 
 @interface ViewController ()
 
@@ -35,8 +34,13 @@
 - (void)commandBarDidSelectMicrophone:(SAYCommandBar *)commandBar
 {
     SAYStringRequest *request = [[SAYStringRequest alloc] initWithPromptText:@"What recipe would you like to search for?" completionBlock:^(SAYStringResult * _Nullable result) {
-        NSString *query = result.transcription;
-        [self handleSearchCommandForQuery:query];
+        if (result.error) {
+            // Handle error
+        }
+        else {
+            NSString *query = result.transcription;
+            [self handleSearchCommandForQuery:query];
+        }
     }];
     
     [[SAYVoiceRequestPresenter defaultPresenter] presentRequest:request];
