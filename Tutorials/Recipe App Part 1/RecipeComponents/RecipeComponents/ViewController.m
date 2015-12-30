@@ -44,8 +44,10 @@
 //        }
 //    }];
     
-    NSArray<NSString *> *itemLabels = [self retrieveSavedRecipeLabels];
-    SAYSelectRequest *request = [[SAYSelectRequest alloc] initWithItemLabels:itemLabels promptText:@"Which of your saved recipes would you like details on?" completionBlock:^(SAYSelectResult * _Nullable result) {
+//    NSArray<NSString *> *itemLabels = [self retrieveSavedRecipeLabels];
+//    SAYSelectRequest *request = [[SAYSelectRequest alloc] initWithItemLabels:itemLabels promptText:@"Which of your saved recipes would you like details on?" completionBlock:^(SAYSelectResult * _Nullable result) {
+    NSArray<SAYSelectOption *> *options = [self retrieveSavedRecipeOptions];
+    SAYSelectRequest *request = [[SAYSelectRequest alloc] initWithOptions:options promptText:@"Which of your saved recipes would you like details on?" completionBlock:^(SAYSelectResult * _Nullable result) {
         if (result.error) {
             // Handle error
         }
@@ -148,6 +150,13 @@
     return @[@"Chocolate Butterscotch Cookies",
              @"Beef Lasagna",
              @"Tuna Casserole"];
+}
+
+- (NSArray<SAYSelectOption *> *)retrieveSavedRecipeOptions
+{
+    return @[[[SAYSelectOption alloc] initWithLabel:@"Chocolate Butterscotch Cookies" aliases:@[@"Grandma's Cookies"]],
+             [[SAYSelectOption alloc] initWithLabel:@"Beef Lasagna" aliases:@[@"Pasta", @"My Favorite Dish"]],
+             [SAYSelectOption optionWithLabel:@"Tuna Casserole"]];
 }
 
 - (void)handleSelectResultWithOption:(SAYSelectOption *)selectedOption atIndex:(NSUInteger)selectedIndex

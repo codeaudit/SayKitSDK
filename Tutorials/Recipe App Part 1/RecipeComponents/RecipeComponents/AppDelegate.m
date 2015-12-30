@@ -28,8 +28,8 @@
     
     commandBarController.contentViewController = vc;
     
-//    UIView *v = commandBarController.view;    // Force commandBarController to load.
-//    commandBarController.commandBar.delegate = vc;
+    UIView *v = commandBarController.view;    // Force commandBarController to load.
+    commandBarController.commandBar.delegate = vc;
     
     self.window.rootViewController = commandBarController;
     [self.window makeKeyAndVisible];
