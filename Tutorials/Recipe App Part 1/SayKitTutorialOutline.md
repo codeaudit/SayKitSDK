@@ -2,19 +2,19 @@
 
 
 ## General plan:
-- Create isolated speech components (speech domains and speech resolvers). We'll swap components out by simply changing lines of code, instead of user interactions with the app.
-- In Part II we'll explore how to combine the components into a usable app.
-- Include UI outlets for simple feedback so we can test that what we're making works.
-- We'll briefly discuss each class that we use.
+In this tutorial we'll walk through how to use some of the most important features of SayKit. In Part I we'll treat each feature in isolation, and in Part II we'll put them all together into a full app.
+For now, in Part I, components will be swapped out by simply changing lines of code.
 
 
 ## Setup
+The backbone of our Part I tutorial app is a single view controller contained within an instance of a `SAYCommandBarController`, which provides a simple interface for the user to start speech recognition. We'll rely on a couple of UILabels for simple feedback to test each feature as we go.
+
 - Create a new single-view application
 - Add the SayKit framework, following the Getting Started instructions here // TODO - Link
 - In `Main.storyboard`'s View Controller Scene:
-    + Add a UILabel and hook it up to a property in `ViewController.m` called `recognizedSpeechLabel`.
-    + Add a UILabel and hook it up to a property in `ViewController.m` called `interpretedCommandLabel`.
-- In `AppDelegate.m`, let's setup a `SAYCommandBarController`, which behaves like a container view controller similar to a `UITabBarController`. In this case, the content view controller is our `ViewController`.
+    + Add a UILabel and hook it up to a new property in `ViewController.m` called `recognizedSpeechLabel`.
+    + Add a UILabel and hook it up to a new property in `ViewController.m` called `interpretedCommandLabel`.
+- In `AppDelegate.m`, setup a `SAYCommandBarController` as the window's root view controller. The `SAYCommandBarController` behaves like a container view controller similar to a `UITabBarController`. In this case, the content view controller is our `ViewController`.
     ``` objc
     #import <SayKit/SayKit.h>
 
@@ -41,40 +41,49 @@
     /* ... */
     ```
 
-#### Classes to go over:
+#### Classes used:
 - SAYCommandBarController
-- SAYCommandBarDelegate
 
 
 ## Available Commands (verbal request)
-- In `ViewController.m` `viewDidLoad` method, add a response to the standard "Available Commands" command:
+Conversant apps should let the user know what commands are usable at any given point in the app. Using SayKit, this is as straightforward as registering a response for the standard command type, `SAYStandardCommandAvailableCommands`. This predefined command is dispatched when the user speaks utterances like "What can I say?" and "Available commands".
 
+- Create a helper function to add the response to the default command registry:
     ``` objc
-    SAYCommandResponseRegistry *commandRegistry = [SAYCommandResponseRegistry sharedInstance];
-    [commandRegistry addResponseForCommandType:SAYStandardCommandAvailableCommands responseBlock:^(SAYCommand * _Nonnull command) {
-        /* ... */
-    }];
+    - (void)respondToAvailableCommands
+    {
+        SAYCommandResponseRegistry *commandRegistry = [SAYCommandResponseRegistry sharedInstance];
+        
+        // Respond to speech that asks about available commands, such as "What can I say?" and "Available Commands".
+        [commandRegistry addResponseForCommandType:SAYStandardCommandAvailableCommands responseBlock:^(SAYCommand * _Nonnull command) {
+            [self handleAvailableCommandsCommand];
+        }];
+    }
     ```
-- For now, our response will simply update the results label. In a full app, this could speak the commands that the app can handle, or maybe present a table view of commands that could be selected. `viewDidLoad` should now look something like this:
+- The `handleAvailableCommandsCommand` helper function simply updates the results label. In a full app, we would be able to query SayKit for the currently available commands and present them to the user as speech, a table view, or both.
+    ``` objc
+    - (void)handleAvailableCommandsCommand
+    {
+        // Calls to UIKit should be done on the main thread.
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.resultLabel.text = @"Received command: Available Commands";
+        });
+        
+        // TODO: Update `recognizedSpeechLabel` with transcript (add observer?)
+    }
+    ```
+- Finally, we'll call `respondToAvailableCommands` as soon as the view controller loads. In a full app, this might be managed by its own set of dedicated controllers. (TODO: Create and link to a discussion on hierarchies, and managing the list of available commands)
     ``` objc
     - (void)viewDidLoad {
         [super viewDidLoad];
 
-        SAYCommandResponseRegistry *commandRegistry = [SAYCommandResponseRegistry sharedInstance];
-
-        // Respond to speech that asks about available commands, such as "What can I say?" and "Available Commands".
-        [commandRegistry addResponseForCommandType:SAYStandardCommandAvailableCommands responseBlock:^(SAYCommand * _Nonnull command) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // Calls to UIKit should be done on the main thread.
-                self.resultLabel.text = @"Received command: Available Commands";
-            });
-        }];
+        [self respondToAvailableCommands];
     }
     ```
-- TODO: Add to Command Bar's menu button
+- TODO: Discuss how to present available commands in Command Bar's menu button
 - TODO: Bonus points: make the list dynamically update with whatever domains/resolvers we have. Would be a useful pattern for developers to know.
 
-#### Classes to go over:
+#### Classes used:
 - SAYCommandResponseRegistry
 - SAYCommand
 - SAYStandardCommandLibrary
