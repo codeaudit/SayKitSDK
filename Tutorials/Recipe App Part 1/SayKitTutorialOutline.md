@@ -55,7 +55,15 @@ The backbone of our Part I tutorial app is a single view controller contained wi
 
 
 ## Available Commands (Verbal Command Request)
-Conversant apps should let the user know what commands are usable at any given point in the app. Using SayKit, this is as straightforward as registering a response for the standard command type, `SAYStandardCommandAvailableCommands`. This predefined command is dispatched when the user speaks utterances like "What can I say?" and "Available commands".
+How do we ask the user what they want to do next?
+
+In visual-based apps, we hook a UIButton to an action and wait for the user to tap it. Using SayKit, we instead register a response for a command type, and wait for the user's speech to trigger the command.
+
+In this case, we register for the standard command type, `SAYStandardCommandAvailableCommands`. This predefined command is dispatched when the user speaks utterances like "What can I say?" and "Available commands".
+
+    ```
+    Aside: You can find a full list of standard commands at TODO.
+    ```
 
 - Create a helper function to add the response to the default command registry:
     ``` objc
@@ -69,7 +77,7 @@ Conversant apps should let the user know what commands are usable at any given p
         }];
     }
     ```
-- The `handleAvailableCommandsCommand` helper function simply updates the results label. In a full app, we would be able to query SayKit for the currently available commands and present them to the user as speech, a table view, or both.
+- The `handleAvailableCommandsCommand` helper function simply updates the results label. Later, we'll go over how to query SayKit for the currently available commands and present them to the user as speech, a table view, or both.
     ``` objc
     - (void)handleAvailableCommandsCommand
     {
@@ -99,34 +107,46 @@ Conversant apps should let the user know what commands are usable at any given p
 
 
 ## Search for recipes (Verbal Command Request)
-In the previous step, we responded to the standard "Available Commands" command. The response, however, didn't rely on any input parameters from the user beyond the fact that they are requesting Available Commands. In this step, we'll respond to the standard "Search" command, which includes a parameter for the search query.
+In the previous example, we responded to the standard "Available Commands" command. But what if a command requires an input parameter, like "Search for X"? In a visual-based app, we could grab the parameter from a UITextField. Using SayKit, we can simply access the `SAYCommand` parameter of our response block and extract the parameter that we need. 
 
-- Add a response to the standard Search command.
+In this example, we'll respond to the standard "Search" command, which includes a parameter for the search query.
 
-    ``` objc
-    SAYCommandResponseRegistry *commandRegistry = [SAYCommandResponseRegistry sharedInstance];
-    [commandRegistry addResponseForCommandType:SAYStandardCommandSearch responseBlock:^(SAYCommand * _Nonnull command) {
-        /* ... */
-    }];
-    ```
-- In the response block, extract the `searchQuery` parameter from the `command` input, and present it in the `resultsLabel`. In a full app, we would pass the query on to an API call. `viewDidLoad` should not look like this:
-    ``` objc
-    - (void)viewDidLoad {
-        [super viewDidLoad];
+- As in the previous example, create a helper function to setup our response to the standard "Search" command. Notice that we extract the query string by accessing `command`'s `parameters` dictionary with the standard key `SAYStandardCommandSearchParameterQuery`:
 
+    ```objc
+    - (void)respondToSearchCommand
+    {
         SAYCommandResponseRegistry *commandRegistry = [SAYCommandResponseRegistry sharedInstance];
         
         // Respond to a search query, such as "Search for Chinese food" or "I want Italian".
         [commandRegistry addResponseForCommandType:SAYStandardCommandSearch responseBlock:^(SAYCommand * _Nonnull command) {
             NSString *query = command.parameters[SAYStandardCommandSearchParameterQuery];
             
-            // Calls to UIKit should be done on the main thread.
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.resultLabel.text = [NSString stringWithFormat:@"Received command: Search for %@", query];
-            });
+            [self handleSearchCommandForQuery:query];
         }];
     }
     ```
+- The `handleSearchCommandForQuery:` function simply takes the extracted query and presents it via the `resultsLabel`:
+
+    ```objc
+    - (void)handleSearchCommandForQuery:(NSString *)query
+    {
+        // Calls to UIKit should be done on the main thread.
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.resultLabel.text = [NSString stringWithFormat:@"Received command: Search for %@", query];
+        });
+        
+        // TODO: Update `recognizedSpeechLabel` with transcript (add observer?)
+    }
+    ```
+- Finally, call our setup function from `viewDidLoad`:
+    ```objc
+    - (void)viewDidLoad {
+        [super viewDidLoad];
+        [self respondToSearchCommand];
+    }
+    ```
+
 
 #### Classes used:
 - Same as in Available Commands
