@@ -1,5 +1,14 @@
 # SayKit Tutorial Outline
 
+## Table of Contents
+1. General Plan
+2. Setup
+3. Available Commands (Verbal Command Request)
+4. Search for Recipes (Verbal Command Request)
+5. Search for Recipes (String Request)
+6. View Saved Recipes (Select Request)
+7. Recipe Ingredients (Pattern Match Resolver)
+
 
 ## General plan:
 In this tutorial we'll walk through how to use some of the most important features of SayKit. In Part I we'll treat each feature in isolation, and in Part II we'll put them all together into a full app.
@@ -45,7 +54,7 @@ The backbone of our Part I tutorial app is a single view controller contained wi
 - SAYCommandBarController
 
 
-## Available Commands (verbal request)
+## Available Commands (Verbal Command Request)
 Conversant apps should let the user know what commands are usable at any given point in the app. Using SayKit, this is as straightforward as registering a response for the standard command type, `SAYStandardCommandAvailableCommands`. This predefined command is dispatched when the user speaks utterances like "What can I say?" and "Available commands".
 
 - Create a helper function to add the response to the default command registry:
@@ -89,10 +98,11 @@ Conversant apps should let the user know what commands are usable at any given p
 - SAYStandardCommandLibrary
 
 
-## Search for recipes (verbal request)
+## Search for recipes (Verbal Command Request)
 In the previous step, we responded to the standard "Available Commands" command. The response, however, didn't rely on any input parameters from the user beyond the fact that they are requesting Available Commands. In this step, we'll respond to the standard "Search" command, which includes a parameter for the search query.
 
 - Add a response to the standard Search command.
+
     ``` objc
     SAYCommandResponseRegistry *commandRegistry = [SAYCommandResponseRegistry sharedInstance];
     [commandRegistry addResponseForCommandType:SAYStandardCommandSearch responseBlock:^(SAYCommand * _Nonnull command) {
@@ -118,13 +128,23 @@ In the previous step, we responded to the standard "Available Commands" command.
     }
     ```
 
-#### Classes to go over:
+#### Classes used:
 - Same as in Available Commands
 
 
 ## Search for recipes (string request)
 A `SAYStringRequest` can be used to ask the user for a string. Let's ask the user what recipe they would like to search for. In a full app, this could be triggered by a button tap, or it could be a followup request to our earlier Recipe Search Verbal Request in case the app was unable to understand a search query.
 For this example, we'll trigger the string request whenever the microphone button is tapped. We start by overriding `SAYCommandBarController`'s delegate, and implementing the `SAYCommandBarDelegate` methods in `ViewController.m`.
+
+    ```
+    *Aside: Verbal Command Requests vs. Parameter Requests
+
+    An app can request different spoken information from the user: commands or parameters. A command request can generally be thought as answering the question, "What would you like to do next?", while a parameter request can answer questions like "What would you like to search for?", "How many servings?", or "Are you sure you want to continue?".
+
+    Command requests are defined by the class `SAYVerbalCommandRequest`. By default, when the microphone button of the `SAYCommandBarController` is tapped, a `SAYVerbalCommandRequest` is created and presented to the user, as seen in the previous examples.
+
+    Parameter requests are subclasses of `SAYVoiceRequest`. SayKit comes with several already defined, including `SAYStringRequest`, `SAYSelectRequest`, `SAYNumericalRequest`, `SAYConfirmationRequest`, and `SAYPatternMatchRequest`. Custom parameter requests can be created by simply subclassing `SAYVoiceRequest` and overriding the `didActivate` and `willDeactivate` methods. See the example where we create a custom voice request (TODO: create and link this example)
+    ```
 
 - In `ViewController.h`, subscribe to the `SAYCommandBarDelegate` protocol.
     ``` objc
@@ -140,7 +160,7 @@ For this example, we'll trigger the string request whenever the microphone butto
     commandBarController.commandBar.delegate = vc;
     ```
 The entire method should look like:
-    ```
+    ``` objc
     - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         
         self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -201,7 +221,7 @@ The entire method should look like:
     }
     ```
 - Implement a helper function `handleSearchCommandForQuery:` that simply updates the text of `resultsLabel`:
-    ```
+    ``` objc
     - (void)handleSearchCommandForQuery:(NSString *)query
     {
         // Calls to UIKit should be done on the main thread.
@@ -214,7 +234,7 @@ The entire method should look like:
     ```
 - Run the app, tap the microphone, and say anything!
 
-#### Classes to go over:
+#### Classes used:
 - SAYCommandBarDelegate
 - SAYVoiceRequestPresenter
 - SAYStringRequest
@@ -278,6 +298,7 @@ We can use a `SAYSelectRequest` to prompt the user to make a selection from a li
 Instead of using a flat list of item labels to select from, we can also define aliases for each label. If the user speaks an item's alias, it is treated the same as if they selected the item directly. Using aliases, you can easily handle alternative names for the same item.
 
 - Create a dummy helper function to return the selectable options. In a full app, this would interact with the app logic to retrieve the options:
+
     ``` objc
     - (NSArray<SAYSelectOption *> *)retrieveSavedRecipeOptions
     {
@@ -287,6 +308,7 @@ Instead of using a flat list of item labels to select from, we can also define a
     }
     ```
 - Replace our earlier initialization of the `SAYSelectRequest`:
+
     ``` objc
     NSArray<SAYSelectOption *> *options = [self retrieveSavedRecipeOptions];
     SAYSelectRequest *request = [[SAYSelectRequest alloc] initWithOptions:options promptText:@"Which of your saved recipes would you like details on?" completionBlock:^(SAYSelectResult * _Nullable result) {
@@ -294,7 +316,7 @@ Instead of using a flat list of item labels to select from, we can also define a
     }];
     ```
 
-#### Classes to go over:
+#### Classes used:
 	- SAYSelectRequest
     - SAYSelectOption
     - SAYSelectResult
@@ -412,7 +434,7 @@ In this case, we'll create a template string "How much @ingredient do I need?". 
     ```
 - TODO - Confirm that pattern matching works with spaces! Since I think I'm just replacing @thing with \w+ regex
 
-#### Classes to go over:
+#### Classes used:
 - SAYPatternTextResolver
 - SAYDomain
 - SAYDomainRegistry
