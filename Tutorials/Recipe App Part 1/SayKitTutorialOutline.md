@@ -106,7 +106,7 @@ In this case, we register for the standard command type, `SAYStandardCommandAvai
 - SAYStandardCommandLibrary
 
 
-## Search for recipes (Verbal Command Request)
+## Search for Recipes (Verbal Command Request)
 In the previous example, we responded to the standard "Available Commands" command. But what if a command requires an input parameter, like "Search for X"? In a visual-based app, we could grab the parameter from a UITextField. Using SayKit, we can simply access the `SAYCommand` parameter of our response block and extract the parameter that we need. 
 
 In this example, we'll respond to the standard "Search" command, which includes a parameter for the search query.
@@ -152,16 +152,19 @@ In this example, we'll respond to the standard "Search" command, which includes 
 - Same as in Available Commands
 
 
-## Search for recipes (string request)
-A `SAYStringRequest` can be used to ask the user for a string. Let's ask the user what recipe they would like to search for. In a full app, this could be triggered by a button tap, or it could be a followup request to our earlier Recipe Search Verbal Request in case the app was unable to understand a search query.
-For this example, we'll trigger the string request whenever the microphone button is tapped. We start by overriding `SAYCommandBarController`'s delegate, and implementing the `SAYCommandBarDelegate` methods in `ViewController.m`.
+## Search for Recipes (String Request)
+What if the app already knows that the user wants to perform a search, and just needs to prompt them for the search query? This sounds like a job for a `SAYStringRequest`!
+
+A `SAYStringRequest` does what it sounds like: it asks the user for a string. We can cause the request to be presented a few different ways, including via a button tap or as a followup to a previous request (maybe our Search command from the previous example didn't hear a search query).
+
+For this example, we'll present the request when the microphone button is tapped. We start by overriding `SAYCommandBarController`'s delegate, and implementing the `SAYCommandBarDelegate` methods in `ViewController.m`.
 
     ```
     *Aside: Verbal Command Requests vs. Parameter Requests
 
     An app can request different spoken information from the user: commands or parameters. A command request can generally be thought as answering the question, "What would you like to do next?", while a parameter request can answer questions like "What would you like to search for?", "How many servings?", or "Are you sure you want to continue?".
 
-    Command requests are defined by the class `SAYVerbalCommandRequest`. By default, when the microphone button of the `SAYCommandBarController` is tapped, a `SAYVerbalCommandRequest` is created and presented to the user, as seen in the previous examples.
+    Command requests are defined by the class `SAYVerbalCommandRequest`. By default, when the microphone button of the `SAYCommandBarController` is tapped, a `SAYVerbalCommandRequest` is created and presented to the user. This was handled behind-the-scenes in the previous examples, though in the upcoming parameter requests we are responsible for the creation and presentation of the request.
 
     Parameter requests are subclasses of `SAYVoiceRequest`. SayKit comes with several already defined, including `SAYStringRequest`, `SAYSelectRequest`, `SAYNumericalRequest`, `SAYConfirmationRequest`, and `SAYPatternMatchRequest`. Custom parameter requests can be created by simply subclassing `SAYVoiceRequest` and overriding the `didActivate` and `willDeactivate` methods. See the example where we create a custom voice request (TODO: create and link this example)
     ```
@@ -260,9 +263,14 @@ The entire method should look like:
 - SAYStringRequest
 
 
-## View Saved Recipes (select request)
-We can use a `SAYSelectRequest` to prompt the user to make a selection from a list. Suppose we have a list of saved recipes from which the user can make a selection to get details on that recipe. We'll reuse the same setup we had in the previous example with the String request, so when we tap the microphone button, the user will be asked to make the selection. As before, we'll simply update the `resultsLabel` with the user's selection.
-- In a full app, we would maintain a list of saved recipes for the user. Here, we'll simply call a helper/dummy function to serve us the list:
+## View Saved Recipes (Select Request)
+How do we present the user with a list of options to choose from?
+
+In a visual-based app, we might build a table view with cells corresponding to each choice, present it with a table view controller, and respond to a tap on one of the cells. Using SayKit, all we need is a `SAYSelectRequest` and an array of options.
+
+In this example, we'll ask the user to select from a list of saved recipes. We'll reuse the same setup we had in the previous example: when we tap the microphone button, the user will be asked to make the selection. As before, we'll simply update the `resultsLabel` with the user's selection.
+
+- In a full app, we would probably have some logic to maintain, store, or fetch the user's saved recipes. Here, we'll simply call a helper/dummy function to serve us the list:
     ``` objc
     - (NSArray<NSString *> *)retrieveSavedRecipeLabels
     {
@@ -278,7 +286,7 @@ We can use a `SAYSelectRequest` to prompt the user to make a selection from a li
         /* ... */
     }];
     ```
-- There is an alternative initializer for `SAYSelectRequest` that can handle aliases for each item, `initWithOptions:promptText:completionBlock`. We'll go over that in the next example. (TODO)
+- There is an alternative initializer for `SAYSelectRequest` that can handle aliases for each item, `initWithOptions:promptText:completionBlock`. Check it out at the end of this section. (TODO: Link)
 - We'll handle the result in another helper function:
     ``` objc
     - (void)handleSelectResultWithOption:(SAYSelectOption *)selectedOption atIndex:(NSUInteger)selectedIndex
