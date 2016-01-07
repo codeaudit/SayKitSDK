@@ -1,4 +1,4 @@
-# SayKit Tutorial Outline
+# SayKit Tutorial Part I: Building a Fully Conversational Recipe App
 
 ## Table of Contents
 1. General Plan
@@ -16,7 +16,11 @@ For now, in Part I, components will be swapped out by simply changing lines of c
 
 
 ## Setup
-The backbone of our Part I tutorial app is a single view controller contained within an instance of a `SAYCommandBarController`, which provides a simple interface for the user to start speech recognition. We'll rely on a couple of UILabels for simple feedback to test each feature as we go.
+The first thing we’ll do is add two UILabels to help us make sure everything is working properly: one to display the response from the app, and the other to display what the user just said. We’ll also add a microphone button that the user can tap to start speaking. 
+
+Luckily for us, SayKit comes with a pre-packaged microphone button as part of the `SAYCommandBarController` container class. All we need to do is create our view controller, add the UILabels, and set the view controller to be contained within an instance of `SAYCommandBarController`.
+
+Let’s get started!
 
 - Create a new single-view application
 - Add the SayKit framework, following the Getting Started instructions here // TODO - Link
@@ -55,11 +59,19 @@ The backbone of our Part I tutorial app is a single view controller contained wi
 
 
 ## Available Commands (Verbal Command Request)
-How do we ask the user what they want to do next?
+In visual-based apps, users tap the screen. If they tap a button (usually a `UIButton`), they probably intended to trigger the action associated with that button, so we execute the action.
 
-In visual-based apps, we hook a UIButton to an action and wait for the user to tap it. Using SayKit, we instead register a response for a command type, and wait for the user's speech to trigger the command.
+In Conversational apps, users speak what they want to do. When they say something we recognize, we interpret their intent as a command and execute the command.
 
-In this case, we register for the standard command type, `SAYStandardCommandAvailableCommands`. This predefined command is dispatched when the user speaks utterances like "What can I say?" and "Available commands".
+This encompasses several steps as the user’s speech is converted to text (`SAYSpeechTranscript`), which is converted to an intent (`SAYSpeechIntent`), which is finally converted to a command (`SAYCommand`) associated with an action defined by the app. See the full docs for a more in-depth look at the entire process.
+
+SayKit has a set of predefined commands that it already knows how to interpret from user speech, so the only step we’ll worry about for now is how to act on the command. At a lower level, this means registering a response for a command via the `SAYCommandResponseRegistry`. 
+
+The response is simply a block that’s executed when we receive a particular command, and is analogous to the IBAction linked to a `UIButton`.
+
+The registry is what receives the command from SayKit after SayKit has interpreted the user’s intent. The registry executes any response blocks associated with that command.
+
+In this example, we’ll register a response for SayKit’s standard “Available Commands” command. This command is the eventual result of the user speaking utterances like “What can I say?” and “Available Commands”. Our response will simply update our UILabels with what was said.
 
     ```
     Aside: You can find a full list of standard commands at TODO.
@@ -140,6 +152,7 @@ In this example, we'll respond to the standard "Search" command, which includes 
     }
     ```
 - Finally, call our setup function from `viewDidLoad`:
+
     ```objc
     - (void)viewDidLoad {
         [super viewDidLoad];
@@ -155,7 +168,7 @@ In this example, we'll respond to the standard "Search" command, which includes 
 ## Search for Recipes (String Request)
 What if the app already knows that the user wants to perform a search, and just needs to prompt them for the search query? This sounds like a job for a `SAYStringRequest`!
 
-A `SAYStringRequest` does what it sounds like: it asks the user for a string. We can cause the request to be presented a few different ways, including via a button tap or as a followup to a previous request (maybe our Search command from the previous example didn't hear a search query).
+A `SAYStringRequest` does what it sounds like: it asks the user for a string. We can present the string request in a few different ways, including via a button tap or as a followup to a previous request (maybe our Search command from the previous example needed a clarification).
 
 For this example, we'll present the request when the microphone button is tapped. We start by overriding `SAYCommandBarController`'s delegate, and implementing the `SAYCommandBarDelegate` methods in `ViewController.m`.
 
@@ -270,7 +283,8 @@ In a visual-based app, we might build a table view with cells corresponding to e
 
 In this example, we'll ask the user to select from a list of saved recipes. We'll reuse the same setup we had in the previous example: when we tap the microphone button, the user will be asked to make the selection. As before, we'll simply update the `resultsLabel` with the user's selection.
 
-- In a full app, we would probably have some logic to maintain, store, or fetch the user's saved recipes. Here, we'll simply call a helper/dummy function to serve us the list:
+- In a full app, we would probably have some logic to maintain, store, or fetch the user's saved recipes (and that's what we'll do in Part II of this tutorial). Here, we'll simply call a helper/dummy function to serve us the list:
+
     ``` objc
     - (NSArray<NSString *> *)retrieveSavedRecipeLabels
     {
@@ -280,6 +294,7 @@ In this example, we'll ask the user to select from a list of saved recipes. We'l
     }
     ```
 - Pass the list to `SAYSelectRequest`'s initializer:
+
     ``` objc
     NSArray<NSString *> *itemLabels = [self retrieveSavedRecipeLabels];
     SAYSelectRequest *request = [[SAYSelectRequest alloc] initWithItemLabels:itemLabels promptText:@"Which of your saved recipes would you like details on?" completionBlock:^(SAYSelectResult * _Nullable result) {
@@ -288,6 +303,7 @@ In this example, we'll ask the user to select from a list of saved recipes. We'l
     ```
 - There is an alternative initializer for `SAYSelectRequest` that can handle aliases for each item, `initWithOptions:promptText:completionBlock`. Check it out at the end of this section. (TODO: Link)
 - We'll handle the result in another helper function:
+
     ``` objc
     - (void)handleSelectResultWithOption:(SAYSelectOption *)selectedOption atIndex:(NSUInteger)selectedIndex
     {
@@ -302,6 +318,7 @@ In this example, we'll ask the user to select from a list of saved recipes. We'l
     }
     ```
 - Our `commandBarDidSelectMicrophone:` method should now look like:
+
     ``` objc
     - (void)commandBarDidSelectMicrophone:(SAYCommandBar *)commandBar
     {    
@@ -325,6 +342,8 @@ In this example, we'll ask the user to select from a list of saved recipes. We'l
 ### Alternative Initializer for `SAYSelectRequest`
 Instead of using a flat list of item labels to select from, we can also define aliases for each label. If the user speaks an item's alias, it is treated the same as if they selected the item directly. Using aliases, you can easily handle alternative names for the same item.
 
+In the example below, we provide an alias for “Beef Lasagna” as “Pasta”. If the user speaks either of these phrases, we’ll know they meant to select the second option, “Beef Lasagna.”
+
 - Create a dummy helper function to return the selectable options. In a full app, this would interact with the app logic to retrieve the options:
 
     ``` objc
@@ -340,7 +359,7 @@ Instead of using a flat list of item labels to select from, we can also define a
     ``` objc
     NSArray<SAYSelectOption *> *options = [self retrieveSavedRecipeOptions];
     SAYSelectRequest *request = [[SAYSelectRequest alloc] initWithOptions:options promptText:@"Which of your saved recipes would you like details on?" completionBlock:^(SAYSelectResult * _Nullable result) {
-        / * ... */
+        /* ... */
     }];
     ```
 
@@ -350,9 +369,11 @@ Instead of using a flat list of item labels to select from, we can also define a
     - SAYSelectResult
 
 
-## Recipe Ingredients (using pattern match resolver)
-An alternative to using SayKit Standard verbal command requests is to construct your own text resolver. Custom text resolvers are a good way to handle simple speech patterns without having to setup your own intent recognition service.
+## Recipe Ingredients (Pattern Match Resolver)
+An alternative to using SayKit Standard verbal command requests is to construct your own text resolver. Custom text resolvers are a good way to handle simple speech patterns, and require very little setup. If you find yourself in need of more flexibility when interpreting a user’s intent, you may want to consider setting up your own intent recognition service (which we’ll cover in a later tutorial).
+
 For this example, suppose the user is working their way through a recipe. We can handle a query like "How much baking powder do I need?" using a `SAYPatternTextResolver`. A pattern resolver is initialized with a template string that marks entities that we want to capture for later use. (The template string is resolved to a regular expression behind the scenes, which is used to perform the actual check against the user's speech.)
+
 In this case, we'll create a template string "How much @ingredient do I need?". If user speech is found to match this template, then we'll handle it with the completion block associated with the pattern resolver. In this case, that means updating `resultLabel` with the proper response (as determined by the app).
 
 - In `AppDelegate.m`, make sure we're not overriding `SAYCommandBarController`'s delegate from the previous example. We want the microphone button's original behavior of initiating a `SAYVerbalCommandRequest`:
@@ -378,7 +399,7 @@ In this case, we'll create a template string "How much @ingredient do I need?". 
         return YES;
     }
     ```
-- In `ViewContrller.m`'s `viewDidLoad` method, we register our resolver via a helper function:
+- In `ViewController.m`'s `viewDidLoad` method, we register our resolver via a helper function:
     ``` objc
     - (void)viewDidLoad {
         [super viewDidLoad];
@@ -387,12 +408,14 @@ In this case, we'll create a template string "How much @ingredient do I need?". 
     }
     ```
 - In `respondToCustomPatternResolver`, we build the pattern resolver itself. The commandType parameter will be used a little later when we define our response.
+
     ``` objc
     NSArray<NSString *> *templates = @[@"How much @ingredient do I need?",
                                        @"How many @ingredient in the recipe?"];
     SAYPatternTextResolver *resolver = [[SAYPatternTextResolver alloc] initWithTemplates:templates forCommandType:@"RecipeIngredientQuery"];
     ```
 - Create a new `SAYDomain` to manage the resolver, and register it with the default `SAYDomainRegistry`:
+
     ``` objc
     SAYDomain* domain = [[SAYDomain alloc] init];
     [domain registerResolver:resolver];
@@ -402,6 +425,7 @@ In this case, we'll create a template string "How much @ingredient do I need?". 
     [domainRegistry addDomain:domain];
     ```
 - Create a helper function that looks up the ingredient the user requested, and displays its required quantity:
+
     ``` objc
     - (void)handleRecipeIngredientQueryForIngredient:(NSString *)ingredient
     {
@@ -414,6 +438,7 @@ In this case, we'll create a template string "How much @ingredient do I need?". 
     }
     ```
 - In a full app, the `ingredientLookupForIngredient:` method would query the app logic to determine the required amount of the given ingredient. In this example, we'll just return a hard-wired value:
+
     ``` objc
     - (NSString *)ingredientLookupForIngredient:(NSString *)ingredient
     {
@@ -426,6 +451,7 @@ In this case, we'll create a template string "How much @ingredient do I need?". 
     }
     ```
 - Finally, back in `respondToCustomPatternResolver`, we add the actual response to the command we defined earlier. The ingredient spoken by the user is stored in `command.parameters` under the name we defined in the pattern resolver, "ingredient".
+
     ``` objc
     SAYCommandResponseRegistry *commandRegistry = [SAYCommandResponseRegistry sharedInstance];
 
@@ -435,6 +461,7 @@ In this case, we'll create a template string "How much @ingredient do I need?". 
     }];
     ```
 - `respondToCustomPatternResolver` should now look like this:
+
     ``` objc
     - (void)respondToCustomPatternResolver
     {
@@ -467,3 +494,11 @@ In this case, we'll create a template string "How much @ingredient do I need?". 
 - SAYDomain
 - SAYDomainRegistry
 - SAYCommandResponseRegistry
+
+## Wrapping Up!
+
+That’s it for the first part of our tutorial! By now you should have a nice playground for exploring SayKit. You can download the whole project at /* TODO - LINK */. With some minor tweaks, you can play around with each of the features that we went over. 
+
+Verbal command requests, entity requests, and text resolvers are some of the essentials in the SayKit toolbox, but they only scratch the surface of what SayKit can do.
+
+Stick around for Part II, where we’ll put it all together into a fully fledged app! We’ll discuss how to structure a conversational app, including how to manage intent domains, how to balance the conversational flow with the visual flow, and some design patterns to help along the way.
