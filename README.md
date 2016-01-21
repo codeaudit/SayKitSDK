@@ -1,5 +1,7 @@
 # SayKit SDK (Developer Preview)
-The UI framework for voice enabled applications on iOS. Currently available as a developer preview (version 0.8).
+The UI framework for voice enabled applications on iOS.
+
+Currently available as a developer preview (version 0.8).
 
 ## <a name="developer-resources"></a> Developer Resources
 
@@ -64,6 +66,8 @@ Typically, this configuration would go in your AppDelegate's `application:didFin
 
 ### 4. Go!
 
-Now you're all ready to go! Add voice commands to your Todo list app. Make your RSS app announce the news. Create a chat bot friend. The sky's the limit.
+Now you're all ready to go!
 
-Once again, if you need some more guidance: [check out our developer resources](#developer-resources).
+Add voice commands to your Todo list app. Make your RSS app read the news aloud. Create a chat bot friend. The sky's the limit.
+
+Now, if you are looking for a bit more help on where to go next: [check out our developer resources](#developer-resources).
