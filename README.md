@@ -65,9 +65,4 @@ Typically, this configuration would go in the AppDelegate's `application:didFini
 
 Now you're all ready to go! Add voice commands to your Todo list app. Make your RSS app announce the news. Create a chat bot friend. The sky's the limit.
 
-Once again, if you need some more guidance: take a look at our developer resources:
-
-- [SayKit tour](#)
-- [Tutorial](#)
-- [In-depth developer guides](#)
-- [Header documentation](#)
+Once again, if you need some more guidance: [check out our developer resources](#developer-resources).
