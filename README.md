@@ -52,7 +52,7 @@ SAYSoundBoard *soundBoard = [[SAYSoundBoard alloc] init];
 ````
 
 Swift:
-````objc
+````swift
 let catalog = SAYCommandRecognizerCatalog()
 SAYConversationManager.systemManager().commandRegistry = catalog
 
