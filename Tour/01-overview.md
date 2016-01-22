@@ -46,9 +46,9 @@ To read more about this, [skip to the Audio Output Section](./04-audio-output.md
 
 ### Conversation Topics
 
-Those GUI developers have got it made with their feast of tools to help them structure their applications. Visual hierarchies. View controllers. Interface Builder. Storyboards. What about us?
+Those GUI developers have it made with the feast of tools that help them structure their applications. Visual hierarchies. View controllers. Interface Builder. Storyboards.
 
-If you've ever tried to develop a non-trivial conversation app before, perhaps you've had the same thought that we've had in the past: "Well, this is a terrible mess." Logic split between clients and servers, regular expressions around every corner, callback functions strewn around everywhere. There's got to be a better way!
+If you've ever tried to develop a non-trivial conversation app before, perhaps you've had the same thought that we've had as it's grown: "Well, this is a terrible mess." Logic split between clients and servers, regular expressions around every corner, callback functions strewn around everywhere. There's got to be a better way!
 
 That's where **Conversation Topics** come in. Just like a view packages up all the input/output details for a particular area of your screen, a conversation topic coordinates all the audio I/O related to a particular subject in your app. By adding or removing a topic from your app's topic hierarchy, you can change the conversation with a line of code.
 
