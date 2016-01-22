@@ -16,7 +16,7 @@ Swift:
 SAYConversationManager.systemManager()
 ````
 
-Much like `UIWindow` for UIKit, the manager acts as the logical root of the user interface, administering and coordinating both the input (listening) and output (speaking) roles of the conversational UI. 
+Much like `UIWindow` for UIKit, the manager acts as the logical root of the user interface, administering and coordinating both the input (listening) and output (speaking) roles of the conversational UI. Also, much like `UIWindow`, you can safely ignore it's presence most of the time after doing some minor configuration at app launch.
 
 To be more concrete, let's introduce the systems that the manager is in charge of coordinating.
 
@@ -30,13 +30,17 @@ To read more about this, [skip to the Voice Requests Section](./02-voice-request
 
 ### Command Recognizers
 
-On the other hand, what if the user wants to start the conversation by issuing a command? SayKit provides **Command Recognizers** to listen for these commands at any time. The recognizers are able to interpret user speech as commands and send these commands to any interested parties. 
+On the other hand, what if the user wants to start the conversation by issuing a command? SayKit provides **Command Recognizers** to listen for these commands at any time. The recognizers are able to interpret user speech as commands and send these commands to any interested parties.
+
+Again, SayKit provides a selection of extendable built-in recognizers (such as the `SAYSearchCommandRecognizer` or `SAYHelpCommandRecognizer`) that are capable of understanding a variety of user speech patterns, and tools exist to create your own recognizers as well.
 
 To read more about this, [skip to the Command Recognition Section](./03-command-recognition.md).
 
 ### Audio Output
 
-TODO: Introduce audio events, tracks, and sources, but don't get too jargon-y. Just a couple sentences.
+On the other end of a conversational interface is the audio output that is presented through the device speakers. The app's voice.
+
+Of course, SayKit includes all the nuts and bolts required to manage an audio queue -- handling timing issues, integrating a speech synthesizer, feeding .wav files to audio players -- but it presents a higher-level set of protocols to let a developer think less about mechanics and more on user experience.
 
 To read more about this, [skip to the Audio Output Section](./04-audio-output.md).
 
