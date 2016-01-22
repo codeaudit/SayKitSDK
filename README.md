@@ -35,6 +35,7 @@ You can follow along and create your own project, or skip to the bottom for a li
 - Select the project in the Navigator pane, select your target, and go to the Build Phases tab.
 - Under "Link Binary With Libraries", make sure `SayKitSDK.framework` is in the list.
 - Under "Embed Frameworks", make sure `SayKitSDK.framework` is in the list.
+- In the General tab under "Embedded Binaries", add `SayKitSDK.framework` if needed.
 - If using Swift, create a bridging header that includes "SayKit.h" 		// TODO - Add details
 
 ## 3. Create a Voice Request
