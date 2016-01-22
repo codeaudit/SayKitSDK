@@ -18,15 +18,19 @@ If the app needs the user to choose a color for the shirt she just added to her 
 
 ````swift
 let request = SAYSelectRequest(
-	options: ["Blue", "Green", "Purple"],
-	promptText: "What color would you like?") { option: SAYSelectOption in
-		// add it to the cart with the given color choice
-	}
+    itemLabels: ["Blue", "Green", "Purple"],
+    promptText: "What color would you like?") { result in
+        // add it to the cart with the given color choice
+    }
 ````
+
+As a special bonus, many voice requests have a supplemental visual controls that are automatically presented to the screen when a question is asked. As a result, when the select request above is presented, a set of buttons would appear on screen, one per option.
+
+![Select request view](./assets/select-request.png)
 
 SayKit provides many pre-built requests like these, as well as providing tools to create custom voice requests tailored to a developer's needs.
 
-Voice requests are versitile. They can be presented along with related visual controls, they can be extended to provide customized speech interpretation, they be chained together to provide continuous back-and-forth dialogues, To learn about these features and more, let's take a deeper look at voice requests.
+Voice requests are versitile. They can be extended to provide customized speech interpretation, they be chained together to provide continuous back-and-forth dialogues, their visual components can be customized, and much more. To learn about these features, let's peek under the hood of the voice request system.
 
 // TODO: discuss the voice request flow (Prompt->ASR->Interp->Responding->Repeat), turn-taking support, supplemental visual controls
 
