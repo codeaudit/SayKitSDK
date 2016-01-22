@@ -8,7 +8,7 @@ Currently available as a developer preview (version 0.8).
 What are you looking to do?
 
 - **Jump in**: [Installation guide](#installation-guide)
-- **Familiarize yourself**: [SayKit tour](#)
+- **Familiarize yourself**: [SayKit tour](./Tour/00-intro.md)
 - **Learn step-by-step**: [In-depth tutorial](#)
 - **Dive deeper**: [Developer guides](#)
 - **Dive even deeper**: [Header docs](#)
