@@ -1,5 +1,5 @@
 # SayKit SDK (Developer Preview)
-The UI framework for voice enabled applications on iOS.
+The conversational UI framework for voice enabled applications on iOS.
 
 Currently available as a developer preview (version 0.8).
 
