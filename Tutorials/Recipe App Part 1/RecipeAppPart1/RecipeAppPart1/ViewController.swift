@@ -23,10 +23,40 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func stringRequestButtonTapped(sender: AnyObject) {
+    @IBAction func stringRequestButtonTapped(sender: AnyObject)
+    {
+        let request = SAYStringRequest(promptText:"What recipe would you like to search for?") { result in
+            if let recipeString = result {
+                self.updateRecognizedSpeechLabelWithText(recipeString)
+                self.updateAppResultLabelWithText("Received command: [Search for \(recipeString)]")
+            }
+            else {
+                /* ...handle error... */
+            }
+        }
+        
+        SAYVoiceRequestPresenter.defaultPresenter().presentRequest(request)
     }
 
-    @IBAction func selectRequestButtonTapped(sender: AnyObject) {
+    @IBAction func selectRequestButtonTapped(sender: AnyObject)
+    {
+
+    }
+    
+    // MARK: Helpers
+    
+    func updateAppResultLabelWithText(text: String)
+    {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.appResultLabel.text = text
+        }
+    }
+    
+    func updateRecognizedSpeechLabelWithText(text: String)
+    {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.recognizedSpeechLabel.text = "\"\(text)\""
+        }
     }
 }
 
