@@ -15,13 +15,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        
+    
+        // Initial setup of the SAYConversationManager
         let catalog = SAYCommandRecognizerCatalog()
         SAYConversationManager.systemManager().commandRegistry = catalog
         
         let soundBoard = SAYSoundBoard()
         SAYConversationManager.systemManager().addAudioSource(soundBoard, forTrack:SAYAudioTrackMainIdentifier)
+        
+        // Initialize GUI
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateInitialViewController()
+        
+        // Wrap initial view controller in a command bar controller
+        let commandBarController = SAYCommandBarController()
+        commandBarController.contentViewController = viewController
+        
+        window?.rootViewController = commandBarController
+        window?.makeKeyAndVisible()
         
         return true
     }
