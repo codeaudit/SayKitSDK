@@ -2,7 +2,7 @@
 
 ## Conversation Management
 
-SayKit exists to enable developers to create applications where interacting with the user interace is as natual as having a conversation. Fittingly, at the base of the SayKit SDK you'll find an agent called the *Conversation Manager*.
+SayKit exists to enable developers to create applications where the user interaction is as natual as having a conversation. Fittingly, the at the base of this conversational UI you'll find an agent called the *Conversation Manager*.
 
 The `SAYConversationManager` is the keystone of the SayKit framework. Each SayKit app has a default *manager* ready and waiting, accessibile as a class-level property:
 
@@ -48,7 +48,7 @@ To read more about this, [skip to the Audio Output Section](./04-audio-output.md
 
 Those GUI developers have it made with the feast of tools that help them structure their applications. Visual hierarchies. View controllers. Interface Builder. Storyboards.
 
-If you've ever tried to develop a non-trivial conversation app before, perhaps you've had the same thought that we've had as it's grown: "Well, this is a terrible mess." Logic split between clients and servers, regular expressions around every corner, callback functions strewn around everywhere. There's got to be a better way!
+If you've ever tried to develop a non-trivial conversational app before, perhaps you've had the same thought that we've had as it's grown: "Well, this is a terrible mess." Logic split between clients and servers, regular expressions around every corner, callback functions strewn around everywhere. There's got to be a better way!
 
 That's where **Conversation Topics** come in. Just like a view packages up all the input/output details for a particular area of your screen, a conversation topic coordinates all the audio I/O related to a particular subject in your app. By adding or removing a topic from your app's topic hierarchy, you can change the conversation with a line of code.
 
