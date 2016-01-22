@@ -1,3 +1,7 @@
+***Section is under construction and not up-to-date with the current version (0.8)***
+
+---
+
 # Audio Production
 
 One major hurdle in building applications with rich speech & audio output is that timing concerns begin to dominate application logic. Synchronizing queued speech utterances, multiple sound clips, and background music with an interactive application is very challenging to get right. SayKit’s audio UI tools are built with an eye towards reducing this friction so a developer can concentrate more on user experience and less on nuts and bolts. 

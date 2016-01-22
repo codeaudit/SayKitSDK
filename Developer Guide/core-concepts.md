@@ -1,3 +1,6 @@
+***Section is under construction and not up-to-date with the current version (0.8)***
+
+---
 
 # Core Concepts
 
