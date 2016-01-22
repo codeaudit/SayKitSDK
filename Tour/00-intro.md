@@ -17,7 +17,7 @@ Once you know what the user said, **what do you do with it**? How you extract me
 
 What if you **want your app to carry on a dialogue with the user**? How do you design that without creating a complete rats nest of conditionals and callbacks? If you want your app to have a conversational feel, how will you avoid making it sound like machine reading from a script?
 
-If your app is complex, **how will you organize all of this**? If you have a complex visual hierarchy, how will you integrate this new audio interface with it? How will you ensure different areas play nicely with each other and share the speaker? How will you keep it DRY and avoid repeating logic in your visual and audio UIs?
+If your app is non-trivial, **how will you organize all of this**? If you have a complex visual hierarchy, how will you integrate this new audio interface with it? How will you ensure different areas play nicely with each other and share the speaker? How will you keep it DRY and avoid repeating logic in your visual and audio UIs?
 
 SayKit is here to help you answer all of these questions (and many more). Continue with your tour to learn more.
 
