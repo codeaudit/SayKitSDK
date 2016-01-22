@@ -4,13 +4,12 @@
 
 The `SAYConversationManager` is the keystone of the SayKit framework. Much like `UIWindow`, it acts as the logical root of the user interface, administering and coordinating both the "input" and "output" sides of the audio UI.
 
-On the "input" side, the *manager* is responsible for initiating Voice Requests, which ask the user to verbally respond to a prompt. In addition, the Manager connects to a registry of Command Recognizers, which are capable of understanding and acting on verbal commands given by the user.
-
-As for the "output" side, the *manager* coordinates a set of Audio Sources, receiving audible events from them and scheduling them to be played on their assigned Audio Track.
+On the "input" side, the *manager* is responsible for initiating question-and-answer prompts, and interpreting commands spoken by the user.
+As for the "output" side, the *manager* received audible events from various sources and schedules them to be played on their assigned audio tracks.
 
 Each SayKit app has a default `systemManager` ready and waiting, accessibile as a class-level property on `SAYConversationManager`.
 
-But enough about the foundation. Let's go over all these component systems in a bit more detail to really show what SayKit is all about.
+But enough about the foundation. Let's go over all these interface components in a bit more detail to really highlight what SayKit is all about.
 
 ## Voice Requests
 
