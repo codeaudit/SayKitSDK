@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var recognizedSpeechLabel: UILabel!
+    @IBOutlet weak var appResultLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -20,6 +23,10 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func stringRequestButtonTapped(sender: AnyObject) {
+    }
 
+    @IBAction func selectRequestButtonTapped(sender: AnyObject) {
+    }
 }
 
