@@ -35,10 +35,10 @@ SayKit provides many pre-built requests like these, but voice requests are versi
 
 Each voice request session has 4 stages:
 
-1. Prompting (optional): The app prompts the user for some speech, typically with a question. This may also include presenting visual controls to support touch responses.
-2. Speech recognition: The microphone activates and accepts user speech. That speech is transformed into meaningful data, typically a string.
-3. Interpretation: The speech string is interpreted into a useful value. For example, the `SAYConfirmationRequest` transforms the string into a `Bool` value. If no value could be interpreted, a validation error is produced instead.
-4. Response: The application decides what to do with the interpreted value (or validation error). This could take the form of spoken feedback, arbitrary application code, or even the transition to another voice request.
+1. **Prompting** (optional): The app prompts the user for some speech, typically with a question. This may also include presenting visual controls to support touch responses.
+2. **Speech recognition**: The microphone activates and accepts user speech. That speech is transformed into meaningful data, typically a string.
+3. **Interpretation**: The speech string is interpreted into a useful value. For example, the `SAYConfirmationRequest` transforms the string into a `Bool` value. If no value could be interpreted, a validation error is produced instead.
+4. **Response**: The application decides what to do with the interpreted value (or validation error). This could take the form of spoken feedback, arbitrary application code, or even the transition to another voice request.
 
 // turn-taking support, supplemental visual controls
 
