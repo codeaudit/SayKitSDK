@@ -28,10 +28,10 @@ class ViewController: UIViewController {
         let request = SAYStringRequest(promptText:"What recipe would you like to search for?") { result in
             if let recipeString = result {
                 self.updateRecognizedSpeechLabelWithText(recipeString)
-                self.updateAppResultLabelWithText("Received command: [Search for \(recipeString)]")
+                self.updateAppResultLabelWithText("Received command:\n[Search for \(recipeString)]")
             }
             else {
-                /* ...handle error... */
+                /* ... */
             }
         }
         
@@ -40,7 +40,19 @@ class ViewController: UIViewController {
 
     @IBAction func selectRequestButtonTapped(sender: AnyObject)
     {
-
+        let request = SAYSelectRequest(itemLabels: ["Chocolate Butterscotch Cookies", "Beef Lasagna", "Tuna Casserole"], promptText: "Which of your saved recipes would you like to review?") { result in
+            if
+                let selectedItemName = result?.selectedOption.label,
+                let selectedIndex = result?.selectedIndex
+            {
+                self.updateAppResultLabelWithText("Received command:\n[Details for Recipe #\(selectedIndex): \(selectedItemName)]")
+            }
+            else {
+                /* ... */
+            }
+        }
+        
+        SAYVoiceRequestPresenter.defaultPresenter().presentRequest(request)
     }
     
     // MARK: Helpers
