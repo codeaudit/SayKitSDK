@@ -11,7 +11,7 @@
 /**
  *  The `SAYCommand` class lays out a general representation for commands in the SayKit command processing pipeline.
  */
-@interface SAYCommand : NSObject
+@interface SAYCommand : NSObject <NSCopying>
 
 /**
  *  The command type. This is the primary value used for identifying a command's purpose.

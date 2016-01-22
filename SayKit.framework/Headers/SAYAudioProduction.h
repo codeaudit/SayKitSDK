@@ -20,6 +20,12 @@
 #import <SayKit/SAYAudioTrack.h>
 #import <SayKit/SAYAudioTrackCoordinator.h>
 
+#import <SayKit/SAYAudioEventSequence.h>
+#import <SayKit/SAYAudioEventSequenceItem.h>
+#import <SayKit/SAYAudioEventSource.h>
+#import <SayKit/SAYAudioEventListener.h>
+#import <SayKit/SAYSoundBoard.h>
+
 #import <SayKit/SAYSpeechSynthesizerProxy.h>
 #import <SayKit/SAYManagedSynthesizer.h>
 

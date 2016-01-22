@@ -8,63 +8,38 @@
 
 #import <Foundation/Foundation.h>
 
+#import "SAYSoundBoard.h"
+
 @class SAYAudioTrack;
+@class AVSpeechUtterance;
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- *  The `SAYVoiceRequestSoundBoard` is a simple "sound board" class that will play individual sounds on  its set audio track. While it can play arbitrary speech utterances and tones, it has particular settings for customizing the sounds used for microphone activity feedback.
+ *  The `SAYVoiceRequestSoundBoard` a `SAYSoundBoard` subclass with settings and methods specific for sounds used during voice requests (e.g. microphone activity earcons).
  */
-@interface SAYVoiceRequestSoundBoard : NSObject
-
-/**
- *  Track to be used for presenting audio events
- */
-@property (nonatomic, strong, nullable) SAYAudioTrack *audioTrack;
+@interface SAYVoiceRequestSoundBoard : SAYSoundBoard
 
 /**
  *  Tone to play when the microphone becomes active.
  
-    When set to nil, the SayKit default tone will be used.
+ When set to nil, the SayKit default tone will be used.
  */
 @property (nonatomic, copy, null_resettable) NSURL *microphoneStartToneURL;
 
 /**
  *  Tone to play when the microphone becomes inactive.
  
-    When set to nil, the SayKit default tone will be used.
+ When set to nil, the SayKit default tone will be used.
  */
 @property (nonatomic, copy, null_resettable) NSURL *microphoneStopToneURL;
 
 /**
- *  Speaks the given text immediately.
- *
- *  @param promptText Prompt message to speak
+ *  Tone to play when a command is not recognized.
+ 
+ When set to nil, the SayKit default tone will be used.
  */
-- (void)speakPrompt:(NSString *)promptText;
-
-/**
- *  Speaks the given text immediately. Once the speech utterance completes, the given block will be executed.
- *
- *  @param promptText Prompt message to speak
- *  @param completion Action block executed after speech completes
- */
-- (void)speakPrompt:(NSString *)promptText then:(void(^)())completion;
-
-/**
- *  Plays the given tone immediately.
- *
- *  @param url URL of sound file to play
- */
-- (void)playToneWithURL:(NSURL *)url;
-
-/**
- *  Plays the given tone immediately. Once the tone completes, the given block will be executed.
- *
- *  @param url        URL of sound file to play
- *  @param completion Action block executed after sound playback completes
- */
-- (void)playToneWithURL:(NSURL *)url then:(void (^)())completion;
+@property (nonatomic, copy, null_resettable) NSURL *unrecognizedCommandToneURL;
 
 /**
  *  Plays the receiver's preset microphone start tone.
@@ -75,6 +50,11 @@ NS_ASSUME_NONNULL_BEGIN
  *  Plays the receiver's preset microphone stop tone.
  */
 - (void)playMicrophoneStopTone;
+
+/**
+ *  Plays the receiver's preset tone for an unrecognized command.
+ */
+- (void)playUnrecognizedCommandTone;
 
 @end
 

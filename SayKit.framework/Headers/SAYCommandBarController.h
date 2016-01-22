@@ -11,7 +11,7 @@
 #import "SAYCommandBarDelegate.h"
 
 @class SAYCommandBar;
-@class SAYVerbalCommandRequestManager;
+@class SAYConversationManager;
 @class SAYVoiceRequestPresenter;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -33,12 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong) SAYVoiceRequestPresenter *voiceRequestPresenter;
 
-/**
- *  The manager capable of constructing a `SAYVerbalCommandRequest`.
- 
-     Defaults to SayKit's default `SAYVerbalCommandRequestManager`.
- */
-@property (nonatomic, strong) SAYVerbalCommandRequestManager *requestManager;
+@property (nonatomic, strong) SAYConversationManager *conversationManager;
 
 /**
  *  The content view controller embedded in the frame above the command bar. 

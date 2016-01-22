@@ -10,6 +10,7 @@
 
 @protocol SAYSpeechRecognitionService;
 @protocol SAYSpeechRecognitionManagerDelegate;
+@protocol SAYSpeechRecognitionResult;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -76,7 +77,7 @@ typedef NS_ENUM(NSUInteger, SAYSpeechRecognitionSessionState) {
 /**
  *  Stops the recognition service and cancels the recognition session immediately. No recognition response will be received by the delegate after this call.
  */
-- (void)cancelPrompt;
+- (void)cancel;
 
 @end
 
@@ -113,10 +114,10 @@ typedef NS_ENUM(NSUInteger, SAYSpeechRecognitionSessionState) {
  *  Sent as a session concludes with either successful response data, or error information.
  *
  *  @param manager      Manager facilitating the recognition session
- *  @param responseData Response data (type depends on underlying `SAYSpeechRecognitionService`). Will be nil if error occurs.
+ *  @param result       Result (exact type depends on underlying `SAYSpeechRecognitionService`). Will be nil if error occurs.
  *  @param error        If non-nil, error describing why a recognition response could not be received
  */
-- (void)recognitionManager:(SAYSpeechRecognitionManager *)manager didCompleteRequestWithResponse:(nullable id)responseData error:(nullable NSError *)error;
+- (void)recognitionManager:(SAYSpeechRecognitionManager *)manager didCompleteRequestWithResult:(nullable id<SAYSpeechRecognitionResult>)result error:(nullable NSError *)error;
 
 @end
 
