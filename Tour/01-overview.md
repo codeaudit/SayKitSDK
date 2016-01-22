@@ -40,7 +40,7 @@ To read more about this, [skip to the Command Recognition Section](./03-command-
 
 On the other end of a conversational interface is the audio output that is presented through the device speakers. The app's voice.
 
-Of course, SayKit includes all the nuts and bolts required to manage an audio queue -- handling timing issues, integrating a speech synthesizer, feeding .wav files to audio players -- but it presents a higher-level set of protocols to let a developer think less about mechanics and more on user experience.
+Of course, SayKit includes all the nuts and bolts required to manage an audio queue -- handling timing issues, integrating a speech synthesizer, feeding .wav files to audio players -- but it also presents a higher-level interface to let a developer forget about mechanics and focus on user experience.
 
 To read more about this, [skip to the Audio Output Section](./04-audio-output.md).
 
