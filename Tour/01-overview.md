@@ -6,13 +6,13 @@ SayKit exists to enable developers to create applications where interacting with
 
 The `SAYConversationManager` is the keystone of the SayKit framework. Each SayKit app has a default *manager* ready and waiting, accessibile as a class-level property:
 
-Objective-C:
 ````objc
+// Objective-C
 [SAYConversationManager systemManager]
 ````
 
-Swift:
 ````swift
+// Swift
 SAYConversationManager.systemManager()
 ````
 
