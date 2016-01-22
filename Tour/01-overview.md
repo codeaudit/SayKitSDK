@@ -2,9 +2,9 @@
 
 ## Conversation Management
 
-SayKit exists to enable developers to create applications where the user interaction is as natual as having a conversation. Fittingly, the at the base of this conversational UI you'll find an agent called the *Conversation Manager*.
+SayKit enables developers to create applications where the user interaction is as natural as having a conversation. Fittingly, at the base of this conversational UI you'll find an agent called the **Conversation Manager**.
 
-The `SAYConversationManager` is the keystone of the SayKit framework. Each SayKit app has a default *manager* ready and waiting, accessibile as a class-level property:
+The `SAYConversationManager` is the keystone of the SayKit framework. Each SayKit app has a default *manager* ready and waiting, accessible as a class-level property:
 
 ````objc
 // Objective-C
@@ -16,15 +16,15 @@ The `SAYConversationManager` is the keystone of the SayKit framework. Each SayKi
 SAYConversationManager.systemManager()
 ````
 
-Much like `UIWindow` for UIKit, the manager acts as the logical root of the user interface, administering and coordinating both the input (listening) and output (speaking) roles of the conversational UI. Also, much like `UIWindow`, you can safely ignore it's presence most of the time after doing some minor configuration at app launch.
+Much like `UIWindow` for UIKit, the manager acts as the logical root of the user interface, administering and coordinating both the input (listening) and output (speaking) roles of the conversational UI. Also, much like `UIWindow`, you can safely ignore it's presence most of the time after some minor configuration at app launch.
 
 To be more concrete, let's introduce the systems that the manager is in charge of coordinating.
 
 ### Voice Requests
 
-In SayKit applications, all voice input from the user is handled by the **Voice Request** system. Voice Requests are able to ask the user a question, direct speech recognition and interpretation, decide how to respond, and perform many other duties.
+In SayKit applications, all voice input from the user is handled by the **Voice Request** system. Voice Requests ask the user a question, direct speech recognition and interpretation, decide how to respond, and perform many other duties.
 
-SayKit provides a collection of built-in voice requests for common inqueries (such as the `SAYConfirmationRequest`, which asks the user a yes-or-no question), as well as extensive options for customizing your own.
+SayKit provides a collection of built-in voice requests for common inquiries (such as the `SAYConfirmationRequest`, which asks the user a yes-or-no question), as well as extensive options for customizing your own.
 
 To read more about this, [skip to the Voice Requests Section](./02-voice-requests.md).
 
