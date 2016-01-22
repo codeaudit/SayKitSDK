@@ -1,3 +1,7 @@
+***Section is under construction and not up-to-date with the current version (0.8)***
+
+---
+
 # Voice Requests
 
 In SayKit applications, all voice input from the user revolves around the `VoiceRequest` class. 

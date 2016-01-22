@@ -1,3 +1,7 @@
+***Section is under construction and not up-to-date with the current version (0.8)***
+
+---
+
 # Handling User Commands
 
 One of the major benefits of a conversational UI is giving users the ability to issue commands using plain old human languages. Users are not required to tap around their screens to accomplish a task: they can simply tell the app what they want done.
