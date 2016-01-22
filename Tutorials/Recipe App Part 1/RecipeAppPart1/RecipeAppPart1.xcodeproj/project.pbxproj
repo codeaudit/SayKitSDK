@@ -12,8 +12,23 @@
 		837F07A51C52B7CC00378F39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 837F07A31C52B7CC00378F39 /* Main.storyboard */; };
 		837F07A71C52B7CC00378F39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 837F07A61C52B7CC00378F39 /* Assets.xcassets */; };
 		837F07AA1C52B7CC00378F39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 837F07A81C52B7CC00378F39 /* LaunchScreen.storyboard */; };
-		837F07B21C52B8C300378F39 /* SayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 837F07B11C52B8C300378F39 /* SayKit.framework */; };
+		837F0AB81C52E25F00378F39 /* SayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 837F0AB71C52E25F00378F39 /* SayKit.framework */; };
+		837F0ABA1C52E2A500378F39 /* SayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 837F0AB71C52E25F00378F39 /* SayKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		837F0ABB1C52E2A600378F39 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				837F0ABA1C52E2A500378F39 /* SayKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		837F079C1C52B7CB00378F39 /* RecipeAppPart1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeAppPart1.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -23,8 +38,8 @@
 		837F07A61C52B7CC00378F39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		837F07A91C52B7CC00378F39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		837F07AB1C52B7CC00378F39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		837F07B11C52B8C300378F39 /* SayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SayKit.framework; path = RecipeAppPart1/SayKit.framework; sourceTree = "<group>"; };
 		837F0AAC1C52BB5600378F39 /* RecipeAppPart1-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RecipeAppPart1-Bridging-Header.h"; sourceTree = "<group>"; };
+		837F0AB71C52E25F00378F39 /* SayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SayKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				837F07B21C52B8C300378F39 /* SayKit.framework in Frameworks */,
+				837F0AB81C52E25F00378F39 /* SayKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,7 +57,7 @@
 		837F07931C52B7CB00378F39 = {
 			isa = PBXGroup;
 			children = (
-				837F07B11C52B8C300378F39 /* SayKit.framework */,
+				837F0AB71C52E25F00378F39 /* SayKit.framework */,
 				837F079E1C52B7CB00378F39 /* RecipeAppPart1 */,
 				837F079D1C52B7CB00378F39 /* Products */,
 			);
@@ -80,6 +95,7 @@
 				837F07981C52B7CB00378F39 /* Sources */,
 				837F07991C52B7CB00378F39 /* Frameworks */,
 				837F079A1C52B7CB00378F39 /* Resources */,
+				837F0ABB1C52E2A600378F39 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -260,11 +276,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RecipeAppPart1",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = RecipeAppPart1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.conversantlabs.RecipeAppPart1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RecipeAppPart1/RecipeAppPart1-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -275,11 +293,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RecipeAppPart1",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = RecipeAppPart1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.conversantlabs.RecipeAppPart1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RecipeAppPart1/RecipeAppPart1-Bridging-Header.h";
 			};
 			name = Release;
 		};
