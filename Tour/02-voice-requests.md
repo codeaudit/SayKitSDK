@@ -24,7 +24,7 @@ let request = SAYSelectRequest(
     }
 ````
 
-As a special bonus, many voice requests have a supplemental visual controls that are automatically presented to the screen when a question is asked. As a result, when the select request above is presented, a set of buttons would appear on screen, one per option.
+Many voice requests have supplemental visual controls that are automatically presented to the screen when a question is asked. In the case of the select request above, a set of tappable buttons will appear on screen, one per option.
 
 ![Select request view](./assets/select-request.png)
 
