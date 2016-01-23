@@ -9,6 +9,7 @@ The user speech-end of a SayKit app revolves around the `SAYVoiceRequest` class.
 For example, if the application needs to ask the user for permission to do something, it can create a `SAYConfirmationRequest`, like so:
 
 ````swift
+// Swift
 let request = SAYConfirmationRequest(promptText: "Are you sure?") { doIt: Bool in
 	if doIt { /* do it! */ }
 	else    { /* don't do it */ }
@@ -18,6 +19,7 @@ let request = SAYConfirmationRequest(promptText: "Are you sure?") { doIt: Bool i
 If the app needs the user to choose a color for the shirt she just added to her cart, it can use a `SAYSelectRequest`:
 
 ````swift
+// Swift
 let request = SAYSelectRequest(
     itemLabels: ["Small", "Medium", "Large"],
     promptText: "What color would you like?") { result in
