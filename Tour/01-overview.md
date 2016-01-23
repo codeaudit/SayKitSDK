@@ -1,5 +1,7 @@
 # SayKit Overview
 
+> Note: Many of the code snippets in this tour come from the demo app featured in [our tutorial](#). Be sure to take a look at the demo for more thorough implementation details that provided in the tour.
+
 ## Conversation Management
 
 SayKit enables developers to create applications where the user interaction is as natural as having a conversation. Fittingly, at the base of this conversational UI you'll find an agent called the **Conversation Manager**.
