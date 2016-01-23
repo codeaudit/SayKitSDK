@@ -1,5 +1,9 @@
 # SayKit Tour
 
+> Welcome to the developer preview tour! We'll be fleshing out this document and including more extensive developer guides as we prepare this developer preview for release.
+> 
+> For now, enjoy your tour, and feel free to drop us a line to let us know what you think.
+
 ## So, you want to have a talking app...
 
 At the most basic level, a conversational UI has only two requirements: a way to listen to user speech and a way to speak back to the user.
