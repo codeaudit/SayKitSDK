@@ -96,7 +96,7 @@ Done! Assuming if you have a bunch of Pokémon in your address book, you've now 
 
 This just scratches the surface of customizing command recognizers. To learn more, check out our developer guide on the topic (coming soon!).
 
-## Turn Taking with Commands
+## Commands Dialogues
 
 The app listens for a user command via the same mechanism it uses for listening to all user speech: as part of a `SAYVoiceRequest` session. Specifically, it uses a `SAYVerbalCommandRequest`.
 
