@@ -1,6 +1,6 @@
 # SayKit Tour
 
-> Welcome to the developer preview tour! We'll be fleshing out this document and including more extensive developer guides as we prepare this developer preview for release.
+> Welcome to the developer preview tour! We'll be fleshing out this document and including more extensive developer guides as we prepare this developer preview for full public release.
 > 
 > For now, enjoy your tour, and feel free to drop us a line to let us know what you think.
 
