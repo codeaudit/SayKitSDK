@@ -15,7 +15,7 @@ init() {
 }
 
 func searchRequested(command: SAYCommand) {
-	// run a search with a query string inside `command`
+	// run a search with a query string inside `command.parameters`
 }
 ````
 
@@ -25,40 +25,48 @@ This should ring a bell to those familiar with UIKit: the `SAYCommandRecognizer`
 
 ````swift
 let searchRecognizer = SAYSearchCommandRecognizer() { command in 
-	// run a search with a query string inside `command`
+	// run a search with a query string inside `command.parameters`
 }
 ````
 
-SayKit comes with a large number of pre-built command recognizers, but you can modify them to handle broader speech input, or even create your own recognizers to handle custom commands. 
+SayKit comes with a number of these pre-built standard command recognizers, and that list is actively growing. Even the existing recognizers are constantly being improved as we actively train them on actual usage behind the scenes.
 
-If you'd like to learn a bit more, let's dive a bit deeper into the command recognition system.
+## Extending Command Recognizers
 
-## `SAYCommand`
+SayKit doesn't restrict you to its built-in library, however. Standard recognizers can be extended to handle broader speech patterns and you can even create your own recognizers to handle custom commands.
 
-The `SAYCommand` class provides the common currency for recognizing and responding to user commands. It's a simple type with two properties: `type` and `parameters`. Commands are differentiated by their `type`, and they can have any number of arguments associated with them, stored in the `parameters` dictionary. Think of them as SayKit's equivalent to the `UIEvent` class.
+As a quick example let's say we're building a Pokémon-themed email app (as you do), and we want it to recognize the following command: "I choose you, John Smith!" to add a recepient to a message. SayKit already provides the `SAYSelectCommandRecognizer`, which recognizes when the user wants to make a selection, but it wasn't necessarily built with Pokémon trainers in mind. So what can we do?
 
-Each command recognizer specializes in producing commands of a particular type (declared as the recognizer's `commandType` property). Under the hood, the recognizers need to consider a user speech utteranace and decide two things:
+````objc
+// Objective-C
 
-1. How likely is it that the user is issuing a command of my type?
-2. Does this utterance include parameters to go along with the command? If so, what are they?
+// create the recognizer with an action block
+SAYCommandRecognizer *selectRecognizer;
+selectRecognizer = [SAYSelectCommandRecognizer alloc] initWithActionBlock:^(SAYCommand *) { 
+	NSString *name = command.parameters[@"name"];
+	/* ... */
+};
 
-During their recognition process, the recognizers use the `SAYCommandSuggestion` class to collect these two pieces of information as the following properties:
+// add our special pattern, note the "name" parameter
+NSString *pattern = @"i choose you @name";
+selectRecognizer.addTextMatcher([SAYPatternCommandMatcher matcherWithPattern:pattern]);
+````
 
-- `confidence`: a floating point value between 0.0 and 1.0. 1.0 denotes 100% certainty that the utterance was the given command, while 0.0 denotes the opposite.
-- `parameters`: a dictionary of associated parameters extracted from the utterance
+````swift
+// Swift
 
-If you're looking to extend SayKit's command recognizers or build your own from scratch, your job will be to map user speech to a `SAYCommandSuggestion`.
+// create the recognizer with an action block
+let selectRecognizer = SAYSelectCommandRecognizer() { command in
+	if let name = command.parameters["name"] { /* ... */ }
+}
 
-## Extending Built-in Recognizers
+// add our special pattern, note the "name" parameter
+let pattern = "i choose you @name"
+selectRecognizer.addTextMatcher(SAYPatternCommandMatcher(pattern: pattern))
+````
 
-Oftentimes, you'll find that an existing SayKit command recognizer will suit your needs with just a bit of adjustment. 
+Done! Assuming if you have a bunch of Pokémon in your address book, you've now got the perfect email client.
 
-- talk about text matchers. the two concrete types we offer
-
-## Building Custom Recognizers
-
-- refer again to text matchers
-
-## Turn taking
+This just scratches the surface of customizing command recognizers. To learn more, check out our developer guide on the topic (coming soon!).
 
 [Next - Audio Output >>](./04-audio-output.md)
