@@ -48,7 +48,7 @@ To read more about this, [skip to the Audio Output Section](./04-audio-output.md
 
 GUI developers have it made with a feast of patterns and tools to help structure their applications. Visual hierarchies. View controllers. Interface Builder. Storyboards.
 
-If you've ever tried to develop a non-trivial conversational app before, perhaps you had some problems keeping your codebase under control. Don't worry, it happened to us too. Logic split between clients and servers, regular expressions around every corner, callback functions strewn around everywhere. There's got to be a better way!
+If you've ever tried to develop a non-trivial conversational app before, perhaps you had some problems keeping your codebase under control. Don't worry, it used to happen to us too. Logic split between clients and servers, regular expressions around every corner, callback functions strewn around everywhere. There's got to be a better way!
 
 That's where **Conversation Topics** come in. Just like a view packages up all the input/output details for a particular area of your screen, a conversation topic coordinates all the audio I/O related to a particular subject in your app. By adding or removing a topic from your app's topic hierarchy, you can change the conversation with a line of code.
 
