@@ -100,11 +100,11 @@ This just scratches the surface of customizing command recognizers. To learn mor
 
 The app listens for a user command via the same mechanism it uses for listening to all user speech: as part of a `SAYVoiceRequest` session. Specifically, it uses a `SAYVerbalCommandRequest`.
 
-Just like every other voice request, a `SAYVerbalCommandRequest` has a *responding* stage. And just like any other voice request, the response can include a follow-up request, giving the app the ability to have a turn-taking dialogue with the user. This means, the app can jump straight into a conversation with the user directly in response to a command. To pull this off, simply return the desired response from your recognizer instance's action method or block.
+Just like every other voice request, a `SAYVerbalCommandRequest` has a *responding* stage. And just like any other voice request, the response can include a follow-up request, which causes the app to ask the user a new question. This means the app can jump straight into a conversation with the user directly in response to a command. To pull this off, simply return the followup request from your recognizer instance's action method/block.
 
 We'll illustrate by continuing with the previous example. Let's say your user has two friends named "Pikachu" in her address book: Toby Pikachu and Susan Pikachu. If the user says "I choose you, Pikachu!", the app needs to know if she means Toby or Susan.
 
-Let's find out which one by asking her directly. Responses to the rescue!
+Let's find out which one by asking her directly. Followup responses to the rescue!
 
 ````swift
 // Swift, using a closure-style callback
