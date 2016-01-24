@@ -1,22 +1,24 @@
 # Conversation Topics
 
-Let's talk for a moment about mobile app design.
+At this point, we've know more than enough to be dangerous. We can build apps that ask questions, understand commands, and can make any sound they want.
 
-Most apps are built upon patterns that revolve around graphical interfaces. iOS applications typically follow the MVC paradigm: Model-**View**-Controller. While other developers may prefer alternative patterns, such as MVVM (Model-**View**-**View**Model). Still, the view is a top-level component in all of the well-known patterns, so view code is typically well-separated from the rest of the app's data and logic.
+But where should all of this conversational UI logic code go? If try to build a conversational agent with just a flat `SAYCommandRecognizerCatalog` and a simple `SAYSoundBoard` in our app delegate, we're going have a monolithic monster on our hands as our app grows.
 
-Since there's no established off-the-shelf design patterns for audio interfaces, conversational apps tend to evolve with a more ad hoc structure. As the apps grow, the seams start to show and the code becomes difficult to maintain.
+## Keep 'em Separated
 
-If the app has multi-modal interface (both visual and audio), a more MVC-style architecture is typical, but the audio interface code still tends to seep all over the place.
+We need a better separation of concerns. Not only do we need to keep UI logic distinct from the business logic, but we also need to keep the UI logic underlying distinct app features from each other.
 
-One of SayKit's major goals is to make writing well-structured audio UI code as natural as visual UI code. Conversant Labs doesn't have the [Gang of Four](https://en.wikipedia.org/wiki/Design_Patterns) on the payroll, so we're not trying to invent a new universal-modality design pattern, but we do hope to provide tools to support conversational apps that are modular, maintainable, and intuitive.
+When it comes to graphical UI development, there are well-established patterns to handle this. For example, Apple designed it's UIKit classes to encourage iOS developers to follow the MVC paradigm (Model-View-Controller), so view code is typically well-separated from the rest of the app's data and logic. In addition, the `UIView` class supports a hierarchical structure, so a view is only directly responsible for a describing part of the scene: it can delegate the lower level details to its subviews.
+
+We need something similar, but it should be concerned with the speaker and mircophone, not the display and touch sensors. We need something conversationally-oriented and capable of keeping distinct topics seperate. We need **Conversation Topics**.
 
 ## The `SAYConversationTopic` class
 
 In UIKit on iOS, the primary building block for the graphical interface is the `UIView`; the analogous class in SayKit is called the `SAYConversationTopic`. Let's consider what could be considered `UIView`'s three major roles:
 
-1. Declaring visual output:
-2. Handling screen input:
-3. Managing the interface hierarchy:  
+1. Declaring visual output: 
+2. Handling screen input: 
+3. Managing the interface hierarchy: 
 
 The `SAYConversationTopic` has the same roles, but with different audio-specific manifestations.
 
