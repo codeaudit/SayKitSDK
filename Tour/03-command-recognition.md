@@ -35,14 +35,14 @@ SayKit comes with a number of these pre-built standard command recognizers, and 
 
 Remember our friend `SAYConversationManager`? One of its properties is a `SAYCommandRegistry`, which is a protocol that describes types capable of holding a collection of recognizers. When the user speaks the command, all the recognizers attached to this registry will be consulted to interpret the speech.
 
-Simple apps can get by with a basic `SAYCommandCatalog` as a registry, which is a basic class that wraps a list of recognizers. As your app grows, however, your registry will need a bit more structure. We'll get into that later in the tour when we talk about [Command Topics](./05-command-topics.md).
+Simple apps can get by with a basic `SAYCommandRecognizerCatalog` as a registry, which is a basic class that wraps a list of recognizers. As your app grows, however, your registry will need a bit more structure. We'll get into that later in the tour when we talk about [Command Topics](./05-command-topics.md).
 
 A typical pattern is to set the system manager's registry when the application is loading:
 
 ```swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     ...
-    let catalog = SAYCommandCatalog()
+    let catalog = SAYCommandRecognizerCatalog()
     SAYConversationManager.systemManager().commandRegistry = catalog
     
     // for the example, let's add a help recognizer right away
