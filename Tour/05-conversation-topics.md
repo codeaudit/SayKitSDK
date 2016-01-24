@@ -12,33 +12,111 @@ When it comes to graphical UI development, there are well-established patterns t
 
 We need something similar, but it should be concerned with the speaker and mircophone, not the display and touch sensors. We need something conversationally-oriented and capable of keeping distinct topics seperate. We need **Conversation Topics**.
 
-## The `SAYConversationTopic` class
+## Responsibilities
 
-Staying with UIKit for a moment, let's highlight what could be considered `UIView`'s three major roles:
+Staying with UIKit for a moment, let's highlight what could be considered `UIView`'s three major responsibilities:
 
-1. Handling screen input: configuring touch event-recognizing behavior (taps, gestures, etc.)
-2. Declaring visual output: drawing their visual content to their frame on screen
+1. Defining visual output: drawing their visual content to their frame on screen
+2. Handling screen input: configuring touch event-recognizing behavior (taps, gestures, etc.)
 3. Managing the interface hierarchy: composing subviews capable of handling lower-level UI concerns
 
-With those capabilities, a `UIView` instance is able to fulfill its limited duties as the link between the user and application for a particular rectangle of screen real estate. No more, no less.
+With those capabilities, a `UIView` instance is able to fulfill its specific duties as the link between the user and application for a particular rectangle of screen real estate. No more, no less.
 
-The `SAYConversationTopic` has similar roles, but with audio-specific manifestations:
+The `SAYConversationTopic` has similar roles, but with an audio-oriented twist:
 
-1. Handling voice input: configuring voice command-recognizing behavior
-2. Declaring audio output: posting their audio content as an event sequence
-3. Managing the interface hierarchy: composing subtopics capable of handling lower-level UI concerns
+1. **Defining audio output**: posting their audio content as an event sequence
+2. **Handling voice input**: configuring voice command-recognizing behavior
+3. **Managing the interface hierarchy**: composing subtopics capable of handling lower-level UI concerns
 
-To learn more, let's discuss each of these roles in turn.
+To learn more, let's discuss each of these responsibilities in turn.
+
+### Defining Audio Output
+
+Topics conform to the `SAYAudioEventSource` protocol, so they can post event sequences relevant only to their part of the interface. 
+
+For example, a shopping app may need to present a list of product titles to the user. Let's wrap this up in a `SAYConversationTopic` subclass called `ProductListTopic`, and give it a method that speaks a list of product titles:
+
+```swift
+// Swift
+func speakProductTitles(titles: [String]) {
+	var sequence = SAYAudioEventSequence()
+	for title in titles {
+		sequence.addEvent(SAYSpeechEvent(utteranceString: title))
+	}
+	self.postEvents(sequence)	// a method defined on the `SAYConversationTopic` base class
+}
+```
+
+```objc
+// Objective-C
+- (void)speakProductTitles:(NSArray<NSString *> *)titles {
+	SAYAudioEventSequence *sequence = [[SAYAudioEventSequence alloc] init];
+	for (NSString *title in titles) {
+		[sequence addEvent:[SAYSpeechEvent eventWithUtteranceString: title]];
+	}
+	[self postEvents:sequence];	// a method defined on the `SAYConversationTopic` base class
+}
+```
+
+Now, any time we tell our topic to speak its product titles, a sequence of events is posted to whoever is listening.
 
 ### Handling Voice Input
 
-*Summary: Topics conform to SAYCommandRegistry, so they can be plugged into the conversation manager. They can define the recognizers relevant to their topic*
+Topics also conform to the `SAYCommandRegistry` protocol, so they are able to provide a collection of command recognizers relevant to their subject. In the product list example above, you could assign list-navigation commands to your topic to allow the user to browse the list on command.
 
+To continue with the example, let's assume we have some kind of event handler class (like a controller in MVC-terms) capable of handling commands events recognized by our `ProductListTopic`. Then it's initializer could include the following configuration:
 
-### Topics as Audio Sources
+```swift
+// Swift
+init(eventHandler: ProductsEventHandler) {
+	...
+    // add a recognizer for "previous" commands, to go back in the list
+    self.addCommandRecognizer(SAYPreviousCommandRecognizer(responseTarget:self, 
+	                                                               action:"handlePrevious:"))
+    
+    // add a recognizer to "next" commands, to go forward in the list
+    self.addCommandRecognizer(SAYNextCommandRecognizer(responseTarget:self, 
+                                                               action:"handleNext:"))
+    
+    // add a recognizer for "select" commands, to select an item in the list
+    self.addCommandRecognizer(SAYSelectCommandRecognizer(responseTarget:self, 
+                                                                 action:"handleSelect:"))
+	...
+}
+```
 
-*Summary: Topics confirm to SAYAudioEventSource, so again they can be plugged into the conversation manager. They say only whats relevant to their topic*
+```objc
+// Objective-C
+- (instancetype)initWithEventHandler:(ProductTopicEventHandler *eventHandler) {
+    ...
+    // add a recognizer for "previous" commands, to go back in the list
+    [self addCommandRecognizer:
+        [[SAYPreviousCommandRecognizer alloc] initWithResponseTarget:self, 
+                                                              action:@selector(handlePrevious:)]];
+    
+    // add a recognizer to "next" commands, to go forward in the list
+    [self addCommandRecognizer:
+        [[SAYNextCommandRecognizer alloc] initWithResponseTarget:self, 
+                                                          action:@selector(handleNext:)]];
+    
+    // add a recognizer for "select" commands, to select an item in the list
+    [self addCommandRecognizer:
+        [[SAYSelectCommandRecognizer alloc] initWithResponseTarget:self, 
+                                                            action:@selector(handleSelect:)]];
+    ...
+}
+```
 
-### Topics as Hierarchies
+And with that, we have a tidy conversation topic encapsulating all the input and output logic to allow a user to interface with a list of items.
 
-*Summary: Topics manage their subtopics. On the command recognizer side, they simply forward their subtopic's recognizers as their own. On the audio source side, they listen to their subtopic's events and compose them together with their own events into a single sequence. The root of the hierarchy is plugged into the conversation manager, which composes the whole tree, producing a single command registry and posting a single uadio event sequence.*
+### Managing the interface hierarchy
+
+The final responsibility of a conversation topic is to manage its collection of subtopics. It can fold its subtopics' command recognizers into its own and arrange their audio events into a single sequence to be posted. This capability lets us take advantage of the power of composition to build complex conversational interfaces from simple building blocks.
+
+At first blush, this might not be as intuitive as composing a hierarchy of subviews, so let's make it more concrete by adding search capabilities to shopping app example. When the user issues a search command, let's make the app search the product database and a list of matches to the user. We could pull this off by just modifying our `ProductListTopic` class to recognize search commands. We could also change our `speakProductTitles:` method to be a bit more conversational and add an introduction such as "Here's what I found matching *query*" to the list.
+
+Or, a better idea would be to just leave our perfectly-simple `ProductListTopic` class as-is, and instead use it as a subtopic of a new class that includes the search commands and introductory message. We'll call this new class the `ProductSearchTopic`, and we can implement it (loosely) like this:
+
+**insert implementation example**
+
+**talk about adding root topic conversation manager's registry and to its audio sources**
