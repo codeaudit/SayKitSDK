@@ -14,22 +14,31 @@ We need something similar, but it should be concerned with the speaker and mirco
 
 ## The `SAYConversationTopic` class
 
-In UIKit on iOS, the primary building block for the graphical interface is the `UIView`; the analogous class in SayKit is called the `SAYConversationTopic`. Let's consider what could be considered `UIView`'s three major roles:
+Staying with UIKit for a moment, let's highlight what could be considered `UIView`'s three major roles:
 
-1. Declaring visual output: 
-2. Handling screen input: 
-3. Managing the interface hierarchy: 
+1. Handling screen input: configuring touch event-recognizing behavior (taps, gestures, etc.)
+2. Declaring visual output: drawing their visual content to their frame on screen
+3. Managing the interface hierarchy: composing subviews capable of handling lower-level UI concerns
 
-The `SAYConversationTopic` has the same roles, but with different audio-specific manifestations.
+With those capabilities, a `UIView` instance is able to fulfill its limited duties as the link between the user and application for a particular rectangle of screen real estate. No more, no less.
 
-1. Declaring audio output:
-2. Handling voice input:
-3. Managing the interface hierarchy:  
+The `SAYConversationTopic` has similar roles, but with audio-specific manifestations:
 
-## Topics as Command Registries
+1. Handling voice input: configuring voice command-recognizing behavior
+2. Declaring audio output: posting their audio content as an event sequence
+3. Managing the interface hierarchy: composing subtopics capable of handling lower-level UI concerns
 
-## Topics as Audio Sources
+To learn more, let's discuss each of these roles in turn.
 
-## Topics as Hierarchies
+### Handling Voice Input
 
-// talk about root topic connection to sys mgr
+*Summary: Topics conform to SAYCommandRegistry, so they can be plugged into the conversation manager. They can define the recognizers relevant to their topic*
+
+
+### Topics as Audio Sources
+
+*Summary: Topics confirm to SAYAudioEventSource, so again they can be plugged into the conversation manager. They say only whats relevant to their topic*
+
+### Topics as Hierarchies
+
+*Summary: Topics manage their subtopics. On the command recognizer side, they simply forward their subtopic's recognizers as their own. On the audio source side, they listen to their subtopic's events and compose them together with their own events into a single sequence. The root of the hierarchy is plugged into the conversation manager, which composes the whole tree, producing a single command registry and posting a single uadio event sequence.*
