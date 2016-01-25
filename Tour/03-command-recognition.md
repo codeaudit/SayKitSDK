@@ -110,8 +110,8 @@ greetingsRecognizer.addTextMatcher([SAYPatternCommandMatcher matcherWithPatterns
 SAYCustomCommandRecognizer *greetingsRecognizer = 
 	[[SAYCustomCommandRecognizer alloc] initWithCommandType:@"Greeting"
 				                                actionBlock:^(SAYCommand * _Nonnull) { /* ... */ }];
-    NSArray *patterns = @[@"hello", @"hey", @"what's up"];
-    [greetingsRecognizer addTextMatcher:[SAYPatternCommandMatcher matcherWithPatterns:patterns]];
+NSArray *patterns = @[@"hello", @"hey", @"what's up"];
+[greetingsRecognizer addTextMatcher:[SAYPatternCommandMatcher matcherWithPatterns:patterns]];
 ```
 
 In the near future, we'll be previewing more robust custom command recognition tools, including the intregration of third-party intent recognition services.
