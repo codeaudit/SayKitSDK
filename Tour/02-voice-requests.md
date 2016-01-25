@@ -10,9 +10,11 @@ Voice Requests can be initiated by sending one to the conversation manager. For 
 
 ````swift
 // Swift
-let request = SAYConfirmationRequest(promptText: "Are you sure?") { doIt: Bool in
-	if doIt { /* do it! */ }
-	else    { /* don't do it */ }
+let request = SAYConfirmationRequest(promptText: "Are you sure?") { result in
+	if let doIt = result as? Bool {
+		if doIt { /* do it! */ }
+		else    { /* don't do it */ }
+	}
 }
 SAYConversationManager.systemManager().presentVoiceRequest(request)
 ````
@@ -22,7 +24,7 @@ If the app needs the user to choose a color for the shirt she just added to her 
 ````swift
 // Swift
 let request = SAYSelectRequest(
-    itemLabels: ["Small", "Medium", "Large"],
+    itemLabels: ["Blue", "Green", "Purple"],
     promptText: "What color would you like?") { result in
         // add it to the cart with the given color choice
     }
