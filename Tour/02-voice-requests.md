@@ -4,9 +4,9 @@
 
 The user speech-end of a SayKit app revolves around the `SAYVoiceRequest` class. A **Voice Request** encapsulates the entire "question-answer" process of a dialogue turn: everything between a asking the user a question to triggering an action in response to their answer.
 
-// TODO: add figure depicting scenarios for sample requests
+*add figure with simple scenario highlighting a voice requests*
 
-For example, if the application needs to ask the user for permission to do something, it can create a `SAYConfirmationRequest`, like so:
+Voice Requests can be initiated by sending one to the conversation manager. For example, if the application needs to ask the user for permission to do something, it can create a `SAYConfirmationRequest`, like so:
 
 ````swift
 // Swift
@@ -14,6 +14,7 @@ let request = SAYConfirmationRequest(promptText: "Are you sure?") { doIt: Bool i
 	if doIt { /* do it! */ }
 	else    { /* don't do it */ }
 }
+SAYConversationManager.systemManager().presentVoiceRequest(request)
 ````
 
 If the app needs the user to choose a color for the shirt she just added to her cart, it can use a `SAYSelectRequest`:
@@ -25,6 +26,7 @@ let request = SAYSelectRequest(
     promptText: "What color would you like?") { result in
         // add it to the cart with the given color choice
     }
+SAYConversationManager.systemManager().presentVoiceRequest(request)
 ````
 
 Many voice requests have supplemental visual controls that are automatically presented to the screen when a question is asked. In the case of the select request above, a set of tappable buttons will appear on screen, one per option.
