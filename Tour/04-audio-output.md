@@ -22,11 +22,12 @@ One example source is a class called the `SAYSoundBoard`. Sound boards are simpl
 Let's use a sound board to sum it all up with an example:
 
 ````swift
+// Swift
 let soundBoard = SAYSoundBoard()	
 
 // The system manager has a "Main" track built-in.
 let manager = SAYConversationManager.systemManager()
-manager.addAudioSource(soundBoard, forTrack:SAYAudioTrackMainIdentifier)	
+manager.addAudioSource(soundBoard, forTrack:SAYAudioTrackMainIdentifier)
 
 soundBoard.speakText("Hello nurse!")	
 

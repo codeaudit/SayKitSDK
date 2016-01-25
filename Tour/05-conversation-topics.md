@@ -186,4 +186,4 @@ A lot can be built with just these basic units, but this is just a start. Expect
 
 Thanks for joining us on this in-depth tour of SayKit's major features. 
 
-If you're looking for even more, take a look at our [other developer resources]("../README.md#developer-resources").
+If you're looking for even more, take a look at our [other developer resources](../README.md#developer-resources).

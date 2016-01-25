@@ -40,6 +40,7 @@ Simple apps can get by with a basic `SAYCommandRecognizerCatalog` as a registry,
 A typical pattern is to set the system manager's registry when the application is loading:
 
 ```swift
+// Swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     ...
     let catalog = SAYCommandRecognizerCatalog()
