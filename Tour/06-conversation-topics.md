@@ -10,7 +10,7 @@ We need a better separation of concerns. Not only do we need to keep UI logic di
 
 When it comes to graphical UI development, there are well-established patterns to handle this. For example, Apple designed it's UIKit classes to encourage iOS developers to follow the MVC paradigm (Model-View-Controller), so view code is typically well-separated from the rest of the app's data and logic. In addition, the `UIView` class supports a hierarchical structure, so a view is only directly responsible for a describing part of the scene: it can delegate the lower level details to its subviews.
 
-We need something similar, but it should be concerned with the speaker and mircophone, not the display and touch sensors. We need something conversationally-oriented and capable of keeping distinct topics seperate. We need **Conversation Topics**.
+We need something similar to a view, but focused on the speaker and mircophone. Something conversationally-oriented that's capable of keeping distinct topics seperate. We need **Conversation Topics**.
 
 ## Responsibilities
 
@@ -43,7 +43,9 @@ func speakProductTitles(titles: [String]) {
 	for title in titles {
 		sequence.addEvent(SAYSpeechEvent(utteranceString: title))
 	}
-	self.postEvents(sequence)	// a method defined on the `SAYConversationTopic` base class
+	
+	// this is a method defined on the `SAYConversationTopic` base class that posts events to listeners
+	self.postEvents(sequence)
 }
 ```
 
@@ -54,7 +56,9 @@ func speakProductTitles(titles: [String]) {
 	for (NSString *title in titles) {
 		[sequence addEvent:[SAYSpeechEvent eventWithUtteranceString: title]];
 	}
-	[self postEvents:sequence];	// a method defined on the `SAYConversationTopic` base class
+	
+	// this is a method defined on the `SAYConversationTopic` base class that posts events to listeners
+	[self postEvents:sequence];
 }
 ```
 
@@ -117,7 +121,7 @@ At first blush, this might not be as intuitive as composing a hierarchy of subvi
 
 We could pull this off by tacking features onto our `ProductListTopic` class to recognize search commands. We could also change its `speakProductTitles:` method to be a bit more conversational and preface the list with an introduction like "Here's what I found matching your query:" to the list.
 
-But do we really need to bloat our perfectly-concise `ProductListTopic` class with all of this? Not if we use composition. Instead, let's leave it as is use it as a subtopic of a new class that includes the search commands and introductory message. We'll call this new class the `ProductSearchTopic`, and we can implement it like this in Swift:
+But do we really need to bloat our perfectly-concise `ProductListTopic` class with all of this? Not if we use composition. Instead, let's leave it as is use it as a subtopic of a new class that includes the search commands and introductory message. We'll call this new class the `ProductSearchTopic`. Let's step through a simple implementation of it in Swift:
 
 *[Add diagram of this simple hierarchy]*
 
@@ -178,7 +182,7 @@ A lot can be built with just these basic units, but this is just a start. Expect
 
 - UIKit Integration: It's no accident that many SayKit APIs bear a resemblance to UIKit APIs. Not only does this lessen the difficulty in adopting SayKit, but the parallels allows for seamless integration possibilities with the two frameworks.
 
-- Dialogue text files: Instead of scattered in-line declarations of speech output, a topic could be paired with a text-based file that includes dialogue options tailored to its particular domain (think .xib files, but for speech). This file format will include features tailored to natural speech production, keeping fiddly output text processing out of your code.
+- Dialogue files: Instead of scattered in-line declarations of speech output, a topic could be paired with a text-based file that includes dialogue options tailored to its particular domain (think .xib files, but for speech). This file format will include features tailored to natural speech production, keeping fiddly output text processing out of your code.
 
 ---
 
