@@ -15,14 +15,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        commandRegistry = SAYConversationManager.systemManager().commandRegistry as! SAYCommandRecognizerCatalog
+        
+        commandRegistry.addCommandRecognizer(SAYAvailableCommandsCommandRecognizer(responseTarget: self, action: Selector("handleAvailableCommands")))
+        
+        commandRegistry.addCommandRecognizer(SAYSearchCommandRecognizer(actionBlock: { command in
+            let searchQuery = command.parameters[SAYSearchCommandRecognizerParameterQuery]
+            self.updateAppResultLabelWithText("Received command:\n[Search for \(searchQuery)]")
+        }))
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
     @IBAction func stringRequestButtonTapped(sender: AnyObject)
     {
         let request = SAYStringRequest(promptText:"What recipe would you like to search for?") { result in
@@ -62,6 +65,11 @@ class ViewController: UIViewController {
     
     // MARK: Helpers
     
+    func handleAvailableCommands()
+    {
+        updateAppResultLabelWithText("Received command:\n[Available Commands]")
+    }
+    
     private func handleSelectionWithResult(result: SAYSelectResult?)
     {
         if
@@ -88,4 +96,6 @@ class ViewController: UIViewController {
             self.recognizedSpeechLabel.text = "\"\(text)\""
         }
     }
+    
+    private var commandRegistry: SAYCommandRecognizerCatalog!
 }
