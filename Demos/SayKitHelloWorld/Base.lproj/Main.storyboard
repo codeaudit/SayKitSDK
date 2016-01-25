@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1B-mu-pGx">
+                                <rect key="frame" x="253" y="285" width="94" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Start Request"/>
+                                <connections>
+                                    <action selector="voiceRequestButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KrK-2x-ayB"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEY-H5-HJz">
+                                <rect key="frame" x="274" y="323" width="53" height="20"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Echo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOC-Nf-E4R">
+                                <rect key="frame" x="20" y="572" width="37" height="20"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="jOC-Nf-E4R" secondAttribute="leading" id="8TK-OR-AVz"/>
+                            <constraint firstItem="L1B-mu-pGx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="KYs-6S-WH5"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="jOC-Nf-E4R" secondAttribute="bottom" constant="8" id="Nru-pD-zfe"/>
+                            <constraint firstItem="MEY-H5-HJz" firstAttribute="top" secondItem="L1B-mu-pGx" secondAttribute="bottom" constant="8" id="URC-c7-hVu"/>
+                            <constraint firstItem="MEY-H5-HJz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YqW-P7-ozF"/>
+                            <constraint firstItem="L1B-mu-pGx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qzR-TO-A5A"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="echoLabel" destination="jOC-Nf-E4R" id="Hl0-oX-40I"/>
+                        <outlet property="resultsLabel" destination="MEY-H5-HJz" id="SgV-5N-ri5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
