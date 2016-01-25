@@ -37,6 +37,21 @@ class ViewController: UIViewController {
         commandRegistry.addCommandRecognizer(selectRecognizer)
     }
     
+    @IBAction func confirmationRequestButtonTapped(sender: AnyObject)
+    {
+        let request = SAYConfirmationRequest(promptText: "Are you sure?") { result in
+            if let doIt = result as? Bool {
+                if doIt { self.updateAppResultLabelWithText("Received comand:\n[Do it!]") }
+                else    { self.updateAppResultLabelWithText("Received command:\n[Don't do it!]") }
+            }
+            else {
+                /* ... */
+            }
+        }
+        
+        SAYConversationManager.systemManager().presentVoiceRequest(request)
+    }
+    
     @IBAction func stringRequestButtonTapped(sender: AnyObject)
     {
         let request = SAYStringRequest(promptText:"What recipe would you like to search for?") { result in
