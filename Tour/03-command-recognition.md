@@ -51,12 +51,11 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 }
 ```
 
-
-*TODO: discuss the command bar and the available commands menu*
-
 ## Extending Command Recognizers
 
 SayKit doesn't restrict you to its built-in library, however. Standard recognizers can be extended to handle broader speech patterns and you can even create your own recognizers to handle custom commands.
+
+Recognizer instances can be modified by adding **Text Matchers** to them. In essense, a text matcher is a simple agent that processes a string of text and decides how likely it is to match the relevant command. A few types of built-in text matchers exist, most notably the `SAYPatternCommandMatcher`, which uses a set of pattern templates to match user speech. We'll use one in a moment below.
 
 As a quick example let's say we're building a Pokémon-themed email app (as you do), and we want it to recognize the following command: "I choose you, John Smith!" to add a recepient to a message. SayKit already provides the `SAYSelectCommandRecognizer`, which recognizes when the user wants to make a selection, but it wasn't necessarily built with Pokémon trainers in mind. So what can we do?
 
@@ -94,6 +93,28 @@ selectRecognizer.addTextMatcher(SAYPatternCommandMatcher(pattern: pattern))
 ````
 
 Done! Assuming if you have a bunch of Pokémon in your address book, you've now got the perfect email client.
+
+## Custom Commands
+
+It's fairly likely that you'll need to employ recognizers for commands that SayKit does not provide. For these cases, the `SAYCustomCommandRecognizer` is available. For instance, here's a quick recognizer that attempts to recognize greetings, using the custom command type "Greeting":
+
+```Swift
+// Swift
+let greetingsRecognizer = SAYCustomCommandRecognizer(commandType: "Greeting") { cmd in /* ... */ }
+let patterns = ["hello", "hey", "what's up"]
+greetingsRecognizer.addTextMatcher([SAYPatternCommandMatcher matcherWithPatterns:patterns])
+```
+
+```objc
+// Objective-C
+SAYCustomCommandRecognizer *greetingsRecognizer = 
+	[[SAYCustomCommandRecognizer alloc] initWithCommandType:@"Greeting"
+				                                actionBlock:^(SAYCommand * _Nonnull) { /* ... */ }];
+    NSArray *patterns = @[@"hello", @"hey", @"what's up"];
+    [greetingsRecognizer addTextMatcher:[SAYPatternCommandMatcher matcherWithPatterns:patterns]];
+```
+
+In the near future, we'll be previewing more robust custom command recognition tools, including the intregration of third-party intent recognition services.
 
 This just scratches the surface of customizing command recognizers. To learn more, check out our developer guide on the topic (coming soon!).
 
