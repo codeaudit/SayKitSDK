@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>SAYCommandBarController Class Reference</title>
+		<title>SAYStandardSpeechRecognizer Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">SAYCommandBarController Class Reference</h1>
+				<h1 class="hideInXcode">SAYStandardSpeechRecognizer Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -25,8 +25,6 @@
 				<li id="jumpto_button" role="navigation">
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
-	
-	<option value="overview">Overview</option>
 	
 	
 	
@@ -39,11 +37,7 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/commandBar">&nbsp;&nbsp;&nbsp;&nbsp;commandBar</option>
-	
-	<option value="//api/name/contentViewController">&nbsp;&nbsp;&nbsp;&nbsp;contentViewController</option>
-	
-	<option value="//api/name/conversationManager">&nbsp;&nbsp;&nbsp;&nbsp;conversationManager</option>
+	<option value="//api/name/delegate">&nbsp;&nbsp;&nbsp;&nbsp;delegate</option>
 	
 	
 	
@@ -58,8 +52,6 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
-<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
-
 
 
 
@@ -73,11 +65,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/commandBar">commandBar</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/contentViewController">contentViewController</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/conversationManager">conversationManager</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/delegate">delegate</a></span></li>
 	
 </ul></li>
 
@@ -90,7 +78,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="SAYCommandBarController Class Reference" name="top"></a>
+				<a title="SAYStandardSpeechRecognizer Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -99,7 +87,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">SAYCommandBarController Class Reference</h1>
+						<h1 class="title title-header">SAYStandardSpeechRecognizer Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -107,26 +95,18 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value">UIViewController</td>
+	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Conforms to</td>
-	<td class="specification-value"><a href="../Protocols/SAYCommandBarDelegate.html">SAYCommandBarDelegate</a></td>
+	<td class="specification-value"><a href="../Protocols/SAYSpeechRecognitionService.html">SAYSpeechRecognitionService</a></td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">SAYCommandBarController.h</td>
+	<td class="specification-value">SAYStandardSpeechRecognizer.h</td>
 </tr>
 						</tbody></table></div>
 					
                     
                     
-					
-					<div class="section section-overview">
-						<a title="Overview" name="overview"></a>
-						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>The <code>SAYCommandBarController</code> connects a <a href="../Classes/SAYCommandBar.html"><code>SAYCommandBar</code></a> with the SayKit systems needed to perform a voice command request. Like a <code>UITabBarController</code> it is a container view controller intended to have content embedded inside it.</p>
-					</div>
-					
-					
 					
 					
 					
@@ -141,19 +121,7 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/commandBar">&nbsp;&nbsp;commandBar</a></code>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/conversationManager">&nbsp;&nbsp;conversationManager</a></code>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/contentViewController">&nbsp;&nbsp;contentViewController</a></code>
+		<code><a href="#//api/name/delegate">&nbsp;&nbsp;delegate</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -171,18 +139,18 @@
 						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/commandBar" title="commandBar"></a>
-	<h3 class="subsubtitle method-title">commandBar</h3>
+	<a name="//api/name/delegate" title="delegate"></a>
+	<h3 class="subsubtitle method-title">delegate</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The command bar displayed</p>
+		<p>A delegate instance to receive updates and responses from the recognition process.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) SAYCommandBar *commandBar</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, nullable) id&lt;SAYSpeechRecognitionServiceDelegate&gt; delegate</code></div>
 
     
 	
@@ -194,7 +162,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>The command bar displayed</p>
+		<p>A delegate instance to receive updates and responses from the recognition process.</p>
 	</div>
 	
 	
@@ -205,103 +173,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYCommandBarController.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/contentViewController" title="contentViewController"></a>
-	<h3 class="subsubtitle method-title">contentViewController</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<ul>
-<li>The content view controller embedded in the frame above the command bar.</li>
-</ul>
-
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) UIViewController *contentViewController</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<ul>
-<li>The content view controller embedded in the frame above the command bar.</li>
-</ul>
-<div class="warning"><p><strong>Warning:</strong> Use this to manage the single <code>SAYCommandBarController</code> child controller, not <code>addChildViewController:</code> and <code>removeChildViewController:</code>.</p></div>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYCommandBarController.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/conversationManager" title="conversationManager"></a>
-	<h3 class="subsubtitle method-title">conversationManager</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<ul>
-<li>The instance responsible for presenting and activating the underlying <a href="../Classes/SAYVerbalCommandRequest.html"><code>SAYVerbalCommandRequest</code></a>.</li>
-</ul>
-
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) SAYConversationManager *conversationManager</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<ul>
-<li><p>The instance responsible for presenting and activating the underlying <a href="../Classes/SAYVerbalCommandRequest.html"><code>SAYVerbalCommandRequest</code></a>.</p>
-
-<p> Defaults to SayKit&rsquo;s default <a href="../Classes/SAYVoiceRequestPresenter.html"><code>SAYVoiceRequestPresenter</code></a>.</p></li>
-</ul>
-
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYCommandBarController.h</code><br />
+		<code class="declared-in-ref">SAYSpeechRecognitionService.h</code><br />
 	</div>				
 	
 	

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>SAYNumericalResult Class Reference</title>
+		<title>SAYVoiceRequestView Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">SAYNumericalResult Class Reference</h1>
+				<h1 class="hideInXcode">SAYVoiceRequestView Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -25,8 +25,6 @@
 				<li id="jumpto_button" role="navigation">
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
-	
-	<option value="overview">Overview</option>
 	
 	
 	
@@ -39,20 +37,21 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/error">&nbsp;&nbsp;&nbsp;&nbsp;error</option>
+	<option value="//api/name/microphoneButton">&nbsp;&nbsp;&nbsp;&nbsp;microphoneButton</option>
 	
-	<option value="//api/name/number">&nbsp;&nbsp;&nbsp;&nbsp;number</option>
+	<option value="//api/name/microphoneDelegate">&nbsp;&nbsp;&nbsp;&nbsp;microphoneDelegate</option>
+	
+	<option value="//api/name/partialTranscriptLabel">&nbsp;&nbsp;&nbsp;&nbsp;partialTranscriptLabel</option>
+	
+	<option value="//api/name/promptTextView">&nbsp;&nbsp;&nbsp;&nbsp;promptTextView</option>
+	
+	<option value="//api/name/supplementalViewContainer">&nbsp;&nbsp;&nbsp;&nbsp;supplementalViewContainer</option>
+	
+	<option value="//api/name/waveformView">&nbsp;&nbsp;&nbsp;&nbsp;waveformView</option>
 	
 	
 	
 	
-	
-	
-	<option value="instance_methods">Instance Methods</option>
-	
-	<option value="//api/name/initWithError:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithError:</option>
-	
-	<option value="//api/name/initWithNumber:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithNumber:</option>
 	
 	
 	
@@ -63,8 +62,6 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
-<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
-
 
 
 
@@ -78,30 +75,30 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/error">error</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/microphoneButton">microphoneButton</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/number">number</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/microphoneDelegate">microphoneDelegate</a></span></li>
 	
-</ul></li>
-
-
-
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/partialTranscriptLabel">partialTranscriptLabel</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithError:">initWithError:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/promptTextView">promptTextView</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithNumber:">initWithNumber:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/supplementalViewContainer">supplementalViewContainer</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/waveformView">waveformView</a></span></li>
 	
 </ul></li>
+
+
+
+
 
 
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="SAYNumericalResult Class Reference" name="top"></a>
+				<a title="SAYVoiceRequestView Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -110,7 +107,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">SAYNumericalResult Class Reference</h1>
+						<h1 class="title title-header">SAYVoiceRequestView Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -118,23 +115,15 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value">NSObject</td>
+	<td class="specification-value">UIView</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">SAYNumericalResult.h</td>
+	<td class="specification-value">SAYVoiceRequestView.h</td>
 </tr>
 						</tbody></table></div>
 					
                     
                     
-					
-					<div class="section section-overview">
-						<a title="Overview" name="overview"></a>
-						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Encapsulates result data from a completed <a href="../Classes/SAYNumericalRequest.html"><code>SAYNumericalRequest</code></a></p>
-					</div>
-					
-					
 					
 					
 					
@@ -149,27 +138,39 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/number">&nbsp;&nbsp;number</a></code>
+		<code><a href="#//api/name/promptTextView">&nbsp;&nbsp;promptTextView</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/error">&nbsp;&nbsp;error</a></code>
+		<code><a href="#//api/name/microphoneButton">&nbsp;&nbsp;microphoneButton</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithNumber:">&ndash;&nbsp;initWithNumber:</a></code>
+		<code><a href="#//api/name/partialTranscriptLabel">&nbsp;&nbsp;partialTranscriptLabel</a></code>
 	</span>
-	
+	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithError:">&ndash;&nbsp;initWithError:</a></code>
+		<code><a href="#//api/name/supplementalViewContainer">&nbsp;&nbsp;supplementalViewContainer</a></code>
 	</span>
+	<span class="task-item-suffix">property</span>
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/microphoneDelegate">&nbsp;&nbsp;microphoneDelegate</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/waveformView">&nbsp;&nbsp;waveformView</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
 	
 </li>
 						</ul>
@@ -185,18 +186,18 @@
 						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/error" title="error"></a>
-	<h3 class="subsubtitle method-title">error</h3>
+	<a name="//api/name/microphoneButton" title="microphoneButton"></a>
+	<h3 class="subsubtitle method-title">microphoneButton</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Error that prevented the request from completing successfully.</p>
+		<p>Button to control microphone activity</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly, nullable) NSError *error</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) UIButton *microphoneButton</code></div>
 
     
 	
@@ -208,7 +209,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Error that prevented the request from completing successfully.</p>
+		<p>Button to control microphone activity</p>
 	</div>
 	
 	
@@ -219,25 +220,25 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYNumericalResult.h</code><br />
+		<code class="declared-in-ref">SAYVoiceRequestView.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/number" title="number"></a>
-	<h3 class="subsubtitle method-title">number</h3>
+	<a name="//api/name/microphoneDelegate" title="microphoneDelegate"></a>
+	<h3 class="subsubtitle method-title">microphoneDelegate</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Result represented as a number. If nil, no number could be interpreted from user input.</p>
+		<p>Delegate listening for microphone events</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly, nullable) NSNumber *number</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, weak) id&lt;SAYVoiceRequestMicrophoneDelegate&gt; microphoneDelegate</code></div>
 
     
 	
@@ -249,7 +250,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Result represented as a number. If nil, no number could be interpreted from user input.</p>
+		<p>Delegate listening for microphone events</p>
 	</div>
 	
 	
@@ -260,7 +261,177 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYNumericalResult.h</code><br />
+		<code class="declared-in-ref">SAYVoiceRequestView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/partialTranscriptLabel" title="partialTranscriptLabel"></a>
+	<h3 class="subsubtitle method-title">partialTranscriptLabel</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Displays a partial transcript received from the speech recognition service</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) UILabel *partialTranscriptLabel</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Displays a partial transcript received from the speech recognition service</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/promptTextView" title="promptTextView"></a>
+	<h3 class="subsubtitle method-title">promptTextView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<ul>
+<li>Displays the current prompt text.</li>
+</ul>
+
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) UITextView *promptTextView</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<ul>
+<li>Displays the current prompt text.</li>
+</ul>
+<div class="warning"><p><strong>Warning:</strong> To update the view&rsquo;s text content, use <a href="#//api/name/setPromptString:"><code>setPromptString:</code></a> or <a href="#//api/name/setPromptAttributedString:"><code>setPromptAttributedString:</code></a> rather than setting it directly through this property.</p></div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/supplementalViewContainer" title="supplementalViewContainer"></a>
+	<h3 class="subsubtitle method-title">supplementalViewContainer</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>View containing the supplemental prompt view</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) UIView *supplementalViewContainer</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>View containing the supplemental prompt view</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestView.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/waveformView" title="waveformView"></a>
+	<h3 class="subsubtitle method-title">waveformView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Visualization of microphone activity</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) SAYWaveformView *waveformView</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Visualization of microphone activity</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestView.h</code><br />
 	</div>				
 	
 	
@@ -271,124 +442,6 @@
 					
 					
 					
-					
-					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithError:" title="initWithError:"></a>
-	<h3 class="subsubtitle method-title">initWithError:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Initializer for a new <code>SAYNumericalResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (instancetype)initWithError:(NSError *)<em>error</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>error</em></dt>
-			<dd><p>Content of <a href="#//api/name/error">error</a> underlying failure</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The newly-initiated <code>SAYNumericalResult</code></p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializer for a new <code>SAYNumericalResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYNumericalResult.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithNumber:" title="initWithNumber:"></a>
-	<h3 class="subsubtitle method-title">initWithNumber:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Initializer for a new <code>SAYNumericalResult</code> representing a request with a successful boolean result.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (instancetype)initWithNumber:(NSNumber *)<em>number</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>number</em></dt>
-			<dd><p>Number representing user&rsquo;s numerical response</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The newly-initiated <code>SAYNumericalResult</code></p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializer for a new <code>SAYNumericalResult</code> representing a request with a successful boolean result.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYNumericalResult.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
 					
 					
                     
@@ -406,7 +459,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 Conversant Labs. All rights reserved. (Last updated: 2015-12-09)</span><br />
+						<p><span class="copyright">&copy; 2016 Conversant Labs. All rights reserved. (Last updated: 2016-01-25)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</span></p>
 						

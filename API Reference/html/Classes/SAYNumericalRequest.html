@@ -31,30 +31,12 @@
 	
 	
 	
-	<option value="tasks">Tasks</option>
-	
-	
-	
-	
-	
-	<option value="properties">Properties</option>
-	
-	<option value="//api/name/completionBlock">&nbsp;&nbsp;&nbsp;&nbsp;completionBlock</option>
-	
-	<option value="//api/name/followupPromptText">&nbsp;&nbsp;&nbsp;&nbsp;followupPromptText</option>
-	
-	<option value="//api/name/promptText">&nbsp;&nbsp;&nbsp;&nbsp;promptText</option>
 	
 	
 	
 	
 	
 	
-	<option value="instance_methods">Instance Methods</option>
-	
-	<option value="//api/name/initWithPromptText:completionBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithPromptText:completionBlock:</option>
-	
-	<option value="//api/name/initWithRecognitionService:responder:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithRecognitionService:responder:</option>
 	
 	
 	
@@ -70,35 +52,13 @@
 
 
 
-<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
-	
-</ul></li>
 
 
 
 
 
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/completionBlock">completionBlock</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/followupPromptText">followupPromptText</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/promptText">promptText</a></span></li>
-	
-</ul></li>
 
 
-
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithPromptText:completionBlock:">initWithPromptText:completionBlock:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithRecognitionService:responder:">initWithRecognitionService:responder:</a></span></li>
-	
-</ul></li>
 
 
 			</ul>
@@ -122,7 +82,7 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value"><a href="../Classes/SAYVoiceRequest.html">SAYVoiceRequest</a> : NSObject</td>
+	<td class="specification-value"><a href="../Classes/SAYStandardVoiceRequest.html">SAYStandardVoiceRequest</a> : NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
 	<td class="specification-value">SAYNumericalRequest.h</td>
@@ -142,314 +102,13 @@
 					
 					
 					
-					<div class="section section-tasks">
-						<a title="Tasks" name="tasks"></a>
-						<h2 class="subtitle subtitle-tasks">Tasks</h2>
-						
-						
-						
-						
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/promptText">&nbsp;&nbsp;promptText</a></code>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/followupPromptText">&nbsp;&nbsp;followupPromptText</a></code>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/completionBlock">&nbsp;&nbsp;completionBlock</a></code>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/initWithPromptText:completionBlock:">&ndash;&nbsp;initWithPromptText:completionBlock:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/initWithRecognitionService:responder:">&ndash;&nbsp;initWithRecognitionService:responder:</a></code>
-	</span>
-	
-	
-</li>
-						</ul>
-						
-					</div>
 					
 					
 					
 					
 					
-					<div class="section section-methods">
-						<a title="Properties" name="properties"></a>
-						<h2 class="subtitle subtitle-methods">Properties</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/completionBlock" title="completionBlock"></a>
-	<h3 class="subsubtitle method-title">completionBlock</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Block the interpreted result is sent to. A nil result indicates the request was cancelled.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) void ( ^ ) ( SAYNumericalResult *__nullable ) completionBlock</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Block the interpreted result is sent to. A nil result indicates the request was cancelled.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYNumericalRequest.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/followupPromptText" title="followupPromptText"></a>
-	<h3 class="subsubtitle method-title">followupPromptText</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Message presented before the user is asked to speak again because the first attempt failed to produce a result.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, null_resettable) NSString *followupPromptText</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Message presented before the user is asked to speak again because the first attempt failed to produce a result.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYNumericalRequest.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/promptText" title="promptText"></a>
-	<h3 class="subsubtitle method-title">promptText</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Message to present to the user before the application turns on the microphone.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *promptText</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Message to present to the user before the application turns on the microphone.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYNumericalRequest.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
 					
 					
-					
-					
-					
-					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithPromptText:completionBlock:" title="initWithPromptText:completionBlock:"></a>
-	<h3 class="subsubtitle method-title">initWithPromptText:completionBlock:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Initializes new request</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (instancetype)initWithPromptText:(NSString *)<em>prompt</em> completionBlock:(void ( ^ ) ( SAYNumericalResult *__nullable ))<em>completionBlock</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>prompt</em></dt>
-			<dd><p>Message to present to the user when the prompt begins</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>completionBlock</em></dt>
-			<dd><p>Block to deliver result to</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The newly-initialized <code>SAYNumericalRequest</code></p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializes new request</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYNumericalRequest.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithRecognitionService:responder:" title="initWithRecognitionService:responder:"></a>
-	<h3 class="subsubtitle method-title">initWithRecognitionService:responder:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Initiates a voice request using the given recognition service and recognized speech <a href="../Classes/SAYVoiceRequest.html#//api/name/responder">responder</a>.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (instancetype)initWithRecognitionService:(id&lt;SAYSpeechRecognitionService&gt;)<em>recognitionService</em> responder:(id&lt;SAYVoiceRequestResponder&gt;)<em>responder</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>recognitionService</em></dt>
-			<dd><p>Agent responsible for communicating with speech recognition service</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>responder</em></dt>
-			<dd><p>Agent responsible for responding to recognized speech (or recognition error)</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The newly initialized request</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initiates a voice request using the given recognition service and recognized speech <a href="../Classes/SAYVoiceRequest.html#//api/name/responder">responder</a>.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYVoiceRequest.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
 					
 					
                     
@@ -467,7 +126,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 Conversant Labs. All rights reserved. (Last updated: 2015-12-09)</span><br />
+						<p><span class="copyright">&copy; 2016 Conversant Labs. All rights reserved. (Last updated: 2016-01-25)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</span></p>
 						

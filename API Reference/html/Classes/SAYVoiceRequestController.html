@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>SAYTextResolutionRegistry Class Reference</title>
+		<title>SAYVoiceRequestController Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">SAYTextResolutionRegistry Class Reference</h1>
+				<h1 class="hideInXcode">SAYVoiceRequestController Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -25,8 +25,6 @@
 				<li id="jumpto_button" role="navigation">
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
-	
-	<option value="overview">Overview</option>
 	
 	
 	
@@ -37,19 +35,21 @@
 	
 	
 	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/overlayBlurEffectStyle">&nbsp;&nbsp;&nbsp;&nbsp;overlayBlurEffectStyle</option>
+	
+	<option value="//api/name/presenter">&nbsp;&nbsp;&nbsp;&nbsp;presenter</option>
+	
+	<option value="//api/name/soundBoard">&nbsp;&nbsp;&nbsp;&nbsp;soundBoard</option>
+	
+	<option value="//api/name/supplementalViewController">&nbsp;&nbsp;&nbsp;&nbsp;supplementalViewController</option>
+	
+	<option value="//api/name/voiceRequestView">&nbsp;&nbsp;&nbsp;&nbsp;voiceRequestView</option>
 	
 	
 	
 	
-	<option value="instance_methods">Instance Methods</option>
-	
-	<option value="//api/name/deregisterAll">&nbsp;&nbsp;&nbsp;&nbsp;- deregisterAll</option>
-	
-	<option value="//api/name/deregisterTextResolverWithTag:">&nbsp;&nbsp;&nbsp;&nbsp;- deregisterTextResolverWithTag:</option>
-	
-	<option value="//api/name/registerTextResolver:">&nbsp;&nbsp;&nbsp;&nbsp;- registerTextResolver:</option>
-	
-	<option value="//api/name/registerTextResolver:withTag:">&nbsp;&nbsp;&nbsp;&nbsp;- registerTextResolver:withTag:</option>
 	
 	
 	
@@ -60,8 +60,6 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
-<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
-
 
 
 
@@ -73,28 +71,30 @@
 
 
 
-
-
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deregisterAll">deregisterAll</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/overlayBlurEffectStyle">overlayBlurEffectStyle</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deregisterTextResolverWithTag:">deregisterTextResolverWithTag:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/presenter">presenter</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/registerTextResolver:">registerTextResolver:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/soundBoard">soundBoard</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/registerTextResolver:withTag:">registerTextResolver:withTag:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/supplementalViewController">supplementalViewController</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/voiceRequestView">voiceRequestView</a></span></li>
 	
 </ul></li>
+
+
+
+
 
 
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="SAYTextResolutionRegistry Class Reference" name="top"></a>
+				<a title="SAYVoiceRequestController Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -103,7 +103,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">SAYTextResolutionRegistry Class Reference</h1>
+						<h1 class="title title-header">SAYVoiceRequestController Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -111,26 +111,18 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value">NSObject</td>
+	<td class="specification-value">UIViewController</td>
 </tr><tr>
 	<td class="specification-title">Conforms to</td>
-	<td class="specification-value"><a href="../Protocols/SAYTextCommandResolver.html">SAYTextCommandResolver</a></td>
+	<td class="specification-value"><a href="../Protocols/SAYSpeechRecognitionManagerDelegate.html">SAYSpeechRecognitionManagerDelegate</a></td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">SAYTextResolutionRegistry.h</td>
+	<td class="specification-value">SAYVoiceRequestController.h</td>
 </tr>
 						</tbody></table></div>
 					
                     
                     
-					
-					<div class="section section-overview">
-						<a title="Overview" name="overview"></a>
-						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>The <code>SAYTextResolutionRegistry</code> is a simple implementation of a <a href="../Protocols/SAYTextCommandResolver.html"><code>SAYTextCommandResolver</code></a>, acting as a flat registry of functions capable of interpretting raw text.</p>
-					</div>
-					
-					
 					
 					
 					
@@ -145,27 +137,33 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/registerTextResolver:">&ndash;&nbsp;registerTextResolver:</a></code>
+		<code><a href="#//api/name/voiceRequestView">&nbsp;&nbsp;voiceRequestView</a></code>
 	</span>
-	
+	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/registerTextResolver:withTag:">&ndash;&nbsp;registerTextResolver:withTag:</a></code>
+		<code><a href="#//api/name/soundBoard">&nbsp;&nbsp;soundBoard</a></code>
 	</span>
-	
+	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/deregisterTextResolverWithTag:">&ndash;&nbsp;deregisterTextResolverWithTag:</a></code>
+		<code><a href="#//api/name/overlayBlurEffectStyle">&nbsp;&nbsp;overlayBlurEffectStyle</a></code>
 	</span>
-	
+	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/deregisterAll">&ndash;&nbsp;deregisterAll</a></code>
+		<code><a href="#//api/name/supplementalViewController">&nbsp;&nbsp;supplementalViewController</a></code>
 	</span>
+	<span class="task-item-suffix">property</span>
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/presenter">&nbsp;&nbsp;presenter</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
 	
 </li>
 						</ul>
@@ -176,27 +174,23 @@
 					
 					
 					
-					
-					
-					
-					
 					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/deregisterAll" title="deregisterAll"></a>
-	<h3 class="subsubtitle method-title">deregisterAll</h3>
+	<a name="//api/name/overlayBlurEffectStyle" title="overlayBlurEffectStyle"></a>
+	<h3 class="subsubtitle method-title">overlayBlurEffectStyle</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Removes all blocks from the registry</p>
+		<p>Customizable style for the overlay underlying the request view</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)deregisterAll</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) UIBlurEffectStyle overlayBlurEffectStyle</code></div>
 
     
 	
@@ -208,7 +202,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Removes all blocks from the registry</p>
+		<p>Customizable style for the overlay underlying the request view</p>
 	</div>
 	
 	
@@ -219,37 +213,30 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYTextResolutionRegistry.h</code><br />
+		<code class="declared-in-ref">SAYVoiceRequestController.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/deregisterTextResolverWithTag:" title="deregisterTextResolverWithTag:"></a>
-	<h3 class="subsubtitle method-title">deregisterTextResolverWithTag:</h3>
+	<a name="//api/name/presenter" title="presenter"></a>
+	<h3 class="subsubtitle method-title">presenter</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Removes the block from the registry asosciated with the given tag. A block must have been initially registered with <a href="#//api/name/registerTextResolver:withTag:"><code>registerTextResolver:withTag:</code></a> to use this method.</p>
+		<ul>
+<li>When the request is active, the instance that presented it.</li>
+</ul>
+
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)deregisterTextResolverWithTag:(NSString *)<em>tag</em></code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) SAYVoiceRequestPresenter *presenter</code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>tag</em></dt>
-			<dd><p>String associated with the block</p></dd>
-		</dl>
-		
-	</div>
 	
 	
 	
@@ -259,7 +246,12 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Removes the block from the registry asosciated with the given tag. A block must have been initially registered with <a href="#//api/name/registerTextResolver:withTag:"><code>registerTextResolver:withTag:</code></a> to use this method.</p>
+		<ul>
+<li>When the request is active, the instance that presented it.</li>
+</ul>
+
+
+<p>This property is nil when the request is no currently presented.</p>
 	</div>
 	
 	
@@ -270,37 +262,27 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYTextResolutionRegistry.h</code><br />
+		<code class="declared-in-ref">SAYVoiceRequestController.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/registerTextResolver:" title="registerTextResolver:"></a>
-	<h3 class="subsubtitle method-title">registerTextResolver:</h3>
+	<a name="//api/name/soundBoard" title="soundBoard"></a>
+	<h3 class="subsubtitle method-title">soundBoard</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Registers a text resolution block with the registry.</p>
+		<p>An audio interface to provide feedback during the request session.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)registerTextResolver:(SAYTextResolverBlock)<em>block</em></code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) SAYVoiceRequestSoundBoard *soundBoard</code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>block</em></dt>
-			<dd><p>Function capable of transforming text to potential commands</p></dd>
-		</dl>
-		
-	</div>
 	
 	
 	
@@ -310,9 +292,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Registers a text resolution block with the registry.</p>
-
-<p>When resolving, these blocks are processed in a linear order matching the order of registration. This means that the resulting enumeration of potential commands will be sorted according to the order their corresponding source resolver blocks are registered.</p>
+		<p>An audio interface to provide feedback during the request session.</p>
 	</div>
 	
 	
@@ -323,42 +303,27 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYTextResolutionRegistry.h</code><br />
+		<code class="declared-in-ref">SAYVoiceRequestController.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/registerTextResolver:withTag:" title="registerTextResolver:withTag:"></a>
-	<h3 class="subsubtitle method-title">registerTextResolver:withTag:</h3>
+	<a name="//api/name/supplementalViewController" title="supplementalViewController"></a>
+	<h3 class="subsubtitle method-title">supplementalViewController</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Registers a text resolution block associated with a tag. This tag gives a handle for allowing the deregistration of the block in the future.</p>
+		<p>A supplemental child controller whose view is embedded in the <a href="#//api/name/voiceRequestView"><code>voiceRequestView</code></a></p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)registerTextResolver:(SAYTextResolverBlock)<em>block</em> withTag:(NSString *)<em>tag</em></code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly, nullable) UIViewController *supplementalViewController</code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>block</em></dt>
-			<dd><p>Function capable of transforming text to potential commands</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>tag</em></dt>
-			<dd><p>String to associate with the block</p></dd>
-		</dl>
-		
-	</div>
 	
 	
 	
@@ -368,7 +333,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Registers a text resolution block associated with a tag. This tag gives a handle for allowing the deregistration of the block in the future.</p>
+		<p>A supplemental child controller whose view is embedded in the <a href="#//api/name/voiceRequestView"><code>voiceRequestView</code></a></p>
 	</div>
 	
 	
@@ -379,13 +344,58 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYTextResolutionRegistry.h</code><br />
+		<code class="declared-in-ref">SAYVoiceRequestController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/voiceRequestView" title="voiceRequestView"></a>
+	<h3 class="subsubtitle method-title">voiceRequestView</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Primary view displaying state of request and allowing interaction with the request flow</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, null_unspecified) SAYVoiceRequestView *voiceRequestView</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Primary view displaying state of request and allowing interaction with the request flow</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequestController.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 					</div>
+					
+					
+					
+					
 					
 					
                     
@@ -403,7 +413,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 Conversant Labs. All rights reserved. (Last updated: 2015-12-09)</span><br />
+						<p><span class="copyright">&copy; 2016 Conversant Labs. All rights reserved. (Last updated: 2016-01-25)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</span></p>
 						
