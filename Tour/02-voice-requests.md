@@ -62,4 +62,4 @@ The third item there is the key to creating a turn-taking dialogue. By providing
 
 Forthcoming SayKit releases will introduce higher-level abstractions that take advantage of this turn-taking mechanism, allowing developers to create entire dialogue trees without dealing with the particulars of inidivudal response handling.
 
-[Next - Command Recognition >>](./03-command-recognition.md)
+[Next - Command Recognition >>](./03-command-recognition-pt1.md)
