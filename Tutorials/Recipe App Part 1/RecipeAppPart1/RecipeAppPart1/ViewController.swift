@@ -17,11 +17,17 @@ class ViewController: UIViewController {
         
         commandRegistry = SAYConversationManager.systemManager().commandRegistry as! SAYCommandRecognizerCatalog
         
-        commandRegistry.addCommandRecognizer(SAYAvailableCommandsCommandRecognizer(responseTarget: self, action: "handleAvailableCommands"))
+        commandRegistry.addCommandRecognizer(SAYAvailableCommandsCommandRecognizer(responseTarget: self, action: "availableCommandsRequested"))
+        
+        commandRegistry.addCommandRecognizer(SAYSearchCommandRecognizer(responseTarget: self, action: "searchRequested:"))
         
         commandRegistry.addCommandRecognizer(SAYSearchCommandRecognizer(actionBlock: { command in
-            let searchQuery = command.parameters[SAYSearchCommandRecognizerParameterQuery]
-            self.updateAppResultLabelWithText("Received command:\n[Search for \(searchQuery)]")
+            if let searchQuery = command.parameters[SAYSearchCommandRecognizerParameterQuery] {
+                self.updateAppResultLabelWithText("Received command:\n[Search for \(searchQuery)]")
+            }
+            else {
+                /* ... */
+            }
         }))
         
         let selectRecognizer = SAYSelectCommandRecognizer(actionBlock: { command in
@@ -90,9 +96,19 @@ class ViewController: UIViewController {
     
     // MARK: Helpers
     
-    func handleAvailableCommands()
+    func availableCommandsRequested()
     {
         updateAppResultLabelWithText("Received command:\n[Available Commands]")
+    }
+    
+    func searchRequested(command: SAYCommand)
+    {
+        if let searchQuery = command.parameters[SAYSearchCommandRecognizerParameterQuery] {
+            self.updateAppResultLabelWithText("Received command:\n[Search for \(searchQuery)]")
+        }
+        else {
+            /* ... */
+        }
     }
     
     private func handleSelectionWithResult(result: SAYSelectResult?)
