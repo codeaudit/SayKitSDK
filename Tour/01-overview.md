@@ -1,6 +1,6 @@
 # SayKit Overview
 
-> Note: Many of the code snippets in this tour come from the demo app featured in [our tutorial](#). Be sure to take a look at the demo for more thorough context and full implementation details.
+> Note: Many of the code snippets in this tour come from the demo app featured in [our tutorial](https://github.com/ConversantLabs/SayKitSDK/blob/master/Tutorials/SayKitTutorialOutline.md). Be sure to take a look at the demo for more thorough context and full implementation details.
 
 ## Conversation Management
 
@@ -18,9 +18,9 @@ The `SAYConversationManager` is the keystone of the SayKit framework. Each SayKi
 SAYConversationManager.systemManager()
 ````
 
-Much like `UIWindow` for UIKit, the manager acts as the logical root of the user interface, administering and coordinating both the input (listening) and output (speaking) roles of the conversational UI. Also, much like `UIWindow`, you can ignore it's presence most of the time after some minor configuration at app launch.
+Much like `UIWindow` for UIKit, the manager acts as the logical root of the user interface, administering and coordinating both the input (listening) and output (speaking) roles of the conversational UI. Also, much like `UIWindow`, you can ignore its presence most of the time after some minor configuration at app launch.
 
-Now, let's have a quick overview of the systems that the manager is in charge of coordinating.
+Now, let's have a quick overview of the systems coordinated by the manager.
 
 ### Voice Requests
 
@@ -36,7 +36,7 @@ On the other hand, what if the user wants to start the conversation by issuing a
 
 Again, SayKit provides a selection of extendable built-in recognizers (such as the `SAYSearchCommandRecognizer` or `SAYHelpCommandRecognizer`) that are capable of understanding a variety of user speech patterns, and tools exist to create your own recognizers as well.
 
-To read more about this, [skip to the Command Recognition Section](./03-command-recognition.md).
+To read more about this, [skip to the Command Recognition Section](./03-command-recognition-pt1.md).
 
 ### Audio Output
 
@@ -44,7 +44,7 @@ At the other end of a conversational interface is the audio that is presented th
 
 Of course, SayKit includes all the nuts and bolts required to manage an audio queue -- providing a speech synthesizer, feeding .wav files to audio players, handling timing issues -- but it also presents a higher-level API to let a developer forget about mechanics and focus on user experience.
 
-To read more about this, [skip to the Audio Output Section](./04-audio-output.md).
+To read more about this, [skip to the Audio Output Section](./05-audio-output.md).
 
 ### Conversation Topics
 
@@ -52,9 +52,9 @@ GUI developers have it made with a feast of patterns and tools to help structure
 
 If you've ever tried to develop a non-trivial conversational app before, perhaps you had some problems keeping your codebase under control. Don't worry, it used to happen to us too. Logic split between clients and servers, regular expressions around every corner, callback functions strewn around everywhere. There's got to be a better way!
 
-That's where **Conversation Topics** come in. Just like a view packages up all the input/output details for a particular area of your screen, a conversation topic coordinates all the audio I/O related to a particular subject in your app. By adding or removing a topic from your app's topic hierarchy, you can change the conversation with a line of code.
+That's where **Conversation Topics** come in. Just like a `UIView` packages up all the input/output details for a particular area of your screen, a conversation topic coordinates all the audio I/O related to a particular subject in your app. By adding or removing a topic from your app's topic hierarchy, you can change the conversation with a line of code.
 
-To read more about this, [skip to the Conversation Topics Section](./05-conversation-topics.md).
+To read more about this, [skip to the Conversation Topics Section](./06-conversation-topics.md).
 
 ___
 

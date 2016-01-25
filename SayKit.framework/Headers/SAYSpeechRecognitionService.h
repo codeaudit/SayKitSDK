@@ -10,6 +10,7 @@
 
 @protocol SAYSpeechRecognitionServiceDelegate;
 @protocol SAYSpeechRecognitionServiceObserver;
+@protocol SAYSpeechRecognitionResult;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -77,12 +78,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Sent after an audio signal has been successfully recognized.
  *
- *  The protocol does not specify the data type of this result: it can be customized as appropriate for the underlying service. For example, a simple `NSString` can suffice for simple implementations, but more robust recognizers may be able to return an array of `SAYSpeechTranscript` instances, which pair numerical confidence values along with strings.
+ *  Different recognition back-ends may necessitate different result types, so the result is only specified to conform to the very general `SAYSpeechRecognitionResult` class, which has a single string parameters requirement. For example, a simple `SAYSpeechTranscript` can suffice for simple implementations, but more robust recognizers may be need to return more speciailized classes (e.g. types that encapsulate multiple interpretations with confidence scores).
  *
  *  @param recognitionService   Service that has completed recognition
  *  @param result               Speech recognition result
  */
-- (void)recognitionService:(id<SAYSpeechRecognitionService>)recognitionService didReceiveResult:(id)result;
+- (void)recognitionService:(id<SAYSpeechRecognitionService>)recognitionService didReceiveResult:(id<SAYSpeechRecognitionResult>)result;
 
 /**
  *  Sent after a problem has occurred with the recognition process and no result recognition is possible.

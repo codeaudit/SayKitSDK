@@ -2,9 +2,9 @@
 
 ## Basics
 
-The user speech-end of a SayKit app revolves around the `SAYVoiceRequest` class. A **Voice Request** encapsulates the entire "question-answer" process of a dialogue turn: everything between a asking the user a question to triggering an action in response to their answer.
+The user speech-end of a SayKit app revolves around the `SAYVoiceRequest` class. A **Voice Request** encapsulates the entire "question-answer" process of a dialogue turn: everything between asking the user a question to triggering an action in response to their answer.
 
-*add figure with simple scenario highlighting a voice requests*
+*TODO: add figure with simple scenario highlighting a voice requests*
 
 Voice Requests can be initiated by sending one to the conversation manager. For example, if the application needs to ask the user for permission to do something, it can create a `SAYConfirmationRequest`, like so:
 
@@ -58,7 +58,7 @@ As mentioned above, a response consists of any combination of these 3 factors:
 2. Arbitrary application code: the **action**
 3. A new voice request: the **followup request**
 
-The third item there is the key to creating a turn-taking dialogue. By providing a followup request, a request session turns into a cycle, with the app and user taking turns speaking to each other.
+The third item is the key to creating a turn-taking dialogue. By providing a followup request, a request session turns into a cycle, with the app and the user taking turns speaking to each other.
 
 // TODO: show request as a cycle with similar style as above figure
 

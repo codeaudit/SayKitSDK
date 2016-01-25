@@ -16,5 +16,6 @@ FOUNDATION_EXPORT const unsigned char SayKitVersionString[];
 
 #import <SayKit/SAYSpeechRecognition.h>
 #import <SayKit/SAYVoiceRequests.h>
+#import <SayKit/SAYConversationManagement.h>
 #import <SayKit/SAYCommandProcessing.h>
 #import <SayKit/SAYAudioProduction.h>

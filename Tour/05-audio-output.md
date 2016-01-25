@@ -42,6 +42,6 @@ While this might seem like a bit of overheard just to play a sound, when an appl
 
 ---
 
-We've got the basics down now. But don't leave the tour quite yet. At the next stop, we'll bring it all together when we introduce SayKit's secret weapon, Conversation Topics.
+We've got the basics down now. But don't leave the tour quite yet. At the next stop, we'll bring it all together when we introduce SayKit's special sauce: Conversation Topics.
 
 [Next - Conversation Topics >>](./06-conversation-topics.md)

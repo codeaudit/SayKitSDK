@@ -15,11 +15,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- *  Alias for a simple execution block with no argument or return value. Used in this context as an action to execute after audio events complete.
- */
-typedef void (^SAYAudioEventCompletionBlock)();
-
-/**
  *  The `SAYAudioTrack` class provides a queue for `SAYAudioEvent` instances to be posted to. When events are added, their corresponding operations are executed in serial order. These operations contain the actual execution logic for presenting audio to the speaker.
  
     As long as a track has operations that have not yet completed, it is considered "live",
@@ -44,7 +39,7 @@ typedef void (^SAYAudioEventCompletionBlock)();
 @property (nonatomic, readonly) BOOL hasFocus;
 
 /**
- *  Initalizes a new track with the given priority and focus guard.
+ *  Initalizes a new track with the given priority and focus guard. In post cases, a SAYAudioTrackCoordinator is responsibile for initializing new tracks.
  *
  *  @param priority     Priority of track. This comes into play when multiple tracks are being coordinated by a `SAYAudioTrackCoordinator`. The coordinator allows higher priority live tracks to present their events first.
  *  @param focusGuard   Agent in charge of coordinating track "focus" (typically a `SAYAudioTrackCoordinator`)

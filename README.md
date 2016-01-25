@@ -9,10 +9,10 @@ What are you looking to do?
 
 - **Jump in**: [Installation guide](#installation-guide)
 - **Familiarize yourself**: [SayKit tour](./Tour/00-intro.md)
-- **Learn step-by-step**: [In-depth tutorial](#)
-- **Dive deeper**: [Developer guides](#)
-- **Dive even deeper**: [Header docs](#)
-- **Glimpse the future**: [Feature roadmap](#)
+- **Learn by doing**: [Step-by-step tutorial](#)
+- **Read the headers**: [API documentation](#)
+- **Go deep**: [In-depth Developer guides](#) *(coming soon)*
+- **Glimpse the future**: [Feature roadmap](#) *(coming soon)*
 
 ## <a name="installation-guide"></a> Installation Guide
 

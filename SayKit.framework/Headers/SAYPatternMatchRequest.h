@@ -7,26 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SAYVoiceRequest.h"
+#import "SAYStandardVoiceRequest.h"
 
-@class SAYPatternMatchResult;
+@class SAYPatternMatch;
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  The `SAYPatternMatchRequest` describes a voice request for speech matching a particular string pattern. If user speech does not conform to the prescribed patterns provided, the user will be prompted to try again.
  */
-@interface SAYPatternMatchRequest : SAYVoiceRequest
-
-/**
- *  Message to present to the user before the application turns on the microphone.
- */
-@property (nonatomic, copy) NSString *promptText;
-
-/**
- *  Message presented before the user is asked to speak again because the first attempt failed to produce a result.
- */
-@property (nonatomic, copy, null_resettable) NSString *followupPromptText;
+@interface SAYPatternMatchRequest : SAYStandardVoiceRequest
 
 /**
  *  Array of templates. User speech must match one of these patterns to be accepted.
@@ -35,17 +25,16 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, copy) NSArray<NSString *> *templates;
 
-/**
- *  Block the interpreted result is sent to. A nil result indicates the request was cancelled.
- */
-@property (nonatomic, copy) void (^completionBlock)(SAYPatternMatchResult * __nullable);
+- (instancetype)initWithTemplates:(NSArray<NSString *> *)templates
+                           prompt:(SAYVoicePrompt *)prompt
+                        responder:(SAYStandardRequestResponder *)responder NS_DESIGNATED_INITIALIZER;
 
 /**
  *  Create a new `SAYPatternMatchRequest` with the given templates
  *
- *  @param promptText      Message to present to the user when the prompt begins
  *  @param templates       An array of templates to use in parsing the recognized text
- *  @param completionBlock Block to deliver result to
+ *  @param promptText      Message to present to the user when the prompt begins
+ *  @param action          Block to deliver result to
  *
  * Entities in each template must be defined according to the following examples:
  *      "Call @recipient:String."
@@ -54,12 +43,9 @@ NS_ASSUME_NONNULL_BEGIN
  *       "@payee received @amount:Number dollars from @payer."
  *       In general, the syntax of an entity is "@entityName:EntityType", where EntityType can be either "String" or "Number". If ":EntityType" is omitted, the parser assumes the Entity is a string.
  */
-- (instancetype)initWithPromptText:(NSString *)promptText
-                         templates:(NSArray<NSString *> *)templates
-                   completionBlock:(void (^)(SAYPatternMatchResult * __nullable))completionBlock NS_DESIGNATED_INITIALIZER;
-
-- (instancetype)initWithRecognitionService:(id<SAYSpeechRecognitionService>)recognitionService
-                                 responder:(id<SAYVoiceRequestResponder>)responder NS_UNAVAILABLE;
+- (instancetype)initWithTemplates:(NSArray<NSString *> *)templates
+                       promptText:(NSString *)promptText
+                           action:(void (^)(SAYPatternMatch * __nullable))action;
 
 @end
 
