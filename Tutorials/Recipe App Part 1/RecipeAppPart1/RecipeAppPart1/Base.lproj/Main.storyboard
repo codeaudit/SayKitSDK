@@ -32,6 +32,13 @@
                                     <action selector="selectRequestButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zls-0D-cCf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CiC-da-oZm">
+                                <rect key="frame" x="217" y="345" width="166" height="30"/>
+                                <state key="normal" title="Select Request (Aliases)"/>
+                                <connections>
+                                    <action selector="selectedRequestAliasesButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sgq-Hd-lKD"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You just said..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbe-Je-afY">
                                 <rect key="frame" x="20" y="563" width="111" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -47,11 +54,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="CiC-da-oZm" firstAttribute="top" secondItem="j5Z-kU-1eC" secondAttribute="bottom" constant="16" id="0vU-5U-hF3"/>
                             <constraint firstItem="Wue-O4-pYU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-32" id="4Fe-gd-IxJ"/>
                             <constraint firstItem="CRl-mp-RkN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" priority="750" id="AkF-ro-4oh"/>
                             <constraint firstItem="j5Z-kU-1eC" firstAttribute="top" secondItem="Wue-O4-pYU" secondAttribute="bottom" constant="16" id="Bs6-tU-tYo"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="jbe-Je-afY" secondAttribute="bottom" constant="16" id="NN7-5C-8LN"/>
                             <constraint firstItem="Wue-O4-pYU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qzx-fD-Qsq"/>
+                            <constraint firstItem="CiC-da-oZm" firstAttribute="centerX" secondItem="j5Z-kU-1eC" secondAttribute="centerX" id="U2o-z8-cgS"/>
                             <constraint firstAttribute="leadingMargin" secondItem="jbe-Je-afY" secondAttribute="leading" id="igg-Wg-LkR"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="CRl-mp-RkN" secondAttribute="trailing" priority="750" id="nPn-Zk-KsM"/>
                             <constraint firstItem="CRl-mp-RkN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="rGP-kM-Nca"/>

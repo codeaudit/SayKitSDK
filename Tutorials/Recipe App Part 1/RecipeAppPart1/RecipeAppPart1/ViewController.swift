@@ -41,15 +41,20 @@ class ViewController: UIViewController {
     @IBAction func selectRequestButtonTapped(sender: AnyObject)
     {
         let request = SAYSelectRequest(itemLabels: ["Chocolate Butterscotch Cookies", "Beef Lasagna", "Tuna Casserole"], promptText: "Which of your saved recipes would you like to review?") { result in
-            if
-                let selectedItemName = result?.selectedOption.label,
-                let selectedIndex = result?.selectedIndex
-            {
-                self.updateAppResultLabelWithText("Received command:\n[Details for Recipe #\(selectedIndex): \(selectedItemName)]")
-            }
-            else {
-                /* ... */
-            }
+            self.handleSelectionWithResult(result)
+        }
+        
+        SAYVoiceRequestPresenter.defaultPresenter().presentRequest(request)
+    }
+    
+    @IBAction func selectedRequestAliasesButtonTapped(sender: AnyObject)
+    {
+        let options = [SAYSelectOption(label: "Chocolate Butterscotch Cookies", aliases: ["Grandma's Cookies"]),
+                       SAYSelectOption(label: "Beef Lasagna", aliases: ["Pasta", "My Favorite Dish"]),
+                       SAYSelectOption(label: "Tuna Casserole")]
+        
+        let request = SAYSelectRequest(options: options, promptText: "Which of your saved recipes would you like to review?") { result in
+            self.handleSelectionWithResult(result)
         }
         
         SAYVoiceRequestPresenter.defaultPresenter().presentRequest(request)
@@ -57,18 +62,30 @@ class ViewController: UIViewController {
     
     // MARK: Helpers
     
-    func updateAppResultLabelWithText(text: String)
+    private func handleSelectionWithResult(result: SAYSelectResult?)
+    {
+        if
+            let selectedItemName = result?.selectedOption.label,
+            let selectedIndex = result?.selectedIndex
+        {
+            self.updateAppResultLabelWithText("Received command:\n[Details for Recipe #\(selectedIndex): \(selectedItemName)]")
+        }
+        else {
+            /* ... */
+        }
+    }
+    
+    private func updateAppResultLabelWithText(text: String)
     {
         dispatch_async(dispatch_get_main_queue()) {
             self.appResultLabel.text = text
         }
     }
     
-    func updateRecognizedSpeechLabelWithText(text: String)
+    private func updateRecognizedSpeechLabelWithText(text: String)
     {
         dispatch_async(dispatch_get_main_queue()) {
             self.recognizedSpeechLabel.text = "\"\(text)\""
         }
     }
 }
-
