@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol SAYVoiceRequest;
+@protocol SAYAudioEventListener;
+
 @class UIViewController;
 @class SAYSpeechRecognitionManager;
-@class SAYVoiceRequest;
-@class SAYAudioTrack;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,57 +27,33 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) SAYSpeechRecognitionManager *recognitionManager;
 
 /**
- *  Track to be used for presenting all audio
+ *  Listener to receive and present audio events (e.g. prompt speech)
  */
-@property (nonatomic, strong) SAYAudioTrack *outputTrack;
-
-/**
- *  The currently presented request, if it exists
- */
-@property (nonatomic, strong, readonly, nullable) SAYVoiceRequest *presentedRequest;
-
-/**
- *  Returns a system-wide default presenter
- *
- *  @return The a system-wide default presenter
- */
-+ (SAYVoiceRequestPresenter *)defaultPresenter;
+@property (nonatomic, strong) id<SAYAudioEventListener> audioEventPresenter;
 
 /**
  *  Initiates a `SAYVoiceRequestPresenter` with the given request manager and output audio track.
  *
  *  @param manager Manager to run speech recognition sessions
- *  @param audioTrack Track to send audio events to
  *
  *  @return The newly-initiated presenter
  */
-- (instancetype)initWithSpeechRecognitionManager:(SAYSpeechRecognitionManager *)manager outputTrack:(SAYAudioTrack *)audioTrack;
+- (instancetype)initWithSpeechRecognitionManager:(SAYSpeechRecognitionManager *)manager;
 
 /**
- *  Convenience method for `presentRequest:fromViewController:`. Uses the application's root view controller.
- *
- *  @param request Request to be presented
- *
- *  @warning Because this method presents a `UIViewController`, it must be called on the main thread.
- */
-- (void)presentRequest:(SAYVoiceRequest *)request;
-
-/**
- *  Presents and activates the given request. This includes connecting the `outputTrack` to the request's `soundBoard` and using the `UIViewController` argument to present the request's `viewController`. Only after the interfaces are connected will the request activate.
+ *  Presents the given request, using the provided view controller to present the voice request controller.
+ 
+    Note: Requests will play audio through the system conversation manager's SAYAudioTrackVoiceRequestIdentifier track. This is currently fixed, but will more flexible in future releases.
  *
  *  @param request Request to be presented
  *  @param presentingViewController View controller from which to modally present request's visual component
- *
- *  @warning Because this method presents a `UIViewController`, it must be called on the main thread.
  */
-- (void)presentRequest:(SAYVoiceRequest *)request fromViewController:(nullable UIViewController *)presentingViewController;
+- (void)presentRequest:(id<SAYVoiceRequest>)request fromViewController:(UIViewController *)presentingViewController;
 
 /**
  *  Deactivates and dismisses the given request. Once the request deactivates, the view controller is dismissed, the `outputTrack` is disconnected, and any active recognition session with manager is cancelled.
  *
  *  @param completion Block to be executed when dismissal completes
- *
- *  @warning Because this method dismisses a `UIViewController`, it must be called on the main thread.
  */
 - (void)dismissPresentedRequestCompletion:(void (^ __nullable)(void))completion;
 

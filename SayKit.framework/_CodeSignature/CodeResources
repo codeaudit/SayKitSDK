@@ -6,11 +6,31 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		T9PhCMDoTjTFWLoEkO2Vn7zuZ9U=
+		ZYDvKkOkwByVrOOpO6w9YnX/NNs=
+		</data>
+		<key>Headers/SAYAPIKeyManager.h</key>
+		<data>
+		dyk3cTP+nSLcUSUd4NuOECOgzOE=
 		</data>
 		<key>Headers/SAYAudioEvent.h</key>
 		<data>
-		lxmXR0gVTvTxYufV/EIsuxJeXJQ=
+		Dzp1D8ObfEN7d08yVKJbRdbpDmI=
+		</data>
+		<key>Headers/SAYAudioEventListener.h</key>
+		<data>
+		lVHtmgSpmjFsLwH2DkDQL0fkKM0=
+		</data>
+		<key>Headers/SAYAudioEventSequence.h</key>
+		<data>
+		H/aV5KhPlAk8nNTDDQ2X6vtAhVk=
+		</data>
+		<key>Headers/SAYAudioEventSequenceItem.h</key>
+		<data>
+		ZDShh/EE9jPRNbJtbw/AkmADf+I=
+		</data>
+		<key>Headers/SAYAudioEventSource.h</key>
+		<data>
+		0thufo9dVmke+Qh9kuerxatf5AI=
 		</data>
 		<key>Headers/SAYAudioFocusManagement.h</key>
 		<data>
@@ -18,27 +38,39 @@
 		</data>
 		<key>Headers/SAYAudioProduction.h</key>
 		<data>
-		uBMeK8VGrNuCy+peICGBbeGQkWA=
+		dJQt6HFF+lULthGUYdtOso9PsSg=
 		</data>
 		<key>Headers/SAYAudioTrack.h</key>
 		<data>
-		p2yFTaKZpBQHtht62nBfFqVUXAQ=
+		H6OhkOiltqR7Cfgo7zojmGrU3UY=
 		</data>
 		<key>Headers/SAYAudioTrackCoordinator.h</key>
 		<data>
-		3lQlVeZHa3vJsrZ17oVUdolxgmE=
+		GqvMnIobO1eNeNlexXBRRsHcQQI=
+		</data>
+		<key>Headers/SAYAvailableCommandsCommandRecognizer.h</key>
+		<data>
+		YA0550yvGjhm3j/+FFf6TPxycGM=
+		</data>
+		<key>Headers/SAYBackCommandRecognizer.h</key>
+		<data>
+		x6ofpBvk6XTS5ZhWHU/WYMJzHwY=
+		</data>
+		<key>Headers/SAYBlockCommandMatcher.h</key>
+		<data>
+		WqBJKKX5sZnfOoHvPLw2H/BKzxw=
 		</data>
 		<key>Headers/SAYCommand.h</key>
 		<data>
-		30dXD6CYdbVRByJuObzbgkECwow=
+		OrWyy1MMQeRenHDKbi0WEEeXFYk=
 		</data>
 		<key>Headers/SAYCommandBar.h</key>
 		<data>
-		HkrkZ/2F7eNwZTx0C1Xjf7P58lA=
+		lSKrwT1QAvoopU0vbAKck14Kaz8=
 		</data>
 		<key>Headers/SAYCommandBarController.h</key>
 		<data>
-		j73OJX/Es7CDxorMcW2ru5Fpz7E=
+		nsLtxgD/9m2sz7VRn/aYCBWkN8k=
 		</data>
 		<key>Headers/SAYCommandBarDelegate.h</key>
 		<data>
@@ -46,35 +78,19 @@
 		</data>
 		<key>Headers/SAYCommandBarPresentationController.h</key>
 		<data>
-		faUcivbalhfCDZvFjdh6QehljP8=
-		</data>
-		<key>Headers/SAYCommandDispatcher.h</key>
-		<data>
-		ksHhlAdU9vz5WBQy1R0q1zNHR1I=
-		</data>
-		<key>Headers/SAYCommandEnumerator.h</key>
-		<data>
-		oZqwlFD+VWGwOqHUdZ2AtaeTv0s=
+		gRpKA8lSUBEnHgNt4T360+3ailI=
 		</data>
 		<key>Headers/SAYCommandProcessing.h</key>
 		<data>
-		LalUPoxX6Lc451Nr9CSygkBMEBM=
+		+E8IYC8w+eXCChATiWuPnqR5tkg=
 		</data>
-		<key>Headers/SAYCommandProcessingTypes.h</key>
+		<key>Headers/SAYCommandRecognizerCatalog.h</key>
 		<data>
-		FNbpSabnUd75CQOvlx7keX8mjdo=
+		0vRSPlZjNNcI+NWktHexwMDvZCA=
 		</data>
-		<key>Headers/SAYCommandResolver.h</key>
+		<key>Headers/SAYCommandSuggestion.h</key>
 		<data>
-		Mj0qFTqL1C4IOdNMXXQT0N+HBRU=
-		</data>
-		<key>Headers/SAYCommandResponder.h</key>
-		<data>
-		+mZur7db3FzrYa0Zr/ONb14zN0o=
-		</data>
-		<key>Headers/SAYCommandResponseRegistry.h</key>
-		<data>
-		TgP6i5wN6iW2yUqMbXK08QrDNvo=
+		XtF7Cxzy7uRtmadTlrIJi9AN294=
 		</data>
 		<key>Headers/SAYCompositeEvent.h</key>
 		<data>
@@ -82,35 +98,99 @@
 		</data>
 		<key>Headers/SAYConfirmationRequest.h</key>
 		<data>
-		yL07aLqg8WZCGSBPyMLpnY9pQvY=
+		5HuNW8A+/wKmKhdclaEztXwoybM=
 		</data>
-		<key>Headers/SAYConfirmationResult.h</key>
+		<key>Headers/SAYConversationManagement.h</key>
 		<data>
-		GDiL53pERy1YaaOtUJZ7Wk4ArlE=
+		7A0pkAO/6l0DmMDWtAXrl8BtODU=
+		</data>
+		<key>Headers/SAYConversationManager.h</key>
+		<data>
+		xAJJfkc6y8nNgUDzY1ghgznIIFk=
+		</data>
+		<key>Headers/SAYConversationTopic.h</key>
+		<data>
+		nyAurPr4s92Rm38ipzmfjMTcIPY=
+		</data>
+		<key>Headers/SAYCustomCommandRecognizer.h</key>
+		<data>
+		iJXoloRQjQzbBQFJkVEsfVnwXYc=
+		</data>
+		<key>Headers/SAYDecreaseSpeechRateCommandRecognizer.h</key>
+		<data>
+		lzYiNKkWub0xvwS2/wN4FY48cwc=
+		</data>
+		<key>Headers/SAYDecreaseSpeechVolumeCommandRecognizer.h</key>
+		<data>
+		FHqgMPS/lEnQ8JpGwriqH4GUcqQ=
+		</data>
+		<key>Headers/SAYHelpCommandRecognizer.h</key>
+		<data>
+		hZmKes1ZsREVl1nqoKTqSPEiY+E=
+		</data>
+		<key>Headers/SAYHomeCommandRecognizer.h</key>
+		<data>
+		qbJzh4FD4essj5d36oWgK9o2u6k=
+		</data>
+		<key>Headers/SAYIncreaseSpeechRateCommandRecognizer.h</key>
+		<data>
+		1uhEXm0nU7P62l7WC1eD1/6wqGs=
+		</data>
+		<key>Headers/SAYIncreaseSpeechVolumeCommandRecognizer.h</key>
+		<data>
+		ED3O7/+A2hMrHdaTGtx7RgEMGW8=
+		</data>
+		<key>Headers/SAYInterpretation.h</key>
+		<data>
+		awUZTV1rB9k19Ukm8W9BhIpl9DM=
 		</data>
 		<key>Headers/SAYManagedSynthesizer.h</key>
 		<data>
-		3QJmF9SJegGZ5IxKfHIRVqxvV9g=
+		0nm2kLMOiB5rmZosdNqJgoPG1gk=
+		</data>
+		<key>Headers/SAYNextCommandRecognizer.h</key>
+		<data>
+		eae1lurGPuYQfehclSkgAxm9hRY=
 		</data>
 		<key>Headers/SAYNumericalRequest.h</key>
 		<data>
-		dIr6o0jnRTOBOsbh2GbZr/aVZjw=
-		</data>
-		<key>Headers/SAYNumericalResult.h</key>
-		<data>
-		CQsHC4N5Q2o2Np85Y76qfePnx2w=
+		b5ep1LM8pGcFA3j11Z8rqT1D2ug=
 		</data>
 		<key>Headers/SAYOperation.h</key>
 		<data>
 		/ci4PrYuWzl28fb+Z6E3oOQWYZE=
 		</data>
+		<key>Headers/SAYPatternCommandMatcher.h</key>
+		<data>
+		ajDelf3y4DPmZ4CY+8ZbiS054os=
+		</data>
+		<key>Headers/SAYPatternMatch.h</key>
+		<data>
+		S8i+1EU07CX4ikJPtlpTYGQXQ54=
+		</data>
 		<key>Headers/SAYPatternMatchRequest.h</key>
 		<data>
-		2TK7cgps6gk6Jkt6gzRUR/AMA8Y=
+		iaBnn1dcRipe0SqeN00eB0inELk=
 		</data>
-		<key>Headers/SAYPatternMatchResult.h</key>
+		<key>Headers/SAYPauseCommandRecognizer.h</key>
 		<data>
-		z0UAidjDVXuheDNGyDPS6mzuwI8=
+		UKBEhjJPaz0Jm6ZpULBOUyIR6RM=
+		</data>
+		<key>Headers/SAYPlayCommandRecognizer.h</key>
+		<data>
+		ePqAGfH4pJ2+pBpta+6IxV1OG+Y=
+		</data>
+		<key>Headers/SAYPreviousCommandRecognizer.h</key>
+		<data>
+		LE9/M2UdUTqzKsHIzHmFOce2SNs=
+		</data>
+		<key>Headers/SAYSearchCommandRecognizer.h</key>
+		<data>
+		qT/LgaJdx0oznZMD/kwrzwe5Jzg=
+		</data>
+		<key>Headers/SAYSelectCommandRecognizer.h</key>
+		<data>
+		2z1Naiv25eoLimmtBfSMRbsM+ew=
 		</data>
 		<key>Headers/SAYSelectOption.h</key>
 		<data>
@@ -118,31 +198,59 @@
 		</data>
 		<key>Headers/SAYSelectRequest.h</key>
 		<data>
-		4Hjnu8z5at8rxXpZK/6WjHbCZTo=
+		qxsp0g3GnqxYqpp5oDJyHyqOFW8=
 		</data>
 		<key>Headers/SAYSelectResult.h</key>
 		<data>
-		ZQXzBRUW2LhmFpTMToask1laMOc=
+		l3CkEHWJ1XrAiWfrpTXMiReEPWo=
+		</data>
+		<key>Headers/SAYSetSpeechRateCommandRecognizer.h</key>
+		<data>
+		pt1gSxr6rsoNbUsNye1eWC2EP0c=
+		</data>
+		<key>Headers/SAYSetSpeechVolumeCommandRecognizer.h</key>
+		<data>
+		UM8XfOFiwJJiGCvvlYl6MbHNFr0=
+		</data>
+		<key>Headers/SAYSetVoiceCommandRecognizer.h</key>
+		<data>
+		nUXL19+5sRWnkNLFoRE02vWqWIQ=
+		</data>
+		<key>Headers/SAYSettingsCommandRecognizer.h</key>
+		<data>
+		7d27rHU0OCoapFX+Co9+bKfa6lc=
 		</data>
 		<key>Headers/SAYSilenceEvent.h</key>
 		<data>
 		3/whLLht/dWGjssyXnrrLowQpCg=
 		</data>
+		<key>Headers/SAYSoundBoard.h</key>
+		<data>
+		4sXhT4k3ou1Ma3qQfib2Kk7K4Mg=
+		</data>
 		<key>Headers/SAYSpeechEvent.h</key>
 		<data>
 		PkxpIuO7inhcnoWX6AZUBH3o9HM=
 		</data>
+		<key>Headers/SAYSpeechIntent.h</key>
+		<data>
+		nr+SfyGduaPKQe6+zFrwvLFRfjA=
+		</data>
 		<key>Headers/SAYSpeechRecognition.h</key>
 		<data>
-		cBnV8OAtN9mDrOBMMp5NUWNGkls=
+		qXO5viYtu4SD3NkN8zt4OsYuK3M=
 		</data>
 		<key>Headers/SAYSpeechRecognitionManager.h</key>
 		<data>
-		QYaoy5IodbJ50I+dTZAuq5FK1pU=
+		QTVESDXrxqRtO16ZtkKrn5dvblg=
+		</data>
+		<key>Headers/SAYSpeechRecognitionResult.h</key>
+		<data>
+		YcTG26WGOpsitYbYNTt5ezanZEI=
 		</data>
 		<key>Headers/SAYSpeechRecognitionService.h</key>
 		<data>
-		PDvH258SPpvaOY+dwqfG3fDqvu0=
+		2lCMH/h6i2GpZ8zKQ/2fhwgsE88=
 		</data>
 		<key>Headers/SAYSpeechSynthesizerProxy.h</key>
 		<data>
@@ -150,67 +258,107 @@
 		</data>
 		<key>Headers/SAYSpeechTranscript.h</key>
 		<data>
-		L4xp7ubh7zht75ffXB6wy1OHCAk=
+		8QtfQPny+wKN+OMrpykTU0kuGok=
+		</data>
+		<key>Headers/SAYStandardCommandLibrary.h</key>
+		<data>
+		JdRZB2e/kG4Ror9tai0OmX8xCSk=
+		</data>
+		<key>Headers/SAYStandardRequestResponder.h</key>
+		<data>
+		3EsdQd0oWxYASXX2qHywpfgw9/E=
+		</data>
+		<key>Headers/SAYStandardSpeechRecognizer.h</key>
+		<data>
+		V2j87Myp3VB31jdtySAmdjG+tqc=
+		</data>
+		<key>Headers/SAYStandardVoiceRequest.h</key>
+		<data>
+		sN1g+ah3KEC/pw1m4vwhlpy+xBw=
 		</data>
 		<key>Headers/SAYStringRequest.h</key>
 		<data>
-		4WMKYTrZAZ4771DqfRpXlij8z9U=
+		j0nkFXbTNZkvVut52r17fcxkN/M=
 		</data>
-		<key>Headers/SAYStringResult.h</key>
+		<key>Headers/SAYSwitchTabCommandRecognizer.h</key>
 		<data>
-		zXIQPcnBI5JDt8s5nS6KnXkjRoU=
+		QHonSypjBwzAvQ3WKDnvx4j+Ovg=
 		</data>
-		<key>Headers/SAYTextCommandResolver.h</key>
+		<key>Headers/SAYTextCommandMatcher.h</key>
 		<data>
-		ZDdRqoQc0QA0E9hheo/kUzQcr7E=
-		</data>
-		<key>Headers/SAYTextResolutionRegistry.h</key>
-		<data>
-		hL3B2K89tHqufdUGpbFAdARnZvk=
+		HmVh21DHWGtiNrTgZEWYWqD7Vjg=
 		</data>
 		<key>Headers/SAYToneEvent.h</key>
 		<data>
 		KU2U5iooW5W8t4p2ONoKm+he59M=
 		</data>
+		<key>Headers/SAYValidationError.h</key>
+		<data>
+		UfrEGJNsXiBBwfyz8MsA+w4XRaw=
+		</data>
+		<key>Headers/SAYVerbalCommandRecognizer.h</key>
+		<data>
+		5Jb5Tobn4MVR9z4hat9lzZSpd9o=
+		</data>
+		<key>Headers/SAYVerbalCommandRegistry.h</key>
+		<data>
+		e5d4bIZ1UZd3Q05f7Q3Rc+CNwwY=
+		</data>
 		<key>Headers/SAYVerbalCommandRequest.h</key>
 		<data>
-		v/cz4XwK+G+y6KXVcp1cv/UKk0g=
+		IDYiv/UY/iy/lPl0xHFR6vz4M9E=
 		</data>
-		<key>Headers/SAYVerbalCommandRequestManager.h</key>
+		<key>Headers/SAYVoicePrompt.h</key>
 		<data>
-		0EhmRQKxdt6VwxnU1UWBar4EJms=
+		XEipRKcY5E9069M6rB4AZLEEpHM=
 		</data>
 		<key>Headers/SAYVoiceRequest.h</key>
 		<data>
-		QawwIYOm9LzYZS6ToPFS1JFFRNY=
+		92ZZDl3VeqnDNK2K9Ss5GOeWcZ0=
+		</data>
+		<key>Headers/SAYVoiceRequestController.h</key>
+		<data>
+		KmmWOFetv0P//zvaitLjXtJUkSQ=
+		</data>
+		<key>Headers/SAYVoiceRequestInterpreter.h</key>
+		<data>
+		x4gCvC/x7EI/XnqNpNQ9oGUA3/c=
 		</data>
 		<key>Headers/SAYVoiceRequestPresenter.h</key>
 		<data>
-		7FPoQfAS0p/0x3l/IIEwZvVVyxg=
+		yv7v0YAuJoPI5liwlKVwfg0pasI=
 		</data>
 		<key>Headers/SAYVoiceRequestResponder.h</key>
 		<data>
-		5aUvNgGF3+LsjoDNA2GGeX/tbr0=
+		N6BmOrHbNUc0dPALxLZNIGzRlME=
+		</data>
+		<key>Headers/SAYVoiceRequestResponse.h</key>
+		<data>
+		IMsnuA3cjNG5XP0yJj3cFoeAkxo=
 		</data>
 		<key>Headers/SAYVoiceRequestSoundBoard.h</key>
 		<data>
-		AJuxLVbgbVT2yl0gU0SR7RDKVu4=
+		ZfEN2AOHMMiqceg/O3ubGlzLQn4=
 		</data>
-		<key>Headers/SAYVoiceRequestViewController.h</key>
+		<key>Headers/SAYVoiceRequestView.h</key>
 		<data>
-		2u7zDkmF2a/P9OHIx2c5hIcysYk=
+		HahUw2f7zGuOYPzmlg+e/hCWCvk=
 		</data>
 		<key>Headers/SAYVoiceRequests.h</key>
 		<data>
-		CB3b2wbWAyeZBKENyVEeAYTnc2A=
+		f1kJlW8RPCSxZeLVS4Wq310CHy4=
 		</data>
 		<key>Headers/SayKit.h</key>
 		<data>
-		71z/ljRvaoad9waWnyu/IN/S/1k=
+		xSi7lClRZh90kA/BB/3WhbPV6Ls=
+		</data>
+		<key>Headers/UIViewController+VoiceRequestController.h</key>
+		<data>
+		my1Y4OK2N12XDDFIVcdfXyFB09k=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		asLOVsmWNW/3P2VAhdmz1vkcWWE=
+		9EscRJlPwlDaigjkw1L20F81wTQ=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -222,91 +370,47 @@
 		</data>
 		<key>PrivateHeaders/LuisResult.h</key>
 		<data>
-		ffLamEf+IM7T4wd/VkOFa9l5Bj4=
+		VkONrW70CGIwiq9ct1euKE0Oj20=
 		</data>
-		<key>PrivateHeaders/SAYAppVoiceSettingsDomain.h</key>
+		<key>PrivateHeaders/SAYCommandRecognizerOperation.h</key>
 		<data>
-		t/2Ifrvi2S5YvgUypc7/FYjvHvs=
-		</data>
-		<key>PrivateHeaders/SAYAvailableCommandsDomain.h</key>
-		<data>
-		1Wg8WPEgi3W3qJeFEyB2T2ErxsY=
-		</data>
-		<key>PrivateHeaders/SAYCommonServiceAdapter.h</key>
-		<data>
-		TUOVhrh29SYrmWAU+woHnD8r+sY=
-		</data>
-		<key>PrivateHeaders/SAYHelpDomain.h</key>
-		<data>
-		3G82rC7PrpWczwE+mzfF6mdxphU=
+		a4jF6bmmV+pzfOTnZ/UmfsJUXRo=
 		</data>
 		<key>PrivateHeaders/SAYOperationQueue.h</key>
 		<data>
 		EN6+0t7AxIEA2XWbxsSVDkxLACU=
 		</data>
-		<key>PrivateHeaders/SAYPlaybackControlsDomain.h</key>
+		<key>PrivateHeaders/SAYStandardIntentRecognizer.h</key>
 		<data>
-		FIoLnHDCzHBZBN0xsf7pGTxjf3Q=
+		PKg0WdiQOH5GJavUff4uB6h1nQE=
 		</data>
-		<key>PrivateHeaders/SAYSearchDomain.h</key>
+		<key>PrivateHeaders/SAYTextIntentRecognitionAgent.h</key>
 		<data>
-		urSLKUlRuBs7qMKVo6hLNu9kwrg=
+		AbWBQJlR9d1RJ9fezpvTjrWLiAE=
 		</data>
-		<key>PrivateHeaders/SAYSelectDomain.h</key>
+		<key>PrivateHeaders/SAYVerbalCommandRecognizer+Private.h</key>
 		<data>
-		oKyOA4hAhoPAdh06D0+XgHAj0hc=
+		qsJc4BYX61r5U2D18nk9AAcb4gM=
 		</data>
-		<key>PrivateHeaders/SAYSpeechIntent.h</key>
+		<key>PrivateHeaders/SAYWaveformView.h</key>
 		<data>
-		nr+SfyGduaPKQe6+zFrwvLFRfjA=
-		</data>
-		<key>PrivateHeaders/SAYStackNavigationDomain.h</key>
-		<data>
-		giwzfiFHnNJsbhcPBGswWkU9xnY=
-		</data>
-		<key>PrivateHeaders/SAYTabNavigationDomain.h</key>
-		<data>
-		G1RiPk1tyWqNLQC78Mt3lqEvCGA=
-		</data>
-		<key>PrivateHeaders/SAYVoiceDomain.h</key>
-		<data>
-		fpivEu3dmElBsts7JtSLGP7eO5U=
-		</data>
-		<key>PrivateHeaders/SAYVoiceIntentResolver.h</key>
-		<data>
-		0i4qxX75N6Zv8NVXfxCItI5ygDg=
-		</data>
-		<key>PrivateHeaders/SAYVoiceIntentTransformerRegistry.h</key>
-		<data>
-		mrrh/xV8jOGzaZwt4Rma0ZWSOug=
-		</data>
-		<key>PrivateHeaders/SAYVoiceRequestCommonResponder.h</key>
-		<data>
-		4VQOpxZWW3ZnSrSXTtWOqh5LvLo=
-		</data>
-		<key>PrivateHeaders/WitResult.h</key>
-		<data>
-		s24Hhkjs23dZ770Iv41lRaIZmEk=
-		</data>
-		<key>PrivateHeaders/WitServiceAdapter.h</key>
-		<data>
-		DOZSkwC2dRgHnkJ7nddsCpcWBrM=
+		e+6uTl0kki0lEhlohl3Y9JG5eec=
 		</data>
 		<key>SAYCommandBar.nib</key>
 		<data>
-		8SLu8hzhzkHwWB5Kj6bvY/1hFMA=
+		eSm4jtojWbk3mKaoacqJoKCWjig=
 		</data>
 		<key>SAYConfirmationContentViewController.nib</key>
 		<data>
-		Nd1KiNp9GM+E19t0RqQbwngnWvE=
+		2Xh+Mw1tKIyMDJD0BaQYjiPw5fk=
 		</data>
-		<key>SAYSelectContentViewController.nib</key>
+		<key>SAYVoiceRequestView.nib</key>
 		<data>
-		/qLdvj/jMWeoD5wZa2LH60cWGgI=
+		ZCwnVXUKQ1T3Zq0s58tvAJsnVns=
 		</data>
-		<key>SAYVoiceRequestViewController.nib</key>
+		<key>SayKitAPIServer.cer</key>
 		<data>
-		SXGR2SsF077G9vdMrBG/xYDXq34=
+		FQEOZvHu3TlP6TmePZLB1OGhjI4=
 		</data>
 		<key>did_begin_listening.mp3</key>
 		<data>
@@ -329,11 +433,31 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		T9PhCMDoTjTFWLoEkO2Vn7zuZ9U=
+		ZYDvKkOkwByVrOOpO6w9YnX/NNs=
+		</data>
+		<key>Headers/SAYAPIKeyManager.h</key>
+		<data>
+		dyk3cTP+nSLcUSUd4NuOECOgzOE=
 		</data>
 		<key>Headers/SAYAudioEvent.h</key>
 		<data>
-		lxmXR0gVTvTxYufV/EIsuxJeXJQ=
+		Dzp1D8ObfEN7d08yVKJbRdbpDmI=
+		</data>
+		<key>Headers/SAYAudioEventListener.h</key>
+		<data>
+		lVHtmgSpmjFsLwH2DkDQL0fkKM0=
+		</data>
+		<key>Headers/SAYAudioEventSequence.h</key>
+		<data>
+		H/aV5KhPlAk8nNTDDQ2X6vtAhVk=
+		</data>
+		<key>Headers/SAYAudioEventSequenceItem.h</key>
+		<data>
+		ZDShh/EE9jPRNbJtbw/AkmADf+I=
+		</data>
+		<key>Headers/SAYAudioEventSource.h</key>
+		<data>
+		0thufo9dVmke+Qh9kuerxatf5AI=
 		</data>
 		<key>Headers/SAYAudioFocusManagement.h</key>
 		<data>
@@ -341,27 +465,39 @@
 		</data>
 		<key>Headers/SAYAudioProduction.h</key>
 		<data>
-		uBMeK8VGrNuCy+peICGBbeGQkWA=
+		dJQt6HFF+lULthGUYdtOso9PsSg=
 		</data>
 		<key>Headers/SAYAudioTrack.h</key>
 		<data>
-		p2yFTaKZpBQHtht62nBfFqVUXAQ=
+		H6OhkOiltqR7Cfgo7zojmGrU3UY=
 		</data>
 		<key>Headers/SAYAudioTrackCoordinator.h</key>
 		<data>
-		3lQlVeZHa3vJsrZ17oVUdolxgmE=
+		GqvMnIobO1eNeNlexXBRRsHcQQI=
+		</data>
+		<key>Headers/SAYAvailableCommandsCommandRecognizer.h</key>
+		<data>
+		YA0550yvGjhm3j/+FFf6TPxycGM=
+		</data>
+		<key>Headers/SAYBackCommandRecognizer.h</key>
+		<data>
+		x6ofpBvk6XTS5ZhWHU/WYMJzHwY=
+		</data>
+		<key>Headers/SAYBlockCommandMatcher.h</key>
+		<data>
+		WqBJKKX5sZnfOoHvPLw2H/BKzxw=
 		</data>
 		<key>Headers/SAYCommand.h</key>
 		<data>
-		30dXD6CYdbVRByJuObzbgkECwow=
+		OrWyy1MMQeRenHDKbi0WEEeXFYk=
 		</data>
 		<key>Headers/SAYCommandBar.h</key>
 		<data>
-		HkrkZ/2F7eNwZTx0C1Xjf7P58lA=
+		lSKrwT1QAvoopU0vbAKck14Kaz8=
 		</data>
 		<key>Headers/SAYCommandBarController.h</key>
 		<data>
-		j73OJX/Es7CDxorMcW2ru5Fpz7E=
+		nsLtxgD/9m2sz7VRn/aYCBWkN8k=
 		</data>
 		<key>Headers/SAYCommandBarDelegate.h</key>
 		<data>
@@ -369,35 +505,19 @@
 		</data>
 		<key>Headers/SAYCommandBarPresentationController.h</key>
 		<data>
-		faUcivbalhfCDZvFjdh6QehljP8=
-		</data>
-		<key>Headers/SAYCommandDispatcher.h</key>
-		<data>
-		ksHhlAdU9vz5WBQy1R0q1zNHR1I=
-		</data>
-		<key>Headers/SAYCommandEnumerator.h</key>
-		<data>
-		oZqwlFD+VWGwOqHUdZ2AtaeTv0s=
+		gRpKA8lSUBEnHgNt4T360+3ailI=
 		</data>
 		<key>Headers/SAYCommandProcessing.h</key>
 		<data>
-		LalUPoxX6Lc451Nr9CSygkBMEBM=
+		+E8IYC8w+eXCChATiWuPnqR5tkg=
 		</data>
-		<key>Headers/SAYCommandProcessingTypes.h</key>
+		<key>Headers/SAYCommandRecognizerCatalog.h</key>
 		<data>
-		FNbpSabnUd75CQOvlx7keX8mjdo=
+		0vRSPlZjNNcI+NWktHexwMDvZCA=
 		</data>
-		<key>Headers/SAYCommandResolver.h</key>
+		<key>Headers/SAYCommandSuggestion.h</key>
 		<data>
-		Mj0qFTqL1C4IOdNMXXQT0N+HBRU=
-		</data>
-		<key>Headers/SAYCommandResponder.h</key>
-		<data>
-		+mZur7db3FzrYa0Zr/ONb14zN0o=
-		</data>
-		<key>Headers/SAYCommandResponseRegistry.h</key>
-		<data>
-		TgP6i5wN6iW2yUqMbXK08QrDNvo=
+		XtF7Cxzy7uRtmadTlrIJi9AN294=
 		</data>
 		<key>Headers/SAYCompositeEvent.h</key>
 		<data>
@@ -405,35 +525,99 @@
 		</data>
 		<key>Headers/SAYConfirmationRequest.h</key>
 		<data>
-		yL07aLqg8WZCGSBPyMLpnY9pQvY=
+		5HuNW8A+/wKmKhdclaEztXwoybM=
 		</data>
-		<key>Headers/SAYConfirmationResult.h</key>
+		<key>Headers/SAYConversationManagement.h</key>
 		<data>
-		GDiL53pERy1YaaOtUJZ7Wk4ArlE=
+		7A0pkAO/6l0DmMDWtAXrl8BtODU=
+		</data>
+		<key>Headers/SAYConversationManager.h</key>
+		<data>
+		xAJJfkc6y8nNgUDzY1ghgznIIFk=
+		</data>
+		<key>Headers/SAYConversationTopic.h</key>
+		<data>
+		nyAurPr4s92Rm38ipzmfjMTcIPY=
+		</data>
+		<key>Headers/SAYCustomCommandRecognizer.h</key>
+		<data>
+		iJXoloRQjQzbBQFJkVEsfVnwXYc=
+		</data>
+		<key>Headers/SAYDecreaseSpeechRateCommandRecognizer.h</key>
+		<data>
+		lzYiNKkWub0xvwS2/wN4FY48cwc=
+		</data>
+		<key>Headers/SAYDecreaseSpeechVolumeCommandRecognizer.h</key>
+		<data>
+		FHqgMPS/lEnQ8JpGwriqH4GUcqQ=
+		</data>
+		<key>Headers/SAYHelpCommandRecognizer.h</key>
+		<data>
+		hZmKes1ZsREVl1nqoKTqSPEiY+E=
+		</data>
+		<key>Headers/SAYHomeCommandRecognizer.h</key>
+		<data>
+		qbJzh4FD4essj5d36oWgK9o2u6k=
+		</data>
+		<key>Headers/SAYIncreaseSpeechRateCommandRecognizer.h</key>
+		<data>
+		1uhEXm0nU7P62l7WC1eD1/6wqGs=
+		</data>
+		<key>Headers/SAYIncreaseSpeechVolumeCommandRecognizer.h</key>
+		<data>
+		ED3O7/+A2hMrHdaTGtx7RgEMGW8=
+		</data>
+		<key>Headers/SAYInterpretation.h</key>
+		<data>
+		awUZTV1rB9k19Ukm8W9BhIpl9DM=
 		</data>
 		<key>Headers/SAYManagedSynthesizer.h</key>
 		<data>
-		3QJmF9SJegGZ5IxKfHIRVqxvV9g=
+		0nm2kLMOiB5rmZosdNqJgoPG1gk=
+		</data>
+		<key>Headers/SAYNextCommandRecognizer.h</key>
+		<data>
+		eae1lurGPuYQfehclSkgAxm9hRY=
 		</data>
 		<key>Headers/SAYNumericalRequest.h</key>
 		<data>
-		dIr6o0jnRTOBOsbh2GbZr/aVZjw=
-		</data>
-		<key>Headers/SAYNumericalResult.h</key>
-		<data>
-		CQsHC4N5Q2o2Np85Y76qfePnx2w=
+		b5ep1LM8pGcFA3j11Z8rqT1D2ug=
 		</data>
 		<key>Headers/SAYOperation.h</key>
 		<data>
 		/ci4PrYuWzl28fb+Z6E3oOQWYZE=
 		</data>
+		<key>Headers/SAYPatternCommandMatcher.h</key>
+		<data>
+		ajDelf3y4DPmZ4CY+8ZbiS054os=
+		</data>
+		<key>Headers/SAYPatternMatch.h</key>
+		<data>
+		S8i+1EU07CX4ikJPtlpTYGQXQ54=
+		</data>
 		<key>Headers/SAYPatternMatchRequest.h</key>
 		<data>
-		2TK7cgps6gk6Jkt6gzRUR/AMA8Y=
+		iaBnn1dcRipe0SqeN00eB0inELk=
 		</data>
-		<key>Headers/SAYPatternMatchResult.h</key>
+		<key>Headers/SAYPauseCommandRecognizer.h</key>
 		<data>
-		z0UAidjDVXuheDNGyDPS6mzuwI8=
+		UKBEhjJPaz0Jm6ZpULBOUyIR6RM=
+		</data>
+		<key>Headers/SAYPlayCommandRecognizer.h</key>
+		<data>
+		ePqAGfH4pJ2+pBpta+6IxV1OG+Y=
+		</data>
+		<key>Headers/SAYPreviousCommandRecognizer.h</key>
+		<data>
+		LE9/M2UdUTqzKsHIzHmFOce2SNs=
+		</data>
+		<key>Headers/SAYSearchCommandRecognizer.h</key>
+		<data>
+		qT/LgaJdx0oznZMD/kwrzwe5Jzg=
+		</data>
+		<key>Headers/SAYSelectCommandRecognizer.h</key>
+		<data>
+		2z1Naiv25eoLimmtBfSMRbsM+ew=
 		</data>
 		<key>Headers/SAYSelectOption.h</key>
 		<data>
@@ -441,31 +625,59 @@
 		</data>
 		<key>Headers/SAYSelectRequest.h</key>
 		<data>
-		4Hjnu8z5at8rxXpZK/6WjHbCZTo=
+		qxsp0g3GnqxYqpp5oDJyHyqOFW8=
 		</data>
 		<key>Headers/SAYSelectResult.h</key>
 		<data>
-		ZQXzBRUW2LhmFpTMToask1laMOc=
+		l3CkEHWJ1XrAiWfrpTXMiReEPWo=
+		</data>
+		<key>Headers/SAYSetSpeechRateCommandRecognizer.h</key>
+		<data>
+		pt1gSxr6rsoNbUsNye1eWC2EP0c=
+		</data>
+		<key>Headers/SAYSetSpeechVolumeCommandRecognizer.h</key>
+		<data>
+		UM8XfOFiwJJiGCvvlYl6MbHNFr0=
+		</data>
+		<key>Headers/SAYSetVoiceCommandRecognizer.h</key>
+		<data>
+		nUXL19+5sRWnkNLFoRE02vWqWIQ=
+		</data>
+		<key>Headers/SAYSettingsCommandRecognizer.h</key>
+		<data>
+		7d27rHU0OCoapFX+Co9+bKfa6lc=
 		</data>
 		<key>Headers/SAYSilenceEvent.h</key>
 		<data>
 		3/whLLht/dWGjssyXnrrLowQpCg=
 		</data>
+		<key>Headers/SAYSoundBoard.h</key>
+		<data>
+		4sXhT4k3ou1Ma3qQfib2Kk7K4Mg=
+		</data>
 		<key>Headers/SAYSpeechEvent.h</key>
 		<data>
 		PkxpIuO7inhcnoWX6AZUBH3o9HM=
 		</data>
+		<key>Headers/SAYSpeechIntent.h</key>
+		<data>
+		nr+SfyGduaPKQe6+zFrwvLFRfjA=
+		</data>
 		<key>Headers/SAYSpeechRecognition.h</key>
 		<data>
-		cBnV8OAtN9mDrOBMMp5NUWNGkls=
+		qXO5viYtu4SD3NkN8zt4OsYuK3M=
 		</data>
 		<key>Headers/SAYSpeechRecognitionManager.h</key>
 		<data>
-		QYaoy5IodbJ50I+dTZAuq5FK1pU=
+		QTVESDXrxqRtO16ZtkKrn5dvblg=
+		</data>
+		<key>Headers/SAYSpeechRecognitionResult.h</key>
+		<data>
+		YcTG26WGOpsitYbYNTt5ezanZEI=
 		</data>
 		<key>Headers/SAYSpeechRecognitionService.h</key>
 		<data>
-		PDvH258SPpvaOY+dwqfG3fDqvu0=
+		2lCMH/h6i2GpZ8zKQ/2fhwgsE88=
 		</data>
 		<key>Headers/SAYSpeechSynthesizerProxy.h</key>
 		<data>
@@ -473,63 +685,103 @@
 		</data>
 		<key>Headers/SAYSpeechTranscript.h</key>
 		<data>
-		L4xp7ubh7zht75ffXB6wy1OHCAk=
+		8QtfQPny+wKN+OMrpykTU0kuGok=
+		</data>
+		<key>Headers/SAYStandardCommandLibrary.h</key>
+		<data>
+		JdRZB2e/kG4Ror9tai0OmX8xCSk=
+		</data>
+		<key>Headers/SAYStandardRequestResponder.h</key>
+		<data>
+		3EsdQd0oWxYASXX2qHywpfgw9/E=
+		</data>
+		<key>Headers/SAYStandardSpeechRecognizer.h</key>
+		<data>
+		V2j87Myp3VB31jdtySAmdjG+tqc=
+		</data>
+		<key>Headers/SAYStandardVoiceRequest.h</key>
+		<data>
+		sN1g+ah3KEC/pw1m4vwhlpy+xBw=
 		</data>
 		<key>Headers/SAYStringRequest.h</key>
 		<data>
-		4WMKYTrZAZ4771DqfRpXlij8z9U=
+		j0nkFXbTNZkvVut52r17fcxkN/M=
 		</data>
-		<key>Headers/SAYStringResult.h</key>
+		<key>Headers/SAYSwitchTabCommandRecognizer.h</key>
 		<data>
-		zXIQPcnBI5JDt8s5nS6KnXkjRoU=
+		QHonSypjBwzAvQ3WKDnvx4j+Ovg=
 		</data>
-		<key>Headers/SAYTextCommandResolver.h</key>
+		<key>Headers/SAYTextCommandMatcher.h</key>
 		<data>
-		ZDdRqoQc0QA0E9hheo/kUzQcr7E=
-		</data>
-		<key>Headers/SAYTextResolutionRegistry.h</key>
-		<data>
-		hL3B2K89tHqufdUGpbFAdARnZvk=
+		HmVh21DHWGtiNrTgZEWYWqD7Vjg=
 		</data>
 		<key>Headers/SAYToneEvent.h</key>
 		<data>
 		KU2U5iooW5W8t4p2ONoKm+he59M=
 		</data>
+		<key>Headers/SAYValidationError.h</key>
+		<data>
+		UfrEGJNsXiBBwfyz8MsA+w4XRaw=
+		</data>
+		<key>Headers/SAYVerbalCommandRecognizer.h</key>
+		<data>
+		5Jb5Tobn4MVR9z4hat9lzZSpd9o=
+		</data>
+		<key>Headers/SAYVerbalCommandRegistry.h</key>
+		<data>
+		e5d4bIZ1UZd3Q05f7Q3Rc+CNwwY=
+		</data>
 		<key>Headers/SAYVerbalCommandRequest.h</key>
 		<data>
-		v/cz4XwK+G+y6KXVcp1cv/UKk0g=
+		IDYiv/UY/iy/lPl0xHFR6vz4M9E=
 		</data>
-		<key>Headers/SAYVerbalCommandRequestManager.h</key>
+		<key>Headers/SAYVoicePrompt.h</key>
 		<data>
-		0EhmRQKxdt6VwxnU1UWBar4EJms=
+		XEipRKcY5E9069M6rB4AZLEEpHM=
 		</data>
 		<key>Headers/SAYVoiceRequest.h</key>
 		<data>
-		QawwIYOm9LzYZS6ToPFS1JFFRNY=
+		92ZZDl3VeqnDNK2K9Ss5GOeWcZ0=
+		</data>
+		<key>Headers/SAYVoiceRequestController.h</key>
+		<data>
+		KmmWOFetv0P//zvaitLjXtJUkSQ=
+		</data>
+		<key>Headers/SAYVoiceRequestInterpreter.h</key>
+		<data>
+		x4gCvC/x7EI/XnqNpNQ9oGUA3/c=
 		</data>
 		<key>Headers/SAYVoiceRequestPresenter.h</key>
 		<data>
-		7FPoQfAS0p/0x3l/IIEwZvVVyxg=
+		yv7v0YAuJoPI5liwlKVwfg0pasI=
 		</data>
 		<key>Headers/SAYVoiceRequestResponder.h</key>
 		<data>
-		5aUvNgGF3+LsjoDNA2GGeX/tbr0=
+		N6BmOrHbNUc0dPALxLZNIGzRlME=
+		</data>
+		<key>Headers/SAYVoiceRequestResponse.h</key>
+		<data>
+		IMsnuA3cjNG5XP0yJj3cFoeAkxo=
 		</data>
 		<key>Headers/SAYVoiceRequestSoundBoard.h</key>
 		<data>
-		AJuxLVbgbVT2yl0gU0SR7RDKVu4=
+		ZfEN2AOHMMiqceg/O3ubGlzLQn4=
 		</data>
-		<key>Headers/SAYVoiceRequestViewController.h</key>
+		<key>Headers/SAYVoiceRequestView.h</key>
 		<data>
-		2u7zDkmF2a/P9OHIx2c5hIcysYk=
+		HahUw2f7zGuOYPzmlg+e/hCWCvk=
 		</data>
 		<key>Headers/SAYVoiceRequests.h</key>
 		<data>
-		CB3b2wbWAyeZBKENyVEeAYTnc2A=
+		f1kJlW8RPCSxZeLVS4Wq310CHy4=
 		</data>
 		<key>Headers/SayKit.h</key>
 		<data>
-		71z/ljRvaoad9waWnyu/IN/S/1k=
+		xSi7lClRZh90kA/BB/3WhbPV6Ls=
+		</data>
+		<key>Headers/UIViewController+VoiceRequestController.h</key>
+		<data>
+		my1Y4OK2N12XDDFIVcdfXyFB09k=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -541,91 +793,47 @@
 		</data>
 		<key>PrivateHeaders/LuisResult.h</key>
 		<data>
-		ffLamEf+IM7T4wd/VkOFa9l5Bj4=
+		VkONrW70CGIwiq9ct1euKE0Oj20=
 		</data>
-		<key>PrivateHeaders/SAYAppVoiceSettingsDomain.h</key>
+		<key>PrivateHeaders/SAYCommandRecognizerOperation.h</key>
 		<data>
-		t/2Ifrvi2S5YvgUypc7/FYjvHvs=
-		</data>
-		<key>PrivateHeaders/SAYAvailableCommandsDomain.h</key>
-		<data>
-		1Wg8WPEgi3W3qJeFEyB2T2ErxsY=
-		</data>
-		<key>PrivateHeaders/SAYCommonServiceAdapter.h</key>
-		<data>
-		TUOVhrh29SYrmWAU+woHnD8r+sY=
-		</data>
-		<key>PrivateHeaders/SAYHelpDomain.h</key>
-		<data>
-		3G82rC7PrpWczwE+mzfF6mdxphU=
+		a4jF6bmmV+pzfOTnZ/UmfsJUXRo=
 		</data>
 		<key>PrivateHeaders/SAYOperationQueue.h</key>
 		<data>
 		EN6+0t7AxIEA2XWbxsSVDkxLACU=
 		</data>
-		<key>PrivateHeaders/SAYPlaybackControlsDomain.h</key>
+		<key>PrivateHeaders/SAYStandardIntentRecognizer.h</key>
 		<data>
-		FIoLnHDCzHBZBN0xsf7pGTxjf3Q=
+		PKg0WdiQOH5GJavUff4uB6h1nQE=
 		</data>
-		<key>PrivateHeaders/SAYSearchDomain.h</key>
+		<key>PrivateHeaders/SAYTextIntentRecognitionAgent.h</key>
 		<data>
-		urSLKUlRuBs7qMKVo6hLNu9kwrg=
+		AbWBQJlR9d1RJ9fezpvTjrWLiAE=
 		</data>
-		<key>PrivateHeaders/SAYSelectDomain.h</key>
+		<key>PrivateHeaders/SAYVerbalCommandRecognizer+Private.h</key>
 		<data>
-		oKyOA4hAhoPAdh06D0+XgHAj0hc=
+		qsJc4BYX61r5U2D18nk9AAcb4gM=
 		</data>
-		<key>PrivateHeaders/SAYSpeechIntent.h</key>
+		<key>PrivateHeaders/SAYWaveformView.h</key>
 		<data>
-		nr+SfyGduaPKQe6+zFrwvLFRfjA=
-		</data>
-		<key>PrivateHeaders/SAYStackNavigationDomain.h</key>
-		<data>
-		giwzfiFHnNJsbhcPBGswWkU9xnY=
-		</data>
-		<key>PrivateHeaders/SAYTabNavigationDomain.h</key>
-		<data>
-		G1RiPk1tyWqNLQC78Mt3lqEvCGA=
-		</data>
-		<key>PrivateHeaders/SAYVoiceDomain.h</key>
-		<data>
-		fpivEu3dmElBsts7JtSLGP7eO5U=
-		</data>
-		<key>PrivateHeaders/SAYVoiceIntentResolver.h</key>
-		<data>
-		0i4qxX75N6Zv8NVXfxCItI5ygDg=
-		</data>
-		<key>PrivateHeaders/SAYVoiceIntentTransformerRegistry.h</key>
-		<data>
-		mrrh/xV8jOGzaZwt4Rma0ZWSOug=
-		</data>
-		<key>PrivateHeaders/SAYVoiceRequestCommonResponder.h</key>
-		<data>
-		4VQOpxZWW3ZnSrSXTtWOqh5LvLo=
-		</data>
-		<key>PrivateHeaders/WitResult.h</key>
-		<data>
-		s24Hhkjs23dZ770Iv41lRaIZmEk=
-		</data>
-		<key>PrivateHeaders/WitServiceAdapter.h</key>
-		<data>
-		DOZSkwC2dRgHnkJ7nddsCpcWBrM=
+		e+6uTl0kki0lEhlohl3Y9JG5eec=
 		</data>
 		<key>SAYCommandBar.nib</key>
 		<data>
-		8SLu8hzhzkHwWB5Kj6bvY/1hFMA=
+		eSm4jtojWbk3mKaoacqJoKCWjig=
 		</data>
 		<key>SAYConfirmationContentViewController.nib</key>
 		<data>
-		Nd1KiNp9GM+E19t0RqQbwngnWvE=
+		2Xh+Mw1tKIyMDJD0BaQYjiPw5fk=
 		</data>
-		<key>SAYSelectContentViewController.nib</key>
+		<key>SAYVoiceRequestView.nib</key>
 		<data>
-		/qLdvj/jMWeoD5wZa2LH60cWGgI=
+		ZCwnVXUKQ1T3Zq0s58tvAJsnVns=
 		</data>
-		<key>SAYVoiceRequestViewController.nib</key>
+		<key>SayKitAPIServer.cer</key>
 		<data>
-		SXGR2SsF077G9vdMrBG/xYDXq34=
+		FQEOZvHu3TlP6TmePZLB1OGhjI4=
 		</data>
 		<key>did_begin_listening.mp3</key>
 		<data>

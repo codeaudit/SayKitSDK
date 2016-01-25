@@ -29,4 +29,11 @@ typedef SAYOperation SAYAudioOperation;
 
 @end
 
+/**
+ *  Alias for a simple execution block with no argument or return value. Used in this context as an action to execute after audio events complete.
+ 
+    Note: this may be extended in future versions to include information about whether or not the related audio event completed or was cancelled.
+ */
+typedef void (^SAYAudioEventCompletionBlock)();
+
 NS_ASSUME_NONNULL_END

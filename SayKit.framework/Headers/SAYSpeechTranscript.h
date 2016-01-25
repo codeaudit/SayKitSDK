@@ -7,18 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SAYSpeechRecognitionResult.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- *  A `SAYSpeechTranscript` combines a text string with a confidence value. Useful in responses from speech recognition services that are capable of incorporating uncertainty with their  transcriptions.
+ *  A `SAYSpeechTranscript` is a simple type that holds a single string representation of recognized speech.
  */
-@interface SAYSpeechTranscript : NSObject
+@interface SAYSpeechTranscript : NSObject <SAYSpeechRecognitionResult>
 
 /**
- *  A potential string of recognized text
+ *  The recognized text string
  */
-@property (nonatomic, copy, readonly) NSString *text;
+@property (nonatomic, copy, readonly) NSString *transcript;
 
 /**
  *  The confidence associated with the recognized text

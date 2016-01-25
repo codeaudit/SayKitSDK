@@ -13,7 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- *  Presentation controller used to assist `SAYVoiceRequestViewController` placement for voice command requests.
+ *  Presentation controller used to assist `SAYVoiceRequestController` placement for voice command requests.
  */
 @interface SAYCommandBarPresentationController : UIPresentationController
 
@@ -21,6 +21,11 @@ NS_ASSUME_NONNULL_BEGIN
  *  Should be set to the height of the command bar
  */
 @property (nonatomic) CGFloat commandBarHeight;
+
+/**
+ *  Should be set to the height of the tab bar, if one exists.
+ */
+@property (nonatomic) CGFloat tabBarHeight;
 
 @end
 

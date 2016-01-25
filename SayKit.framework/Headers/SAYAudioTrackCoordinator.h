@@ -10,6 +10,7 @@
 #import "SAYAudioFocusManagement.h"
 
 @class SAYManagedSynthesizer;
+@class SAYAudioTrack;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -24,13 +25,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) SAYManagedSynthesizer * managedSynth;
 
 /**
- *  Returns a system-wide default coordinator available to all SayKit applications.
- *
- *  @return A system-wide default coordinator
- */
-+ (SAYAudioTrackCoordinator *)defaultCoordinator;
-
-/**
  *  Initailizes a new coordinator with the given synthesizer
  *
  *  @param managedSynth Managed synthesizer instance to coordinate  multi-agent speech synthesis
@@ -41,6 +35,32 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// @abstract Use initWithManagedSynthesizer: to initialize.
 - (instancetype)init NS_UNAVAILABLE;
+
+/**
+ *  Create a new audio track to be managed by the receiver.
+ *
+ *  @param identifier New track identifier string
+ *  @param priority Priorty of the track for the sake of focus management. Higher number means higher priority.
+ *
+ *  @return The new SAYAudioTrack instance
+ */
+- (SAYAudioTrack *)registerTrackWithIdentifier:(NSString *)identifier priority:(unsigned int)priority;
+
+/**
+ *  Release the track with the given identifier from the receiver.
+ *
+ *  @param identifier Track identifier string
+ */
+- (void)unregisterTrackWithIdentifier:(NSString *)identifier;
+
+/**
+ *  Returns the track registered with the given identifier, if it exists.
+ *
+ *  @param identifier Track identifier string
+ *
+ *  @return Registered track, if one exists. Nil otherwise.
+ */
+- (nullable SAYAudioTrack *)trackWithIdentifier:(NSString *)identifier;
 
 /**
  *  Suspends execution on all tracks, regardless of priority.

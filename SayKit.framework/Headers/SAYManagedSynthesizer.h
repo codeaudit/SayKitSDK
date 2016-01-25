@@ -14,6 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  The `SAYManagedSynthesizer` is a `AVSpeechSynthesizer` with additional capabilities that support per-utterance delegation. As a side effect of this, a delegate should not be set directly on the synthesizer.
+ 
+    iOS does not behave well with multiple active `AVSpeechSynthesizer` instances, which is what led to the development of this class. If multiple synthesizers are needed, a single instance of this class should be used to spawn `SAYSpeechSynthesizerProxy` satellite synthesizers.
+ 
+    As a consequence, this class should be treated like a singleton: only use the system-wide `sharedInstance`.
  */
 @interface SAYManagedSynthesizer : AVSpeechSynthesizer
 

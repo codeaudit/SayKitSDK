@@ -11,7 +11,7 @@
 #import "SAYVoiceRequest.h"
 
 @class SAYCommandDispatcher;
-@protocol SAYCommandResolver;
+@protocol SAYVerbalCommandRegistry;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,20 +20,17 @@ NS_ASSUME_NONNULL_BEGIN
  
     In the current version of SayKit, the speech recognizer underlying this command cannot be cusotmized.
  */
-@interface SAYVerbalCommandRequest : SAYVoiceRequest
+@interface SAYVerbalCommandRequest : NSObject <SAYVoiceRequest>
 
 /**
- *  Initialize a new request with the given command pipeline components
+ *  Initialize a new request backed by the given command registry
  *
- *  @param commandResolver   Command resolver capable of processing speech recognition results
- *  @param commandDispatcher Agent to dispatch resolved potential commands
+ *  @param commandRegistry
  *
  *  @return The newly-initialized request
  */
-- (instancetype)initWithCommandResolver:(id<SAYCommandResolver>)commandResolver
-                             dispatcher:(SAYCommandDispatcher *)commandDispatcher NS_DESIGNATED_INITIALIZER;
-
-- (instancetype)initWithRecognitionService:(id<SAYSpeechRecognitionService>)recognitionService responder:(id<SAYVoiceRequestResponder>)responder NS_UNAVAILABLE;
+- (instancetype)initWithCommandRegistry:(id<SAYVerbalCommandRegistry>)commandRegistry;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
