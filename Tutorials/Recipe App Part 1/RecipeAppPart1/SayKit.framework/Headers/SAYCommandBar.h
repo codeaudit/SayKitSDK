@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, weak) id<SAYCommandBarDelegate> delegate;
 
+@property (nonatomic, assign) BOOL commandsMenuEnabled;
+
 /**
  *  Button to start a voice command session
  */

@@ -15,9 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SAYPatternCommandMatcher : NSObject <SAYTextCommandMatcher>
 
-@property (nonatomic, copy, readonly) NSArray<NSString *> *templates;
+@property (nonatomic, copy, readonly) NSArray<NSString *> *patternTemplates;
 
-- (instancetype)initWithTemplates:(NSArray<NSString *> *)templates;
++ (instancetype)matcherForPattern:(NSString *)pattern;
++ (instancetype)matcherForPatterns:(NSArray <NSString *> *)patterns;
+
+- (instancetype)initWithPattern:(NSString *)pattern;
+- (instancetype)initWithPatterns:(NSArray<NSString *> *)patterns;
 
 - (instancetype)init NS_UNAVAILABLE;
 

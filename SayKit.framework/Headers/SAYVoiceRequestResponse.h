@@ -22,7 +22,7 @@ typedef void (^SAYVoiceRequestResponseAction)();
 @property (nonatomic, copy, readonly, nullable) SAYVoiceRequestResponseAction action;
 
 + (instancetype)terminalResponseWithAction:(nullable SAYVoiceRequestResponseAction)action;
-+ (instancetype)terminalResponseWithFeedback:(nullable SAYVoicePrompt *)feedbackPrompt action:(nullable SAYVoiceRequestResponseAction)action;
++ (instancetype)responseWithFollowupRequest:(id<SAYVoiceRequest>)request;
 
 - (instancetype)initWithFeedbackPrompt:(nullable SAYVoicePrompt *)feedbackPrompt
                        followupRequest:(nullable id<SAYVoiceRequest>)followupRequest

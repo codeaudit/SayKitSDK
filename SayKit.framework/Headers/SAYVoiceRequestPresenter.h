@@ -32,13 +32,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) id<SAYAudioEventListener> audioEventPresenter;
 
 /**
- *  Returns a system-wide default presenter
- *
- *  @return The a system-wide default presenter
- */
-+ (SAYVoiceRequestPresenter *)defaultPresenter;
-
-/**
  *  Initiates a `SAYVoiceRequestPresenter` with the given request manager and output audio track.
  *
  *  @param manager Manager to run speech recognition sessions
@@ -48,14 +41,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithSpeechRecognitionManager:(SAYSpeechRecognitionManager *)manager;
 
 /**
- *  Connects the given request to a `SAYVoiceRequestController` and presents it, using the receiver's `presentingTrack` and `presentingViewController`.
- *
- *  @param request Request to be presented
- */
-- (void)presentRequest:(id<SAYVoiceRequest>)request;
-
-/**
- *  Presents the given request, using the provided view controller as a presenter instead of the receiver's built-in instance.
+ *  Presents the given request, using the provided view controller to present the voice request controller.
+ 
+    Note: Requests will play audio through the system conversation manager's SAYAudioTrackVoiceRequestIdentifier track. This is currently fixed, but will more flexible in future releases.
  *
  *  @param request Request to be presented
  *  @param presentingViewController View controller from which to modally present request's visual component

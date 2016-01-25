@@ -31,7 +31,6 @@ NS_ASSUME_NONNULL_BEGIN
  
     Defaults to SayKit's default `SAYVoiceRequestPresenter`.
  */
-@property (nonatomic, strong) SAYVoiceRequestPresenter *voiceRequestPresenter;
 
 @property (nonatomic, strong) SAYConversationManager *conversationManager;
 

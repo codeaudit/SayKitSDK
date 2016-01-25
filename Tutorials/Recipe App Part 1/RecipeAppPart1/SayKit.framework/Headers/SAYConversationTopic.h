@@ -14,6 +14,8 @@
 @class SAYVerbalCommandRecognizer;
 @class SAYAudioTrack;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface SAYConversationTopic : NSObject <SAYVerbalCommandRegistry, SAYAudioEventSource>
 
 @property (nonatomic, readonly) NSArray <SAYVerbalCommandRecognizer *> *commandRecognizers;
@@ -39,3 +41,5 @@
    didPostEventSequence:(SAYAudioEventSequence *)sequence;
 
 @end
+
+NS_ASSUME_NONNULL_END
