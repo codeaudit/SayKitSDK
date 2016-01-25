@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var recognizedSpeechLabel: UILabel!
     @IBOutlet weak var appResultLabel: UILabel!
     
     override func viewDidLoad() {
@@ -18,19 +17,30 @@ class ViewController: UIViewController {
         
         commandRegistry = SAYConversationManager.systemManager().commandRegistry as! SAYCommandRecognizerCatalog
         
-        commandRegistry.addCommandRecognizer(SAYAvailableCommandsCommandRecognizer(responseTarget: self, action: Selector("handleAvailableCommands")))
+        commandRegistry.addCommandRecognizer(SAYAvailableCommandsCommandRecognizer(responseTarget: self, action: "handleAvailableCommands"))
         
         commandRegistry.addCommandRecognizer(SAYSearchCommandRecognizer(actionBlock: { command in
             let searchQuery = command.parameters[SAYSearchCommandRecognizerParameterQuery]
             self.updateAppResultLabelWithText("Received command:\n[Search for \(searchQuery)]")
         }))
+        
+        let selectRecognizer = SAYSelectCommandRecognizer(actionBlock: { command in
+            if let name = command.parameters["name"] {
+                self.updateAppResultLabelWithText("Received command:\n[Choose \(name)!]")
+            }
+            else {
+                /* ... */
+            }
+        })
+        let pattern = "i choose you @name"
+        selectRecognizer.addTextMatcher(SAYPatternCommandMatcher(pattern: pattern))
+        commandRegistry.addCommandRecognizer(selectRecognizer)
     }
     
     @IBAction func stringRequestButtonTapped(sender: AnyObject)
     {
         let request = SAYStringRequest(promptText:"What recipe would you like to search for?") { result in
             if let recipeString = result {
-                self.updateRecognizedSpeechLabelWithText(recipeString)
                 self.updateAppResultLabelWithText("Received command:\n[Search for \(recipeString)]")
             }
             else {
@@ -38,7 +48,7 @@ class ViewController: UIViewController {
             }
         }
         
-        SAYVoiceRequestPresenter.defaultPresenter().presentRequest(request)
+        SAYConversationManager.systemManager().presentVoiceRequest(request)
     }
 
     @IBAction func selectRequestButtonTapped(sender: AnyObject)
@@ -47,7 +57,7 @@ class ViewController: UIViewController {
             self.handleSelectionWithResult(result)
         }
         
-        SAYVoiceRequestPresenter.defaultPresenter().presentRequest(request)
+        SAYConversationManager.systemManager().presentVoiceRequest(request)
     }
     
     @IBAction func selectedRequestAliasesButtonTapped(sender: AnyObject)
@@ -60,7 +70,7 @@ class ViewController: UIViewController {
             self.handleSelectionWithResult(result)
         }
         
-        SAYVoiceRequestPresenter.defaultPresenter().presentRequest(request)
+        SAYConversationManager.systemManager().presentVoiceRequest(request)
     }
     
     // MARK: Helpers
@@ -87,13 +97,6 @@ class ViewController: UIViewController {
     {
         dispatch_async(dispatch_get_main_queue()) {
             self.appResultLabel.text = text
-        }
-    }
-    
-    private func updateRecognizedSpeechLabelWithText(text: String)
-    {
-        dispatch_async(dispatch_get_main_queue()) {
-            self.recognizedSpeechLabel.text = "\"\(text)\""
         }
     }
     

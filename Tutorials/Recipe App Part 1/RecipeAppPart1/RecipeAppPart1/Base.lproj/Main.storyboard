@@ -39,12 +39,6 @@
                                     <action selector="selectedRequestAliasesButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sgq-Hd-lKD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You just said..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbe-Je-afY">
-                                <rect key="frame" x="20" y="563" width="111" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result of app logic goes here" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRl-mp-RkN">
                                 <rect key="frame" x="189" y="36" width="222" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -58,10 +52,8 @@
                             <constraint firstItem="Wue-O4-pYU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-32" id="4Fe-gd-IxJ"/>
                             <constraint firstItem="CRl-mp-RkN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" priority="750" id="AkF-ro-4oh"/>
                             <constraint firstItem="j5Z-kU-1eC" firstAttribute="top" secondItem="Wue-O4-pYU" secondAttribute="bottom" constant="16" id="Bs6-tU-tYo"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="jbe-Je-afY" secondAttribute="bottom" constant="16" id="NN7-5C-8LN"/>
                             <constraint firstItem="Wue-O4-pYU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qzx-fD-Qsq"/>
                             <constraint firstItem="CiC-da-oZm" firstAttribute="centerX" secondItem="j5Z-kU-1eC" secondAttribute="centerX" id="U2o-z8-cgS"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="jbe-Je-afY" secondAttribute="leading" id="igg-Wg-LkR"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="CRl-mp-RkN" secondAttribute="trailing" priority="750" id="nPn-Zk-KsM"/>
                             <constraint firstItem="CRl-mp-RkN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="rGP-kM-Nca"/>
                             <constraint firstItem="j5Z-kU-1eC" firstAttribute="centerX" secondItem="Wue-O4-pYU" secondAttribute="centerX" id="slD-CW-WRh"/>
@@ -70,7 +62,6 @@
                     </view>
                     <connections>
                         <outlet property="appResultLabel" destination="CRl-mp-RkN" id="uCA-fb-PjH"/>
-                        <outlet property="recognizedSpeechLabel" destination="jbe-Je-afY" id="M2Y-mN-m6v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
