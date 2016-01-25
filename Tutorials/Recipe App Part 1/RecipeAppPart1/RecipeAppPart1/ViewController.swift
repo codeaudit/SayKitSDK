@@ -30,17 +30,23 @@ class ViewController: UIViewController {
             }
         }))
         
-        let selectRecognizer = SAYSelectCommandRecognizer(actionBlock: { command in
+        let extendedSelectRecognizer = SAYSelectCommandRecognizer(actionBlock: { command in
             if let name = command.parameters["name"] {
                 self.updateAppResultLabelWithText("Received command:\n[Choose \(name)!]")
+            }
+            else if let standardName = command.parameters[SAYSelectCommandRecognizerParameterItemName] {
+                self.updateAppResultLabelWithText("Received command:\n[Choose \(standardName)!]")
+            }
+            else if let standardNumber = command.parameters[SAYSelectCommandRecognizerParameterItemNumber] {
+                self.updateAppResultLabelWithText("Received command:\n[Choose number \(standardNumber)!]")
             }
             else {
                 /* ... */
             }
         })
         let pattern = "i choose you @name"
-        selectRecognizer.addTextMatcher(SAYPatternCommandMatcher(pattern: pattern))
-        commandRegistry.addCommandRecognizer(selectRecognizer)
+        extendedSelectRecognizer.addTextMatcher(SAYPatternCommandMatcher(pattern: pattern))
+        commandRegistry.addCommandRecognizer(extendedSelectRecognizer)
     }
     
     @IBAction func confirmationRequestButtonTapped(sender: AnyObject)
