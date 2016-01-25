@@ -68,20 +68,20 @@ class ViewController: UIViewController {
 
     @IBAction func selectRequestButtonTapped(sender: AnyObject)
     {
-        let request = SAYSelectRequest(itemLabels: ["Chocolate Butterscotch Cookies", "Beef Lasagna", "Tuna Casserole"], promptText: "Which of your saved recipes would you like to review?") { result in
+        let request = SAYSelectRequest(itemLabels: ["Blue", "Green", "Purple"], promptText: "What color would you like?") { result in
             self.handleSelectionWithResult(result)
         }
         
         SAYConversationManager.systemManager().presentVoiceRequest(request)
     }
     
-    @IBAction func selectedRequestAliasesButtonTapped(sender: AnyObject)
+    @IBAction func selectRequestAliasesButtonTapped(sender: AnyObject)
     {
-        let options = [SAYSelectOption(label: "Chocolate Butterscotch Cookies", aliases: ["Grandma's Cookies"]),
-                       SAYSelectOption(label: "Beef Lasagna", aliases: ["Pasta", "My Favorite Dish"]),
-                       SAYSelectOption(label: "Tuna Casserole")]
+        let options = [SAYSelectOption(label: "Blue", aliases: ["Ocean"]),
+                       SAYSelectOption(label: "Green", aliases: ["Forest", "Emerald"]),
+                       SAYSelectOption(label: "Purple")]
         
-        let request = SAYSelectRequest(options: options, promptText: "Which of your saved recipes would you like to review?") { result in
+        let request = SAYSelectRequest(options: options, promptText: "What color would you like?") { result in
             self.handleSelectionWithResult(result)
         }
         
@@ -101,7 +101,7 @@ class ViewController: UIViewController {
             let selectedItemName = result?.selectedOption.label,
             let selectedIndex = result?.selectedIndex
         {
-            self.updateAppResultLabelWithText("Received command:\n[Details for Recipe #\(selectedIndex): \(selectedItemName)]")
+            self.updateAppResultLabelWithText("Received command:\n[Pick color #\(selectedIndex): \(selectedItemName)]")
         }
         else {
             /* ... */

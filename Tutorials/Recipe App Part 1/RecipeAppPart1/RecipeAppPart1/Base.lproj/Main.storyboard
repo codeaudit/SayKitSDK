@@ -43,7 +43,7 @@
                                 <rect key="frame" x="217" y="359" width="166" height="30"/>
                                 <state key="normal" title="Select Request (Aliases)"/>
                                 <connections>
-                                    <action selector="selectedRequestAliasesButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sgq-Hd-lKD"/>
+                                    <action selector="selectRequestAliasesButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NYv-lI-l6M"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result of app logic goes here" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRl-mp-RkN">
