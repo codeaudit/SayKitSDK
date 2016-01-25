@@ -32,7 +32,7 @@ To learn more, let's discuss each of these responsibilities in turn.
 
 ### Defining Audio Output
 
-Topics conform to the `SAYAudioEventSource` protocol, so they can post event sequences relevant only to their part of the interface. 
+Topics conform to the `SAYAudioEventSource` protocol, so they can post event sequences localized to only their part of the interface. 
 
 For example, a shopping app may need to present a list of product titles to the user. Let's wrap this up in a `SAYConversationTopic` subclass called `ProductListTopic`, and give it a method that speaks a list of product titles:
 
@@ -62,7 +62,7 @@ Now, any time we tell our topic to speak its product titles, a sequence of event
 
 ### Handling Voice Input
 
-Topics also conform to the `SAYCommandRegistry` protocol, so they are able to provide a collection of command recognizers relevant to their subject. In the product list example above, you could assign list-navigation commands to your topic to allow the user to browse the list on command.
+Topics also conform to the `SAYVerbalCommandRegistry` protocol, so they are able to provide a collection of command recognizers relevant to their subject. In the product list example above, you could assign list-navigation commands to your topic to allow the user to browse the list on command.
 
 To continue with the example, let's assume we have some kind of event handler class (like a controller in MVC-terms) capable of handling commands events recognized by our `ProductListTopic`. Then it's initializer could include the following configuration:
 
@@ -111,12 +111,79 @@ And with that, we have a tidy conversation topic encapsulating all the input and
 
 ### Managing the interface hierarchy
 
-The final responsibility of a conversation topic is to manage its collection of subtopics. It can fold its subtopics' command recognizers into its own and arrange their audio events into a single sequence to be posted. This capability lets us take advantage of the power of composition to build complex conversational interfaces from simple building blocks.
+The final responsibility of a conversation topic is to manage its collection of subtopics. It can fold its subtopics' command recognizers into its own and listen to their audio events, arranging and passing them on as single sequence to be posted. This capability lets us take advantage of the power of composition to build complex conversational interfaces from simple building blocks.
 
-At first blush, this might not be as intuitive as composing a hierarchy of subviews, so let's make it more concrete by adding search capabilities to shopping app example. When the user issues a search command, let's make the app search the product database and a list of matches to the user. We could pull this off by just modifying our `ProductListTopic` class to recognize search commands. We could also change our `speakProductTitles:` method to be a bit more conversational and add an introduction such as "Here's what I found matching *query*" to the list.
+At first blush, this might not be as intuitive as composing a hierarchy of subviews, so let's make it more concrete with an example: we'll add search capabilities to our shopping app example. When the user issues a search command, let's make the app search the product database and a list of matches to the user. 
 
-Or, a better idea would be to just leave our perfectly-simple `ProductListTopic` class as-is, and instead use it as a subtopic of a new class that includes the search commands and introductory message. We'll call this new class the `ProductSearchTopic`, and we can implement it (loosely) like this:
+We could pull this off by tacking features onto our `ProductListTopic` class to recognize search commands. We could also change its `speakProductTitles:` method to be a bit more conversational and preface the list with an introduction like "Here's what I found matching your query:" to the list.
 
-**insert implementation example**
+But do we really need to bloat our perfectly-concise `ProductListTopic` class with all of this? Not if we use composition. Instead, let's leave it as is use it as a subtopic of a new class that includes the search commands and introductory message. We'll call this new class the `ProductSearchTopic`, and we can implement it like this in Swift:
 
-**talk about adding root topic conversation manager's registry and to its audio sources**
+*[Add diagram of this simple hierarchy]*
+
+````swift
+// Swift
+class ProductSearchTopic: SAYConversationTopic
+    init(eventHandler: ProductTopicEventHandler) {
+        // set up the search recognizer
+        self.addCommandRecognizer(SAYSearchCommandRecognizer(responseTarget: self,
+                                                                     action: "handleSearch:")
+
+        // create the subtopic to handle the list of results
+        let listTopic = ProductListTopic(eventHandler: eventHandler)
+
+        // by adding it as a subtopic, we are implicitly doing two things:
+        // 1. adding its command recognizers to our collection
+        // 2. listening for, and passing on, our subtopic's audio events (potentially with modification: see below)
+        self.addSubtopic(listTopic)
+    }
+
+    // This is a base SAYConversationTopic function that is called to pass on a subtopics'
+    // audio events. Override it to modify the message.
+    override func subtopic(subtopic: SAYConversationTopic,
+                           didPostEventSequence incomingSeq: SAYAudioEventSequence) {
+        
+        // preface the message with this introduction
+        let prefaceEvent = SAYSpeechEvent(utteranceString: "Here's what I found matching your query:")
+        let outgoingSeq = SAYAudioEventSequence(events:[prefaceEvent])
+
+        // the incoming sequence is our subtopic's list of search results
+        // add them to our outgoing sequence
+        outgoingSeq.appendSequence(incomingSeq)
+
+        self.postEvents(outgoingSeq)
+    }
+```
+
+### Conversation Manager Integration
+
+Thanks to this composibility and its conformance to both `SAYVerbalCommandRegistry` and `SAYAudioSource`, a single conversation topic can serve as the "root" for the entire application. Just configure the system's conversation manager as the application launches:
+
+```swift
+// Swift
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    ...
+    let systemManager = SAYConversationManager.systemManager()
+    let rootTopic = /* your root conversation topic */
+    systemManager.commandRegistry = rootTopic
+    systemManager.addAudioSource(rootTopic, forTrack:SAYAudioTrackMainIdentifier)   
+}
+```
+
+## Coming soon...
+
+A lot can be built with just these basic units, but this is just a start. Expect even more features in the future, including:
+
+- Built-in Topics: The example `SAYConversationTopic` subclasses we built above are generic enough to be used in many contexts. Future versions of SayKit will include fully-fleshed out standards like those ready for use.
+
+- UIKit Integration: It's no accident that many SayKit APIs bear a resemblance to UIKit APIs. Not only does this lessen the difficulty in adopting SayKit, but the parallels allows for seamless integration possibilities with the two frameworks.
+
+- Dialogue text files: Instead of scattered in-line declarations of speech output, a topic could be paired with a text-based file that includes dialogue options tailored to its particular domain (think .xib files, but for speech). This file format will include features tailored to natural speech production, keeping fiddly output text processing out of your code.
+
+---
+
+## Next Steps
+
+Thanks for joining us on this in-depth tour of SayKit's major features. 
+
+If you're looking for even more, take a look at our [other developer resources]("../README.md#developer-resources").
