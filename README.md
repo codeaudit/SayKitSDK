@@ -8,7 +8,7 @@ Currently available as a developer preview (version 0.8).
 What are you looking to do?
 
 - **Jump in**: [Installation guide](#installation-guide)
-- **Familiarize yourself**: [SayKit tour](./Tour/00-intro.md)
+- **Familiarize yourself**: [SayKit tour](https://github.com/ConversantLabs/SayKitSDK/blob/master/Tour/00-intro.md)
 - **Learn by doing**: [Step-by-step tutorial](#)
 - **Read the headers**: [API documentation](#)
 - **Go deep**: [In-depth Developer guides](#) *(coming soon)*
