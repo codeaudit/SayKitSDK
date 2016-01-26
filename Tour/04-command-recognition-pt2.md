@@ -49,15 +49,15 @@ It's fairly likely that you'll need to employ recognizers for commands that SayK
 
 ```Swift
 // Swift
-let greetingsRecognizer = SAYCustomCommandRecognizer(commandType: "Greeting") { cmd in /* ... */ }
+let greetingsRecognizer = SAYCustomCommandRecognizer(customType: "Greeting") { cmd in /* ... */ }
 let patterns = ["hello", "hey", "what's up"]
-greetingsRecognizer.addTextMatcher([SAYPatternCommandMatcher matcherWithPatterns:patterns])
+greetingsRecognizer.addTextMatcher(SAYPatternCommandMatcher(patterns:patterns))
 ```
 
 ```objc
 // Objective-C
 SAYCustomCommandRecognizer *greetingsRecognizer = 
-	[[SAYCustomCommandRecognizer alloc] initWithCommandType:@"Greeting"
+	[[SAYCustomCommandRecognizer alloc] initWithCustomType:@"Greeting"
 				                                actionBlock:^(SAYCommand * _Nonnull) { /* ... */ }];
 NSArray *patterns = @[@"hello", @"hey", @"what's up"];
 [greetingsRecognizer addTextMatcher:[SAYPatternCommandMatcher matcherWithPatterns:patterns]];
