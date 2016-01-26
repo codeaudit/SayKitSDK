@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8392D61D1C5814360026BA8E /* SayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8392D61B1C58142B0026BA8E /* SayKit.framework */; };
+		8392D61E1C5814360026BA8E /* SayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8392D61B1C58142B0026BA8E /* SayKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		83ED79071C57DB7E00DFB815 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ED79061C57DB7E00DFB815 /* AppDelegate.swift */; };
 		83ED79091C57DB7E00DFB815 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ED79081C57DB7E00DFB815 /* ViewController.swift */; };
 		83ED790E1C57DB7E00DFB815 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83ED790D1C57DB7E00DFB815 /* Assets.xcassets */; };
@@ -21,6 +23,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				8392D61E1C5814360026BA8E /* SayKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -28,6 +31,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8392D61B1C58142B0026BA8E /* SayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SayKit.framework; sourceTree = "<group>"; };
 		83ED79031C57DB7E00DFB815 /* SayKit Requests and Recognizers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SayKit Requests and Recognizers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83ED79061C57DB7E00DFB815 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83ED79081C57DB7E00DFB815 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8392D61D1C5814360026BA8E /* SayKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +57,7 @@
 		83ED78FA1C57DB7E00DFB815 = {
 			isa = PBXGroup;
 			children = (
+				8392D61B1C58142B0026BA8E /* SayKit.framework */,
 				83ED79051C57DB7E00DFB815 /* SayKit Requests and Recognizers */,
 				83ED79041C57DB7E00DFB815 /* Products */,
 			);
