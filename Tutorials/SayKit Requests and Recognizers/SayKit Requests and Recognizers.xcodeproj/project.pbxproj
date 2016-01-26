@@ -1,0 +1,326 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		83ED79071C57DB7E00DFB815 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ED79061C57DB7E00DFB815 /* AppDelegate.swift */; };
+		83ED79091C57DB7E00DFB815 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ED79081C57DB7E00DFB815 /* ViewController.swift */; };
+		83ED790E1C57DB7E00DFB815 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83ED790D1C57DB7E00DFB815 /* Assets.xcassets */; };
+		83ED79111C57DB7E00DFB815 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ED790F1C57DB7E00DFB815 /* LaunchScreen.storyboard */; };
+		83ED795C1C57DCCA00DFB815 /* SayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83ED795A1C57DCBD00DFB815 /* SayKit.framework */; };
+		83ED795D1C57DCCA00DFB815 /* SayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83ED795A1C57DCBD00DFB815 /* SayKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		83ED79681C57DD8800DFB815 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ED79661C57DD8800DFB815 /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		83ED795E1C57DCCA00DFB815 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				83ED795D1C57DCCA00DFB815 /* SayKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		83ED79031C57DB7E00DFB815 /* SayKit Requests and Recognizers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SayKit Requests and Recognizers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		83ED79061C57DB7E00DFB815 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		83ED79081C57DB7E00DFB815 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		83ED790D1C57DB7E00DFB815 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		83ED79101C57DB7E00DFB815 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		83ED79121C57DB7E00DFB815 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83ED795A1C57DCBD00DFB815 /* SayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SayKit.framework; sourceTree = "<group>"; };
+		83ED79671C57DD8800DFB815 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		83ED79691C57DE6D00DFB815 /* SayKit-Requests-and-Recognizers-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SayKit-Requests-and-Recognizers-Bridging-Header.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		83ED79001C57DB7E00DFB815 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83ED795C1C57DCCA00DFB815 /* SayKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		83ED78FA1C57DB7E00DFB815 = {
+			isa = PBXGroup;
+			children = (
+				83ED795A1C57DCBD00DFB815 /* SayKit.framework */,
+				83ED79051C57DB7E00DFB815 /* SayKit Requests and Recognizers */,
+				83ED79041C57DB7E00DFB815 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		83ED79041C57DB7E00DFB815 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				83ED79031C57DB7E00DFB815 /* SayKit Requests and Recognizers.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		83ED79051C57DB7E00DFB815 /* SayKit Requests and Recognizers */ = {
+			isa = PBXGroup;
+			children = (
+				83ED79061C57DB7E00DFB815 /* AppDelegate.swift */,
+				83ED79081C57DB7E00DFB815 /* ViewController.swift */,
+				83ED79661C57DD8800DFB815 /* Main.storyboard */,
+				83ED790D1C57DB7E00DFB815 /* Assets.xcassets */,
+				83ED790F1C57DB7E00DFB815 /* LaunchScreen.storyboard */,
+				83ED79121C57DB7E00DFB815 /* Info.plist */,
+				83ED79691C57DE6D00DFB815 /* SayKit-Requests-and-Recognizers-Bridging-Header.h */,
+			);
+			path = "SayKit Requests and Recognizers";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		83ED79021C57DB7E00DFB815 /* SayKit Requests and Recognizers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83ED79151C57DB7E00DFB815 /* Build configuration list for PBXNativeTarget "SayKit Requests and Recognizers" */;
+			buildPhases = (
+				83ED78FF1C57DB7E00DFB815 /* Sources */,
+				83ED79001C57DB7E00DFB815 /* Frameworks */,
+				83ED79011C57DB7E00DFB815 /* Resources */,
+				83ED795E1C57DCCA00DFB815 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SayKit Requests and Recognizers";
+			productName = "SayKit Requests and Recognizers";
+			productReference = 83ED79031C57DB7E00DFB815 /* SayKit Requests and Recognizers.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		83ED78FB1C57DB7E00DFB815 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Conversant Labs";
+				TargetAttributes = {
+					83ED79021C57DB7E00DFB815 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 83ED78FE1C57DB7E00DFB815 /* Build configuration list for PBXProject "SayKit Requests and Recognizers" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 83ED78FA1C57DB7E00DFB815;
+			productRefGroup = 83ED79041C57DB7E00DFB815 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				83ED79021C57DB7E00DFB815 /* SayKit Requests and Recognizers */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		83ED79011C57DB7E00DFB815 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83ED79681C57DD8800DFB815 /* Main.storyboard in Resources */,
+				83ED79111C57DB7E00DFB815 /* LaunchScreen.storyboard in Resources */,
+				83ED790E1C57DB7E00DFB815 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		83ED78FF1C57DB7E00DFB815 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83ED79091C57DB7E00DFB815 /* ViewController.swift in Sources */,
+				83ED79071C57DB7E00DFB815 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		83ED790F1C57DB7E00DFB815 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				83ED79101C57DB7E00DFB815 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		83ED79661C57DD8800DFB815 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				83ED79671C57DD8800DFB815 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		83ED79131C57DB7E00DFB815 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		83ED79141C57DB7E00DFB815 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		83ED79161C57DB7E00DFB815 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "SayKit Requests and Recognizers/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ConversantLabs.SayKit-Requests-and-Recognizers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SayKit Requests and Recognizers/SayKit-Requests-and-Recognizers-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		83ED79171C57DB7E00DFB815 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "SayKit Requests and Recognizers/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ConversantLabs.SayKit-Requests-and-Recognizers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SayKit Requests and Recognizers/SayKit-Requests-and-Recognizers-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		83ED78FE1C57DB7E00DFB815 /* Build configuration list for PBXProject "SayKit Requests and Recognizers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83ED79131C57DB7E00DFB815 /* Debug */,
+				83ED79141C57DB7E00DFB815 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83ED79151C57DB7E00DFB815 /* Build configuration list for PBXNativeTarget "SayKit Requests and Recognizers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83ED79161C57DB7E00DFB815 /* Debug */,
+				83ED79171C57DB7E00DFB815 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 83ED78FB1C57DB7E00DFB815 /* Project object */;
+}
