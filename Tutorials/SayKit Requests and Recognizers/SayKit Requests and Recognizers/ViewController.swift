@@ -17,9 +17,10 @@ class ViewController: UIViewController {
         
         commandRegistry = SAYConversationManager.systemManager().commandRegistry as! SAYCommandRecognizerCatalog
         
+        // Start with some one-off actions responding to standard commands:
         commandRegistry.addCommandRecognizer(SAYAvailableCommandsCommandRecognizer(responseTarget: self, action: "availableCommandsRequested"))
         
-        commandRegistry.addCommandRecognizer(SAYSearchCommandRecognizer(responseTarget: self, action: "searchRequested:"))
+        commandRegistry.addCommandRecognizer(SAYSetSpeechRateCommandRecognizer(responseTarget: self, action: "setSpeechRateRequested:"))
         
         commandRegistry.addCommandRecognizer(SAYSearchCommandRecognizer(actionBlock: { command in
             if let searchQuery = command.parameters[SAYSearchCommandRecognizerParameterQuery] {
@@ -30,6 +31,15 @@ class ViewController: UIViewController {
             }
         }))
         
+        // "Help" command with a clarifying followup request:
+        commandRegistry.addCommandRecognizer(SAYHelpCommandRecognizer { command -> SAYVoiceRequestResponse in
+            let followupRequest = SAYStringRequest(promptText: "What would you like help with?", action: { result in
+                self.updateAppResultLabelWithText("Received command:\n[Help with \"\(result)\"")
+            })
+            return SAYVoiceRequestResponse(followupRequest: followupRequest)
+        })
+        
+        // Custom command recognizer:
         let greetingsRecognizer = SAYCustomCommandRecognizer(customType: "Greeting") { command in
             self.updateAppResultLabelWithText("Received command:\n[Greetings!]")
         }
@@ -37,6 +47,7 @@ class ViewController: UIViewController {
         greetingsRecognizer.addTextMatcher(SAYPatternCommandMatcher(forPatterns: patterns))
         commandRegistry.addCommandRecognizer(greetingsRecognizer)
         
+        // Add a text matcher to the standard "Select" command recognizer:
         let extendedSelectRecognizer = SAYSelectCommandRecognizer(actionBlock: { command in
             if let name = command.parameters["name"] {
                 self.updateAppResultLabelWithText("Received command:\n[Choose \(name)!]")
@@ -45,38 +56,9 @@ class ViewController: UIViewController {
                 /* ... */
             }
         })
-        let pattern = "i choose you @name"
+        let pattern = "i choose you @name"  // Note the parameter "name"
         extendedSelectRecognizer.addTextMatcher(SAYPatternCommandMatcher(pattern: pattern))
         commandRegistry.addCommandRecognizer(extendedSelectRecognizer)
-        
-        commandRegistry.addCommandRecognizer(SAYSelectCommandRecognizer { command -> SAYVoiceRequestResponse in
-            if let selectedName = command.parameters[SAYSelectCommandRecognizerParameterItemName] as? String {
-                let matchingNames = self.namesMatchingSelection(selectedName)
-                if matchingNames.count > 0 {
-                    // respond with a new voice request
-                    let request = SAYSelectRequest(itemLabels: matchingNames, promptText: "Which one?", action: { result in
-                        if let followupName = result?.selectedOption.label {
-                            self.updateAppResultLabelWithText("Received command:\n[Choose \(followupName)!]")
-                        }
-                        else {
-                            /* ... */
-                        }
-                    })
-                    return SAYVoiceRequestResponse(followupRequest:request);
-                }
-                else {
-                    // no need to follow up, just terminate the request and run the given action block
-                    return SAYVoiceRequestResponse.terminalResponseWithAction() {
-                        self.updateAppResultLabelWithText("Received command:\n[Choose \(selectedName)!]")
-                    };
-                }
-            }
-            else {
-                return SAYVoiceRequestResponse.terminalResponseWithAction() {
-                    self.updateAppResultLabelWithText("Couldn't get a name match")
-                };
-            }
-        })
     }
     
     @IBAction func confirmationRequestButtonTapped(sender: AnyObject)
@@ -147,10 +129,10 @@ class ViewController: UIViewController {
         updateAppResultLabelWithText("Received command:\n[Available Commands]")
     }
     
-    func searchRequested(command: SAYCommand)
+    func setSpeechRateRequested(command: SAYCommand)
     {
-        if let searchQuery = command.parameters[SAYSearchCommandRecognizerParameterQuery] {
-            self.updateAppResultLabelWithText("Received command:\n[Search for \(searchQuery)]")
+        if let newSpeechRate = command.parameters[SAYSetSpeechRateCommandRecognizerParameterSpeechRate] {
+            self.updateAppResultLabelWithText("Received command:\n[Set speech rate to \(newSpeechRate)]")
         }
         else {
             /* ... */
