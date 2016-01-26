@@ -11,8 +11,6 @@
 		83ED79091C57DB7E00DFB815 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ED79081C57DB7E00DFB815 /* ViewController.swift */; };
 		83ED790E1C57DB7E00DFB815 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83ED790D1C57DB7E00DFB815 /* Assets.xcassets */; };
 		83ED79111C57DB7E00DFB815 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ED790F1C57DB7E00DFB815 /* LaunchScreen.storyboard */; };
-		83ED795C1C57DCCA00DFB815 /* SayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83ED795A1C57DCBD00DFB815 /* SayKit.framework */; };
-		83ED795D1C57DCCA00DFB815 /* SayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83ED795A1C57DCBD00DFB815 /* SayKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		83ED79681C57DD8800DFB815 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ED79661C57DD8800DFB815 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -23,7 +21,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				83ED795D1C57DCCA00DFB815 /* SayKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,7 +34,6 @@
 		83ED790D1C57DB7E00DFB815 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83ED79101C57DB7E00DFB815 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83ED79121C57DB7E00DFB815 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		83ED795A1C57DCBD00DFB815 /* SayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SayKit.framework; sourceTree = "<group>"; };
 		83ED79671C57DD8800DFB815 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		83ED79691C57DE6D00DFB815 /* SayKit-Requests-and-Recognizers-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SayKit-Requests-and-Recognizers-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -47,7 +43,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83ED795C1C57DCCA00DFB815 /* SayKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +52,6 @@
 		83ED78FA1C57DB7E00DFB815 = {
 			isa = PBXGroup;
 			children = (
-				83ED795A1C57DCBD00DFB815 /* SayKit.framework */,
 				83ED79051C57DB7E00DFB815 /* SayKit Requests and Recognizers */,
 				83ED79041C57DB7E00DFB815 /* Products */,
 			);
