@@ -2,17 +2,19 @@
 
 ## Basics
 
-The user speech-end of a SayKit app revolves around the `SAYVoiceRequest` class. A **Voice Request** encapsulates the entire "question-answer" process of a dialogue turn: everything between a asking the user a question to triggering an action in response to their answer.
+The user speech-end of a SayKit app revolves around the `SAYVoiceRequest` class. A **Voice Request** encapsulates the entire "question-answer" process of a dialogue turn: everything between asking the user a question to triggering an action in response to their answer.
 
-*add figure with simple scenario highlighting a voice requests*
+*TODO: add figure with simple scenario highlighting a voice requests*
 
 Voice Requests can be initiated by sending one to the conversation manager. For example, if the application needs to ask the user for permission to do something, it can create a `SAYConfirmationRequest`, like so:
 
 ````swift
 // Swift
-let request = SAYConfirmationRequest(promptText: "Are you sure?") { doIt: Bool in
-	if doIt { /* do it! */ }
-	else    { /* don't do it */ }
+let request = SAYConfirmationRequest(promptText: "Are you sure?") { result in
+	if let doIt = result as? Bool {
+		if doIt { /* do it! */ }
+		else    { /* don't do it */ }
+	}
 }
 SAYConversationManager.systemManager().presentVoiceRequest(request)
 ````
@@ -22,7 +24,7 @@ If the app needs the user to choose a color for the shirt she just added to her 
 ````swift
 // Swift
 let request = SAYSelectRequest(
-    itemLabels: ["Small", "Medium", "Large"],
+    itemLabels: ["Blue", "Green", "Purple"],
     promptText: "What color would you like?") { result in
         // add it to the cart with the given color choice
     }
@@ -58,7 +60,7 @@ As mentioned above, a response consists of any combination of these 3 factors:
 2. Arbitrary application code: the **action**
 3. A new voice request: the **followup request**
 
-The third item there is the key to creating a turn-taking dialogue. By providing a followup request, a request session turns into a cycle, with the app and user taking turns speaking to each other.
+The third item is the key to creating a turn-taking dialogue. By providing a followup request, a request session turns into a cycle, with the app and the user taking turns speaking to each other.
 
 // TODO: show request as a cycle with similar style as above figure
 

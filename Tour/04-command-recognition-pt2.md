@@ -2,11 +2,11 @@
 
 ## Extending Command Recognizers
 
-SayKit doesn't restrict you to its built-in library, however. Standard recognizers can be extended to handle broader speech patterns and you can even create your own recognizers to handle custom commands.
+SayKit doesn't restrict you to its built-in library of recognizers. Standard recognizers can be extended to handle broader speech patterns and you can even create your own recognizers to handle custom commands.
 
-Recognizer instances can be modified by adding **Text Matchers** to them. In essense, a text matcher is a simple agent that processes a string of text and decides how likely it is to match the relevant command. A few types of built-in text matchers exist, most notably the `SAYPatternCommandMatcher`, which uses a set of pattern templates to match user speech. We'll use one in a moment below.
+Recognizer instances can be modified by adding **Text Matchers** to them. In essence, a text matcher is a simple agent that processes a string of text and decides how likely it is to match the relevant command. A few types of built-in text matchers exist, most notably the `SAYPatternCommandMatcher`, which uses a set of pattern templates to match user speech. We'll use one in a moment below.
 
-As a quick example let's say we're building a Pokémon-themed email app (as you do), and we want it to recognize the following command: "I choose you, John Smith!" to add a recepient to a message. SayKit already provides the `SAYSelectCommandRecognizer`, which recognizes when the user wants to make a selection, but it wasn't necessarily built with Pokémon trainers in mind. So what can we do?
+As a quick example let's say we're building a Pokémon-themed email app (as you do), and we want to add a recipient to a message by recognizing the following command: "I choose you, John Smith!". SayKit already provides the `SAYSelectCommandRecognizer`, which recognizes when the user wants to make a selection, but it wasn't necessarily built with Pokémon trainers in mind. So what can we do?
 
 ````swift
 // Swift, using a closure-style callback
@@ -41,7 +41,7 @@ selectRecognizer.addTextMatcher(SAYPatternCommandMatcher(pattern: pattern))
 	selectRecognizer.addTextMatcher([SAYPatternCommandMatcher matcherWithPattern:pattern]);
 ````
 
-Done! Assuming if you have a bunch of Pokémon in your address book, you've now got the perfect email client.
+Done! Assuming you have a bunch of Pokémon in your address book, you've now got the very best email client.
 
 ## Custom Commands
 
@@ -49,15 +49,15 @@ It's fairly likely that you'll need to employ recognizers for commands that SayK
 
 ```Swift
 // Swift
-let greetingsRecognizer = SAYCustomCommandRecognizer(commandType: "Greeting") { cmd in /* ... */ }
+let greetingsRecognizer = SAYCustomCommandRecognizer(customType: "Greeting") { cmd in /* ... */ }
 let patterns = ["hello", "hey", "what's up"]
-greetingsRecognizer.addTextMatcher([SAYPatternCommandMatcher matcherWithPatterns:patterns])
+greetingsRecognizer.addTextMatcher(SAYPatternCommandMatcher(patterns:patterns))
 ```
 
 ```objc
 // Objective-C
 SAYCustomCommandRecognizer *greetingsRecognizer = 
-	[[SAYCustomCommandRecognizer alloc] initWithCommandType:@"Greeting"
+	[[SAYCustomCommandRecognizer alloc] initWithCustomType:@"Greeting"
 				                                actionBlock:^(SAYCommand * _Nonnull) { /* ... */ }];
 NSArray *patterns = @[@"hello", @"hey", @"what's up"];
 [greetingsRecognizer addTextMatcher:[SAYPatternCommandMatcher matcherWithPatterns:patterns]];
@@ -71,7 +71,7 @@ This just scratches the surface of customizing command recognizers. To learn mor
 
 The app listens for a user command via the same mechanism it uses for listening to all user speech: as part of a `SAYVoiceRequest` session. Specifically, it uses a `SAYVerbalCommandRequest`.
 
-Just like every other voice request, a `SAYVerbalCommandRequest` has a *responding* stage. And just like any other voice request, the response can include a follow-up request, which causes the app to ask the user a new question. This means the app can jump straight into a conversation with the user directly in response to a command. To pull this off, simply return the followup request from your recognizer instance's action method/block.
+Just like [any other voice request](./02-voice-requests.md#voice-request-flow), a `SAYVerbalCommandRequest` has a *responding* stage. And just like any other voice request, the response can include a follow-up request, which causes the app to ask the user a new question. This means the app can jump straight into a conversation with the user directly in response to a command. To pull this off, simply return the followup request from your recognizer instance's action method/block.
 
 We'll illustrate by continuing with the previous example. Let's say your user has two friends named "Pikachu" in her address book: Toby Pikachu and Susan Pikachu. If the user says "I choose you, Pikachu!", the app needs to know if she means Toby or Susan.
 

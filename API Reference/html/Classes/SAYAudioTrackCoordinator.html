@@ -44,11 +44,6 @@
 	
 	
 	
-	<option value="class_methods">Class Methods</option>
-	
-	<option value="//api/name/defaultCoordinator">&nbsp;&nbsp;&nbsp;&nbsp;+ defaultCoordinator</option>
-	
-	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
@@ -57,9 +52,15 @@
 	
 	<option value="//api/name/initWithManagedSynthesizer:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithManagedSynthesizer:</option>
 	
+	<option value="//api/name/registerTrackWithIdentifier:priority:">&nbsp;&nbsp;&nbsp;&nbsp;- registerTrackWithIdentifier:priority:</option>
+	
 	<option value="//api/name/resumeTracks">&nbsp;&nbsp;&nbsp;&nbsp;- resumeTracks</option>
 	
 	<option value="//api/name/suspendTracks">&nbsp;&nbsp;&nbsp;&nbsp;- suspendTracks</option>
+	
+	<option value="//api/name/trackWithIdentifier:">&nbsp;&nbsp;&nbsp;&nbsp;- trackWithIdentifier:</option>
+	
+	<option value="//api/name/unregisterTrackWithIdentifier:">&nbsp;&nbsp;&nbsp;&nbsp;- unregisterTrackWithIdentifier:</option>
 	
 	
 	
@@ -91,12 +92,6 @@
 
 
 
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/defaultCoordinator">defaultCoordinator</a></span></li>
-	
-</ul></li>
-
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
@@ -105,9 +100,15 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithManagedSynthesizer:">initWithManagedSynthesizer:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/registerTrackWithIdentifier:priority:">registerTrackWithIdentifier:priority:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resumeTracks">resumeTracks</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/suspendTracks">suspendTracks</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/trackWithIdentifier:">trackWithIdentifier:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/unregisterTrackWithIdentifier:">unregisterTrackWithIdentifier:</a></span></li>
 	
 </ul></li>
 
@@ -173,12 +174,6 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/defaultCoordinator">+&nbsp;defaultCoordinator</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/initWithManagedSynthesizer:">&ndash;&nbsp;initWithManagedSynthesizer:</a></code>
 	</span>
 	
@@ -186,6 +181,24 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/registerTrackWithIdentifier:priority:">&ndash;&nbsp;registerTrackWithIdentifier:priority:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/unregisterTrackWithIdentifier:">&ndash;&nbsp;unregisterTrackWithIdentifier:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/trackWithIdentifier:">&ndash;&nbsp;trackWithIdentifier:</a></code>
 	</span>
 	
 	
@@ -258,58 +271,6 @@
 					</div>
 					
 					
-					
-					<div class="section section-methods">
-						<a title="Class Methods" name="class_methods"></a>
-						<h2 class="subtitle subtitle-methods">Class Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/defaultCoordinator" title="defaultCoordinator"></a>
-	<h3 class="subsubtitle method-title">defaultCoordinator</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns a system-wide default coordinator available to all SayKit applications.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>+ (SAYAudioTrackCoordinator *)defaultCoordinator</code></div>
-
-    
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>A system-wide default coordinator</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns a system-wide default coordinator available to all SayKit applications.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYAudioTrackCoordinator.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
 					
 					
 					
@@ -410,6 +371,67 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/registerTrackWithIdentifier:priority:" title="registerTrackWithIdentifier:priority:"></a>
+	<h3 class="subsubtitle method-title">registerTrackWithIdentifier:priority:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create a new audio track to be managed by the receiver.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (SAYAudioTrack *)registerTrackWithIdentifier:(NSString *)<em>identifier</em> priority:(unsigned int)<em>priority</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>identifier</em></dt>
+			<dd><p>New track identifier string</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>priority</em></dt>
+			<dd><p>Priorty of the track for the sake of focus management. Higher number means higher priority.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The new <a href="../Classes/SAYAudioTrack.html">SAYAudioTrack</a> instance</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Create a new audio track to be managed by the receiver.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYAudioTrackCoordinator.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/resumeTracks" title="resumeTracks"></a>
 	<h3 class="subsubtitle method-title">resumeTracks</h3>
 	
@@ -491,6 +513,113 @@
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/trackWithIdentifier:" title="trackWithIdentifier:"></a>
+	<h3 class="subsubtitle method-title">trackWithIdentifier:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the track registered with the given identifier, if it exists.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (nullable SAYAudioTrack *)trackWithIdentifier:(NSString *)<em>identifier</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>identifier</em></dt>
+			<dd><p>Track identifier string</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Registered track, if one exists. Nil otherwise.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the track registered with the given identifier, if it exists.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYAudioTrackCoordinator.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/unregisterTrackWithIdentifier:" title="unregisterTrackWithIdentifier:"></a>
+	<h3 class="subsubtitle method-title">unregisterTrackWithIdentifier:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Release the track with the given identifier from the receiver.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)unregisterTrackWithIdentifier:(NSString *)<em>identifier</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>identifier</em></dt>
+			<dd><p>Track identifier string</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Release the track with the given identifier from the receiver.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYAudioTrackCoordinator.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
@@ -509,7 +638,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 Conversant Labs. All rights reserved. (Last updated: 2015-12-09)</span><br />
+						<p><span class="copyright">&copy; 2016 Conversant Labs. All rights reserved. (Last updated: 2016-01-25)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</span></p>
 						

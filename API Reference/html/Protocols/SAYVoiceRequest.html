@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>SAYStringResult Class Reference</title>
+		<title>SAYVoiceRequest Protocol Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">SAYStringResult Class Reference</h1>
+				<h1 class="hideInXcode">SAYVoiceRequest Protocol Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -25,8 +25,6 @@
 				<li id="jumpto_button" role="navigation">
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
-	
-	<option value="overview">Overview</option>
 	
 	
 	
@@ -39,20 +37,15 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/error">&nbsp;&nbsp;&nbsp;&nbsp;error</option>
+	<option value="//api/name/interpreter">&nbsp;&nbsp;&nbsp;&nbsp;interpreter</option>
 	
-	<option value="//api/name/transcription">&nbsp;&nbsp;&nbsp;&nbsp;transcription</option>
+	<option value="//api/name/recognitionService">&nbsp;&nbsp;&nbsp;&nbsp;recognitionService</option>
 	
-	
-	
-	
+	<option value="//api/name/responder">&nbsp;&nbsp;&nbsp;&nbsp;responder</option>
 	
 	
-	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/initWithError:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithError:</option>
 	
-	<option value="//api/name/initWithTranscription:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithTranscription:</option>
 	
 	
 	
@@ -63,8 +56,6 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
-<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
-
 
 
 
@@ -78,30 +69,24 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/error">error</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/interpreter">interpreter</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/transcription">transcription</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/recognitionService">recognitionService</a></span></li>
 	
-</ul></li>
-
-
-
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithError:">initWithError:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithTranscription:">initWithTranscription:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/responder">responder</a></span></li>
 	
 </ul></li>
+
+
+
+
 
 
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="SAYStringResult Class Reference" name="top"></a>
+				<a title="SAYVoiceRequest Protocol Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -110,31 +95,23 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">SAYStringResult Class Reference</h1>
+						<h1 class="title title-header">SAYVoiceRequest Protocol Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Inherits from</td>
+	<td class="specification-title">Conforms to</td>
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">SAYStringResult.h</td>
+	<td class="specification-value">SAYVoiceRequest.h</td>
 </tr>
 						</tbody></table></div>
 					
                     
                     
-					
-					<div class="section section-overview">
-						<a title="Overview" name="overview"></a>
-						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Encapsulates result data from a completed <a href="../Classes/SAYStringRequest.html"><code>SAYStringRequest</code></a></p>
-					</div>
-					
-					
 					
 					
 					
@@ -149,28 +126,22 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/transcription">&nbsp;&nbsp;transcription</a></code>
+		<code><a href="#//api/name/recognitionService">&nbsp;&nbsp;recognitionService</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
-	
+	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/error">&nbsp;&nbsp;error</a></code>
+		<code><a href="#//api/name/interpreter">&nbsp;&nbsp;interpreter</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
-	
+	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithTranscription:">&ndash;&nbsp;initWithTranscription:</a></code>
+		<code><a href="#//api/name/responder">&nbsp;&nbsp;responder</a></code>
 	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/initWithError:">&ndash;&nbsp;initWithError:</a></code>
-	</span>
-	
-	
+	<span class="task-item-suffix">property</span>
+	<span class="task-item-suffix">required method</span>
 </li>
 						</ul>
 						
@@ -185,18 +156,18 @@
 						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/error" title="error"></a>
-	<h3 class="subsubtitle method-title">error</h3>
+	<a name="//api/name/interpreter" title="interpreter"></a>
+	<h3 class="subsubtitle method-title">interpreter</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Error that prevented the request from completing successfully.</p>
+		<p>Delegate responsible for interpeting speech input into a usable result</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly, nullable) NSError *error</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, nonnull) id&lt;SAYVoiceRequestInterpreter&gt; interpreter</code></div>
 
     
 	
@@ -208,7 +179,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Error that prevented the request from completing successfully.</p>
+		<p>Delegate responsible for interpeting speech input into a usable result</p>
 	</div>
 	
 	
@@ -219,25 +190,25 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYStringResult.h</code><br />
+		<code class="declared-in-ref">SAYVoiceRequest.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/transcription" title="transcription"></a>
-	<h3 class="subsubtitle method-title">transcription</h3>
+	<a name="//api/name/recognitionService" title="recognitionService"></a>
+	<h3 class="subsubtitle method-title">recognitionService</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Transcription of user speech. If nil, no speech was recognized.</p>
+		<p>Underlying service responsible for recognizing speech</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly, nullable) NSString *transcription</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, nonnull) id&lt;SAYSpeechRecognitionService&gt; recognitionService</code></div>
 
     
 	
@@ -249,7 +220,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Transcription of user speech. If nil, no speech was recognized.</p>
+		<p>Underlying service responsible for recognizing speech</p>
 	</div>
 	
 	
@@ -260,7 +231,48 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYStringResult.h</code><br />
+		<code class="declared-in-ref">SAYVoiceRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/responder" title="responder"></a>
+	<h3 class="subsubtitle method-title">responder</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Delegate responsible for reacting to the interpreted result (and potentially generating the next turn).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, nonnull) id&lt;SAYVoiceRequestResponder&gt; responder</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Delegate responsible for reacting to the interpreted result (and potentially generating the next turn).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequest.h</code><br />
 	</div>				
 	
 	
@@ -271,124 +283,6 @@
 					
 					
 					
-					
-					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithError:" title="initWithError:"></a>
-	<h3 class="subsubtitle method-title">initWithError:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Initializer for a new <code>SAYStringResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (instancetype)initWithError:(NSError *)<em>error</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>error</em></dt>
-			<dd><p>Content of <a href="#//api/name/error">error</a> underlying failure</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The newly-initiated <code>SAYStringResult</code></p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializer for a new <code>SAYStringResult</code> representing a request that failed because of an <a href="#//api/name/error">error</a>.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYStringResult.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithTranscription:" title="initWithTranscription:"></a>
-	<h3 class="subsubtitle method-title">initWithTranscription:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Initializer for a new <code>SAYStringResult</code> representing a request with a successfully recognized text transcript.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (instancetype)initWithTranscription:(NSString *)<em>transcription</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>transcription</em></dt>
-			<dd><p>String representing of recognized speech</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The newly-initiated <code>SAYStringResult</code></p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializer for a new <code>SAYStringResult</code> representing a request with a successfully recognized text transcript.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYStringResult.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
 					
 					
                     
@@ -406,7 +300,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 Conversant Labs. All rights reserved. (Last updated: 2015-12-09)</span><br />
+						<p><span class="copyright">&copy; 2016 Conversant Labs. All rights reserved. (Last updated: 2016-01-25)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</span></p>
 						

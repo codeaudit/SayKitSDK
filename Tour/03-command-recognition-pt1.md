@@ -6,7 +6,7 @@ These *command requests* have very different properties than the typical *voice 
 
 ## Command Recognizers
 
-SayKit provides the **Command Recognizer** classes, which are specficially designed to handle these needs. A `SAYCommandRecognizer` subclass knows how to look out for specific speech patterns, and instances of them know exactly where commands should be delivered to. For example, in Swift:
+SayKit provides the **Command Recognizer** classes, which are specifically designed to handle these needs. A `SAYCommandRecognizer` subclass knows how to look out for specific speech patterns, and instances of them know exactly where commands should be delivered to. For example, in Swift:
 
 ````swift
 init() {
@@ -35,9 +35,9 @@ SayKit comes with a number of these pre-built standard command recognizers, and 
 
 ## Command Registry
 
-Remember our friend `SAYConversationManager`? One of its properties is a `SAYCommandRegistry`, which is a protocol that describes types capable of holding a collection of recognizers. When the user speaks the command, all the recognizers attached to this registry will be consulted to interpret the speech.
+Remember our friend [`SAYConversationManager`](./01-overview.md#conversation-management)? One of its properties is a `SAYCommandRegistry`, which is a protocol that describes types capable of holding a collection of recognizers. When the user speaks the command, all the recognizers attached to this registry will be consulted to interpret the speech.
 
-Simple apps can get by with a basic `SAYCommandRecognizerCatalog` as a registry, which is a basic class that wraps a list of recognizers. As your app grows, however, your registry will need a bit more structure. We'll get into that later in the tour when we talk about [Command Topics](./05-command-topics.md).
+Simple apps can get by with a basic `SAYCommandRecognizerCatalog` as a registry, which is a basic class that wraps a list of recognizers. As your app grows, however, your registry will need a bit more structure. We'll get into that later in the tour when we talk about [Command Topics](./06-conversation-topics.md).
 
 A typical pattern is to set the system manager's registry when the application is loading:
 
