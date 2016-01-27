@@ -30,7 +30,7 @@ We have plans to enhance SayKit well beyond version 1.0. Here is just a few of t
 
 #### Declarative Dialogues
 
-Modern iOS developers expect to build their graphical UIs in a declarative-style, using visual tools like Interface Builder instead of large blocks of view configuration code. We think defining conversational interfaces in imperative clode blocks is less than ideal as wellclumsy, and aim to provide declarative tools to define dialogue flows.
+Modern iOS developers expect to build their graphical UIs in a declarative-style, using visual tools like Interface Builder instead of large blocks of view configuration code. When it comes to UI, declarative is typically better than imperative. We feel the same way about defining conversational interfaces and aim to provide declarative tools to allow for more natural definitions of dialogue flows.
 
 #### Always-on Listening Mode
 
