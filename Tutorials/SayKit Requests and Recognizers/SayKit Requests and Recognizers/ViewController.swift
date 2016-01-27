@@ -39,26 +39,32 @@ class ViewController: UIViewController {
             return SAYVoiceRequestResponse(followupRequest: followupRequest)
         })
         
-        // Custom command recognizer:
-        let greetingsRecognizer = SAYCustomCommandRecognizer(customType: "Greeting") { command in
-            self.updateAppResultLabelWithText("Received command:\n[Greetings!]")
-        }
-        let patterns = ["hello", "hey", "what's up"]
-        greetingsRecognizer.addTextMatcher(SAYPatternCommandMatcher(forPatterns: patterns))
-        commandRegistry.addCommandRecognizer(greetingsRecognizer)
-        
         // Add a text matcher to the standard "Select" command recognizer:
-        let extendedSelectRecognizer = SAYSelectCommandRecognizer(actionBlock: { command in
-            if let name = command.parameters["name"] {
+        let selectRecognizer = SAYSelectCommandRecognizer(actionBlock: { command in
+            if let name = command.parameters["name"] {  // Note our custom parameter, "name"
                 self.updateAppResultLabelWithText("Received command:\n[Choose \(name)!]")
+            }
+            else if let itemName = command.parameters[SAYSelectCommandRecognizerParameterItemName] {
+                self.updateAppResultLabelWithText("Received command:\n[Select \(itemName)]")
+            }
+            else if let itemNumber = command.parameters[SAYSelectCommandRecognizerParameterItemNumber] {
+                self.updateAppResultLabelWithText("Received command:\n[Select item number \(itemNumber)]")
             }
             else {
                 /* ... */
             }
         })
-        let pattern = "i choose you @name"  // Note the parameter "name"
-        extendedSelectRecognizer.addTextMatcher(SAYPatternCommandMatcher(pattern: pattern))
-        commandRegistry.addCommandRecognizer(extendedSelectRecognizer)
+        let pattern = "i choose you @name"  // Note our custom parameter, "name"
+        selectRecognizer.addTextMatcher(SAYPatternCommandMatcher(pattern: pattern))
+        commandRegistry.addCommandRecognizer(selectRecognizer)
+        
+        // Custom command recognizer:
+        let greetingsRecognizer = SAYCustomCommandRecognizer(customType: "Greeting") { command in
+            self.updateAppResultLabelWithText("Received command:\n[Greetings!]")
+        }
+        let patterns = ["hello", "hey", "what's up", "greetings"]
+        greetingsRecognizer.addTextMatcher(SAYPatternCommandMatcher(forPatterns: patterns))
+        commandRegistry.addCommandRecognizer(greetingsRecognizer)
     }
     
     @IBAction func confirmationRequestButtonTapped(sender: AnyObject)

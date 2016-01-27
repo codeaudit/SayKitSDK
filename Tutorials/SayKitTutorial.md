@@ -87,7 +87,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 }
 ```
 
-Now that we're all set up, let's get to the real meat of a conversational interface: voice requests and command recognizers!
+Now that we're all set up, let's get to the real meat of a conversational interface: command recognizers and voice requests!
 
 // TODO: Snip here and link to next page.
 
@@ -103,7 +103,7 @@ But we don't typically worry about these steps when we create a visual app using
 
 ### Standard Command Recognizers
 
-SayKit has a set of predefined commands that it can recognize, like "Help", "Search", and "Select". We'll demonstrate how to use these, as well as how to add our own customizations.
+SayKit has a set of predefined commands that it can recognize, like "Help", "Search", and "Select". Each of these standard recognizers is a subclass of `SAYVerbalCommandRecognizer`, which knows what to do with commands of its assigned `commandType`. We'll demonstrate how to use standard command recognizers, as well as how to add our own customizations.
 
 In this part of the tutorial, we'll add command recognizers directly to the Conversation Manager's command registry, since we're using a flat `SAYCommandRecognizerCatalog`. In more complex apps, we might register command recognizers with a Conversation Topic instead. Check out the [Conversation Topic Tutorial](#) for more information.
 
@@ -174,7 +174,103 @@ In addition to the `target:action:` initializer for command recognizers, you can
 
 ### Followup Requests
 
+Sometimes we may need to prompt the user for clarification. A common scenario is when the user leaves out some information that we need (User: "I choose you, Pikachu!", App: "Did you mean Toby Pikachu or Susan Pikachu?"). In such cases, we can respond to the user with a followup voice request.
+
+In previous examples we created our command recognizers using the `target:action:` initializer and the `actionBlock` initializer. Here we'll use the `responseBuilder` initializer, which is simply a block that accepts a `SAYCommand` and returns a `SAYVoiceRequestResponse`. A voice request response contains everything we need to know to respond to the user, including an `action` block, a `followupRequest`, and a `feedbackPrompt`, all of which are optional and can be mixed and matched to the desired effect.
+
+```swift
+commandRegistry.addCommandRecognizer(SAYHelpCommandRecognizer { command -> SAYVoiceRequestResponse in
+    let followupRequest = SAYStringRequest(promptText: "What would you like help with?", action: { result in
+        self.updateAppResultLabelWithText("Received command:\n[Help with \"\(result)\"")
+    })
+    return SAYVoiceRequestResponse(followupRequest: followupRequest)
+})
+```
+
+Note that you could accomplish the same effect while still initializing the command recognizer using the `target:action:` paradigm by ensuring that your `action` method has one of the following signatures:
+```swift
+func responseToCommand() -> SAYVerbalCommandResponse
+```
+or
+```swift
+func responseToCommand(command: SAYCommand) -> SAYVerbalCommandResponse
+```
+
 ### Custom Command Recognizers
+
+These standard command recognizers are great! But of course they're not going to cover every situation, so let's look at how we can make our own.
+
+The most straightforward way to add our customization is to piggy-back on an existing standard command recognizer. Suppose we have a `SAYSelectCommandRecognizer` setup like so:
+```swift
+let selectRecognizer = SAYSelectCommandRecognizer(actionBlock: { command in
+    if let itemName = command.parameters[SAYSelectCommandRecognizerParameterItemName] {
+        self.updateAppResultLabelWithText("Received command:\n[Select \(itemName)]")
+    }
+    else if let itemNumber = command.parameters[SAYSelectCommandRecognizerParameterItemNumber] {
+        self.updateAppResultLabelWithText("Received command:\n[Select item number \(itemNumber)]")
+    }
+    else {
+        /* ... */
+    }
+})
+commandRegistry.addCommandRecognizer(selectRecognizer)
+```
+
+This will recognize phrases like "Select the third one" or "Select Jiffy", but maybe we know our users tend to make selections using some other phrase. We can simply add a `SAYTextCommandMatcher` to the selectRecognizer. Text matchers give command recognizers another way to identify when to respond to user speech.
+
+Objects conforming to the `SAYTextCommandMatcher` protocol will process a user's speech transcript and return the likelihood that the given text corresponds to some command. Here we'll use the implementation `SAYPatternCommandMatcher`, which is initialized with an array of text "patterns" that are used to process the speech transcript. If the transcript matches any of the patterns, then the Matcher returns a positive response along with any pattern parameters.
+
+```swift
+let pattern = "i choose you @name"  // Note our custom parameter, "name"
+selectRecognizer.addTextMatcher(SAYPatternCommandMatcher(pattern: pattern))
+```
+
+Phrases matching our new pattern will now be recognized by our selectRecognizer, and we can handle our new custom parameter, "name". Our entire setup should now look like this:
+
+```swift
+let selectRecognizer = SAYSelectCommandRecognizer(actionBlock: { command in
+    if let name = command.parameters["name"] {  // Note our custom parameter, "name"
+        self.updateAppResultLabelWithText("Received command:\n[Choose \(name)!]")
+    }
+    else if let itemName = command.parameters[SAYSelectCommandRecognizerParameterItemName] {
+        self.updateAppResultLabelWithText("Received command:\n[Select \(itemName)]")
+    }
+    else if let itemNumber = command.parameters[SAYSelectCommandRecognizerParameterItemNumber] {
+        self.updateAppResultLabelWithText("Received command:\n[Select item number \(itemNumber)]")
+    }
+    else {
+        /* ... */
+    }
+})
+let pattern = "i choose you @name"  // Note our custom parameter, "name"
+selectRecognizer.addTextMatcher(SAYPatternCommandMatcher(pattern: pattern))
+commandRegistry.addCommandRecognizer(selectRecognizer)
+```
+
+Another way to customize our recognizers is to make our own! The procedure is almost identical to the previous `selectRecognizer` example, but our new recognizer will rely completely on text matchers. 
+
+Say we want to recognize when the user says "Hello". We can do that by defining our own `SAYCustomCommandRecognizer`, which is a subclass of `SAYVerbalCommandRecognizer` with no predefined notion of what command it should recognize nor how to recognize it. We define these ourselves via its `customType` and a `SAYPatternCommandMatcher`:
+
+```swift
+let greetingsRecognizer = SAYCustomCommandRecognizer(customType: "Greeting") { command in
+    self.updateAppResultLabelWithText("Received command:\n[Greetings!]")
+}
+let patterns = ["hello", "hey", "what's up", "greetings"]
+greetingsRecognizer.addTextMatcher(SAYPatternCommandMatcher(forPatterns: patterns))
+commandRegistry.addCommandRecognizer(greetingsRecognizer)
+```
+
+Another way to think of what's going on here is, "If the user says any of these patterns, it's a "Greeting" command, so execute this action block".
+
+____
+
+Now that our command registry is loaded up with command recognizers, our app can recognize what's being said and act accordingly. But what if the app already knows that the user wants to, say, perform a search, and just needs to prompt them for the search query? 
+
+That sounds like a job for voice requests!
+
+// TODO: Snip here and link to next page
+
+
 
 
 --------------------------------------------------------------------------------
