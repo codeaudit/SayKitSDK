@@ -43,9 +43,7 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/initWithCommandResolver:dispatcher:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithCommandResolver:dispatcher:</option>
-	
-	<option value="//api/name/initWithRecognitionService:responder:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithRecognitionService:responder:</option>
+	<option value="//api/name/initWithCommandRegistry:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithCommandRegistry:</option>
 	
 	
 	
@@ -75,9 +73,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithCommandResolver:dispatcher:">initWithCommandResolver:dispatcher:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithRecognitionService:responder:">initWithRecognitionService:responder:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithCommandRegistry:">initWithCommandRegistry:</a></span></li>
 	
 </ul></li>
 
@@ -103,7 +99,10 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value"><a href="../Classes/SAYVoiceRequest.html">SAYVoiceRequest</a> : NSObject</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value"><a href="../Protocols/SAYVoiceRequest.html">SAYVoiceRequest</a></td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
 	<td class="specification-value">SAYVerbalCommandRequest.h</td>
@@ -117,7 +116,7 @@
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
 						<ul>
-<li><p>The <code>SAYVerbalCommandRequest</code> is a <a href="../Classes/SAYVoiceRequest.html"><code>SAYVoiceRequest</code></a> tailored towards allowing users to speak commands. The recognized speech is sent into the SayKit command processing pipeline, being resolved as potenetial commands and then dispatched to the application.</p>
+<li><p>The <code>SAYVerbalCommandRequest</code> is a <a href="../Protocols/SAYVoiceRequest.html"><code>SAYVoiceRequest</code></a> tailored towards allowing users to speak commands. The recognized speech is sent into the SayKit command processing pipeline, being resolved as potenetial commands and then dispatched to the application.</p>
 
 <p> In the current version of SayKit, the speech recognizer underlying this command cannot be cusotmized.</p></li>
 </ul>
@@ -139,13 +138,7 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithCommandResolver:dispatcher:">&ndash;&nbsp;initWithCommandResolver:dispatcher:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/initWithRecognitionService:responder:">&ndash;&nbsp;initWithRecognitionService:responder:</a></code>
+		<code><a href="#//api/name/initWithCommandRegistry:">&ndash;&nbsp;initWithCommandRegistry:</a></code>
 	</span>
 	
 	
@@ -167,35 +160,20 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/initWithCommandResolver:dispatcher:" title="initWithCommandResolver:dispatcher:"></a>
-	<h3 class="subsubtitle method-title">initWithCommandResolver:dispatcher:</h3>
+	<a name="//api/name/initWithCommandRegistry:" title="initWithCommandRegistry:"></a>
+	<h3 class="subsubtitle method-title">initWithCommandRegistry:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Initialize a new request with the given command pipeline components</p>
+		<p>Initialize a new request backed by the given command registry</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (instancetype)initWithCommandResolver:(id&lt;SAYCommandResolver&gt;)<em>commandResolver</em> dispatcher:(SAYCommandDispatcher *)<em>commandDispatcher</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (instancetype)initWithCommandRegistry:(id&lt;SAYVerbalCommandRegistry&gt;)<em>commandRegistry</em></code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>commandResolver</em></dt>
-			<dd><p>Command resolver capable of processing speech recognition results</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>commandDispatcher</em></dt>
-			<dd><p>Agent to dispatch resolved potential commands</p></dd>
-		</dl>
-		
-	</div>
 	
 	
 	
@@ -210,7 +188,9 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initialize a new request with the given command pipeline components</p>
+		<p>Initialize a new request backed by the given command registry</p>
+
+<p>@param commandRegistry</p>
 	</div>
 	
 	
@@ -222,67 +202,6 @@
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
 		<code class="declared-in-ref">SAYVerbalCommandRequest.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithRecognitionService:responder:" title="initWithRecognitionService:responder:"></a>
-	<h3 class="subsubtitle method-title">initWithRecognitionService:responder:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Initiates a voice request using the given recognition service and recognized speech <a href="../Classes/SAYVoiceRequest.html#//api/name/responder">responder</a>.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (instancetype)initWithRecognitionService:(id&lt;SAYSpeechRecognitionService&gt;)<em>recognitionService</em> responder:(id&lt;SAYVoiceRequestResponder&gt;)<em>responder</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>recognitionService</em></dt>
-			<dd><p>Agent responsible for communicating with speech recognition service</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>responder</em></dt>
-			<dd><p>Agent responsible for responding to recognized speech (or recognition error)</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The newly initialized request</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initiates a voice request using the given recognition service and recognized speech <a href="../Classes/SAYVoiceRequest.html#//api/name/responder">responder</a>.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYVoiceRequest.h</code><br />
 	</div>				
 	
 	
@@ -306,7 +225,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 Conversant Labs. All rights reserved. (Last updated: 2015-12-09)</span><br />
+						<p><span class="copyright">&copy; 2016 Conversant Labs. All rights reserved. (Last updated: 2016-01-25)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</span></p>
 						

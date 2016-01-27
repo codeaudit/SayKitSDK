@@ -1,16 +1,16 @@
 # Conversation Topics
 
-At this point, we've know more than enough to be dangerous. We can build apps that ask questions, understand commands, and can make any sound they want.
+At this point, we know more than enough to be dangerous. We can build apps that ask questions, understand commands, and can make any sound they want.
 
-But where should all of this conversational UI logic code go? If try to build a conversational agent with just a flat `SAYCommandRecognizerCatalog` and a simple `SAYSoundBoard` in our app delegate, we're going have a monolithic monster on our hands as our app grows.
+But where should all of this conversational UI logic code go? If we try to build a conversational agent with just a flat `SAYCommandRecognizerCatalog` and a simple `SAYSoundBoard` in our app delegate, we're going have a monolithic monster on our hands as our app grows.
 
 ## Keep 'em Separated
 
 We need a better separation of concerns. Not only do we need to keep UI logic distinct from the business logic, but we also need to keep the UI logic underlying distinct app features from each other.
 
-When it comes to graphical UI development, there are well-established patterns to handle this. For example, Apple designed it's UIKit classes to encourage iOS developers to follow the MVC paradigm (Model-View-Controller), so view code is typically well-separated from the rest of the app's data and logic. In addition, the `UIView` class supports a hierarchical structure, so a view is only directly responsible for a describing part of the scene: it can delegate the lower level details to its subviews.
+When it comes to graphical UI development, there are well-established patterns to handle this. For example, Apple designed its UIKit classes to encourage iOS developers to follow the MVC paradigm (Model-View-Controller), so view code is typically well-separated from the rest of the app's data and logic. In addition, the `UIView` class supports a hierarchical structure, so a view is only directly responsible for describing part of the scene: it can delegate the lower level details to its subviews.
 
-We need something similar to a view, but focused on the speaker and mircophone. Something conversationally-oriented that's capable of keeping distinct topics seperate. We need **Conversation Topics**.
+We need something similar to a view, but focused on the speaker and microphone. Something conversationally-oriented that's capable of keeping distinct topics seperate. We need **Conversation Topics**.
 
 ## Responsibilities
 
@@ -68,22 +68,22 @@ Now, any time we tell our topic to speak its product titles, a sequence of event
 
 Topics also conform to the `SAYVerbalCommandRegistry` protocol, so they are able to provide a collection of command recognizers relevant to their subject. In the product list example above, you could assign list-navigation commands to your topic to allow the user to browse the list on command.
 
-To continue with the example, let's assume we have some kind of event handler class (like a controller in MVC-terms) capable of handling commands events recognized by our `ProductListTopic`. Then it's initializer could include the following configuration:
+To continue with the example, let's assume we have some kind of event handler class (like a controller in MVC-terms) capable of handling commands events recognized by our `ProductListTopic`. Then its initializer could include the following configuration:
 
 ```swift
 // Swift
 init(eventHandler: ProductsEventHandler) {
 	...
     // add a recognizer for "previous" commands, to go back in the list
-    self.addCommandRecognizer(SAYPreviousCommandRecognizer(responseTarget:self, 
+    self.addCommandRecognizer(SAYPreviousCommandRecognizer(responseTarget:eventHandler, 
 	                                                               action:"handlePrevious:"))
     
     // add a recognizer to "next" commands, to go forward in the list
-    self.addCommandRecognizer(SAYNextCommandRecognizer(responseTarget:self, 
+    self.addCommandRecognizer(SAYNextCommandRecognizer(responseTarget:eventHandler, 
                                                                action:"handleNext:"))
     
     // add a recognizer for "select" commands, to select an item in the list
-    self.addCommandRecognizer(SAYSelectCommandRecognizer(responseTarget:self, 
+    self.addCommandRecognizer(SAYSelectCommandRecognizer(responseTarget:eventHandler, 
                                                                  action:"handleSelect:"))
 	...
 }
@@ -95,17 +95,17 @@ init(eventHandler: ProductsEventHandler) {
     ...
     // add a recognizer for "previous" commands, to go back in the list
     [self addCommandRecognizer:
-        [[SAYPreviousCommandRecognizer alloc] initWithResponseTarget:self, 
+        [[SAYPreviousCommandRecognizer alloc] initWithResponseTarget:eventHandler, 
                                                               action:@selector(handlePrevious:)]];
     
     // add a recognizer to "next" commands, to go forward in the list
     [self addCommandRecognizer:
-        [[SAYNextCommandRecognizer alloc] initWithResponseTarget:self, 
+        [[SAYNextCommandRecognizer alloc] initWithResponseTarget:eventHandler, 
                                                           action:@selector(handleNext:)]];
     
     // add a recognizer for "select" commands, to select an item in the list
     [self addCommandRecognizer:
-        [[SAYSelectCommandRecognizer alloc] initWithResponseTarget:self, 
+        [[SAYSelectCommandRecognizer alloc] initWithResponseTarget:eventHandler, 
                                                             action:@selector(handleSelect:)]];
     ...
 }
@@ -115,22 +115,22 @@ And with that, we have a tidy conversation topic encapsulating all the input and
 
 ### Managing the interface hierarchy
 
-The final responsibility of a conversation topic is to manage its collection of subtopics. It can fold its subtopics' command recognizers into its own and listen to their audio events, arranging and passing them on as single sequence to be posted. This capability lets us take advantage of the power of composition to build complex conversational interfaces from simple building blocks.
+The final responsibility of a conversation topic is to manage its collection of subtopics. It can fold its subtopics' command recognizers into its own and listen to their audio events, arranging and passing them on as a single sequence to be posted. This capability lets us take advantage of the power of composition to build complex conversational interfaces from simple building blocks.
 
-At first blush, this might not be as intuitive as composing a hierarchy of subviews, so let's make it more concrete with an example: we'll add search capabilities to our shopping app example. When the user issues a search command, let's make the app search the product database and a list of matches to the user. 
+At first blush, this might not be as intuitive as composing a hierarchy of subviews, so let's make it more concrete with an example: we'll add search capabilities to our shopping app example. When the user issues a search command, let's make the app search the product database and present a list of matches to the user. 
 
 We could pull this off by tacking features onto our `ProductListTopic` class to recognize search commands. We could also change its `speakProductTitles:` method to be a bit more conversational and preface the list with an introduction like "Here's what I found matching your query:" to the list.
 
-But do we really need to bloat our perfectly-concise `ProductListTopic` class with all of this? Not if we use composition. Instead, let's leave it as is use it as a subtopic of a new class that includes the search commands and introductory message. We'll call this new class the `ProductSearchTopic`. Let's step through a simple implementation of it in Swift:
+But do we really need to bloat our perfectly-concise `ProductListTopic` class with all of this? Not if we use composition. Instead, let's create a new class that handles the search commands and introductory message itself, and set `ProductListTopic` as a subtopic. We'll call this new class the `ProductSearchTopic`. Let's step through a simple implementation of it in Swift:
 
-*[Add diagram of this simple hierarchy]*
+*[TODO: Add diagram of this simple hierarchy]*
 
 ````swift
 // Swift
 class ProductSearchTopic: SAYConversationTopic
     init(eventHandler: ProductTopicEventHandler) {
         // set up the search recognizer
-        self.addCommandRecognizer(SAYSearchCommandRecognizer(responseTarget: self,
+        self.addCommandRecognizer(SAYSearchCommandRecognizer(responseTarget: eventHandler,
                                                                      action: "handleSearch:")
 
         // create the subtopic to handle the list of results
@@ -161,7 +161,7 @@ class ProductSearchTopic: SAYConversationTopic
 
 ### Conversation Manager Integration
 
-Thanks to this composibility and its conformance to both `SAYVerbalCommandRegistry` and `SAYAudioSource`, a single conversation topic can serve as the "root" for the entire application. Just configure the system's conversation manager as the application launches:
+Thanks to this composability and its conformance to both `SAYVerbalCommandRegistry` and `SAYAudioSource`, a single conversation topic can serve as the "root" for the entire application. Just configure the system's conversation manager as the application launches:
 
 ```swift
 // Swift
@@ -175,6 +175,8 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 ```
 
 ## Coming soon...
+
+// TODO: Link to Feature Roadmap section
 
 A lot can be built with just these basic units, but this is just a start. Expect even more features in the future, including:
 

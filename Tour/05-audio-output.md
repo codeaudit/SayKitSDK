@@ -8,16 +8,16 @@ One major hurdle in building applications with rich speech & audio output is tha
 
 ### Events
 
-To achieve this, all of the sounds that SayKit produces is made of the same "stuff": **Audio Events**. Rather than considering speech synthesizers, audio files, and even durations of silence as separate entities in need of coordination, all of these concepts are exposed as subclasses of `SAYAudioEvent.
+To achieve this, all of the sounds that SayKit produces is made of the same "stuff": **Audio Events**. Rather than considering speech synthesizers, audio files, and even durations of silence as separate entities in need of coordination, all of these concepts are exposed as subclasses of `SAYAudioEvent`.
 
 ### Tracks
-Events are transformed into actual sound after being queued up on *Audio Tracks*. Each *event* added to an `SAYAudioTrack` is presented through the speaker, one-by-one. The *conversation manager* coordinates a prioritized set of these tracks. Higher priority tracks are permitted to play sounds before lower priority ones.
+Events are transformed into actual sound after being queued up on *Audio Tracks*. Each *event* added to a `SAYAudioTrack` is presented through the device's speaker, one-by-one. The *conversation manager* coordinates a prioritized set of these tracks. Higher priority tracks are permitted to play sounds before lower priority ones.
 
 ### Sources
 
-Who produces these *events*? Well, *Audio Event Sources*, of course. Classes that implement the `SAYAudioEventSource` protocol post sequences of audio events to anyone listening. The *conversation manager* is one such listener, and it associates each source with one of it's *audio tracks*. It queues up each sequence of *events* it receives from a *source* to its corresponding *track*.
+Who produces these *events*? Well, *Audio Event Sources*, of course. Classes that implement the `SAYAudioEventSource` protocol post sequences of audio events to anyone listening. The [*conversation manager*](./01-overview.md#conversation-management) is one such listener, and it associates each source with one of its *audio tracks*. It queues up each sequence of *events* it receives from a *source* to its corresponding *track*.
 
-One example source is a class called the `SAYSoundBoard`. Sound boards are simple objects that can produce individual sounds: specifically speech and tones. When a sound board is asked to produce a sound, it creates the corresponding audio event and posts it to all of it's listeners.
+One example source is a class called the `SAYSoundBoard`. Sound boards are simple objects that can produce individual sounds: specifically speech and tones. When a sound board is asked to produce a sound, it creates the corresponding audio event and posts it to all of its listeners.
 
 Let's use a sound board to sum it all up with an example:
 
@@ -29,7 +29,7 @@ let soundBoard = SAYSoundBoard()
 let manager = SAYConversationManager.systemManager()
 manager.addAudioSource(soundBoard, forTrack:SAYAudioTrackMainIdentifier)
 
-soundBoard.speakText("Hello nurse!")	
+soundBoard.speakText("Hello, world!")	
 
 // It speaks! 
 // (Well, technically it tells the manager what it wants to say, and the manager queues it up.) 

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>SAYStringRequest Class Reference</title>
+		<title>SAYCommandActionBlock Block Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">SAYStringRequest Class Reference</h1>
+				<h1 class="hideInXcode">SAYCommandActionBlock Block Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -25,16 +25,6 @@
 				<li id="jumpto_button" role="navigation">
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
-	
-	<option value="overview">Overview</option>
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -47,16 +37,6 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
-<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -65,7 +45,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="SAYStringRequest Class Reference" name="top"></a>
+				<a title="SAYCommandActionBlock Block Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -74,46 +54,38 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">SAYStringRequest Class Reference</h1>
+						<h1 class="title title-header">SAYCommandActionBlock Block Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Inherits from</td>
-	<td class="specification-value"><a href="../Classes/SAYStandardVoiceRequest.html">SAYStandardVoiceRequest</a> : NSObject</td>
-</tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">SAYStringRequest.h</td>
+	<td class="specification-value">SAYVerbalCommandRecognizer.h</td>
 </tr>
 						</tbody></table></div>
 					
                     
                     
 					
-					<div class="section section-overview">
-						<a title="Overview" name="overview"></a>
-						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Describes a voice request used to receive arbitrary speech input. The recognized speech transcript is delivered directly with no additional interpretation.</p>
-					</div>
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
 					
 					
 					
                     
                     
                     
+                    
+                    <a title="Block Definition" name="instance_methods"></a>
+                    <h2 class="subtitle subtitle-methods">Block Definition</h2>
+                    <h3 class="subsubtitle method-title">SAYCommandActionBlock</h3>
+
+
+<code>typedef void (^SAYCommandActionBlock) (SAYCommand *), ; typedef, SAYVoiceRequestResponse *_Nonnull, ( ^, SAYVerbalCommandResponseBuilder ), ( SAYCommand, * ), ; @interface, SAYVerbalCommandRecognizer :, NSObject @property, ( nonatomic, strong ,, readonly ), NSString *commandType, ; @property, ( nonatomic, strong ,, readonly ), NSArray <, id <, SAYTextCommandMatcher >, > *textMatchers, ; @property, ( nonatomic, copy ,, readonly ), SAYVerbalCommandResponseBuilder responseBuilder, ; @property, ( nonatomic, copy ,, readonly ), NSArray <, SAYCommandMenuItem *>, * menuItems, ; -, ( instancetype, ) initWithResponseBuilder, : (, SAYVerbalCommandResponseBuilder ), responseBuilder NS_DESIGNATED_INITIALIZER, ; -, ( instancetype, ) initWithActionBlock, : (, SAYCommandActionBlock ), actionBlock ;, - (, instancetype ), initWithResponseTarget :, ( nullable, id ), target action, : (, nullable SEL, ) action, ; -, ( instancetype, ) init, NS_UNAVAILABLE ;, - (, void ), addTextMatcher :, ( id, < SAYTextCommandMatcher, > ), textMatcher ;, - (, void ), removeTextMatcher :, ( id, < SAYTextCommandMatcher, > ), textMatcher ;, - (, void ), addMenuItemWithLabel :, ( NSString, * ), label parameters, : (, NSDictionary <, NSString *,, NSString *>, * ), parameters ;, - (, void ), removeMenuItemWithLabel :, ( NSString, * ), label ;, @end NS_ASSUME_NONNULL_END)</code>
+
+
+
+
                     
 
 				</div>
