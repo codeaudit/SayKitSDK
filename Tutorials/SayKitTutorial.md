@@ -276,7 +276,7 @@ Finally, we get to hook up those UIButtons we created way back in the Setup sect
 
 Voice requests play an important role in the question-and-answer process. We've actually interacted with them already in our previous discussion on command recognizers. Every time you've tapped the microphone button, you were presented with a *command* request, implicitly asking the question "What would you like to do next?". As you'll see in this section, we can also create parameter-focused voice requests that ask much more specific questions like "What color would you like?", "How many servings?", or "Are you sure?".
 
-`SAYVoiceRequest` is a protocol whose implementations define a `prompt` to present to the user, and have underlying components that can recognize speech (`recognitionService`), interpret speech into text (`interpreter`), and react to the interpreted result (`responder`). Using these components, SayKit creates a cohesive dialogue flow for your users.
+`SAYVoiceRequest` is a protocol whose implementations define a `prompt` to present to the user, and have underlying components that can recognize speech (`recognitionService`), interpret speech into text (`interpreter`), and react to the interpreted result (`responder`). Using these components, SayKit creates a cohesive dialogue flow.
 
 The request presented on a microphone tap is a `SAYVerbalCommandRequest`, which implements the `SAYVoiceRequest` protocol. Its creation and presentation was handled behind-the-scenes in the previous section on command recognizers, though in the upcoming parameter requests we are responsible for the creation and presentation of the request.
 
@@ -308,104 +308,75 @@ Once we create the request, we call our the `presentVoiceRequest:` method of the
 }
 ```
 
+### String Request
 
---------------------------------------------------------------------------------
+A string request does what it sounds like: it asks the user for a string! The `action` block's `result` is a String.
 
+```swift
+@IBAction func stringRequestButtonTapped(sender: AnyObject)
+{
+    let request = SAYStringRequest(promptText:"What recipe would you like to search for?") { result in
+        if let recipeString = result {
+            self.updateAppResultLabelWithText("Received command:\n[Search for \(recipeString)]")
+        }
+        else {
+            /* ... */
+        }
+    }
+    
+    SAYConversationManager.systemManager().presentVoiceRequest(request)
+}
+```
 
-
-
-
-## View Saved Recipes (Select Request)
+### Select Request
 How do we present the user with a list of options to choose from?
 
-In a visual-based app, we might build a table view with cells corresponding to each choice, present it with a table view controller, and respond to a tap on one of the cells. Using SayKit, all we need is a `SAYSelectRequest` and an array of options.
+In a visual-based app, we might build a table view, hook it up to a data source, present it with a table view controller, and respond to a tap on one of the cells via its delegate. Using SayKit, all we need is a `SAYSelectRequest` and an array of options.
 
-In this example, we'll ask the user to select from a list of saved recipes. We'll reuse the same setup we had in the previous example: when we tap the microphone button, the user will be asked to make the selection. As before, we'll simply update the `resultsLabel` with the user's selection.
+Any speech matching one of the options will result in a `SAYSelectResult`, which is a struct-like class containing the selected option and its index. If no matches are found, the request will try again by default.
 
-- In a full app, we would probably have some logic to maintain, store, or fetch the user's saved recipes (and that's what we'll do in Part II of this tutorial). Here, we'll simply call a helper/dummy function to serve us the list:
-
-    ``` objc
-    - (NSArray<NSString *> *)retrieveSavedRecipeLabels
-    {
-        return @[@"Chocolate Butterscotch Cookies",
-                 @"Beef Lasagna",
-                 @"Tuna Casserole"];
+```swift
+@IBAction func selectRequestButtonTapped(sender: AnyObject)
+{
+    let request = SAYSelectRequest(itemLabels: ["Blue", "Green", "Purple"], promptText: "What color would you like?") { result in
+        if
+            let selectedItemName = result?.selectedOption.label,
+            let selectedIndex = result?.selectedIndex
+        {
+            self.updateAppResultLabelWithText("Received command:\n[Pick color \(selectedItemName) at index \(selectedIndex)]")
+        }
+        else {
+            /* ... */
+        }
     }
-    ```
-- Pass the list to `SAYSelectRequest`'s initializer:
+    
+    SAYConversationManager.systemManager().presentVoiceRequest(request)
+}
+```
 
-    ``` objc
-    NSArray<NSString *> *itemLabels = [self retrieveSavedRecipeLabels];
-    SAYSelectRequest *request = [[SAYSelectRequest alloc] initWithItemLabels:itemLabels promptText:@"Which of your saved recipes would you like details on?" completionBlock:^(SAYSelectResult * _Nullable result) {
-        /* ... */
-    }];
-    ```
-- There is an alternative initializer for `SAYSelectRequest` that can handle aliases for each item, `initWithOptions:promptText:completionBlock`. Check it out at the end of this section. (TODO: Link)
-- We'll handle the result in another helper function:
+### Select Request (with Aliases)
 
-    ``` objc
-    - (void)handleSelectResultWithOption:(SAYSelectOption *)selectedOption atIndex:(NSUInteger)selectedIndex
-    {
-        NSString *recipeName = selectedOption.label;
-        
-        // Calls to UIKit should be done on the main thread.
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.resultLabel.text = [NSString stringWithFormat:@"Selected \"%@\" (Index %lu)", recipeName, selectedIndex];
-        });
-        
-        // TODO: Update `recognizedSpeechLabel` with transcript (add observer?)
+Instead of using a flat array of item labels to select from, we can also define aliases for each label. If the user speaks an item's alias, it is treated the same as if they selected the item directly. Using aliases, you can easily handle alternative names for the same item. 
+
+We organize our labels and aliases using a struct-like class, `SAYSelectOption`, which we can use in an alternate initializer of `SAYSelectRequest`:
+
+```swift
+@IBAction func selectRequestAliasesButtonTapped(sender: AnyObject)
+{
+    let options = [SAYSelectOption(label: "Blue", aliases: ["Ocean"]),
+                   SAYSelectOption(label: "Green", aliases: ["Forest", "Emerald"]),
+                   SAYSelectOption(label: "Purple")]
+    
+    let request = SAYSelectRequest(options: options, promptText: "What color would you like?") { result in
+        self.handleSelectionWithResult(result)
     }
-    ```
-- Our `commandBarDidSelectMicrophone:` method should now look like:
+    
+    SAYConversationManager.systemManager().presentVoiceRequest(request)
+}
+```
 
-    ``` objc
-    - (void)commandBarDidSelectMicrophone:(SAYCommandBar *)commandBar
-    {    
-        NSArray<NSString *> *itemLabels = [self retrieveSavedRecipeLabels];
-        SAYSelectRequest *request = [[SAYSelectRequest alloc] initWithItemLabels:itemLabels promptText:@"Which of your saved recipes would you like details on?" completionBlock:^(SAYSelectResult * _Nullable result) {
-            if (result.error) {
-                // Handle error
-            }
-            else {
-                SAYSelectOption *selectedOption = result.selectedOption;
-                NSUInteger selectedIndex = result.selectedIndex;
-                
-                [self handleSelectResultWithOption:selectedOption atIndex:selectedIndex];
-            }
-        }];
-        
-        [[SAYVoiceRequestPresenter defaultPresenter] presentRequest:request];
-    }
-    ```
 
-### Alternative Initializer for `SAYSelectRequest`
-Instead of using a flat list of item labels to select from, we can also define aliases for each label. If the user speaks an item's alias, it is treated the same as if they selected the item directly. Using aliases, you can easily handle alternative names for the same item.
-
-In the example below, we provide an alias for “Beef Lasagna” as “Pasta”. If the user speaks either of these phrases, we’ll know they meant to select the second option, “Beef Lasagna.”
-
-- Create a dummy helper function to return the selectable options. In a full app, this would interact with the app logic to retrieve the options:
-
-    ``` objc
-    - (NSArray<SAYSelectOption *> *)retrieveSavedRecipeOptions
-    {
-        return @[[[SAYSelectOption alloc] initWithLabel:@"Chocolate Butterscotch Cookies" aliases:@[@"Grandma's Cookies"]],
-                 [[SAYSelectOption alloc] initWithLabel:@"Beef Lasagna" aliases:@[@"Pasta", @"My Favorite Dish"]],
-                 [SAYSelectOption optionWithLabel:@"Tuna Casserole"]];
-    }
-    ```
-- Replace our earlier initialization of the `SAYSelectRequest`:
-
-    ``` objc
-    NSArray<SAYSelectOption *> *options = [self retrieveSavedRecipeOptions];
-    SAYSelectRequest *request = [[SAYSelectRequest alloc] initWithOptions:options promptText:@"Which of your saved recipes would you like details on?" completionBlock:^(SAYSelectResult * _Nullable result) {
-        /* ... */
-    }];
-    ```
-
-#### Classes used:
-	- SAYSelectRequest
-    - SAYSelectOption
-    - SAYSelectResult
+________
 
 
 ## Recipe Ingredients (Pattern Match Resolver)

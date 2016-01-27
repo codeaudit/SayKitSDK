@@ -108,8 +108,8 @@ class ViewController: UIViewController {
     @IBAction func selectRequestAliasesButtonTapped(sender: AnyObject)
     {
         let options = [SAYSelectOption(label: "Blue", aliases: ["Ocean"]),
-            SAYSelectOption(label: "Green", aliases: ["Forest", "Emerald"]),
-            SAYSelectOption(label: "Purple")]
+                       SAYSelectOption(label: "Green", aliases: ["Forest", "Emerald"]),
+                       SAYSelectOption(label: "Purple")]
         
         let request = SAYSelectRequest(options: options, promptText: "What color would you like?") { result in
             self.handleSelectionWithResult(result)
@@ -151,7 +151,7 @@ class ViewController: UIViewController {
             let selectedItemName = result?.selectedOption.label,
             let selectedIndex = result?.selectedIndex
         {
-            self.updateAppResultLabelWithText("Received command:\n[Pick color #\(selectedIndex): \(selectedItemName)]")
+            self.updateAppResultLabelWithText("Received command:\n[Pick color \(selectedItemName) at index \(selectedIndex)]")
         }
         else {
             /* ... */
