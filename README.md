@@ -7,7 +7,7 @@ We're excited to offer a preview of the SayKit framework as we prepare it for pr
 
 Since we're actively iterating as we march to version 1.0, the SDK will be frequently updated with new features.
 
-Please drop us a line to offer any thoughts or feedback: info@saykit.org. Also, please post any bugs in our [Github issue tracker](https://github.com/ConversantLabs/SayKitSDK/issues).
+We are eager to hear your thoughts or feedback. Please drop us a line at [info@saykit.org](mailto:info@saykit.org). Also, please post any bugs in our [Github issue tracker](https://github.com/ConversantLabs/SayKitSDK/issues).
 
 ## <a name="developer-resources"></a> Developer Resources
 
