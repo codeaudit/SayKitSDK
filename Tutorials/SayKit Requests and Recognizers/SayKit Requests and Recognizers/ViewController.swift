@@ -15,12 +15,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        commandRegistry = SAYConversationManager.systemManager().commandRegistry as! SAYCommandRecognizerCatalog
+        let commandRegistry = SAYConversationManager.systemManager().commandRegistry as! SAYCommandRecognizerCatalog
         
         // Start with some one-off actions responding to standard commands:
         commandRegistry.addCommandRecognizer(SAYAvailableCommandsCommandRecognizer(responseTarget: self, action: "availableCommandsRequested"))
         
-        commandRegistry.addCommandRecognizer(SAYSetSpeechRateCommandRecognizer(responseTarget: self, action: "setSpeechRateRequested:"))
+        commandRegistry.addCommandRecognizer(SAYSetSpeechRateCommandRecognizer(responseTarget: self, action: "setSpeechRateRequested:"))    // Note the ":" indicating a method parameter
         
         commandRegistry.addCommandRecognizer(SAYSearchCommandRecognizer(actionBlock: { command in
             if let searchQuery = command.parameters[SAYSearchCommandRecognizerParameterQuery] {
@@ -158,6 +158,4 @@ class ViewController: UIViewController {
             self.appResultLabel.text = text
         }
     }
-    
-    private var commandRegistry: SAYCommandRecognizerCatalog!
 }
