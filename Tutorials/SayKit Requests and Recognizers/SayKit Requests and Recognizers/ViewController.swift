@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var appResultLabel: UILabel!
     
+    var soundBoard: SAYSoundBoard?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -120,12 +122,7 @@ class ViewController: UIViewController {
     
     @IBAction func soundBoardButtonTapped(sender: AnyObject)
     {
-        let soundBoard = SAYSoundBoard()
-        
-        let manager = SAYConversationManager.systemManager()
-        manager.addAudioSource(soundBoard, forTrack: SAYAudioTrackMainIdentifier)
-        
-        soundBoard.speakText("Hello world!")
+        soundBoard?.speakText("Hello world!")
     }
     
     // MARK: Helpers

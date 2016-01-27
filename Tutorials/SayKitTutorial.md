@@ -44,6 +44,8 @@ Let’s get started!
     func application(application: UIApplication, 
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+            /* ...setup Conversation Manager (see below)... */
+
             // Initialize GUI
             window = UIWindow(frame: UIScreen.mainScreen().bounds)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -55,8 +57,8 @@ Let’s get started!
             
             window?.rootViewController = commandBarController
             window?.makeKeyAndVisible()
-            
-            /* ...setup Conversation Manager... */
+
+            return true
     }
     ```
 
@@ -71,8 +73,6 @@ The last line is an optional optimization that improves the performance of calls
 ```swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
-    /* ...setup GUI... */
-    
     // Initial setup of the SAYConversationManager
     let catalog = SAYCommandRecognizerCatalog()
     SAYConversationManager.systemManager().commandRegistry = catalog
@@ -83,6 +83,8 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
     // Optional optimization
     SAYAPIKeyManager.sharedInstance().prefetchAPIKeys()
     
+    /* ...setup GUI... */
+
     return true
 }
 ```
@@ -374,6 +376,41 @@ We organize our labels and aliases using a struct-like class, `SAYSelectOption`,
     SAYConversationManager.systemManager().presentVoiceRequest(request)
 }
 ```
+
+#### SoundBoard (Bonus!)
+
+I know, I know - this isn't actually a voice request. But if you ever need something spoken one-off and you're using a `SAYSoundBoard` as your audio source (which is what we did in our [AppDelegate's setup](#)), you can simply use the sound board's `speakText:` method.
+
+```swift
+@IBAction func soundBoardButtonTapped(sender: AnyObject)
+{
+    soundBoard?.speakText("Hello world!")
+}
+```
+
+This assumes you kept a handle on the sound board used in initializing our Conversation Manager's audio source, perhaps through a property on `ViewController`:
+
+```swift
+// ViewController.swift
+class ViewController: UIViewController {
+    // ...
+    var soundBoard: SAYSoundBoard?
+    // ...
+}
+```
+
+```swift
+// AppDelegate.swift, application:didFinishLaunchingWithOptions:
+
+// ...
+let soundBoard = SAYSoundBoard()
+SAYConversationManager.systemManager().addAudioSource(soundBoard, forTrack:SAYAudioTrackMainIdentifier)
+// ...
+let viewController = storyboard.instantiateInitialViewController() as! ViewController
+viewController.soundBoard = soundBoard
+// ...
+```
+
 
 
 ________
