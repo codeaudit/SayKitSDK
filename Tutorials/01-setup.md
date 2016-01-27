@@ -42,7 +42,7 @@ Let’s get started!
 
 ## Conversation Manager Setup
 
-The `SAYConversationManager` is the highest-level manager of a conversation, coordinating input (listening) and output (speaking). To do its job, we have to define its `commandRegistry` and at least one `audioSource`, which are involved in the input and output aspects of a conversation, respectively.
+The `SAYConversationManager` oversees the highest level of a conversation, coordinating input (listening) and output (speaking). To do its job, we have to define its `commandRegistry` and at least one `audioSource`, which are involved in the input and output aspects of a conversation, respectively.
 
 In this example, we'll use the simplest stand-ins for these properties. (Later on, we'll show how a Conversation Topic can fill both these roles.) A `SAYCommandRecognizerCatalog` stores a flat array of `SAYCommandRecognizer`s that we'll populate shortly. A `SAYSoundBoard` is an implementation of an audio source (`SAYAudioEventSource`) that enables the Conversation Manager to post audio events.
 
@@ -69,4 +69,4 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 
 Now that we're all set up, let's get to the real meat of a conversational interface: command recognizers and voice requests!
 
-[Next - Command Recognizers >>](./02-setup.md)
+[Next - Command Recognizers >>](./02-command-recognizers.md)

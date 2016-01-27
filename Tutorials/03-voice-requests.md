@@ -10,7 +10,7 @@ The request presented on a microphone tap is a `SAYVerbalCommandRequest`, which 
 
 SayKit comes with several other `SAYVoiceRequest` implementations, including `SAYStringRequest`, `SAYSelectRequest`, `SAYNumericalRequest`, `SAYConfirmationRequest`, and `SAYPatternMatchRequest`. Your own [custom parameter requests](#) can be created by implementing the `SAYVoiceRequest` methods. The `result` in each's `action` block is relevant to its corresponding request. For example, a `SAYNumericalRequest`'s result is a number, while a `SAYStringRequest`'s result is a string.
 
-For these examples, we're simply presenting requests as the result of button taps. In your own apps, they might be triggered by some other event, or as part of a [followup request](#).
+For these examples, we're simply presenting requests as the result of button taps. In your own apps, they might be triggered by some other event, or as part of a [followup request](./02-command-recognizers.md#followup-requests).
 
 
 ## Confirmation Request
@@ -105,7 +105,7 @@ We organize our labels and aliases using a struct-like class, `SAYSelectOption`,
 
 ## SoundBoard (Bonus!)
 
-I know, I know - this isn't actually a voice request. But if you ever need something spoken one-off and you're using a `SAYSoundBoard` as your audio source (which is what we did in our [AppDelegate's setup](#)), you can simply use the sound board's `speakText:` method.
+I know, I know - this isn't actually a voice request. But if you ever need something spoken one-off and you're using a `SAYSoundBoard` as your audio source (which is what we did in our [AppDelegate's setup](./01-setup.md#conversation-manager-setup)), you can simply use the sound board's `speakText:` method.
 
 ```swift
 @IBAction func soundBoardButtonTapped(sender: AnyObject)
