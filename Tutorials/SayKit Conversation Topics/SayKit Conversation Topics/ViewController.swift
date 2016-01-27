@@ -15,16 +15,18 @@ class ViewController: UIViewController, ProductTopicEventHandler {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Initial setup of the SAYConversationManager
-        let systemManager = SAYConversationManager.systemManager()
+        // Initial setup of the SAYConversationManager, with a Conversation Topic as 
+        // command registry and main audio source.
         let rootTopic = ProductSearchTopic(eventHandler: self)
+        let systemManager = SAYConversationManager.systemManager()
         systemManager.commandRegistry = rootTopic
         systemManager.addAudioSource(rootTopic, forTrack:SAYAudioTrackMainIdentifier)
         
         // Add a sub-topic to the root.
         let listTopic = ProductListTopic(eventHandler: self)
-        self.listTopic = listTopic
         rootTopic.addSubtopic(listTopic)
+        
+        self.listTopic = listTopic
     }
 
     // MARK: ProductTopiceventHandler Protocol Methods

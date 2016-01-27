@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let soundBoard = SAYSoundBoard()
         SAYConversationManager.systemManager().addAudioSource(soundBoard, forTrack:SAYAudioTrackMainIdentifier)
         
-        // TODO: Initialize app keys?
+        // Optional optimization
+        SAYAPIKeyManager.sharedInstance().prefetchAPIKeys()
         
         // Initialize GUI
         window = UIWindow(frame: UIScreen.mainScreen().bounds)

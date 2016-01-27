@@ -20,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateInitialViewController() as! ViewController
         
-        // TODO: Initialize app keys?        
+        // Optional optimization
+        SAYAPIKeyManager.sharedInstance().prefetchAPIKeys()
         
         // Wrap initial view controller in a command bar controller
         let commandBarController = SAYCommandBarController()

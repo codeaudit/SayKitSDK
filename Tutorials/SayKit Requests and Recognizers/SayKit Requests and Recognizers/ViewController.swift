@@ -152,12 +152,6 @@ class ViewController: UIViewController {
         }
     }
     
-    private func namesMatchingSelection(query: String) -> [String]
-    {
-        /* ...do some actual app logic to find a match... */
-        return ["Toby Pikachu", "Susan Pikachu"]
-    }
-    
     private func updateAppResultLabelWithText(text: String)
     {
         dispatch_async(dispatch_get_main_queue()) {
