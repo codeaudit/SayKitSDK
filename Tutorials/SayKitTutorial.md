@@ -220,7 +220,9 @@ commandRegistry.addCommandRecognizer(selectRecognizer)
 
 This will recognize phrases like "Select the third one" or "Select Jiffy", but maybe we know our users tend to make selections using some other phrase. We can simply add a `SAYTextCommandMatcher` to the selectRecognizer. Text matchers give command recognizers another way to identify when to respond to user speech.
 
-Objects conforming to the `SAYTextCommandMatcher` protocol will process a user's speech transcript and return the likelihood that the given text corresponds to some command. Here we'll use the implementation `SAYPatternCommandMatcher`, which is initialized with an array of text "patterns" that are used to process the speech transcript. If the transcript matches any of the patterns, then the Matcher returns a positive response along with any pattern parameters.
+Objects conforming to the `SAYTextCommandMatcher` protocol will process a user's speech transcript and return the likelihood that the given text corresponds to some command. Here we'll use the implementation `SAYPatternCommandMatcher`, which is initialized with an array of text "patterns" that are used to process the speech transcript. If the transcript matches any of the patterns, then the Matcher returns a positive response along with any pattern parameters, marked by an "@" prefix.
+
+Adding a text matcher is a good way to handle simple speech patterns, and requires very little setup. If you find yourself in need of more flexibility when interpreting a user’s intent, you may want to consider setting up and linking to your own intent recognition service [(coming soon!)](#).
 
 ```swift
 let pattern = "i choose you @name"  // Note our custom parameter, "name"
@@ -411,141 +413,8 @@ viewController.soundBoard = soundBoard
 // ...
 ```
 
-
-
-________
-
-
-## Recipe Ingredients (Pattern Match Resolver)
-An alternative to using SayKit Standard verbal command requests is to construct your own text resolver. Custom text resolvers are a good way to handle simple speech patterns, and require very little setup. If you find yourself in need of more flexibility when interpreting a user’s intent, you may want to consider setting up your own intent recognition service (which we’ll cover in a later tutorial).
-
-For this example, suppose the user is working their way through a recipe. We can handle a query like "How much baking powder do I need?" using a `SAYPatternTextResolver`. A pattern resolver is initialized with a template string that marks entities that we want to capture for later use. (The template string is resolved to a regular expression behind the scenes, which is used to perform the actual check against the user's speech.)
-
-In this case, we'll create a template string "How much @ingredient do I need?". If user speech is found to match this template, then we'll handle it with the completion block associated with the pattern resolver. In this case, that means updating `resultLabel` with the proper response (as determined by the app).
-
-- In `AppDelegate.m`, make sure we're not overriding `SAYCommandBarController`'s delegate from the previous example. We want the microphone button's original behavior of initiating a `SAYVerbalCommandRequest`:
-    ``` objc
-    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-        
-        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
-        ViewController *vc = [mainStoryboard instantiateInitialViewController];
-        
-        SAYCommandBarController *commandBarController = [[SAYCommandBarController alloc] init];
-        
-        commandBarController.contentViewController = vc;
-        
-        // UIView *v = commandBarController.view;    // Force commandBarController to load.
-        // commandBarController.commandBar.delegate = vc;
-        
-        self.window.rootViewController = commandBarController;
-        [self.window makeKeyAndVisible];
-        
-        return YES;
-    }
-    ```
-- In `ViewController.m`'s `viewDidLoad` method, we register our resolver via a helper function:
-    ``` objc
-    - (void)viewDidLoad {
-        [super viewDidLoad];
-
-        [self respondToCustomPatternResolver];
-    }
-    ```
-- In `respondToCustomPatternResolver`, we build the pattern resolver itself. The commandType parameter will be used a little later when we define our response.
-
-    ``` objc
-    NSArray<NSString *> *templates = @[@"How much @ingredient do I need?",
-                                       @"How many @ingredient in the recipe?"];
-    SAYPatternTextResolver *resolver = [[SAYPatternTextResolver alloc] initWithTemplates:templates forCommandType:@"RecipeIngredientQuery"];
-    ```
-- Create a new `SAYDomain` to manage the resolver, and register it with the default `SAYDomainRegistry`:
-
-    ``` objc
-    SAYDomain* domain = [[SAYDomain alloc] init];
-    [domain registerResolver:resolver];
-
-    SAYDomainRegistry *domainRegistry = [SAYVerbalCommandRequestManager defaultManager].customCommandResolver;
-
-    [domainRegistry addDomain:domain];
-    ```
-- Create a helper function that looks up the ingredient the user requested, and displays its required quantity:
-
-    ``` objc
-    - (void)handleRecipeIngredientQueryForIngredient:(NSString *)ingredient
-    {
-        // Calls to UIKit should be done on the main thread.
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.resultLabel.text = [self ingredientLookupForIngredient:ingredient];
-        });
-        
-        // TODO: Update `recognizedSpeechLabel` with transcript (add observer?)
-    }
-    ```
-- In a full app, the `ingredientLookupForIngredient:` method would query the app logic to determine the required amount of the given ingredient. In this example, we'll just return a hard-wired value:
-
-    ``` objc
-    - (NSString *)ingredientLookupForIngredient:(NSString *)ingredient
-    {
-        // ...insert app logic here to determine how much of the ingredient we need...
-        
-        NSString *units = @"cups";
-        NSString *quantity = @"5";
-        
-        return [NSString stringWithFormat:@"You need %@ %@ of %@.", quantity, units, ingredient];
-    }
-    ```
-- Finally, back in `respondToCustomPatternResolver`, we add the actual response to the command we defined earlier. The ingredient spoken by the user is stored in `command.parameters` under the name we defined in the pattern resolver, "ingredient".
-
-    ``` objc
-    SAYCommandResponseRegistry *commandRegistry = [SAYCommandResponseRegistry sharedInstance];
-
-    [commandRegistry addResponseForCommandType:@"RecipeIngredientQuery" responseBlock:^(SAYCommand * _Nonnull command) {
-        NSString *ingredient = command.parameters[@"ingredient"];
-        [self handleRecipeIngredientQueryForIngredient:ingredient];
-    }];
-    ```
-- `respondToCustomPatternResolver` should now look like this:
-
-    ``` objc
-    - (void)respondToCustomPatternResolver
-    {
-        // Build and register a domain with the pattern resolver.
-        NSArray<NSString *> *templates = @[@"How much @ingredient do I need?",
-                                           @"How many @ingredient in the recipe?"];
-        SAYPatternTextResolver *resolver = [[SAYPatternTextResolver alloc] initWithTemplates:templates forCommandType:@"RecipeIngredientQuery"];
-        
-        SAYDomain* domain = [[SAYDomain alloc] init];
-        [domain registerResolver:resolver];
-        
-        SAYDomainRegistry *domainRegistry = [SAYVerbalCommandRequestManager defaultManager].customCommandResolver;
-        
-        [domainRegistry addDomain:domain];
-        
-        
-        // Add a response for the newly-created command type.
-        SAYCommandResponseRegistry *commandRegistry = [SAYCommandResponseRegistry sharedInstance];
-        
-        [commandRegistry addResponseForCommandType:@"RecipeIngredientQuery" responseBlock:^(SAYCommand * _Nonnull command) {
-            NSString *ingredient = command.parameters[@"ingredient"];
-            [self handleRecipeIngredientQueryForIngredient:ingredient];
-        }];
-    }
-    ```
-- TODO - Confirm that pattern matching works with spaces! Since I think I'm just replacing @thing with \w+ regex
-
-#### Classes used:
-- SAYPatternTextResolver
-- SAYDomain
-- SAYDomainRegistry
-- SAYCommandResponseRegistry
-
 ## Wrapping Up!
 
-That’s it for the first part of our tutorial! By now you should have a nice playground for exploring SayKit. You can download the whole project at /* TODO - LINK */. With some minor tweaks, you can play around with each of the features that we went over. 
+That’s it for the tutorial on voice requests and command recognizers! By now you should have a nice playground for exploring SayKit. Go ahead and [download the project](#) if you haven't already.
 
-Verbal command requests, entity requests, and text resolvers are some of the essentials in the SayKit toolbox, but they only scratch the surface of what SayKit can do.
-
-Stick around for Part II, where we’ll put it all together into a fully fledged app! We’ll discuss how to structure a conversational app, including how to manage intent domains, how to balance the conversational flow with the visual flow, and some design patterns to help along the way.
+Voice requests and command recognizers are some of the essentials in the SayKit toolbox, but they only scratch the surface of what SayKit can do! When you're ready, click the link below to check out the tutorial on Conversation Topics. We’ll build on what you've already learned to discuss how to structure a conversational app with a simple Conversation Topic hierarchy.
