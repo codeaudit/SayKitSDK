@@ -71,7 +71,7 @@ class ViewController: UIViewController {
     {
         let request = SAYConfirmationRequest(promptText: "Are you sure?") { result in
             if let doIt = result as? Bool {
-                if doIt { self.updateAppResultLabelWithText("Received comand:\n[Do it!]") }
+                if doIt { self.updateAppResultLabelWithText("Received command:\n[Do it!]") }
                 else    { self.updateAppResultLabelWithText("Received command:\n[Don't do it!]") }
             }
             else {

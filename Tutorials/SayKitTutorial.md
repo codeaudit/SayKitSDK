@@ -133,7 +133,7 @@ func availableCommandsRequested() {
 
 Recall that our `updateAppResultLabelWithText:` method is just a helper that updates our feedback UILabel. In a *real* app, you could take this opportunity to present a list of available commands to the user (check out [how SayKit can help with that](#)!).
 
-Commands that include parameters, such as the speech rate in the built-in "Set Speech Rate" command, can be accessed in the action method by including a `SAYCommand` argument. 
+Commands that include parameters, such as the speech rate in the built-in "Set Speech Rate to X" command, can be accessed in the action method by including a `SAYCommand` argument. In a visual-based app, we would grab the parameter from a UITextField. Using SayKit, we can simply access the `SAYCommand`'s `parameters` property and extract the parameter that we need.
 
 A `SAYCommand` is a representation of a command issued by the user, and consists of an identifying `type` and a `parameters` dictionary. In this example, our `SAYSetSpeechRateCommandRecognizer` is preconfigured to respond to commands with the type `SAYStandardCommandSetSpeechRate`. We can expect to find the new speech rate stored in `parameters` with the key `SAYSetSpeechRateCommandRecognizerParameterSpeechRate`. Take a look at the [`SAYStandardCommandLibrary.h`](#) header for a full list of standard command string constants.
 
@@ -270,213 +270,49 @@ That sounds like a job for voice requests!
 
 // TODO: Snip here and link to next page
 
+## Voice Requests
 
+Finally, we get to hook up those UIButtons we created way back in the Setup section! Hold on for a few more paragraphs, though - we need to cover some voice request basics:
+
+Voice requests play an important role in the question-and-answer process. We've actually interacted with them already in our previous discussion on command recognizers. Every time you've tapped the microphone button, you were presented with a *command* request, implicitly asking the question "What would you like to do next?". As you'll see in this section, we can also create parameter-focused voice requests that ask much more specific questions like "What color would you like?", "How many servings?", or "Are you sure?".
+
+`SAYVoiceRequest` is a protocol whose implementations define a `prompt` to present to the user, and have underlying components that can recognize speech (`recognitionService`), interpret speech into text (`interpreter`), and react to the interpreted result (`responder`). Using these components, SayKit creates a cohesive dialogue flow for your users.
+
+The request presented on a microphone tap is a `SAYVerbalCommandRequest`, which implements the `SAYVoiceRequest` protocol. Its creation and presentation was handled behind-the-scenes in the previous section on command recognizers, though in the upcoming parameter requests we are responsible for the creation and presentation of the request.
+
+SayKit comes with several other `SAYVoiceRequest` implementations, including `SAYStringRequest`, `SAYSelectRequest`, `SAYNumericalRequest`, `SAYConfirmationRequest`, and `SAYPatternMatchRequest`. Your own [custom parameter requests](#) can be created by implementing the `SAYVoiceRequest` methods. The `result` in each's `action` block is relevant to its corresponding request. For example, a `SAYNumericalRequest`'s result is a number, while a `SAYStringRequest`'s result is a string.
+
+For these examples, we're simply presenting requests as the result of button taps. In your own apps, they might be triggered by some other event, or as part of a [followup request](#).
+
+
+### Confirmation Request
+
+A confirmation request will ask the user a question and expect a yes-or-no response in return. If we get an invalid response, the request will try again (though this behavior can be tweaked). In this case, the `action` block's `result` represents a Bool (though wrapped in an NSNumber for some fiddly reasons).
+
+Once we create the request, we call our the `presentVoiceRequest:` method of the system's `SAYConversationManager`. And that's it!
+
+```swift
+@IBAction func confirmationRequestButtonTapped(sender: AnyObject)
+{
+    let request = SAYConfirmationRequest(promptText: "Are you sure?") { result in
+        if let doIt = result as? Bool {
+            if doIt { self.updateAppResultLabelWithText("Received command:\n[Do it!]") }
+            else    { self.updateAppResultLabelWithText("Received command:\n[Don't do it!]") }
+        }
+        else {
+            /* ... */
+        }
+    }
+    
+    SAYConversationManager.systemManager().presentVoiceRequest(request)
+}
+```
 
 
 --------------------------------------------------------------------------------
-In this example, we’ll register a response for SayKit’s standard “Available Commands” command. This command is the eventual result of the user speaking utterances like “What can I say?” and “Available Commands”. Our response will simply update our UILabels with what was said.
-
-    ```
-    Aside: You can find a full list of standard commands at TODO.
-    ```
-
-- Create a helper function to add the response to the default command registry:
-    ``` objc
-    - (void)respondToAvailableCommands
-    {
-        SAYCommandResponseRegistry *commandRegistry = [SAYCommandResponseRegistry sharedInstance];
-        
-        // Respond to speech that asks about available commands, such as "What can I say?" and "Available Commands".
-        [commandRegistry addResponseForCommandType:SAYStandardCommandAvailableCommands responseBlock:^(SAYCommand * _Nonnull command) {
-            [self handleAvailableCommandsCommand];
-        }];
-    }
-    ```
-- The `handleAvailableCommandsCommand` helper function simply updates the results label. Later, we'll go over how to query SayKit for the currently available commands and present them to the user as speech, a table view, or both.
-    ``` objc
-    - (void)handleAvailableCommandsCommand
-    {
-        // Calls to UIKit should be done on the main thread.
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.resultLabel.text = @"Received command: Available Commands";
-        });
-        
-        // TODO: Update `recognizedSpeechLabel` with transcript (add observer?)
-    }
-    ```
-- Finally, we'll call `respondToAvailableCommands` as soon as the view controller loads. In a full app, this might be managed by its own set of dedicated controllers. (TODO: Create and link to a discussion on hierarchies, and managing the list of available commands)
-    ``` objc
-    - (void)viewDidLoad {
-        [super viewDidLoad];
-
-        [self respondToAvailableCommands];
-    }
-    ```
-- TODO: Discuss how to present available commands in Command Bar's menu button
-- TODO: Bonus points: make the list dynamically update with whatever domains/resolvers we have. Would be a useful pattern for developers to know.
-
-#### Classes used:
-- SAYCommandResponseRegistry
-- SAYCommand
-- SAYStandardCommandLibrary
 
 
-## Search for Recipes (Verbal Command Request)
-In the previous example, we responded to the standard "Available Commands" command. But what if a command requires an input parameter, like "Search for X"? In a visual-based app, we could grab the parameter from a UITextField. Using SayKit, we can simply access the `SAYCommand` parameter of our response block and extract the parameter that we need. 
 
-In this example, we'll respond to the standard "Search" command, which includes a parameter for the search query.
-
-- As in the previous example, create a helper function to setup our response to the standard "Search" command. Notice that we extract the query string by accessing `command`'s `parameters` dictionary with the standard key `SAYStandardCommandSearchParameterQuery`:
-
-    ```objc
-    - (void)respondToSearchCommand
-    {
-        SAYCommandResponseRegistry *commandRegistry = [SAYCommandResponseRegistry sharedInstance];
-        
-        // Respond to a search query, such as "Search for Chinese food" or "I want Italian".
-        [commandRegistry addResponseForCommandType:SAYStandardCommandSearch responseBlock:^(SAYCommand * _Nonnull command) {
-            NSString *query = command.parameters[SAYStandardCommandSearchParameterQuery];
-            
-            [self handleSearchCommandForQuery:query];
-        }];
-    }
-    ```
-- The `handleSearchCommandForQuery:` function simply takes the extracted query and presents it via the `resultsLabel`:
-
-    ```objc
-    - (void)handleSearchCommandForQuery:(NSString *)query
-    {
-        // Calls to UIKit should be done on the main thread.
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.resultLabel.text = [NSString stringWithFormat:@"Received command: Search for %@", query];
-        });
-        
-        // TODO: Update `recognizedSpeechLabel` with transcript (add observer?)
-    }
-    ```
-- Finally, call our setup function from `viewDidLoad`:
-
-    ```objc
-    - (void)viewDidLoad {
-        [super viewDidLoad];
-        [self respondToSearchCommand];
-    }
-    ```
-
-
-#### Classes used:
-- Same as in Available Commands
-
-
-## Search for Recipes (String Request)
-What if the app already knows that the user wants to perform a search, and just needs to prompt them for the search query? This sounds like a job for a `SAYStringRequest`!
-
-A `SAYStringRequest` does what it sounds like: it asks the user for a string. We can present the string request in a few different ways, including via a button tap or as a followup to a previous request (maybe our Search command from the previous example needed a clarification).
-
-For this example, we'll present the request when the microphone button is tapped. We start by overriding `SAYCommandBarController`'s delegate, and implementing the `SAYCommandBarDelegate` methods in `ViewController.m`.
-
-    ```
-    *Aside: Verbal Command Requests vs. Parameter Requests
-
-    An app can request different spoken information from the user: commands or parameters. A command request can generally be thought as answering the question, "What would you like to do next?", while a parameter request can answer questions like "What would you like to search for?", "How many servings?", or "Are you sure you want to continue?".
-
-    Command requests are defined by the class `SAYVerbalCommandRequest`. By default, when the microphone button of the `SAYCommandBarController` is tapped, a `SAYVerbalCommandRequest` is created and presented to the user. This was handled behind-the-scenes in the previous examples, though in the upcoming parameter requests we are responsible for the creation and presentation of the request.
-
-    Parameter requests are subclasses of `SAYVoiceRequest`. SayKit comes with several already defined, including `SAYStringRequest`, `SAYSelectRequest`, `SAYNumericalRequest`, `SAYConfirmationRequest`, and `SAYPatternMatchRequest`. Custom parameter requests can be created by simply subclassing `SAYVoiceRequest` and overriding the `didActivate` and `willDeactivate` methods. See the example where we create a custom voice request (TODO: create and link this example)
-    ```
-
-- In `ViewController.h`, subscribe to the `SAYCommandBarDelegate` protocol.
-    ``` objc
-    #import <UIKit/UIKit.h>
-    #import <SayKit/SayKit.h>
-
-    @interface ViewController : UIViewController <SAYCommandBarDelegate>
-
-    @end
-    ```
-- In `AppDelegate.m`'s `application:didFinishLaunchingWithOptions:`, override the `SAYCommandBarController`'s delegate with the view controller:
-    ``` objc
-    commandBarController.commandBar.delegate = vc;
-    ```
-The entire method should look like:
-    ``` objc
-    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-        
-        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
-        ViewController *vc = [mainStoryboard instantiateInitialViewController];
-        
-        SAYCommandBarController *commandBarController = [[SAYCommandBarController alloc] init];
-        
-        commandBarController.contentViewController = vc;
-        
-        UIView *v = commandBarController.view;    // Force commandBarController to load.
-        commandBarController.commandBar.delegate = vc;
-        
-        self.window.rootViewController = commandBarController;
-        [self.window makeKeyAndVisible];
-        
-        return YES;
-    }
-    ```
-- In `ViewController.m`, implement the `SAYCommandBarDelegate` methods:
-    ``` objc
-    @implementation ViewController
-
-    /* ... */
-
-    #pragma mark - SAYCommandBarDelegate Methods
-
-    - (void)commandBarDidSelectMicrophone:(SAYCommandBar *)commandBar
-    {
-        // Present the recipe string request
-    }
-
-    - (void)commandBarDidSelectCommandMenu:(SAYCommandBar *)commandBar
-    {
-        // Do nothing for now.
-    }
-
-    /* ... */
-
-    ```
-- In `commandBarDidSelectMicrophone:`, we'll create the string request and present it using the default voice request presenter:
-    ``` objc
-    - (void)commandBarDidSelectMicrophone:(SAYCommandBar *)commandBar
-    {
-        SAYStringRequest *request = [[SAYStringRequest alloc] initWithPromptText:@"What recipe would you like to search for?" completionBlock:^(SAYStringResult * _Nullable result) {
-            if (result.error) {
-                // Handle error
-            }
-            else {
-                NSString *query = result.transcription;
-                [self handleSearchCommandForQuery:query];
-            }
-        }];
-        
-        [[SAYVoiceRequestPresenter defaultPresenter] presentRequest:request];
-    }
-    ```
-- Implement a helper function `handleSearchCommandForQuery:` that simply updates the text of `resultsLabel`:
-    ``` objc
-    - (void)handleSearchCommandForQuery:(NSString *)query
-    {
-        // Calls to UIKit should be done on the main thread.
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.resultLabel.text = [NSString stringWithFormat:@"Received command: Search for %@", query];
-        });
-        
-        // TODO: Update `recognizedSpeechLabel` with transcript (add observer?)
-    }
-    ```
-- Run the app, tap the microphone, and say anything!
-
-#### Classes used:
-- SAYCommandBarDelegate
-- SAYVoiceRequestPresenter
-- SAYStringRequest
 
 
 ## View Saved Recipes (Select Request)
