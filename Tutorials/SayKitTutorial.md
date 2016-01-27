@@ -1,8 +1,10 @@
-# SayKit Tutorial Part I: Building a Fully Conversational Recipe App
+# SayKit Tutorial Part I: Building Blocks of a Fully Conversational App
 
 ## Table of Contents
 1. General Plan
 2. Setup
+        a. GUI Setup
+        b. Conversation Manager Setup
 3. Available Commands (Verbal Command Request)
 4. Search for Recipes (Verbal Command Request)
 5. Search for Recipes (String Request)
@@ -12,50 +14,79 @@
 
 ## General plan:
 In this tutorial we'll walk through how to use some of the most important features of SayKit. In Part I we'll treat each feature in isolation, and in Part II we'll put them all together into a full app.
-For now, in Part I, components will be swapped out by simply changing lines of code.
+
+The tutorial workspace, `SayKitTutorials.xcworkspace`, contains two projects: `SayKit Requests and Recognizers` and `SayKit Conversation Topics`. The first project demonstrates the use of several standard voice requests and command recognizers, while the second provides an example of a simple Conversation Topic hierarchy. 
+
+We begin with `SayKit Requests and Recognizers`. Open it up and play around as you follow along!
 
 
 ## Setup
-The first thing we’ll do is add two UILabels to help us make sure everything is working properly: one to display the response from the app, and the other to display what the user just said. We’ll also add a microphone button that the user can tap to start speaking. 
+In visual apps, we use `AppDelegate`'s `application:didFinishLaunchingWithOptions:` method to initialize our graphical user interface, all contained within a `UIWindow`. This is also a great place to set up SayKit's conversational equivalent, the `SAYConversationManager`.
 
-Luckily for us, SayKit comes with a pre-packaged microphone button as part of the `SAYCommandBarController` container class. All we need to do is create our view controller, add the UILabels, and set the view controller to be contained within an instance of `SAYCommandBarController`.
+### GUI Setup
+
+The first thing we’ll do is add a UILabel as a quick way for us to get feedback on what the app's doing. In these examples, you'll see us finish our conversations with anticlimactic calls to `updateAppResultLabelWithText:`. This is where your app's logic would take over and do something amazing!
+
+The rest of the GUI will be a series of UIButtons that we'll use to start sample voice requests.
+
+Finally, we need one last button that the user can tap to begin talking to the app. Luckily for us, SayKit comes with a pre-packaged microphone button as part of the `SAYCommandBarController` container class. All we need to do is set our `ViewController` as the content of a Command Bar Controller.
+
+// TODO: Insert image of storyboard
 
 Let’s get started!
 
 - Create a new single-view application
 - Add the SayKit framework, following the Getting Started instructions here // TODO - Link
-- In `Main.storyboard`'s View Controller Scene:
-    + Add a UILabel and hook it up to a new property in `ViewController.m` called `recognizedSpeechLabel`.
-    + Add a UILabel and hook it up to a new property in `ViewController.m` called `interpretedCommandLabel`.
-- In `AppDelegate.m`, setup a `SAYCommandBarController` as the window's root view controller. The `SAYCommandBarController` behaves like a container view controller similar to a `UITabBarController`. In this case, the content view controller is our `ViewController`.
-    ``` objc
-    #import <SayKit/SayKit.h>
-
-    /* ... */
-
-    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
-    {
-        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+- Setup the GUI like in the image above. We'll hook up the buttons' IBActions shortly.
+- In `AppDelegate.m`, setup a `SAYCommandBarController` as the window's root view controller. The `SAYCommandBarController` behaves like a container view controller similar to a `UITabBarController`. In this case, the `contentViewController` is our `ViewController`.
+    ````swift
+    func application(application: UIApplication, 
+        didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
-        ViewController *vc = [mainStoryboard instantiateInitialViewController];
-        
-        SAYCommandBarController *commandBarController = [[SAYCommandBarController alloc] init];
-        
-        commandBarController.contentViewController = vc;
-        
-        self.window.rootViewController = commandBarController;
-        [self.window makeKeyAndVisible];
-        
-        return YES;
+            // Initialize GUI
+            window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateInitialViewController()
+            
+            // Wrap initial view controller in a command bar controller
+            let commandBarController = SAYCommandBarController()
+            commandBarController.contentViewController = viewController
+            
+            window?.rootViewController = commandBarController
+            window?.makeKeyAndVisible()
+            
+            /* ...setup Conversation Manager... */
     }
+    ````
 
-    /* ... */
-    ```
+### Conversation Manager Setup
 
-#### Classes used:
-- SAYCommandBarController
+The `SAYConversationManager` is the highest-level manager of a conversation, coordinating input (listening) and output (speaking). To do its job, we have to define its `commandRegistry` and at least one `audioSource`, which are involved in the input and output aspects of a conversation, respectively.
+
+In this example, we'll use the simplest stand-ins for these properties. (Later on, we'll show how a Conversation Topic can fill both these roles.) A `SAYCommandRecognizerCatalog` stores a flat array of `SAYCommandRecognizer`s that we'll populate shortly. A `SAYSoundBoard` is an implementation of an audio source (`SAYAudioEventSource`) that enables the Conversation Manager to post audio events.
+
+The last line is an optional optimization that improves the performance of calls to the standard speech recognition service.
+
+    ````swift
+
+        func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+            
+            /* ...setup GUI... */
+            
+            // Initial setup of the SAYConversationManager
+            let catalog = SAYCommandRecognizerCatalog()
+            SAYConversationManager.systemManager().commandRegistry = catalog
+            
+            let soundBoard = SAYSoundBoard()
+            SAYConversationManager.systemManager().addAudioSource(soundBoard, forTrack:SAYAudioTrackMainIdentifier)
+            
+            // Optional optimization
+            SAYAPIKeyManager.sharedInstance().prefetchAPIKeys()
+            
+            return true
+        }
+        
+    ````
 
 
 ## Available Commands (Verbal Command Request)

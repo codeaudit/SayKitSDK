@@ -15,16 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        // Initial setup of the SAYConversationManager
-        let catalog = SAYCommandRecognizerCatalog()
-        SAYConversationManager.systemManager().commandRegistry = catalog
-        
-        let soundBoard = SAYSoundBoard()
-        SAYConversationManager.systemManager().addAudioSource(soundBoard, forTrack:SAYAudioTrackMainIdentifier)
-        
-        // Optional optimization
-        SAYAPIKeyManager.sharedInstance().prefetchAPIKeys()
-        
         // Initialize GUI
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -36,6 +26,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = commandBarController
         window?.makeKeyAndVisible()
+        
+        // Initial setup of the SAYConversationManager
+        let catalog = SAYCommandRecognizerCatalog()
+        SAYConversationManager.systemManager().commandRegistry = catalog
+        
+        let soundBoard = SAYSoundBoard()
+        SAYConversationManager.systemManager().addAudioSource(soundBoard, forTrack:SAYAudioTrackMainIdentifier)
+        
+        // Optional optimization
+        SAYAPIKeyManager.sharedInstance().prefetchAPIKeys()
         
         return true
     }
