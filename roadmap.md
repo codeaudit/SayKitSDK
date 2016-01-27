@@ -30,7 +30,7 @@ We have plans to enhance SayKit well beyond version 1.0. Here is just a few of t
 
 #### Declarative Dialogues
 
-Modern iOS developers expect to build their graphical UIs in a declarative-style, using visual tools like Interface Builder instead of large blocks of view configuration code. We think defining conversational interfaces in imperative clode blocks is just as clumsy, and aim to  provide declarative tools to define dialogue flows.
+Modern iOS developers expect to build their graphical UIs in a declarative-style, using visual tools like Interface Builder instead of large blocks of view configuration code. We think defining conversational interfaces in imperative clode blocks is less than ideal as wellclumsy, and aim to provide declarative tools to define dialogue flows.
 
 #### Always-on Listening Mode
 
@@ -38,8 +38,8 @@ The ability to speak to an app without using your hands opens up the possibility
 
 #### Context Sensitive Help
 
-One of the most common conversational tasks a new user wants to do is get some orientation: discover what they can say and discover what the app can tell them. SayKit's "conversation hiearchy" approach to application state provides a natural way to offer context-senstive help in a standardized way. Expect new features on the `SAYConversationTopic` class to support this functionality.
+The first thing many new users of an app want is some orientation: discover what they can say and discover what the app can tell them. SayKit's "conversation hiearchy" approach to application state provides a natural way to offer context-senstive help in a standardized way. Expect new features on the `SAYConversationTopic` class to support this functionality.
 
 #### Native Swift framework
 
-While our Objective-C framework is perfectly usable from Swift, there are a few Swift-only features that taking advantage of would further improve the clarity and simplicity of our SDK (e.g. generics, protocol extensions).
+While our Objective-C framework is perfectly usable from Swift, there are a few Swift-only features that taking advantage of would further improve the clarity and simplicity of our iOS SDK (e.g. generics, protocol extensions).
