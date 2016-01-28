@@ -83,14 +83,27 @@ In addition to the `target:action:` initializer for command recognizers, you can
 
 Sometimes we may need to prompt the user for clarification. A common scenario is when the user leaves out some information that we need (User: "I choose you, Pikachu!", App: "Did you mean Toby Pikachu or Susan Pikachu?"). In such cases, we can respond to the user with a followup voice request.
 
-In previous examples we created our command recognizers using the `target:action:` initializer and the `actionBlock` initializer. Here we'll use the `responseBuilder` initializer, which is simply a block that accepts a `SAYCommand` and returns a `SAYVoiceRequestResponse`. A voice request response contains everything we need to know to respond to the user, including an `action` block, a `followupRequest`, and a `feedbackPrompt`, all of which are optional and can be mixed and matched to the desired effect.
+In previous examples we created our command recognizers using the `target:action:` initializer and the `actionBlock` initializer. Here we'll use the `responseBuilder` initializer, which is simply a block that accepts a `SAYCommand` and returns a `SAYVoiceRequestResponse`. 
+
+A voice request response contains everything we need to know to respond to the user, including an `action` block, a `followupRequest`, and a `feedbackPrompt`, all of which are optional and can be mixed and matched to the desired effect. There is also a convenience method `terminalResponseWithAction:` if an `action` is all that's needed.
 
 ```swift
+let helpIsAvailable = true
+// Note the action block's signature: we're returning a response now
 commandRegistry.addCommandRecognizer(SAYHelpCommandRecognizer { command -> SAYVoiceRequestResponse in
-    let followupRequest = SAYStringRequest(promptText: "What would you like help with?", action: { result in
-        self.updateAppResultLabelWithText("Received command:\n[Help with \"\(result)\"")
-    })
-    return SAYVoiceRequestResponse(followupRequest: followupRequest)
+    if helpIsAvailable {
+        // respond with a new voice request
+        let followupRequest = SAYStringRequest(promptText: "What would you like help with?", action: { result in
+            self.updateAppResultLabelWithText("Received command:\n[Help with \"\(result)\"")
+        })
+        return SAYVoiceRequestResponse(followupRequest: followupRequest)
+    }
+    else {
+        // no need to follow up, just terminate the request and run the given action block
+        return SAYVoiceRequestResponse.terminalResponseWithAction({
+            self.updateAppResultLabelWithText("Received command:\n[Help, but none is available]")
+        })
+    }
 })
 ```
 

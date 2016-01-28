@@ -34,11 +34,22 @@ class ViewController: UIViewController {
         }))
         
         // "Help" command with a clarifying followup request:
+        let helpIsAvailable = true
+        // Note the action block's signature: we're returning a response now
         commandRegistry.addCommandRecognizer(SAYHelpCommandRecognizer { command -> SAYVoiceRequestResponse in
-            let followupRequest = SAYStringRequest(promptText: "What would you like help with?", action: { result in
-                self.updateAppResultLabelWithText("Received command:\n[Help with \"\(result)\"")
-            })
-            return SAYVoiceRequestResponse(followupRequest: followupRequest)
+            if helpIsAvailable {
+                // respond with a new voice request
+                let followupRequest = SAYStringRequest(promptText: "What would you like help with?", action: { result in
+                    self.updateAppResultLabelWithText("Received command:\n[Help with \"\(result)\"")
+                })
+                return SAYVoiceRequestResponse(followupRequest: followupRequest)
+            }
+            else {
+                // no need to follow up, just terminate the request and run the given action block
+                return SAYVoiceRequestResponse.terminalResponseWithAction({
+                    self.updateAppResultLabelWithText("Received command:\n[Help, but none is available]")
+                })
+            }
         })
         
         // Add a text matcher to the standard "Select" command recognizer:
