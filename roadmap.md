@@ -38,7 +38,7 @@ The ability to speak to an app without using your hands opens up the possibility
 
 #### Context Sensitive Help
 
-The first thing many new users of an app want is some orientation: discover what they can say and discover what the app can tell them. SayKit's "conversation hiearchy" approach to application state provides a natural way to offer context-senstive help in a standardized way. Expect new features on the `SAYConversationTopic` class to support this functionality.
+The first thing many new users of an app want is some orientation: discover what they can say and discover what the app can tell them. SayKit's "conversation hiearchy" approach to application state provides a natural way to offer context-senstive help in a standardized way. By supporting this with explicit APIs on the `SAYConversationTopic` class, we'll be able to standardize this interaction across SayKit apps.
 
 #### Native Swift framework
 
