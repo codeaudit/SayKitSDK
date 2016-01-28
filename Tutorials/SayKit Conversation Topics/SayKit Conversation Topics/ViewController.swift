@@ -12,24 +12,9 @@ class ViewController: UIViewController, ProductTopicEventHandler {
    
     @IBOutlet weak var appResultLabel: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Initial setup of the SAYConversationManager, with a Conversation Topic as 
-        // command registry and main audio source.
-        let rootTopic = ProductSearchTopic(eventHandler: self)
-        let systemManager = SAYConversationManager.systemManager()
-        systemManager.commandRegistry = rootTopic
-        systemManager.addAudioSource(rootTopic, forTrack:SAYAudioTrackMainIdentifier)
-        
-        // Add a sub-topic to the root.
-        let listTopic = ProductListTopic(eventHandler: self)
-        rootTopic.addSubtopic(listTopic)
-        
-        self.listTopic = listTopic
-    }
-
-    // MARK: ProductTopiceventHandler Protocol Methods
+    var listTopic: ProductListTopic?    
+    
+    // MARK: ProductTopicEventHandler Protocol Methods
     
     func handlePrevious()
     {
@@ -44,6 +29,12 @@ class ViewController: UIViewController, ProductTopicEventHandler {
     func handleSelect()
     {
         updateAppResultLabelWithText("Received List Topic Command:\n[Select]")
+    }
+    
+    func handlePlay()
+    {
+        updateAppResultLabelWithText("Received List Topic Command:\n[Play]")        
+        listTopic?.speakProductTitles(["Apples", "Waffles", "Pancakes", "Toast", "Bananas"])
     }
     
     func handleSearch(command: SAYCommand)
@@ -72,6 +63,4 @@ class ViewController: UIViewController, ProductTopicEventHandler {
             self.appResultLabel.text = text
         }
     }
-    
-    private var listTopic: ProductListTopic?
 }

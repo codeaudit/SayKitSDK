@@ -20,15 +20,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateInitialViewController() as! ViewController
         
-        // Optional optimization
-        SAYAPIKeyManager.sharedInstance().prefetchAPIKeys()
-        
         // Wrap initial view controller in a command bar controller
         let commandBarController = SAYCommandBarController()
         commandBarController.contentViewController = viewController
         
         window?.rootViewController = commandBarController
         window?.makeKeyAndVisible()
+        
+        // ProductListTopic only:
+        
+        // Initial setup of the SAYConversationManager, with a Conversation Topic as
+        // command registry and main audio source.
+        let rootTopic = ProductListTopic(eventHandler: viewController)
+        let systemManager = SAYConversationManager.systemManager()
+        systemManager.commandRegistry = rootTopic
+        systemManager.addAudioSource(rootTopic, forTrack:SAYAudioTrackMainIdentifier)
+        
+        viewController.listTopic = rootTopic
+        
+        // Final setup:
+        
+//        // Initial setup of the SAYConversationManager, with a Conversation Topic as
+//        // command registry and main audio source.
+//        let rootTopic = ProductSearchTopic(eventHandler: viewController)
+//        let systemManager = SAYConversationManager.systemManager()
+//        systemManager.commandRegistry = rootTopic
+//        systemManager.addAudioSource(rootTopic, forTrack:SAYAudioTrackMainIdentifier)
+//        
+//        // Add a sub-topic to the root.
+//        let listTopic = ProductListTopic(eventHandler: viewController)
+//        rootTopic.addSubtopic(listTopic)
+//        
+//        viewController.listTopic = listTopic
+        
+        // Optional optimization
+        SAYAPIKeyManager.sharedInstance().prefetchAPIKeys()
         
         return true
     }
