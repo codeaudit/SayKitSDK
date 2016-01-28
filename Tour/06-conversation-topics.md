@@ -115,7 +115,7 @@ And with that, we have a tidy conversation topic encapsulating all the input and
 
 ### Managing the interface hierarchy
 
-The final responsibility of a conversation topic is to manage its collection of subtopics. This hierarchical strucutre allows topics to delegate lower-level UI concerns to their children downstream. When asked for available command recognizers, they will respond with both their own, and their subtopics' recognizers. In addition, they listen to their subtopics' audio events, arranging and passing them on as a single sequence is if they originated from themselves.
+The final responsibility of a conversation topic is to manage its collection of subtopics. This hierarchical strucutre allows topics to delegate lower-level UI concerns to their children downstream. When asked for available command recognizers, they will respond both with both their own and their subtopics' recognizers. In addition, they listen to their subtopics' audio events, arranging and passing them on as a single sequence as if the events originated from themselves. They can also insert their own audio events into the sequence if desired.
 
 This capability lets us take advantage of the power of composition to build complex conversational interfaces from simple building blocks.
 
