@@ -59,7 +59,7 @@ greetingsRecognizer.addTextMatcher(SAYPatternCommandMatcher(patterns:patterns))
 SAYCustomCommandRecognizer *greetingsRecognizer = 
 	[[SAYCustomCommandRecognizer alloc] initWithCustomType:@"Greeting"
 				                                actionBlock:^(SAYCommand * _Nonnull) { /* ... */ }];
-NSArray *patterns = @[@"hello", @"hey", @"what's up"];
+NSArray *patterns = @[@"hello", @"hey", @"what's up", "greetings"];
 [greetingsRecognizer addTextMatcher:[SAYPatternCommandMatcher matcherWithPatterns:patterns]];
 ```
 
@@ -73,51 +73,48 @@ The app listens for a user command via the same mechanism it uses for listening 
 
 Just like [any other voice request](./02-voice-requests.md#voice-request-flow), a `SAYVerbalCommandRequest` has a *responding* stage. And just like any other voice request, the response can include a follow-up request, which causes the app to ask the user a new question. This means the app can jump straight into a conversation with the user directly in response to a command. To pull this off, simply return the followup request from your recognizer instance's action method/block.
 
-We'll illustrate by continuing with the previous example. Let's say your user has two friends named "Pikachu" in her address book: Toby Pikachu and Susan Pikachu. If the user says "I choose you, Pikachu!", the app needs to know if she means Toby or Susan.
-
-Let's find out which one by asking her directly. Followup responses to the rescue!
+We'll illustrate with an example of a "Help" command. If we're able to help, the app needs to know what the user needs help with. Let's find out by asking directly. Followup responses to the rescue!
 
 ````swift
 // Swift, using a closure-style callback
 
+// Of course, we're here to help!
+let helpIsAvailable = true
+
 // Note the action block's signature: we're returning a response now
-let selectRecognizer = SAYSelectCommandRecognizer() { command -> SAYVoiceRequestResponse in
-    let matchingNames = /* find names that match */
-	if (matchingNames.count) {
-		// respond with a new voice request 
-		let request = SAYSelectRequest(itemLabels:matchingNames
-                                       promptText:@"Which one?") {/* ... add selected name ... */};
-		return SAYVoiceRequestResponse(followupRequest:request);
-	}
-	else {
-		// no need to follow up, just terminate the request and run the given action block
-		SAYVoiceRequestResponse.terminalResponseWithAction() {/* ... add name ... */};
-	}
-}
+commandRegistry.addCommandRecognizer(SAYHelpCommandRecognizer { command -> SAYVoiceRequestResponse in
+    if helpIsAvailable {
+        // respond with a new voice request
+        let followupRequest = SAYStringRequest(promptText: "What would you like help with?", action: {/* ...provide help... */}
+        return SAYVoiceRequestResponse(followupRequest: followupRequest)
+    }
+    else {
+        // no need to follow up, just terminate the request and run the given action block
+        return SAYVoiceRequestResponse.terminalResponseWithAction({/* ... */})
+    }
+})
 ````
 
 ````objc
 // Objective-C, using a target/action-style callback
 
 // Note the signature: action selectors can have a (SAYVoiceCommandResponse *) return type
-- (SAYVoiceRequestResponse *)addRecipent:(SAYCommand *command) {
-	NSArray <NSString *> *matchingNames = /* find names that match */
-	if (matchingNames.count) {
-		// respond with a new voice request 
-		SAYSelectRequest *request = [[SAYSelectRequest alloc] initWithItemLabels:matchingNames
-                                                                      promptText:@"Which one?" 
-                                                                          action:/* ... add selected name ... */];
+- (SAYVoiceRequestResponse *)provideHelp:(SAYCommand *command) {
+	if (helpIsAvailable) {
+        // respond with a new voice request
+		SAYStringRequest *request = [[SAYStringRequest alloc] initWithPromptText:@"What would you like help with?",
+									  									  action:/* ...provide help... */]; 
 		return [SAYVoiceRequestResponse responseWithFollowupRequest:request];
 	}
 	else {
 		// no need to follow up, just terminate the request and run the given action block
-		return [SAYVoiceRequestResponse terminalResponseWithAction:^{/* ... add name ... */}];
+		return [SAYVoiceRequestResponse terminalResponseWithAction:^{/* ... */}];
 	}
 }
 
 ...
-	selectRecognizer = [[SAYSelectCommandRecognizer alloc] initWithResponseTarget:self 
-                                                                           action:@selector(addRecipient:)];
+	helpRecognizer = [[SAYHelpCommandRecognizer alloc] initWithResponseTarget:self 
+                                                                           action:@selector(provideHelp:)];
 ...
 ````
 
