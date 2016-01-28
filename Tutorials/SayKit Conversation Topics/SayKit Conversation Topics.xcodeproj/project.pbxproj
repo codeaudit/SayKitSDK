@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8392D6211C58144C0026BA8E /* SayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8392D61F1C5814400026BA8E /* SayKit.framework */; };
-		8392D6221C58144C0026BA8E /* SayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8392D61F1C5814400026BA8E /* SayKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8327C8881C5AB4DC006CAB0A /* SayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8327C8861C5AB4D7006CAB0A /* SayKit.framework */; };
+		8327C8891C5AB4DC006CAB0A /* SayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8327C8861C5AB4D7006CAB0A /* SayKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		83ED79491C57DBEB00DFB815 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ED79481C57DBEB00DFB815 /* AppDelegate.swift */; };
 		83ED794B1C57DBEB00DFB815 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ED794A1C57DBEB00DFB815 /* ViewController.swift */; };
 		83ED79501C57DBEB00DFB815 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83ED794F1C57DBEB00DFB815 /* Assets.xcassets */; };
@@ -25,7 +25,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8392D6221C58144C0026BA8E /* SayKit.framework in Embed Frameworks */,
+				8327C8891C5AB4DC006CAB0A /* SayKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -33,7 +33,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8392D61F1C5814400026BA8E /* SayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SayKit.framework; sourceTree = "<group>"; };
+		8327C8861C5AB4D7006CAB0A /* SayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SayKit.framework; sourceTree = "<group>"; };
 		83ED79451C57DBEB00DFB815 /* SayKit Conversation Topics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SayKit Conversation Topics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83ED79481C57DBEB00DFB815 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83ED794A1C57DBEB00DFB815 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8392D6211C58144C0026BA8E /* SayKit.framework in Frameworks */,
+				8327C8881C5AB4DC006CAB0A /* SayKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +61,7 @@
 		83ED793C1C57DBEB00DFB815 = {
 			isa = PBXGroup;
 			children = (
-				8392D61F1C5814400026BA8E /* SayKit.framework */,
+				8327C8861C5AB4D7006CAB0A /* SayKit.framework */,
 				83ED79471C57DBEB00DFB815 /* SayKit Conversation Topics */,
 				83ED79461C57DBEB00DFB815 /* Products */,
 			);
