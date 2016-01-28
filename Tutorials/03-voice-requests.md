@@ -137,10 +137,4 @@ viewController.soundBoard = soundBoard
 // ...
 ```
 
-## Wrapping Up!
-
-That’s it for the tutorial on voice requests and command recognizers! By now you should have a nice playground for exploring SayKit. Go ahead and [download the project](#) if you haven't already.
-
-Voice requests and command recognizers are some of the essentials in the SayKit toolbox, but they only scratch the surface of what SayKit can do! When you're ready, click the link below to check out the tutorial on Conversation Topics. We’ll build on what you've already learned to discuss how to structure a conversational app with a simple Conversation Topic hierarchy.
-
 [Next - Conversation Topics >>](./04-conversation-topics.md)

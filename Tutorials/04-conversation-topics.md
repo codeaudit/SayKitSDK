@@ -1,15 +1,13 @@
 # Conversation Topics
 [Conversation Topics](https://github.com/ConversantLabs/SayKitSDK/blob/tutorial/Tour/06-conversation-topics.md) give us an easy way to structure complex conversations. As our apps become more involved, we don't want to rely only on a flat list of command recognizers and a simple sound board (like we did in the [first tutorial](./01-setup.md#conversation-manager-setup)). Instead, we can leverage Conversation Topics' [capabilities](https://github.com/ConversantLabs/SayKitSDK/blob/tutorial/Tour/06-conversation-topics.md#responsibilities) of defining audio output via event sequences, handling voice input via their own set of command recognizers, and managing their place in the hierarchy via subtopic composition.
 
-This example will walkthrough a simple Conversation Topic hierarchy that will let us interact with a list of items. We'll begin with a single Topic, and then demonstrate how to add a subtopic.
+This example will walkthrough a simple Conversation Topic hierarchy that will let us interact with a list of items. We'll begin with a single topic, and then demonstrate how to cleanly build on its functionality by adding a subtopic.
 
 ## Setup
 If you haven't already, open up the `SayKit Conversation Topics` project, which is part of the `SayKitTutorials` workspace.
 
 ### GUI Setup
 We'll setup the GUI components of the app identically to the [previous tutorial](./01-setup.md#gui-setup), wrapping our main `ViewController` in a `SAYCommandBarController` so we can use the built-in microphone button. 
-
-`AppDelegate`'s `application:didFinishLaunchingWithOptions:` method should look something like this:
 
 ```swift
 // AppDelegate.swift
@@ -33,10 +31,10 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 }
 ```
 
-### Conversation Manager (ViewController)
+### Conversation Manager
 [Previously](./01-setup.md#conversation-manager-setup), we used a `SAYCommandRecognizerCatalog` as the Conversation Manager's `commandRegistry`, and a `SAYSoundBoard` as its main audio source. Here we'll use a `SAYConversationTopic` to fill both roles.
 
-Specifically, we'll use our own subclass, `ProductListTopic`, which we'll go over very soon!
+Specifically, we'll use our own subclass of `SAYConversationTopic`, `ProductListTopic` (see below).
 
 ```swift
 // ViewController.swift
@@ -54,8 +52,8 @@ override func viewDidLoad() {
 }
 ```
 
-## Product List Topic
-We want our conversation topic to do two main things: recognize commands that we can use to interact with a list of items, and to post a list of items as a sequence of audio events.
+## Single Conversation Topic: Product List
+We want our conversation topic subclass to do two main things: to recognize commands for interacting with a list of items, and to post a list of items as a sequence of audio events.
 
 ### Command Recognizers
 
@@ -71,7 +69,7 @@ protocol ProductTopicEventHandler: class
 }
 ```
 
-Then we can add command recognizers for the standard commands "Play", "Next", "Previous" and "Select" in `ProductListTopic`'s initializer. Note that the `responseTarget` is set to `eventHandler`:
+Then we can add command recognizers for the standard commands "Play", "Next", "Previous" and "Select" in `ProductListTopic`'s initializer. Note that the `responseTarget` is set to `eventHandler` instead of `self`:
 
 ```swift
 class ProductListTopic: SAYConversationTopic
@@ -93,7 +91,9 @@ class ProductListTopic: SAYConversationTopic
 
 ### Audio Events
 
-The `SAYConversationTopic` base class has a `postEvents:` method that we can use to output a sequence `SAYAudioEvent`s to any registered listeners. An audio event represents a piece of audible information, and can encompass speech (`SAYSpeechEvent`), a tone (`SAYToneEvent`), a duration of silence (`SAYSilenceEvent`), or a combination of the above (`SAYCompositeEvent`).
+The `SAYConversationTopic` base class has a `postEvents:` method that we can use to output a sequence of `SAYAudioEvent`s to any registered listeners. 
+
+>An audio event represents a piece of audible information, and can encompass speech (`SAYSpeechEvent`), a tone (`SAYToneEvent`), a duration of silence (`SAYSilenceEvent`), or a combination of the above (`SAYCompositeEvent`).
 
 Typically you won't want collaborators accessing a topic's `postEvents:` method directly, so let's keep it clean by providing a `speakProductTitles:` method as part of our `ProductListTopic` subclass. It will take an array of strings and build them into a sequence of `SAYSpeechEvent`s:
 
@@ -135,11 +135,11 @@ let rootTopic = ProductListTopic(eventHandler: viewController)
 viewController.listTopic = rootTopic
 ```
 
-## Product Search Topic
-We now have an app with a single Conversation that manages some basic interactions with a list of items. What if instead we want a conversation topic that can perform a search and return a list of results? Almost all of the functionality we need is already there in `ProductListTopic`, so we could keep adding to it. But let's avoid bloat and explore [conversation topic hierarchies](https://github.com/ConversantLabs/SayKitSDK/blob/tutorial/Tour/06-conversation-topics.md#managing-the-interface-hierarchy) by creating a new topic, `ProductSearchTopic`. We'll set its subtopic to `ProductListTopic`, which will let us easily compose our final response to our new "Search" command.
+## Conversation Topic Hierarchy: Product Search
+We now have an app with a single conversation topic that manages some basic interactions with a list of items. What if instead we want a conversation topic that can perform a search and return a list of results? Almost all of the functionality we need is already there in `ProductListTopic`, so we could keep adding to it. But let's avoid bloat and explore [conversation topic hierarchies](https://github.com/ConversantLabs/SayKitSDK/blob/tutorial/Tour/06-conversation-topics.md#managing-the-interface-hierarchy) by creating a new topic, `ProductSearchTopic`. We'll reuse our `ProductListTopic` as its subtopic, which will let us easily compose our final response to our new "Search" command.
 
-### Setup
-Let's replace our rootTopic with an instance of `ProductSearchTopic`, and add a subtopic to it:
+### Building the Hierarchy
+Let's replace our Conversation Manager's root topic with an instance of `ProductSearchTopic`, and add a subtopic to it:
 
 ```swift
 // AppDelegate.swift
@@ -206,10 +206,18 @@ func handleSearch(command: SAYCommand)
 }
 ```
 
-### Prefacing Subtopic Events
-All posted events of `ProductListTopic` will pass to the listener of the topic's audio source. Earlier, this was the Conversation Manager, but now as a subtopic, the events are passed to its parent, the `ProductSearchTopic`.
+If you're curious, we're simply stubbing out the app logic here. This is where your app would do its thing and search through your list of products!
 
-The `SAYConversationTopic` base class has a method `subtopic:didPostEventSequence:` that we can override to customize how we handle the output of a topic's subtopics.
+```swift
+private func searchAppUsingQuery(query: String) -> [String]
+{
+    /* ...do some actual app logic to process the query... */
+    return ["Waffles", "Pancakes", "Toast"]
+}
+```
+
+### Prefacing Subtopic Events
+All posted events of a `SAYConversationTopic` will pass to its parent via the parent's `subtopic:didPostEventSequence:` method. (Earlier, when we had only a single conversation topic, the event sequence went straight to the Conversation Manager.) We can override this method to customize how we handle a subtopic's output.
 
 Let's add a little introduction ("Here's what I found matching your query") to the subtopic's list of items.
 
@@ -230,6 +238,10 @@ override func subtopic(subtopic: SAYConversationTopic,
 }
 ```
 
-Now, if we call `ProductListTopic`'s `speakProductTitles:` method, we'll hear the introductory speech supplied by the `ProductSearchTopic`, followed by the speech supplies by the `ProductListTopic`.
+Now, if we call `ProductListTopic`'s `speakProductTitles:` method, we'll hear the introductory speech provided by the `ProductSearchTopic`, followed by the speech provided by the `ProductListTopic`.
 
-## Wrapping Up
+## Wrapping Up!
+
+That’s it for the tutorials on voice requests, command recognizers, and conversation topics! By now you should have a nice playground for exploring SayKit. Go ahead and [download the project](#) if you haven't already.
+
+The features we covered are some of the essentials in the SayKit toolbox, but they only scratch the surface of what SayKit can do! Stay tuned for a full-fledged conversational app that puts everything we've learned to the test. In the meantime, get out there and make something awesome!

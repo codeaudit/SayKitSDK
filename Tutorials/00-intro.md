@@ -16,6 +16,16 @@
   4. [Select Request (with Aliases)](./03-voice-requests.md#select-request-with-aliases)
   5. [SoundBoard (Bonus!)](./03-voice-requests.md#soundboard-bonus)
 5. [Conversation Topics](./04-conversation-topics.md)
+  1. [Setup](./04-conversation-topics.md#setup)
+    1. [GUI Setup](./04-conversation-topics.md#gui-setup)
+    2. [Conversation Manager Setup](./04-conversation-topics.md#gui-setup#conversation-manager)
+  2. [Single Conversation Topic: Product List](./04-conversation-topics.md#single-conversation-topic-product-list)
+    1. [Command Recognizers](./04-conversation-topics.md#command-recognizers)
+    2. [Audio Events](./04-conversation-topics.md#audio-events)
+  3. [Conversation Topic Hierarchy: Product Search](./04-conversation-topics.md#conversation-topic-hierarchy-product-search)
+    1. [Building the Hierarchy](./04-conversation-topics.md#building-the-hierarchy)
+    2. [Prefacing Subtopic Events](./04-conversation-topics.md#prefacing-subtopic-events)
+6. [Wrapping Up!](./04-conversation-topics.md#wrapping-up)
 
 
 ## General Plan:
