@@ -27,31 +27,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = commandBarController
         window?.makeKeyAndVisible()
         
-        // ProductListTopic only:
-        
         // Initial setup of the SAYConversationManager, with a Conversation Topic as
         // command registry and main audio source.
-        let rootTopic = ProductListTopic(eventHandler: viewController)
+        let rootTopic = ProductSearchTopic(eventHandler: viewController)
         let systemManager = SAYConversationManager.systemManager()
         systemManager.commandRegistry = rootTopic
         systemManager.addAudioSource(rootTopic, forTrack:SAYAudioTrackMainIdentifier)
         
-        viewController.listTopic = rootTopic
+        // create the subtopic to handle the list of results
+        let listTopic = ProductListTopic(eventHandler: viewController)
         
-        // Final setup:
+        // by adding it as a subtopic, we are implicitly doing two things:
+        // 1. adding its command recognizers to our collection
+        // 2. listening for, and passing on, our subtopic's audio events (potentially with modification: see below)
+        rootTopic.addSubtopic(listTopic)
         
-//        // Initial setup of the SAYConversationManager, with a Conversation Topic as
-//        // command registry and main audio source.
-//        let rootTopic = ProductSearchTopic(eventHandler: viewController)
-//        let systemManager = SAYConversationManager.systemManager()
-//        systemManager.commandRegistry = rootTopic
-//        systemManager.addAudioSource(rootTopic, forTrack:SAYAudioTrackMainIdentifier)
-//        
-//        // Add a sub-topic to the root.
-//        let listTopic = ProductListTopic(eventHandler: viewController)
-//        rootTopic.addSubtopic(listTopic)
-//        
-//        viewController.listTopic = listTopic
+        viewController.listTopic = listTopic
         
         // Optional optimization
         SAYAPIKeyManager.sharedInstance().prefetchAPIKeys()

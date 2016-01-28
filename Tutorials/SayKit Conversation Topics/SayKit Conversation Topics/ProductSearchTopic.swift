@@ -21,14 +21,6 @@ class ProductSearchTopic: SAYConversationTopic
         // set up the search recognizer
         self.addCommandRecognizer(SAYSearchCommandRecognizer(responseTarget: eventHandler,
             action: "handleSearch:"))
-        
-        // create the subtopic to handle the list of results
-        let listTopic = ProductListTopic(eventHandler: eventHandler)
-        
-        // by adding it as a subtopic, we are implicitly doing two things:
-        // 1. adding its command recognizers to our collection
-        // 2. listening for, and passing on, our subtopic's audio events (potentially with modification: see below)
-        self.addSubtopic(listTopic)
     }
 
     // This is a base SAYConversationTopic function that is called to pass on a subtopics'

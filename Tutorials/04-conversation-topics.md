@@ -136,11 +136,100 @@ viewController.listTopic = rootTopic
 ```
 
 ## Product Search Topic
-As supertopic
+We now have an app with a single Conversation that manages some basic interactions with a list of items. What if instead we want a conversation topic that can perform a search and return a list of results? Almost all of the functionality we need is already there in `ProductListTopic`, so we could keep adding to it. But let's avoid bloat and explore [conversation topic hierarchies](https://github.com/ConversantLabs/SayKitSDK/blob/tutorial/Tour/06-conversation-topics.md#managing-the-interface-hierarchy) by creating a new topic, `ProductSearchTopic`. We'll set its subtopic to `ProductListTopic`, which will let us easily compose our final response to our new "Search" command.
 
 ### Setup
-Set as root topic, add list sub topic
+Let's replace our rootTopic with an instance of `ProductSearchTopic`, and add a subtopic to it:
 
-### subtopic:didPostEventSequence:
+```swift
+// AppDelegate.swift
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        // ...setup GUI...
+        
+        // Initial setup of the SAYConversationManager, with a Conversation Topic as
+        // command registry and main audio source.
+        let rootTopic = ProductSearchTopic(eventHandler: viewController)
+        let systemManager = SAYConversationManager.systemManager()
+        systemManager.commandRegistry = rootTopic
+        systemManager.addAudioSource(rootTopic, forTrack:SAYAudioTrackMainIdentifier)
+        
+        // create the subtopic to handle the list of results
+        let listTopic = ProductListTopic(eventHandler: viewController)
+
+        // by adding it as a subtopic, we are implicitly doing two things:
+        // 1. adding its command recognizers to our collection
+        // 2. listening for, and passing on, our subtopic's audio events (potentially with modification: see below)        
+        rootTopic.addSubtopic(listTopic)
+        
+        viewController.listTopic = listTopic
+        
+        // ...
+    }
+```
+
+We add a command recognizer for the standard "Search" command in `ProductSearchTopic`'s initializer, as well as add "handleSearch:" to our preexisting event handler protocol.
+
+```swift
+// ProductSearchTopic.swift
+init(eventHandler: ProductTopicEventHandler)
+{
+    self.eventHandler = eventHandler
+    super.init()
+    
+    // set up the search recognizer
+    self.addCommandRecognizer(SAYSearchCommandRecognizer(responseTarget: eventHandler,
+        action: "handleSearch:"))
+}
+```
+
+```swift
+protocol ProductTopicEventHandler: class
+{
+    // ...    
+    func handleSearch(command: SAYCommand)
+}
+```
+
+```swift
+// ViewController.swift
+func handleSearch(command: SAYCommand)
+{
+    if let searchQuery = command.parameters[SAYSearchCommandRecognizerParameterQuery] as? String {
+        let matchingItems = self.searchAppUsingQuery(searchQuery)  // app logic
+        listTopic?.speakProductTitles(matchingItems)
+        updateAppResultLabelWithText("Received Search Topic Command:\n[Search for \(searchQuery)]")
+    }
+    else {
+        /* ... */
+    }
+}
+```
+
+### Prefacing Subtopic Events
+All posted events of `ProductListTopic` will pass to the listener of the topic's audio source. Earlier, this was the Conversation Manager, but now as a subtopic, the events are passed to its parent, the `ProductSearchTopic`.
+
+The `SAYConversationTopic` base class has a method `subtopic:didPostEventSequence:` that we can override to customize how we handle the output of a topic's subtopics.
+
+Let's add a little introduction ("Here's what I found matching your query") to the subtopic's list of items.
+
+```swift
+// ProductSearchTopic.swift
+override func subtopic(subtopic: SAYConversationTopic,
+    didPostEventSequence incomingSeq: SAYAudioEventSequence) {
+        
+        // preface the message with this introduction
+        let prefaceEvent = SAYSpeechEvent(utteranceString: "Here's what I found matching your query:")
+        let outgoingSeq = SAYAudioEventSequence(events:[prefaceEvent])
+        
+        // the incoming sequence is our subtopic's list of search results
+        // add them to our outgoing sequence
+        outgoingSeq.appendSequence(incomingSeq)
+        
+        self.postEvents(outgoingSeq)
+}
+```
+
+Now, if we call `ProductListTopic`'s `speakProductTitles:` method, we'll hear the introductory speech supplied by the `ProductSearchTopic`, followed by the speech supplies by the `ProductListTopic`.
 
 ## Wrapping Up

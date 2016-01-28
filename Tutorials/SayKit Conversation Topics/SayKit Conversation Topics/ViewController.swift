@@ -30,13 +30,7 @@ class ViewController: UIViewController, ProductTopicEventHandler {
     {
         updateAppResultLabelWithText("Received List Topic Command:\n[Select]")
     }
-    
-    func handlePlay()
-    {
-        updateAppResultLabelWithText("Received List Topic Command:\n[Play]")        
-        listTopic?.speakProductTitles(["Apples", "Waffles", "Pancakes", "Toast", "Bananas"])
-    }
-    
+        
     func handleSearch(command: SAYCommand)
     {
         if let searchQuery = command.parameters[SAYSearchCommandRecognizerParameterQuery] as? String {
