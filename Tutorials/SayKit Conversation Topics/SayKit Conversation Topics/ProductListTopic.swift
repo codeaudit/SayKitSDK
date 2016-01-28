@@ -18,6 +18,10 @@ class ProductListTopic: SAYConversationTopic
      
         super.init()
         
+        // add a recognizer for "play" commands, to begin reading the items in the list
+        self.addCommandRecognizer(SAYPlayCommandRecognizer(responseTarget:eventHandler,
+            action:"handlePlay"))
+        
         // add a recognizer for "previous" commands, to go back in the list
         self.addCommandRecognizer(SAYPreviousCommandRecognizer(responseTarget:eventHandler,
             action:"handlePrevious"))
@@ -29,10 +33,6 @@ class ProductListTopic: SAYConversationTopic
         // add a recognizer for "select" commands, to select an item in the list
         self.addCommandRecognizer(SAYSelectCommandRecognizer(responseTarget:eventHandler,
             action:"handleSelect"))
-        
-        // add a recognizer for "play" commands, to begin reading the items in the list
-        self.addCommandRecognizer(SAYPlayCommandRecognizer(responseTarget:eventHandler,
-            action:"handlePlay"))
     }
     
     func speakProductTitles(titles: [String])
@@ -49,10 +49,10 @@ class ProductListTopic: SAYConversationTopic
 
 protocol ProductTopicEventHandler: class
 {
+    func handlePlay()
     func handlePrevious()
     func handleNext()
     func handleSelect()
-    func handlePlay()
     
     func handleSearch(command: SAYCommand)
 }

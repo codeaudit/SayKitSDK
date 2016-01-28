@@ -55,12 +55,85 @@ override func viewDidLoad() {
 ```
 
 ## Product List Topic
-
-### Event Handler
+We want our conversation topic to do two main things: recognize commands that we can use to interact with a list of items, and to post a list of items as a sequence of audio events.
 
 ### Command Recognizers
 
-### SAYAudioEventSequence and postEvents (speakProductTitles)
+We don't necessarily want the topic itself to handle the response to a recognized command, so let's include an `eventHandler` property that implements the `ProductTopicEventHandler` protocol.
+
+```swift
+protocol ProductTopicEventHandler: class
+{
+    func handlePlay()    
+    func handlePrevious()
+    func handleNext()
+    func handleSelect()
+}
+```
+
+Then we can add command recognizers for the standard commands "Play", "Next", "Previous" and "Select" in `ProductListTopic`'s initializer. Note that the `responseTarget` is set to `eventHandler`:
+
+```swift
+class ProductListTopic: SAYConversationTopic
+{
+    let eventHandler: ProductTopicEventHandler
+    init(eventHandler: ProductTopicEventHandler)
+    {
+        self.eventHandler = eventHandler
+        super.init()
+    
+        // add a recognizer for "play" commands, to begin reading the items in the list
+        self.addCommandRecognizer(SAYPlayCommandRecognizer(responseTarget:eventHandler,
+            action:"handlePlay"))
+
+        // ...add the remaining command recognizers...
+    }
+}
+```
+
+### Audio Events
+
+The `SAYConversationTopic` base class has a `postEvents:` method that we can use to output a sequence `SAYAudioEvent`s to any registered listeners. An audio event represents a piece of audible information, and can encompass speech (`SAYSpeechEvent`), a tone (`SAYToneEvent`), a duration of silence (`SAYSilenceEvent`), or a combination of the above (`SAYCompositeEvent`).
+
+Typically you won't want collaborators accessing a topic's `postEvents:` method directly, so let's keep it clean by providing a `speakProductTitles:` method as part of our `ProductListTopic` subclass. It will take an array of strings and build them into a sequence of `SAYSpeechEvent`s:
+
+```swift
+// ProductListTopic.swift
+func speakProductTitles(titles: [String])
+{
+    let sequence = SAYAudioEventSequence()
+    for title in titles {
+        sequence.addEvent(SAYSpeechEvent(utteranceString: title))
+    }
+    
+    // this is a method defined on the `SAYConversationTopic` base class that posts events to listeners
+    self.postEvents(sequence)
+}
+```
+
+Our event handler can now respond to a "Play" command and pass the `ProductListTopic` a list of items to speak.
+
+```swift
+// ViewController.swift
+class ViewController: UIViewController, ProductTopicEventHandler {
+    // ...
+    var listTopic: ProductListTopic?    
+    func handlePlay()
+    {
+        updateAppResultLabelWithText("Received List Topic Command:\n[Play]")        
+        listTopic?.speakProductTitles(["Apples", "Waffles", "Pancakes", "Toast", "Bananas"])
+    }
+    // ...
+}
+```
+
+Don't forget to set `ViewController`'s `listTopic` in the `AppDelegate` as part of our setup:
+
+```swift
+let rootTopic = ProductListTopic(eventHandler: viewController)
+// ...
+viewController.listTopic = rootTopic
+```
 
 ## Product Search Topic
 As supertopic
