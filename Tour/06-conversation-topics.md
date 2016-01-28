@@ -115,7 +115,9 @@ And with that, we have a tidy conversation topic encapsulating all the input and
 
 ### Managing the interface hierarchy
 
-The final responsibility of a conversation topic is to manage its collection of subtopics. It can fold its subtopics' command recognizers into its own and listen to their audio events, arranging and passing them on as a single sequence to be posted. This capability lets us take advantage of the power of composition to build complex conversational interfaces from simple building blocks.
+The final responsibility of a conversation topic is to manage its collection of subtopics. This hierarchical strucutre allows topics to delegate lower-level UI concerns to their children downstream. When asked for available command recognizers, they will respond with both their own, and their subtopics' recognizers. In addition, they listen to their subtopics' audio events, arranging and passing them on as a single sequence is if they originated from themselves.
+
+This capability lets us take advantage of the power of composition to build complex conversational interfaces from simple building blocks.
 
 At first blush, this might not be as intuitive as composing a hierarchy of subviews, so let's make it more concrete with an example: we'll add search capabilities to our shopping app example. When the user issues a search command, let's make the app search the product database and present a list of matches to the user. 
 
@@ -176,8 +178,6 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 
 ## Coming soon...
 
-// TODO: Link to Feature Roadmap section
-
 A lot can be built with just these basic units, but this is just a start. Expect even more features in the future, including:
 
 - Built-in Topics: The example `SAYConversationTopic` subclasses we built above are generic enough to be used in many contexts. Future versions of SayKit will include fully-fleshed out standards like those ready for use.
@@ -185,6 +185,8 @@ A lot can be built with just these basic units, but this is just a start. Expect
 - UIKit Integration: It's no accident that many SayKit APIs bear a resemblance to UIKit APIs. Not only does this lessen the difficulty in adopting SayKit, but the parallels allows for seamless integration possibilities with the two frameworks.
 
 - Dialogue files: Instead of scattered in-line declarations of speech output, a topic could be paired with a text-based file that includes dialogue options tailored to its particular domain (think .xib files, but for speech). This file format will include features tailored to natural speech production, keeping fiddly output text processing out of your code.
+
+To read more about planned features, [visit our release roadmap](https://github.com/ConversantLabs/SayKitSDK/blob/master/roadmap.md).
 
 ---
 
