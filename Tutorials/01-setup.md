@@ -9,7 +9,7 @@ The rest of the GUI will be a series of UIButtons that we'll use to start sample
 
 Finally, we need one last button that the user can tap to begin talking to the app. Luckily for us, SayKit comes with a pre-packaged microphone button as part of the `SAYCommandBarController` container class. All we need to do is set our `ViewController` as the content of a Command Bar Controller.
 
-// TODO: Insert image of storyboard
+![Storyboard setup](./assets/storyboard-setup.png)
 
 Let’s get started!
 
