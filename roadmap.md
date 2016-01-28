@@ -6,7 +6,7 @@ We're actively iterating the SayKit iOS SDK as we march to version 1.0. Here are
 
 #### Cloud-based intent recognition services
 
-Lately, a collection of cloud-based products have been appearing that provide intent recognition as a service (e.g. [Microsoft's LUIS](https://www.luis.ai), [Wit.ai](https://wit.ai)). While SayKit has been designed specifically to keep as much logic as possible on-device, these services offer a robust natural language understanding that is difficult to replicate. We will soon open up our `SAYCommandRecognizer` class to support using these types of services as a backend.
+Lately, a collection of cloud-based products have been appearing that provide intent recognition as a service (e.g. [Microsoft's LUIS](https://www.luis.ai), [Wit.ai](https://wit.ai)). These services offer robust natural language understanding that can be useful for recognitizing commands. We will soon open up our `SAYCommandRecognizer` class to support involving these types of services in their recognition logic.
 
 #### Deeper UIKit integration
 
@@ -26,7 +26,7 @@ Expect improvements in latency of voice requests as we revisit the speech recogn
 
 ## Beyond 1.0
 
-We have plans to enhance SayKit well beyond version 1.0. Here is just a few of the features on our roadmap after our initial release.
+We have plans to enhance SayKit well beyond version 1.0. Here are just a few of the features on our roadmap after our initial release.
 
 #### Declarative Dialogues
 
@@ -34,12 +34,12 @@ Modern iOS developers expect to build their graphical UIs in a declarative-style
 
 #### Always-on Listening Mode
 
-The ability to speak to an app without using your hands opens up the possibility for much more natural interaction with a dialogue system. At the moment, the SayKit preview only supports a "tap-to-speak" mode, but always-listening mode is in the works.
+The ability to speak to an app without using your hands opens up the possibility for much more natural interaction with a dialogue system. At the moment, the SayKit preview only supports a "tap-to-speak" mode, but an always-listening mode is in the works.
 
 #### Context Sensitive Help
 
-The first thing many new users of an app want is some orientation: discover what they can say and discover what the app can tell them. SayKit's "conversation hiearchy" approach to application state provides a natural way to offer context-senstive help in a standardized way. Expect new features on the `SAYConversationTopic` class to support this functionality.
+The first thing many new users of an app want is some orientation: discover what they can say and discover what the app can tell them. SayKit's "conversation hiearchy" approach to application state provides a natural way to offer context-senstive help in a standardized way. By supporting this with explicit APIs on the `SAYConversationTopic` class, we'll be able to standardize this interaction across SayKit apps.
 
 #### Native Swift framework
 
-While our Objective-C framework is perfectly usable from Swift, there are a few Swift-only features that taking advantage of would further improve the clarity and simplicity of our iOS SDK (e.g. generics, protocol extensions).
+While our Objective-C framework is perfectly usable from Swift, there are a few Swift-only features that would further improve the clarity and simplicity of our iOS SDK (e.g. generics, protocol extensions).
