@@ -105,6 +105,8 @@ func responseToCommand(command: SAYCommand) -> SAYVerbalCommandResponse
 
 ## Custom Command Recognizers
 
+### Extending Standard Command Recognizers
+
 These standard command recognizers are great! But of course they're not going to cover every situation, so let's look at how we can make our own.
 
 The most straightforward way to add our customization is to piggy-back on an existing standard command recognizer. Suppose we have a `SAYSelectCommandRecognizer` setup like so:
@@ -167,6 +169,8 @@ commandRegistry.addCommandRecognizer(selectRecognizer)
 >>"@payer gave @payee @amount:Number dollars."
 
 >>"@payee received @amount:Number dollars from @payer."  
+
+### Implementing `SAYCustomCommandRecognizer`
 
 Another way to customize our recognizers is to make our own! The procedure is almost identical to the previous `selectRecognizer` example, but our new recognizer will rely completely on text matchers. 
 
