@@ -79,9 +79,20 @@ class ViewController: UIViewController {
         greetingsRecognizer.addTextMatcher(SAYPatternCommandMatcher(forPatterns: patterns))
         greetingsRecognizer.addTextMatcher(SAYBlockCommandMatcher { text -> SAYCommandSuggestion? in
             return text.containsString("hi") ? SAYCommandSuggestion(confidence: kSAYCommandConfidenceLikely) :
-                                               SAYCommandSuggestion(confidence: kSAYCommandConfidenceUnlikely)
+                                               SAYCommandSuggestion(confidence: kSAYCommandConfidenceNone)
         })
         commandRegistry.addCommandRecognizer(greetingsRecognizer)
+        
+        // Custom command recognizer with feedback prompt:
+        let badJokeRecognizer = SAYCustomCommandRecognizer(customType: "KnockKnock") { command -> SAYVoiceRequestResponse in
+            let feedbackPrompt = SAYVoicePrompt(message: "Go away!")
+            return SAYVoiceRequestResponse(feedbackPrompt: feedbackPrompt, followupRequest: nil, action: {
+                    self.updateAppResultLabelWithText("Received command:\n[KnockKnock]")
+                }
+            )
+        }
+        badJokeRecognizer.addTextMatcher(SAYPatternCommandMatcher(forPattern: "knock knock"))
+        commandRegistry.addCommandRecognizer(badJokeRecognizer)
     }
     
     @IBAction func confirmationRequestButtonTapped(sender: AnyObject)
