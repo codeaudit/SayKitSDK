@@ -66,6 +66,10 @@ class ViewController: UIViewController {
         }
         let patterns = ["hello", "hey", "what's up", "greetings"]
         greetingsRecognizer.addTextMatcher(SAYPatternCommandMatcher(forPatterns: patterns))
+        greetingsRecognizer.addTextMatcher(SAYBlockCommandMatcher { text -> SAYCommandSuggestion? in
+            return text.containsString("hi") ? SAYCommandSuggestion(confidence: kSAYCommandConfidenceLikely) :
+                                               SAYCommandSuggestion(confidence: kSAYCommandConfidenceUnlikely)
+        })
         commandRegistry.addCommandRecognizer(greetingsRecognizer)
     }
     

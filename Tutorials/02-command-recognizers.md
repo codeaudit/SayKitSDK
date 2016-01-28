@@ -127,7 +127,7 @@ This will recognize phrases like "Select the third one" or "Select Jiffy", but m
 
 Objects conforming to the `SAYTextCommandMatcher` protocol will process a user's speech transcript and return the likelihood that the given text corresponds to some command. Here we'll use the implementation `SAYPatternCommandMatcher`, which is initialized with an array of text "patterns" that are used to process the speech transcript. If the transcript matches any of the patterns, then the Matcher returns a positive response along with any pattern parameters, marked by an "@" prefix.
 
-Adding a text matcher is a good way to handle simple speech patterns, and requires very little setup. If you find yourself in need of more flexibility when interpreting a user’s intent, you may want to consider setting up and linking to your own intent recognition service [(coming soon!)](#).
+Adding a text matcher is a good way to handle simple speech patterns, and requires very little setup. With a little more setup we can define how to process the text ourselves using a `SAYBlockCommandMatcher` (see below). If you find yourself in need of more flexibility when interpreting a user’s intent, you may want to consider setting up and linking to your own intent recognition service [(coming soon!)](#).
 
 ```swift
 let pattern = "i choose you @name"  // Note our custom parameter, "name"
@@ -170,6 +170,17 @@ commandRegistry.addCommandRecognizer(greetingsRecognizer)
 ```
 
 Another way to think of what's going on here is, "If the user says any of these patterns, it's a "Greeting" command, so execute this action block".
+
+If we want to process spoken text in a way that's difficult to express in a simple pattern, we can instead use a `SAYBlockCommandMatcher`. It defines a block that passes in the spoken transcript and returns a `SAYCommandSuggestion`, which is a struct-like class that contains the likelihood of a match and any relevant parameters.
+
+```swift
+greetingsRecognizer.addTextMatcher(SAYBlockCommandMatcher { text -> SAYCommandSuggestion? in
+    return text.containsString("hi") ? SAYCommandSuggestion(confidence: kSAYCommandConfidenceLikely) :
+                                       SAYCommandSuggestion(confidence: kSAYCommandConfidenceUnlikely)
+})
+```
+
+___
 
 Now that our command registry is loaded up with command recognizers, our app can recognize what's being said and act accordingly. But what if the app already knows that the user wants to, say, perform a search, and just needs to prompt them for the search query? 
 
