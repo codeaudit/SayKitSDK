@@ -6,7 +6,7 @@ We're actively iterating the SayKit iOS SDK as we march to version 1.0. Here are
 
 #### Cloud-based intent recognition services
 
-Lately, a collection of cloud-based products have been appearing that provide intent recognition as a service (e.g. [Microsoft's LUIS](https://www.luis.ai), [Wit.ai](https://wit.ai)). While SayKit has been designed specifically to keep as much logic as possible on-device, these services offer a robust natural language understanding that is difficult to replicate. We will soon open up our `SAYCommandRecognizer` class to support using these types of services as a backend.
+Lately, a collection of cloud-based products have been appearing that provide intent recognition as a service (e.g. [Microsoft's LUIS](https://www.luis.ai), [Wit.ai](https://wit.ai)). These services offer robust natural language understanding that can be useful for recognitizing commands. We will soon open up our `SAYCommandRecognizer` class to support involving these types of services in their recognition logic.
 
 #### Deeper UIKit integration
 
