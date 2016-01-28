@@ -26,7 +26,7 @@ Expect improvements in latency of voice requests as we revisit the speech recogn
 
 ## Beyond 1.0
 
-We have plans to enhance SayKit well beyond version 1.0. Here is just a few of the features on our roadmap after our initial release.
+We have plans to enhance SayKit well beyond version 1.0. Here are just a few of the features on our roadmap after our initial release.
 
 #### Declarative Dialogues
 
@@ -34,7 +34,7 @@ Modern iOS developers expect to build their graphical UIs in a declarative-style
 
 #### Always-on Listening Mode
 
-The ability to speak to an app without using your hands opens up the possibility for much more natural interaction with a dialogue system. At the moment, the SayKit preview only supports a "tap-to-speak" mode, but always-listening mode is in the works.
+The ability to speak to an app without using your hands opens up the possibility for much more natural interaction with a dialogue system. At the moment, the SayKit preview only supports a "tap-to-speak" mode, but an always-listening mode is in the works.
 
 #### Context Sensitive Help
 
@@ -42,4 +42,4 @@ The first thing many new users of an app want is some orientation: discover what
 
 #### Native Swift framework
 
-While our Objective-C framework is perfectly usable from Swift, there are a few Swift-only features that taking advantage of would further improve the clarity and simplicity of our iOS SDK (e.g. generics, protocol extensions).
+While our Objective-C framework is perfectly usable from Swift, there are a few Swift-only features that would further improve the clarity and simplicity of our iOS SDK (e.g. generics, protocol extensions).
