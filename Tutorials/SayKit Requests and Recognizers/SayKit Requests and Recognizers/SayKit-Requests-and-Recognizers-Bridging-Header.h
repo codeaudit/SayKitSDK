@@ -6,9 +6,9 @@
 //  Copyright © 2016 Conversant Labs. All rights reserved.
 //
 
-#ifndef SayKit_Requests_and_Recognizers_Bridging_Header.h
-#define SayKit_Requests_and_Recognizers_Bridging_Header.h
+#ifndef SayKit_Requests_and_Recognizers_Bridging_Header_h
+#define SayKit_Requests_and_Recognizers_Bridging_Header_h
 
 #import <SayKit/SayKit.h>
 
-#endif /* SayKit_Requests_and_Recognizers_Bridging_Header.h */
+#endif /* SayKit_Requests_and_Recognizers_Bridging_Header_h */
