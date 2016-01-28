@@ -14,7 +14,7 @@ Finally, we need one last button that the user can tap to begin talking to the a
 Let’s get started!
 
 - Create a new single-view application
-- Add the SayKit framework, following the [Getting Started instructions](#)
+- Add the SayKit framework, following the [Installation Guide](https://github.com/ConversantLabs/SayKitSDK/blob/master/README.md#installation-guide)
 - Setup the GUI like in the image above. We'll hook up the buttons' IBActions shortly.
 - In `AppDelegate.m`, setup a `SAYCommandBarController` as the window's root view controller. The `SAYCommandBarController` behaves like a container view controller similar to a `UITabBarController`. In this case, the `contentViewController` is our `ViewController`.
 

@@ -31,7 +31,7 @@
 ## General Plan:
 In this tutorial we'll walk through how to use some of the most important features of SayKit.
 
-The tutorial workspace, `SayKitTutorials.xcworkspace`, contains two projects: `SayKit Requests and Recognizers` and `SayKit Conversation Topics`. The first project demonstrates the use of several standard voice requests and command recognizers, while the second provides an example of a simple Conversation Topic hierarchy. 
+The tutorial workspace, [`SayKitTutorials.xcworkspace`](./SayKitTutorials.xcworkspace), contains two projects: [`SayKit Requests and Recognizers`](./SayKit%20Requests%20and%20Recognizers) and [`SayKit Conversation Topics`](./SayKit%20Conversation%20Topics). The first project demonstrates the use of several standard voice requests and command recognizers, while the second provides an example of a simple Conversation Topic hierarchy. 
 
 We begin with `SayKit Requests and Recognizers`. Open it up and play around as you follow along!
 

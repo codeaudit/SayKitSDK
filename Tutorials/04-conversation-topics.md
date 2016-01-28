@@ -1,5 +1,5 @@
 # Conversation Topics
-[Conversation Topics](https://github.com/ConversantLabs/SayKitSDK/blob/tutorial/Tour/06-conversation-topics.md) give us an easy way to structure complex conversations. As our apps become more involved, we don't want to rely only on a flat list of command recognizers and a simple sound board (like we did in the [first tutorial](./01-setup.md#conversation-manager-setup)). Instead, we can leverage Conversation Topics' [capabilities](https://github.com/ConversantLabs/SayKitSDK/blob/tutorial/Tour/06-conversation-topics.md#responsibilities) of defining audio output via event sequences, handling voice input via their own set of command recognizers, and managing their place in the hierarchy via subtopic composition.
+[Conversation Topics](https://github.com/ConversantLabs/SayKitSDK/blob/master/Tour/06-conversation-topics.md) give us an easy way to structure complex conversations. As our apps become more involved, we don't want to rely only on a flat list of command recognizers and a simple sound board (like we did in the [first tutorial](./01-setup.md#conversation-manager-setup)). Instead, we can leverage Conversation Topics' [capabilities](https://github.com/ConversantLabs/SayKitSDK/blob/master/Tour/06-conversation-topics.md#responsibilities) of defining audio output via event sequences, handling voice input via their own set of command recognizers, and managing their place in the hierarchy via subtopic composition.
 
 This example will walkthrough a simple Conversation Topic hierarchy that will let us interact with a list of items. We'll begin with a single topic, and then demonstrate how to cleanly build on its functionality by adding a subtopic.
 
@@ -136,7 +136,7 @@ viewController.listTopic = rootTopic
 ```
 
 ## Conversation Topic Hierarchy: Product Search
-We now have an app with a single conversation topic that manages some basic interactions with a list of items. What if instead we want a conversation topic that can perform a search and return a list of results? Almost all of the functionality we need is already there in `ProductListTopic`, so we could keep adding to it. But let's avoid bloat and explore [conversation topic hierarchies](https://github.com/ConversantLabs/SayKitSDK/blob/tutorial/Tour/06-conversation-topics.md#managing-the-interface-hierarchy) by creating a new topic, `ProductSearchTopic`. We'll reuse our `ProductListTopic` as its subtopic, which will let us easily compose our final response to our new "Search" command.
+We now have an app with a single conversation topic that manages some basic interactions with a list of items. What if instead we want a conversation topic that can perform a search and return a list of results? Almost all of the functionality we need is already there in `ProductListTopic`, so we could keep adding to it. But let's avoid bloat and explore [conversation topic hierarchies](https://github.com/ConversantLabs/SayKitSDK/blob/master/Tour/06-conversation-topics.md#managing-the-interface-hierarchy) by creating a new topic, `ProductSearchTopic`. We'll reuse our `ProductListTopic` as its subtopic, which will let us easily compose our final response to our new "Search" command.
 
 ### Building the Hierarchy
 Let's replace our Conversation Manager's root topic with an instance of `ProductSearchTopic`, and add a subtopic to it:
@@ -242,6 +242,6 @@ Now, if we call `ProductListTopic`'s `speakProductTitles:` method, we'll hear th
 
 ## Wrapping Up!
 
-That’s it for the tutorials on voice requests, command recognizers, and conversation topics! By now you should have a nice playground for exploring SayKit. Go ahead and [download the project](#) if you haven't already.
+That’s it for the tutorials on voice requests, command recognizers, and conversation topics! By now you should have a nice playground for exploring SayKit. Go ahead and [download the project](https://github.com/ConversantLabs/SayKitSDK/tree/master/Tutorials/SayKit%20Conversation%20Topics)) if you haven't already.
 
 The features we covered are some of the essentials in the SayKit toolbox, but they only scratch the surface of what SayKit can do! Stay tuned for a full-fledged conversational app that puts everything we've learned to the test. In the meantime, get out there and make something awesome!

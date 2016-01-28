@@ -42,7 +42,7 @@ Recall that our `updateAppResultLabelWithText:` method is just a helper that upd
 
 Commands that include parameters, such as the speech rate in the built-in "Set Speech Rate to X" command, can be accessed in the action method by including a `SAYCommand` argument. In a visual-based app, we would grab the parameter from a UITextField. Using SayKit, we can simply access the `SAYCommand`'s `parameters` property and extract the parameter that we need.
 
-A `SAYCommand` is a representation of a command issued by the user, and consists of an identifying `type` and a `parameters` dictionary. In this example, our `SAYSetSpeechRateCommandRecognizer` is preconfigured to respond to commands with the type `SAYStandardCommandSetSpeechRate`. We can expect to find the new speech rate stored in `parameters` with the key `SAYSetSpeechRateCommandRecognizerParameterSpeechRate`. Take a look at the [`SAYStandardCommandLibrary.h`](#) header for a full list of standard command string constants.
+A `SAYCommand` is a representation of a command issued by the user, and consists of an identifying `type` and a `parameters` dictionary. In this example, our `SAYSetSpeechRateCommandRecognizer` is preconfigured to respond to commands with the type `SAYStandardCommandSetSpeechRate`. We can expect to find the new speech rate stored in `parameters` with the key `SAYSetSpeechRateCommandRecognizerParameterSpeechRate`. Take a look at the [`SAYStandardCommandLibrary.h`](https://github.com/ConversantLabs/SayKitSDK/blob/master/SayKit.framework/Headers/SAYStandardCommandLibrary.h) header for a full list of standard command string constants.
 
 ```swift
 override func viewDidLoad() {
@@ -127,7 +127,7 @@ This will recognize phrases like "Select the third one" or "Select Jiffy", but m
 
 Objects conforming to the `SAYTextCommandMatcher` protocol will process a user's speech transcript and return the likelihood that the given text corresponds to some command. Here we'll use the implementation `SAYPatternCommandMatcher`, which is initialized with an array of text "patterns" that are used to process the speech transcript. If the transcript matches any of the patterns, then the Matcher returns a positive response along with any pattern parameters, marked by an "@" prefix.
 
-Adding a text matcher is a good way to handle simple speech patterns, and requires very little setup. With a little more setup we can define how to process the text ourselves using a `SAYBlockCommandMatcher` (see below). If you find yourself in need of more flexibility when interpreting a user’s intent, you may want to consider setting up and linking to your own intent recognition service [(coming soon!)](#).
+Adding a text matcher is a good way to handle simple speech patterns, and requires very little setup. With a little more setup we can define how to process the text ourselves using a `SAYBlockCommandMatcher` (see below). If you find yourself in need of more flexibility when interpreting a user’s intent, you may want to consider setting up and linking to your own intent recognition service [(coming soon!)](https://github.com/ConversantLabs/SayKitSDK/blob/master/roadmap.md#cloud-based-intent-recognition-services).
 
 ```swift
 let pattern = "i choose you @name"  // Note our custom parameter, "name"
