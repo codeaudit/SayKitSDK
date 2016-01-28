@@ -116,6 +116,15 @@ or
 func responseToCommand(command: SAYCommand) -> SAYVerbalCommandResponse
 ```
 
+In addition to a followup request, we can also create a feedback prompt to be presented with our response.
+
+```swift
+// ...
+let feedbackPrompt = SAYVoicePrompt(message: "Go away!")
+return SAYVoiceRequestResponse(feedbackPrompt: feedbackPrompt, followupRequest: nil, action: nil)
+// ...
+```
+
 ## Custom Command Recognizers
 
 ### Extending Standard Command Recognizers
