@@ -156,6 +156,18 @@ selectRecognizer.addTextMatcher(SAYPatternCommandMatcher(pattern: pattern))
 commandRegistry.addCommandRecognizer(selectRecognizer)
 ```
 
+>  In general, the syntax of a pattern is "@parameterName:ParameterType", where ParameterType can be either "String" or "Number". If ":ParameterType" is omitted, the parameter is assumed to be a String.
+
+> Here are a few examples:
+
+>>"Call @recipient:String."
+
+>>"Ask @nameOfFriend for @cookieCount:Number cookies."
+
+>>"@payer gave @payee @amount:Number dollars."
+
+>>"@payee received @amount:Number dollars from @payer."  
+
 Another way to customize our recognizers is to make our own! The procedure is almost identical to the previous `selectRecognizer` example, but our new recognizer will rely completely on text matchers. 
 
 Say we want to recognize when the user says "Hello". We can do that by defining our own `SAYCustomCommandRecognizer`, which is a subclass of `SAYVerbalCommandRecognizer` with no predefined notion of what command it should recognize nor how to recognize it. We define these ourselves via its `customType` and a `SAYPatternCommandMatcher`:
