@@ -15,7 +15,7 @@ For these examples, we're simply presenting requests as the result of button tap
 
 ## Confirmation Request
 
-A confirmation request will ask the user a question and expect a yes-or-no response in return. If we get an invalid response, the request will try again (though this behavior can be tweaked). In this case, the `action` block's `result` represents a Bool (though wrapped in an NSNumber for some fiddly reasons).
+A confirmation request will ask the user a question and expect a yes-or-no response in return. If we get an invalid response, the request will try again (though this behavior can be tweaked). In this case, the `action` block's `result` represents a Bool (though wrapped in an NSNumber because SayKit is an Objective-C SDK).
 
 Once we create the request, we call our the `presentVoiceRequest:` method of the system's `SAYConversationManager`. And that's it!
 
