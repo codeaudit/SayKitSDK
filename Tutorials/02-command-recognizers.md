@@ -1,12 +1,12 @@
 # Command Recognizers
 
-In visual-based apps, users interact by tapping or swiping the screen. If they tap a button, they probably intend to trigger an action associated with that button, which makes our job simple: do the action!
+In graphical apps, users interact by tapping or swiping the screen. If they tap a button, they probably intend to trigger an action associated with that button, which makes our job simple: do the action!
 
-Contrast this with conversational apps, where users interact by speaking. When they say something we recognize, we interpret their intent as a command and execute the command.
+Contrast this with conversational apps, where users interact by speaking. When they say something we recognize, we need to interpret their intent as a command and execute the command.
 
-This encompasses several steps as the user’s speech is converted to text (`SAYSpeechTranscript`), interpreted as an intent (`SAYSpeechIntent`), and finally converted to a command (`SAYCommand`) that is associated with an app-defined action. This is analogous to UIKit's progression of user taps being translated into screen coordinates as a tap event, which is passed to the encompassing view that reacts to the event.
+This encompasses several steps as the user’s speech is converted to text (`SAYSpeechTranscript`), interpreted as an intent (`SAYSpeechIntent`), and finally converted to a command (`SAYCommand`) that is associated with an app-defined action. This is analogous to UIKit's progression of user taps being translated from electrical impulses to screen coordinates to gesture events, which is passed to the encompassing view that reacts to the event.
 
-But we don't typically worry about these steps when we create a visual app using UIKit, and creating a conversational app with SayKit is no different. All we need to do is register a `SAYCommandRecognizer` and a corresponding action with the Conversation Manager's command registry. SayKit consults the registry whenever it receives an intent from the user to determine what action to take.
+But we don't typically worry about these steps when we create a visual app using UIKit, and creating a conversational app with SayKit is no different. All we need to do is create a `SAYCommandRecognizer` with a corresponding action. After registering the recognizer with the Conversation Manager's command registry, it will be ready to interpret user speech. When SayKit receives a message that the user is speaking a command, it consults the registry user to determine what action to take.
 
 ## Standard Command Recognizers
 
@@ -38,9 +38,9 @@ func availableCommandsRequested() {
 /* ... */
 ```
 
-Recall that our `updateAppResultLabelWithText:` method is just a helper that updates our feedback UILabel. In a *real* app, you could take this opportunity to present a list of available commands to the user (check out [how SayKit can help with that](#)!).
+Recall that our `updateAppResultLabelWithText:` method is just a helper that updates our feedback UILabel. In a *real* app, you could take this opportunity to present a list of available commands to the user.
 
-Commands that include parameters, such as the speech rate in the built-in "Set Speech Rate to X" command, can be accessed in the action method by including a `SAYCommand` argument. In a visual-based app, we would grab the parameter from a UITextField. Using SayKit, we can simply access the `SAYCommand`'s `parameters` property and extract the parameter that we need.
+Commands that include parameters, such as the speech rate in the built-in "Set Speech Rate to X" command, can be accessed in the action method by including a `SAYCommand` argument in the method signature.
 
 A `SAYCommand` is a representation of a command issued by the user, and consists of an identifying `type` and a `parameters` dictionary. In this example, our `SAYSetSpeechRateCommandRecognizer` is preconfigured to respond to commands with the type `SAYStandardCommandSetSpeechRate`. We can expect to find the new speech rate stored in `parameters` with the key `SAYSetSpeechRateCommandRecognizerParameterSpeechRate`. Take a look at the [`SAYStandardCommandLibrary.h`](https://github.com/ConversantLabs/SayKitSDK/blob/master/SayKit.framework/Headers/SAYStandardCommandLibrary.h) header for a full list of standard command string constants.
 
@@ -66,7 +66,7 @@ func setSpeechRateRequested(command: SAYCommand)
 /* ... */
 ```
 
-In addition to the `target:action:` initializer for command recognizers, you can also create them by defining an `actionBlock`. This works especially well in Swift:
+In addition to the target/action-style initializer for command recognizers, you can also create them by defining an `actionBlock`. This works especially well in Swift:
 
 ```swift
     commandRegistry.addCommandRecognizer(SAYSearchCommandRecognizer(actionBlock: { command in
@@ -81,9 +81,9 @@ In addition to the `target:action:` initializer for command recognizers, you can
 
 ## Followup Requests
 
-Sometimes we may need to prompt the user for clarification. A common scenario is when the user leaves out some information that we need (User: "I choose you, Pikachu!", App: "Did you mean Toby Pikachu or Susan Pikachu?"). In such cases, we can respond to the user with a followup voice request.
+Sometimes we may need to prompt the user for clarification. A common scenario is when the user leaves out some information that we need (User: _"I choose you, Pikachu!"_, App: _"Did you mean Toby Pikachu or Susan Pikachu?"_). In such cases, we can respond to the user with a followup voice request.
 
-In previous examples we created our command recognizers using the `target:action:` initializer and the `actionBlock` initializer. Here we'll use the `responseBuilder` initializer, which is simply a block that accepts a `SAYCommand` and returns a `SAYVoiceRequestResponse`. 
+In previous examples we created our command recognizers using the `initWithResponseTarget:action:` initializer and the `initWithActionBlock:` initializer. Here we'll use a third alternative: the `initWithResponseBuilder` initializer, which accepts a block that accepts a `SAYCommand` and returns a `SAYVoiceRequestResponse`. Given a user command, this block _builds_ a _response_ for the app, hence the name "response builder".
 
 A voice request response contains everything we need to know to respond to the user, including an `action` block, a `followupRequest`, and a `feedbackPrompt`, all of which are optional and can be mixed and matched to the desired effect. There is also a convenience method `terminalResponseWithAction:` if an `action` is all that's needed.
 
@@ -107,7 +107,7 @@ commandRegistry.addCommandRecognizer(SAYHelpCommandRecognizer { command -> SAYVo
 })
 ```
 
-Note that you could accomplish the same effect while still initializing the command recognizer using the `target:action:` paradigm by ensuring that your `action` method has one of the following signatures:
+Note that you could accomplish the same effect while still using the target/action-style initializer by ensuring that your `action` method has one of the following signatures:
 ```swift
 func responseToCommand() -> SAYVerbalCommandResponse
 ```
@@ -116,7 +116,7 @@ or
 func responseToCommand(command: SAYCommand) -> SAYVerbalCommandResponse
 ```
 
-In addition to a followup request, we can also create a feedback prompt to be presented with our response.
+In addition to a followup request, we can also create a feedback prompt to be presented with our response. This will simply respond to the command with a simple spoken message, nothing more.
 
 ```swift
 // ...
@@ -191,6 +191,8 @@ commandRegistry.addCommandRecognizer(selectRecognizer)
 >>"@payer gave @payee @amount:Number dollars."
 
 >>"@payee received @amount:Number dollars from @payer."  
+
+Other parameter types will be supported in the near future.
 
 ### Implementing `SAYCustomCommandRecognizer`
 
