@@ -18,3 +18,8 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+
+# Jekyll
+
+.sass-cache/
+_site/

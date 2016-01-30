@@ -1,3 +1,9 @@
+---
+layout: default
+title: "SayKit Tour - Voice Requests"
+permalink: /tour/voice-requests/
+---
+
 # Voice Requests
 
 ## Basics
@@ -33,7 +39,7 @@ SAYConversationManager.systemManager().presentVoiceRequest(request)
 
 Many voice requests have supplemental visual controls that are automatically presented to the screen when a question is asked. In the case of the select request above, a set of tappable buttons will appear on screen, one per option.
 
-![Select request view](./assets/select-request.png)
+![Select request view]({{ "/tour/assets/select-request.png" | prepend: site.baseurl }})
 
 SayKit provides many pre-built requests like these, but voice requests are versatile. They can be extended to provide customized speech interpretation, they can be chained together to provide continuous back-and-forth dialogues, their visual components can be customized, and much more. To learn about these features, let's peek under the hood of the voice request session.
 
@@ -50,7 +56,7 @@ Each voice request session has 4 stages:
 
 These stages are handled by a suite of collaborators connected to every `SAYVoiceRequest`, but the details aren't important for simply initiating a standard request. In the `SAYConfirmationRequest` example above, we simply had to provide a prompt message (used for **Prompting**), and a completion block (used in the **Responding** stage).
 
-However, if you need more control, you're free to modify any or all the collaborators driving a voice request. For the particulars, check out the [header documentation for the `SAYVoiceRequest` protocol](#) and the [developer guide post on customizing voice requests](#) (coming soon).
+However, if you need more control, you're free to modify any or all the collaborators driving a voice request. For the particulars, check out the [header documentation for the `SAYVoiceRequest` protocol]({{ "/documentation/Protocols/SAYVoiceRequest.html" | prepend: site.baseurl }}) and the [developer guide post on customizing voice requests](#) (coming soon).
 
 ## Responses & Turn-taking
 
@@ -66,4 +72,4 @@ _TODO: show request as a cycle with similar style as above figure_
 
 Forthcoming SayKit releases will introduce higher-level abstractions that take advantage of this turn-taking mechanism, allowing developers to create entire dialogue trees without dealing with the particulars of inidivudal response handling.
 
-[Next - Command Recognition >>](./03-command-recognition-pt1.md)
+[Next - Command Recognition >>]({{ "/tour/command-recognition-pt1/" | prepend: site.baseurl }})
