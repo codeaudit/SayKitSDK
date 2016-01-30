@@ -16,6 +16,7 @@ twitter_username: ConversantLabs
 github_username:  ConversantLabs
 
 # Build settings
+exclude: ["README.md"]
 markdown: redcarpet
 # markdown: kramdown
 # kramdown:
