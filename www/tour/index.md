@@ -30,4 +30,4 @@ If your app is non-trivial, **how will you organize all of this**? If you have a
 
 SayKit is here to help you answer all of these questions (and many more). Continue with your tour to learn more.
 
-[Next - Overview >>](./01-overview.md)
+[Next - Overview >>]({{ "/tour/overview/" | prepend: site.baseurl }})

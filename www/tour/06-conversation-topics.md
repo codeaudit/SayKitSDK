@@ -1,6 +1,6 @@
 ---
-title: "SayKit Tour: Conversation Topics"
 layout: default
+title: "SayKit Tour - Conversation Topics"
 permalink: /tour/conversation-topics/
 ---
 
@@ -192,7 +192,7 @@ A lot can be built with just these basic units, but this is just a start. Expect
 
 - Dialogue files: Instead of scattered in-line declarations of speech output, a topic could be paired with a text-based file that includes dialogue options tailored to its particular domain (think .xib files, but for speech). This file format will include features tailored to natural speech production, keeping fiddly output text processing out of your code.
 
-To read more about planned features, [visit our release roadmap](https://github.com/ConversantLabs/SayKitSDK/blob/master/roadmap.md).
+To read more about planned features, [visit our release roadmap]({{ "/roadmap/" | prepend: site.baseurl }}).
 
 ---
 
@@ -200,4 +200,4 @@ To read more about planned features, [visit our release roadmap](https://github.
 
 Thanks for joining us on this in-depth tour of SayKit's major features. 
 
-If you're looking for even more, take a look at our [other developer resources](../README.md#developer-resources).
+If you're looking for even more, take a look at our [other developer resources]({{ "/#developer-resources" | prepend: site.baseurl }}).
