@@ -10,7 +10,7 @@ Say we want to recognize when the user says "Hello". We can do that by defining 
 
 ```swift
 let greetingsRecognizer = SAYCustomCommandRecognizer(customType: "Greeting") { command in
-    self.updateAppResultLabelWithText("Received command:\n[Greetings!]")
+    self.presentResultText("Received command:\n[Greetings!]")
 }
 let patterns = ["hello", "hey", "what's up", "greetings"]
 greetingsRecognizer.addTextMatcher(SAYPatternCommandMatcher(forPatterns: patterns))

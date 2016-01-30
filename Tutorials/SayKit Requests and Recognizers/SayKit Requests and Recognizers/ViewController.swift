@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         
         commandRegistry.addCommandRecognizer(SAYSearchCommandRecognizer(actionBlock: { command in
             if let searchQuery = command.parameters[SAYSearchCommandRecognizerParameterQuery] {
-                self.updateAppResultLabelWithText("Received command:\n[Search for \(searchQuery)]")
+                self.presentResultText("Received command:\n[Search for \(searchQuery)]")
             }
             else {
                 /* ... */
@@ -40,14 +40,14 @@ class ViewController: UIViewController {
             if helpIsAvailable {
                 // respond with a new voice request
                 let followupRequest = SAYStringRequest(promptText: "What would you like help with?", action: { result in
-                    self.updateAppResultLabelWithText("Received command:\n[Help with \"\(result)\"")
+                    self.presentResultText("Received command:\n[Help with \"\(result)\"")
                 })
                 return SAYVoiceRequestResponse(followupRequest: followupRequest)
             }
             else {
                 // no need to follow up, just terminate the request and run the given action block
                 return SAYVoiceRequestResponse.terminalResponseWithAction({
-                    self.updateAppResultLabelWithText("Received command:\n[Help, but none is available]")
+                    self.presentResultText("Received command:\n[Help, but none is available]")
                 })
             }
         })
@@ -55,13 +55,13 @@ class ViewController: UIViewController {
         // Add a text matcher to the standard "Select" command recognizer:
         let selectRecognizer = SAYSelectCommandRecognizer(actionBlock: { command in
             if let name = command.parameters["name"] {  // Note our custom parameter, "name"
-                self.updateAppResultLabelWithText("Received command:\n[Choose \(name)!]")
+                self.presentResultText("Received command:\n[Choose \(name)!]")
             }
             else if let itemName = command.parameters[SAYSelectCommandRecognizerParameterItemName] {
-                self.updateAppResultLabelWithText("Received command:\n[Select \(itemName)]")
+                self.presentResultText("Received command:\n[Select \(itemName)]")
             }
             else if let itemNumber = command.parameters[SAYSelectCommandRecognizerParameterItemNumber] {
-                self.updateAppResultLabelWithText("Received command:\n[Select item number \(itemNumber)]")
+                self.presentResultText("Received command:\n[Select item number \(itemNumber)]")
             }
             else {
                 /* ... */
@@ -73,7 +73,7 @@ class ViewController: UIViewController {
         
         // Custom command recognizer:
         let greetingsRecognizer = SAYCustomCommandRecognizer(customType: "Greeting") { command in
-            self.updateAppResultLabelWithText("Received command:\n[Greetings!]")
+            self.presentResultText("Received command:\n[Greetings!]")
         }
         let patterns = ["hello", "hey", "what's up", "greetings"]
         greetingsRecognizer.addTextMatcher(SAYPatternCommandMatcher(forPatterns: patterns))
@@ -87,7 +87,7 @@ class ViewController: UIViewController {
         let badJokeRecognizer = SAYCustomCommandRecognizer(customType: "KnockKnock") { command -> SAYVoiceRequestResponse in
             let feedbackPrompt = SAYVoicePrompt(message: "Go away!")
             return SAYVoiceRequestResponse(feedbackPrompt: feedbackPrompt, followupRequest: nil, action: {
-                    self.updateAppResultLabelWithText("Received command:\n[KnockKnock]")
+                    self.presentResultText("Received command:\n[KnockKnock]")
                 }
             )
         }
@@ -99,8 +99,8 @@ class ViewController: UIViewController {
     {
         let request = SAYConfirmationRequest(promptText: "Are you sure?") { result in
             if let doIt = result as? Bool {
-                if doIt { self.updateAppResultLabelWithText("Received command:\n[Do it!]") }
-                else    { self.updateAppResultLabelWithText("Received command:\n[Don't do it!]") }
+                if doIt { self.presentResultText("Received command:\n[Do it!]") }
+                else    { self.presentResultText("Received command:\n[Don't do it!]") }
             }
             else {
                 /* ... */
@@ -156,13 +156,13 @@ class ViewController: UIViewController {
     
     func availableCommandsRequested()
     {
-        updateAppResultLabelWithText("Received command:\n[Available Commands]")
+        presentResultText("Received command:\n[Available Commands]")
     }
     
     func setSpeechRateRequested(command: SAYCommand)
     {
         if let newSpeechRate = command.parameters[SAYSetSpeechRateCommandRecognizerParameterSpeechRate] {
-            self.updateAppResultLabelWithText("Received command:\n[Set speech rate to \(newSpeechRate)]")
+            self.presentResultText("Received command:\n[Set speech rate to \(newSpeechRate)]")
         }
         else {
             /* ... */
@@ -175,7 +175,7 @@ class ViewController: UIViewController {
             let selectedItemName = result?.selectedOption.label,
             let selectedIndex = result?.selectedIndex
         {
-            self.updateAppResultLabelWithText("Received command:\n[Pick color \(selectedItemName) at index \(selectedIndex)]")
+            self.presentResultText("Received command:\n[Pick color \(selectedItemName) at index \(selectedIndex)]")
         }
         else {
             /* ... */
@@ -186,18 +186,20 @@ class ViewController: UIViewController {
     {
         let followupRequest = SAYConfirmationRequest(promptText: "Are you sure you want to search for \"\(recipe)\"?", action: { result in
             if let doIt = result as? Bool {
-                if doIt { self.updateAppResultLabelWithText("Received command:\n[Search for \(recipe)]") }
-                else    { self.updateAppResultLabelWithText("Received command:\n[Don't search for \(recipe)]") }
+                if doIt { self.presentResultText("Received command:\n[Search for \(recipe)]") }
+                else    { self.presentResultText("Received command:\n[Don't search for \(recipe)]") }
             }
         })
         
         return followupRequest
     }
     
-    private func updateAppResultLabelWithText(text: String)
+    private func presentResultText(text: String)
     {
         dispatch_async(dispatch_get_main_queue()) {
             self.appResultLabel.text = text
         }
+        
+        soundBoard?.speakText(text)
     }
 }

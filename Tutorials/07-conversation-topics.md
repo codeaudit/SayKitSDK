@@ -120,7 +120,7 @@ class ViewController: UIViewController, ProductTopicEventHandler {
     var listTopic: ProductListTopic?    
     func handlePlay()
     {
-        updateAppResultLabelWithText("Received List Topic Command:\n[Play]")        
+        presentResultText("Received List Topic Command:\n[Play]")        
         listTopic?.speakProductTitles(["Apples", "Waffles", "Pancakes", "Toast", "Bananas"])
     }
     // ...
@@ -198,7 +198,7 @@ func handleSearch(command: SAYCommand)
     if let searchQuery = command.parameters[SAYSearchCommandRecognizerParameterQuery] as? String {
         let matchingItems = self.searchAppUsingQuery(searchQuery)  // app logic
         listTopic?.speakProductTitles(matchingItems)
-        updateAppResultLabelWithText("Received Search Topic Command:\n[Search for \(searchQuery)]")
+        presentResultText("Received Search Topic Command:\n[Search for \(searchQuery)]")
     }
     else {
         /* ... */

@@ -22,8 +22,8 @@ Once we create the request, we call our the `presentVoiceRequest:` method of the
 {
     let request = SAYConfirmationRequest(promptText: "Are you sure?") { result in
         if let doIt = result as? Bool {
-            if doIt { self.updateAppResultLabelWithText("Received command:\n[Do it!]") }
-            else    { self.updateAppResultLabelWithText("Received command:\n[Don't do it!]") }
+            if doIt { self.presentResultText("Received command:\n[Do it!]") }
+            else    { self.presentResultText("Received command:\n[Don't do it!]") }
         }
         else {
             /* ... */
@@ -43,7 +43,7 @@ A string request does what it sounds like: it asks the user for a string! The `a
 {
     let request = SAYStringRequest(promptText:"What recipe would you like to search for?") { result in
         if let recipeString = result {
-            self.updateAppResultLabelWithText("Received command:\n[Search for \(recipeString)]")
+            self.presentResultText("Received command:\n[Search for \(recipeString)]")
         }
         else {
             /* ... */
@@ -80,8 +80,8 @@ private func followupRequestForRecipe(recipe: String) -> SAYConfirmationRequest
 {
     let followupRequest = SAYConfirmationRequest(promptText: "Are you sure you want to search for \"\(recipe)\"?", action: { result in
         if let doIt = result as? Bool {
-            if doIt { self.updateAppResultLabelWithText("Received command:\n[Search for \(recipe)]") }
-            else    { self.updateAppResultLabelWithText("Received command:\n[Don't search for \(recipe)]") }
+            if doIt { self.presentResultText("Received command:\n[Search for \(recipe)]") }
+            else    { self.presentResultText("Received command:\n[Don't search for \(recipe)]") }
         }
     })
     
@@ -104,7 +104,7 @@ Any speech matching one of the options will result in a `SAYSelectResult`, which
             let selectedItemName = result?.selectedOption.label,
             let selectedIndex = result?.selectedIndex
         {
-            self.updateAppResultLabelWithText("Received command:\n[Pick color \(selectedItemName) at index \(selectedIndex)]")
+            self.presentResultText("Received command:\n[Pick color \(selectedItemName) at index \(selectedIndex)]")
         }
         else {
             /* ... */
@@ -136,39 +136,6 @@ We organize our labels and aliases using a struct-like class, `SAYSelectOption`,
 }
 ```
 
-## SoundBoard (Bonus!)
-
-I know, I know - this isn't actually a voice request. But if you ever need something spoken one-off and you're using a `SAYSoundBoard` as your audio source (which is what we did in our [AppDelegate's setup](./01-setup.md#conversation-manager-setup)), you can simply use the sound board's `speakText:` method.
-
-```swift
-@IBAction func soundBoardButtonTapped(sender: AnyObject)
-{
-    soundBoard?.speakText("Hello world!")
-}
-```
-
-This assumes you kept a handle on the sound board used in initializing our Conversation Manager's audio source, perhaps through a property on `ViewController`:
-
-```swift
-// ViewController.swift
-class ViewController: UIViewController {
-    // ...
-    var soundBoard: SAYSoundBoard?
-    // ...
-}
-```
-
-```swift
-// AppDelegate.swift, application:didFinishLaunchingWithOptions:
-
-// ...
-let soundBoard = SAYSoundBoard()
-SAYConversationManager.systemManager().addAudioSource(soundBoard, forTrack:SAYAudioTrackMainIdentifier)
-// ...
-let viewController = storyboard.instantiateInitialViewController() as! ViewController
-viewController.soundBoard = soundBoard
-// ...
-```
 
 ____
 

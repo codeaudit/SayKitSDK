@@ -32,13 +32,13 @@ override func viewDidLoad() {
 /* ... */
 
 func availableCommandsRequested() {
-    updateAppResultLabelWithText("Received command:\n[Available Commands]")
+    presentResultText("Received command:\n[Available Commands]")
 }
 
 /* ... */
 ```
 
-Recall that our `updateAppResultLabelWithText:` method is just a helper that updates our feedback UILabel. In a *real* app, you could take this opportunity to present a list of available commands to the user.
+Recall that our `presentResultText:` method is just a helper that updates our feedback UILabel and speaks via our soundBoard. In a *real* app, you could take this opportunity to present a list of available commands to the user.
 
 Commands that include parameters, such as the speech rate in the built-in "Set Speech Rate to X" command, can be accessed in the action method by including a `SAYCommand` argument in the method signature.
 
@@ -56,7 +56,7 @@ override func viewDidLoad() {
 func setSpeechRateRequested(command: SAYCommand)
 {
     if let newSpeechRate = command.parameters[SAYSetSpeechRateCommandRecognizerParameterSpeechRate] {
-        self.updateAppResultLabelWithText("Received command:\n[Set speech rate to \(newSpeechRate)]")
+        self.presentResultText("Received command:\n[Set speech rate to \(newSpeechRate)]")
     }
     else {
         /* ... */
@@ -71,7 +71,7 @@ In addition to the target/action-style initializer for command recognizers, you 
 ```swift
     commandRegistry.addCommandRecognizer(SAYSearchCommandRecognizer(actionBlock: { command in
         if let searchQuery = command.parameters[SAYSearchCommandRecognizerParameterQuery] {
-            self.updateAppResultLabelWithText("Received command:\n[Search for \(searchQuery)]")
+            self.presentResultText("Received command:\n[Search for \(searchQuery)]")
         }
         else {
             /* ... */

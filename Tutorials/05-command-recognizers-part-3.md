@@ -10,10 +10,10 @@ The most straightforward way to add our customization is to piggy-back on an exi
 ```swift
 let selectRecognizer = SAYSelectCommandRecognizer(actionBlock: { command in
     if let itemName = command.parameters[SAYSelectCommandRecognizerParameterItemName] {
-        self.updateAppResultLabelWithText("Received command:\n[Select \(itemName)]")
+        self.presentResultText("Received command:\n[Select \(itemName)]")
     }
     else if let itemNumber = command.parameters[SAYSelectCommandRecognizerParameterItemNumber] {
-        self.updateAppResultLabelWithText("Received command:\n[Select item number \(itemNumber)]")
+        self.presentResultText("Received command:\n[Select item number \(itemNumber)]")
     }
     else {
         /* ... */
@@ -38,13 +38,13 @@ Phrases matching our new pattern will now be recognized by our selectRecognizer,
 ```swift
 let selectRecognizer = SAYSelectCommandRecognizer(actionBlock: { command in
     if let name = command.parameters["name"] {  // Note our custom parameter, "name"
-        self.updateAppResultLabelWithText("Received command:\n[Choose \(name)!]")
+        self.presentResultText("Received command:\n[Choose \(name)!]")
     }
     else if let itemName = command.parameters[SAYSelectCommandRecognizerParameterItemName] {
-        self.updateAppResultLabelWithText("Received command:\n[Select \(itemName)]")
+        self.presentResultText("Received command:\n[Select \(itemName)]")
     }
     else if let itemNumber = command.parameters[SAYSelectCommandRecognizerParameterItemNumber] {
-        self.updateAppResultLabelWithText("Received command:\n[Select item number \(itemNumber)]")
+        self.presentResultText("Received command:\n[Select item number \(itemNumber)]")
     }
     else {
         /* ... */

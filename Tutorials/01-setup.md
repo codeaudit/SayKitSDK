@@ -5,7 +5,7 @@ First we'll create a simple GUI to run our demo, then configure our `SAYConversa
 
 ## GUI Setup
 
-The first thing we’ll do is add a UILabel as a quick way for us to get feedback on what the app's doing. In these examples, you'll see us finish our conversations with anticlimactic calls to `updateAppResultLabelWithText:`. This is where your app's logic would take over and do something amazing!
+The first thing we’ll do is add a UILabel as a quick way for us to get feedback on what the app's doing. In these examples, you'll see us finish our conversations with anticlimactic calls to [`presentResultText:`](#soundboard), which updates the label's text and speaks a message. This is where your app's logic would take over and do something amazing!
 
 The rest of the GUI will be a series of UIButtons that we'll use to start sample voice requests.
 
@@ -46,7 +46,12 @@ Let’s get started!
 
 The `SAYConversationManager` integrates all the core components involved in both the input (listening) and output (speaking) of its conversational interface. To do its job, we have to define its `commandRegistry` (conforming to the `SAYVerbalCommandRegistry` protocol) and at least one `audioSource` (conforming to the `SAYAudioEventSource` protocol), which are involved in the input and output aspects of a conversation, respectively.
 
-In this example, we'll use the simplest classes that conform to these roles (later on, we'll show how a Conversation Topic can fill both these roles). A `SAYCommandRecognizerCatalog` stores a flat array of `SAYCommandRecognizer`s that we'll populate shortly. A `SAYSoundBoard` is a basic audio source that posts individual audio events (e.g. speech utterances, sound clips).
+In this example, we'll use the simplest classes that conform to these roles:
+
+- A `SAYCommandRecognizerCatalog` stores a flat array of `SAYCommandRecognizer`s that we'll populate shortly. 
+- A `SAYSoundBoard` is a basic audio source that posts individual audio events (e.g. speech utterances, sound clips). It provides an easy way to present feedback to the user.
+
+These two classes will often be the only backbone your conversation manager needs. (Later on, we'll show how a Conversation Topic can fill both these roles for more complex apps).
 
 The last line is an optional optimization that improves the performance of calls to the standard speech recognition service. Feel free to ignore it for now.
 
@@ -68,6 +73,58 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
     return true
 }
 ```
+
+## SoundBoard
+
+For many apps, `SAYSoundBoard`'s `speakText:` method will be the primary way your app responds to the user. Let's create a helper method both speak our feedback to the user and update the `appResultsLabel` label.
+
+```swift
+// ViewController.swift
+private func presentResultText(text: String)
+{
+    dispatch_async(dispatch_get_main_queue()) {
+        self.appResultLabel.text = text
+    }
+    
+    soundBoard?.speakText(text)
+}
+```
+
+We've also hooked up a "Hello world!" button:
+
+```swift
+// ViewController.swift
+@IBAction func soundBoardButtonTapped(sender: AnyObject)
+{
+    presentResultText("Hello world!")
+}
+```
+
+This assumes you kept a handle on the sound board used in initializing our Conversation Manager's audio source, perhaps through a property on `ViewController`:
+
+```swift
+// ViewController.swift
+class ViewController: UIViewController {
+    // ...
+    var soundBoard: SAYSoundBoard?
+    // ...
+}
+```
+
+```swift
+// AppDelegate.swift, application:didFinishLaunchingWithOptions:
+
+// ...
+let soundBoard = SAYSoundBoard()
+SAYConversationManager.systemManager().addAudioSource(soundBoard, forTrack:SAYAudioTrackMainIdentifier)
+// ...
+let viewController = storyboard.instantiateInitialViewController() as! ViewController
+viewController.soundBoard = soundBoard
+// ...
+```
+
+____
+
 
 Now that we're all set up, let's get to the real meat of a conversational interface: voice requests and command recognizers!
 

@@ -15,14 +15,14 @@ commandRegistry.addCommandRecognizer(SAYHelpCommandRecognizer { command -> SAYVo
     if helpIsAvailable {
         // respond with a new voice request
         let followupRequest = SAYStringRequest(promptText: "What would you like help with?", action: { result in
-            self.updateAppResultLabelWithText("Received command:\n[Help with \"\(result)\"")
+            self.presentResultText("Received command:\n[Help with \"\(result)\"")
         })
         return SAYVoiceRequestResponse(followupRequest: followupRequest)
     }
     else {
         // no need to follow up, just terminate the request and run the given action block
         return SAYVoiceRequestResponse.terminalResponseWithAction({
-            self.updateAppResultLabelWithText("Received command:\n[Help, but none is available]")
+            self.presentResultText("Received command:\n[Help, but none is available]")
         })
     }
 })
