@@ -19,9 +19,9 @@ We are eager to hear your thoughts or feedback. Please drop us a line at [engine
 
 What are you looking to do?
 
-- **Jump in**: [Quick Start](/quick-start/)
+- **Jump in**: [Quick Start]({{ "/quick-start/" | prepend: site.baseurl }})
 - **Familiarize yourself**: [SayKit tour]({{ "/tour/" | prepend: site.baseurl }})
 - **Learn by doing**: [Step-by-step tutorial](#)
-- **Read the headers**: [API documentation](https://github.com/ConversantLabs/SayKitSDK/tree/master/API%20Reference/html)
+- **Read the headers**: [API documentation]({{ "/documentation/html/" | prepend: site.baseurl }})
 - **Go deep**: [In-depth Developer guides](#) *(coming soon)*
 - **Glimpse the future**: [Feature roadmap]({{ "/roadmap/" | prepend: site.baseurl }})
