@@ -6,13 +6,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>SayKit SDK</title>
+	<title>SayKit Tour - Overview</title>
 	<meta name="description" content="The conversational UI framework for voice enabled applications on iOS.
 ">
 
 	<!-- Jekyll defaults -->
 	<link rel="stylesheet" href="/css/main.css">
-	<link rel="canonical" href="http://developer.conversantlabs.com/">
+	<link rel="canonical" href="http://developer.conversantlabs.com/tour/overview/">
 	<!-- <link rel="alternate" type="application/rss+xml" title="SayKit SDK (Developer Preview)" href="http://developer.conversantlabs.com/feed.xml"> -->
 
 	<!-- Bootstrap CDN -->
@@ -64,30 +64,65 @@
 
     <div class="container">
     	<div class="col-md-9">
-      <h1>SayKit SDK (Developer Preview)</h1>
+      <h1>SayKit Overview</h1>
 
-<p>The conversational UI framework for voice enabled applications on iOS.</p>
+<blockquote>
+<p>Note: Many of the code snippets in this tour come from the demo app featured in <a href="/tutorial/">our tutorial</a>. Be sure to take a look at the demo for more thorough context and full implementation details.</p>
+</blockquote>
 
-<p><strong>Current version: 0.8.0</strong></p>
+<h2>Conversation Management</h2>
 
-<p>We&#39;re excited to offer a preview of the SayKit framework as we prepare it for production release. Though we&#39;re still rolling out a couple features, streamlining some APIs, and sprucing up our docs, it&#39;s fully ready for use today.</p>
+<p>SayKit enables developers to create applications where the user interaction is as natural as having a conversation. Fittingly, at the base of this conversational UI you&#39;ll find an agent called the <strong>Conversation Manager</strong>.</p>
 
-<p>Since we&#39;re actively iterating as we march to version 1.0, the SDK will be frequently updated with new features. <a href="http://www.conversantlabs.com/download">Sign up here</a> to be kept in the loop.</p>
+<p>The <code>SAYConversationManager</code> is the keystone of the SayKit framework. Each SayKit app has a default manager ready and waiting, accessible as a class-level property:</p>
+<div class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="c1">// Objective-C
+</span><span class="p">[</span><span class="n">SAYConversationManager</span> <span class="nf">systemManager</span><span class="p">]</span>
+</code></pre></div><div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// Swift</span>
+<span class="kt">SAYConversationManager</span><span class="o">.</span><span class="nf">systemManager</span><span class="p">()</span>
+</code></pre></div>
+<p>Much like <code>UIWindow</code> for UIKit, the manager acts as the logical root of the user interface, administering and coordinating both the input (listening) and output (speaking) roles of the conversational UI. Also, much like <code>UIWindow</code>, you can ignore its presence most of the time after some minor configuration at app launch.</p>
 
-<p>We are eager to hear your thoughts or feedback. Please drop us a line at <a href="mailto:engineering@conversantlabs.com">engineering@conversantlabs.com</a>. Also, please post any bugs in our <a href="https://github.com/ConversantLabs/SayKitSDK/issues">Github issue tracker</a>.</p>
+<p>Now, let&#39;s have a quick overview of the systems coordinated by the manager.</p>
 
-<h2><a name="developer-resources"></a> Developer Resources</h2>
+<h3>Voice Requests</h3>
 
-<p>What are you looking to do?</p>
+<p>In SayKit applications, all voice input from the user is handled by a <strong>Voice Request</strong>. Voice Requests ask the user a question, direct speech recognition and interpretation, decide how to respond, and perform many other duties.</p>
 
-<ul>
-<li><strong>Jump in</strong>: <a href="/quick-start/">Quick Start</a></li>
-<li><strong>Familiarize yourself</strong>: <a href="/tour/">SayKit tour</a></li>
-<li><strong>Learn by doing</strong>: <a href="#">Step-by-step tutorial</a></li>
-<li><strong>Read the headers</strong>: <a href="/documentation/html/">API documentation</a></li>
-<li><strong>Go deep</strong>: <a href="#">In-depth Developer guides</a> <em>(coming soon)</em></li>
-<li><strong>Glimpse the future</strong>: <a href="/roadmap/">Feature roadmap</a></li>
-</ul>
+<p>SayKit provides a collection of built-in voice requests for common inquiries (such as the <code>SAYConfirmationRequest</code>, which asks the user a yes-or-no question), as well as extensive options for customizing your own.</p>
+
+<p>To read more about this, <a href="/tour/voice-requests/">skip to the Voice Requests Section</a>.</p>
+
+<h3>Command Recognizers</h3>
+
+<p>On the other hand, what if the user wants to start the conversation by issuing a command? SayKit provides <strong>Command Recognizers</strong> to listen for these commands at any time. The recognizers are able to interpret user speech as commands and send these commands to any interested parties.</p>
+
+<p>Again, SayKit provides a selection of extendable built-in recognizers (such as the <code>SAYSearchCommandRecognizer</code> or <code>SAYHelpCommandRecognizer</code>) that are capable of understanding a variety of user speech patterns, and tools exist to create your own recognizers as well.</p>
+
+<p>To read more about this, <a href="/tour/command-recognition-pt1/">skip to the Command Recognition Section</a>.</p>
+
+<h3>Audio Output</h3>
+
+<p>At the other end of a conversational interface is the audio that is presented through the device speakers. The app&#39;s voice.</p>
+
+<p>Of course, SayKit includes all the nuts and bolts required to manage an audio queue -- providing a speech synthesizer, feeding .wav files to audio players, handling timing issues -- but it also presents a higher-level API to let a developer forget about mechanics and focus on user experience.</p>
+
+<p>To read more about this, <a href="/tour/audio-output/">skip to the Audio Output Section</a>.</p>
+
+<h3>Conversation Topics</h3>
+
+<p>GUI developers have it made with a feast of patterns and tools to help structure their applications. Visual hierarchies. View controllers. Interface Builder. Storyboards.</p>
+
+<p>If you&#39;ve ever tried to develop a non-trivial conversational app before, perhaps you had some problems keeping your codebase under control. Don&#39;t worry, it used to happen to us too. Logic split between clients and servers, regular expressions around every corner, callback functions strewn around everywhere. There&#39;s got to be a better way!</p>
+
+<p>That&#39;s where <strong>Conversation Topics</strong> come in. Just like a <code>UIView</code> packages up all the input/output details for a particular area of your screen, a conversation topic coordinates all the audio I/O related to a particular subject in your app. By adding or removing a topic from your app&#39;s topic hierarchy, you can change the conversation with a line of code.</p>
+
+<p>To read more about this, <a href="/tour/conversation-topics/">skip to the Conversation Topics Section</a>.</p>
+
+<hr>
+
+<p>Now, let&#39;s take a closer look at each of these components one-by-one as we continue the tour.</p>
+
+<p><a href="/tour/voice-requests/">Next - Voice Requests &gt;&gt;</a></p>
 
       </div>
     </div>

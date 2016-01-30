@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>SayKit Tour - Conversation Topics</title>
+	<meta name="description" content="The conversational UI framework for voice enabled applications on iOS.
+">
+
+	<!-- Jekyll defaults -->
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="canonical" href="http://developer.conversantlabs.com/tour/conversation-topics/">
+	<!-- <link rel="alternate" type="application/rss+xml" title="SayKit SDK (Developer Preview)" href="http://developer.conversantlabs.com/feed.xml"> -->
+
+	<!-- Bootstrap CDN -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!-- <a class="navbar-brand" href="/">SayKit SDK (Developer Preview)</a> -->
+        <a class="navbar-brand" href="/">SayKit SDK</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/quick-start/">Quick Start</a></li>
+          <li><a href="/tour/">Tour</a></li>
+          <li><a href="/tutorial/">Tutorial</a></li>
+          <li><a href="/documentation/">API Documentation</a></li>
+          <!-- <li><a href="/Developer Guides/">Developer Guides</a></li> -->
+          <li><a href="/roadmap/">Roadmap</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+
+</header>
+
+
+    <div class="container">
+    	<div class="col-md-9">
+      <h1>Conversation Topics</h1>
+
+<p>At this point, we know more than enough to be dangerous. We can build apps that ask questions, understand commands, and can make any sound they want.</p>
+
+<p>But where should all of this conversational UI logic code go? If we try to build a conversational agent with just a flat <code>SAYCommandRecognizerCatalog</code> and a simple <code>SAYSoundBoard</code> in our app delegate, we&#39;re going have a monolithic monster on our hands as our app grows.</p>
+
+<h2>Keep &#39;em Separated</h2>
+
+<p>We need a better separation of concerns. Not only do we need to keep UI logic distinct from the business logic, but we also need to keep the UI logic underlying distinct app features from each other.</p>
+
+<p>When it comes to graphical UI development, there are well-established patterns to handle this. For example, Apple designed its UIKit classes to encourage iOS developers to follow the MVC paradigm (Model-View-Controller), so view code is typically well-separated from the rest of the app&#39;s data and logic. In addition, the <code>UIView</code> class supports a hierarchical structure, so a view is only directly responsible for describing part of the scene: it can delegate the lower level details to its subviews.</p>
+
+<p>We need something similar to a view, but focused on the speaker and microphone. Something conversationally-oriented that&#39;s capable of keeping distinct topics seperate. We need <strong>Conversation Topics</strong>.</p>
+
+<h2>Responsibilities</h2>
+
+<p>Staying with UIKit for a moment, let&#39;s highlight what could be considered <code>UIView</code>&#39;s three major responsibilities:</p>
+
+<ol>
+<li>Defining visual output: drawing their visual content to their frame on screen</li>
+<li>Handling screen input: configuring touch event-recognizing behavior (taps, gestures, etc.)</li>
+<li>Managing the interface hierarchy: composing subviews capable of handling lower-level UI concerns</li>
+</ol>
+
+<p>With those capabilities, a <code>UIView</code> instance is able to fulfill its specific duties as the link between the user and application for a particular rectangle of screen real estate. No more, no less.</p>
+
+<p>The <code>SAYConversationTopic</code> has similar roles, but with an audio-oriented twist:</p>
+
+<ol>
+<li><strong>Defining audio output</strong>: posting their audio content as an event sequence</li>
+<li><strong>Handling voice input</strong>: configuring voice command-recognizing behavior</li>
+<li><strong>Managing the interface hierarchy</strong>: composing subtopics capable of handling lower-level UI concerns</li>
+</ol>
+
+<p>To learn more, let&#39;s discuss each of these responsibilities in turn.</p>
+
+<h3>Defining Audio Output</h3>
+
+<p>Topics conform to the <code>SAYAudioEventSource</code> protocol, so they can post event sequences localized to only their part of the interface. </p>
+
+<p>For example, a shopping app may need to present a list of product titles to the user. Let&#39;s wrap this up in a <code>SAYConversationTopic</code> subclass called <code>ProductListTopic</code>, and give it a method that speaks a list of product titles:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// Swift</span>
+<span class="kd">func</span> <span class="nf">speakProductTitles</span><span class="p">(</span><span class="nv">titles</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">sequence</span> <span class="o">=</span> <span class="kt">SAYAudioEventSequence</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">title</span> <span class="k">in</span> <span class="n">titles</span> <span class="p">{</span>
+        <span class="n">sequence</span><span class="o">.</span><span class="nf">addEvent</span><span class="p">(</span><span class="kt">SAYSpeechEvent</span><span class="p">(</span><span class="nv">utteranceString</span><span class="p">:</span> <span class="n">title</span><span class="p">))</span>
+    <span class="p">}</span>
+
+    <span class="c1">// this is a method defined on the `SAYConversationTopic` base class that posts events to listeners</span>
+    <span class="k">self</span><span class="o">.</span><span class="nf">postEvents</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="c1">// Objective-C
+</span><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">speakProductTitles</span><span class="p">:(</span><span class="n">NSArray</span><span class="o">&lt;</span><span class="n">NSString</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nv">titles</span> <span class="p">{</span>
+    <span class="n">SAYAudioEventSequence</span> <span class="o">*</span><span class="n">sequence</span> <span class="o">=</span> <span class="p">[[</span><span class="n">SAYAudioEventSequence</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="n">title</span> <span class="k">in</span> <span class="n">titles</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">sequence</span> <span class="nf">addEvent</span><span class="p">:[</span><span class="n">SAYSpeechEvent</span> <span class="nf">eventWithUtteranceString</span><span class="p">:</span> <span class="n">title</span><span class="p">]];</span>
+    <span class="p">}</span>
+
+    <span class="c1">// this is a method defined on the `SAYConversationTopic` base class that posts events to listeners
+</span>    <span class="p">[</span><span class="n">self</span> <span class="nf">postEvents</span><span class="p">:</span><span class="n">sequence</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Now, any time we tell our topic to speak its product titles, a sequence of events is posted to whoever is listening.</p>
+
+<h3>Handling Voice Input</h3>
+
+<p>Topics also conform to the <code>SAYVerbalCommandRegistry</code> protocol, so they are able to provide a collection of command recognizers relevant to their subject. In the product list example above, you could assign list-navigation commands to your topic to allow the user to browse the list on command.</p>
+
+<p>To continue with the example, let&#39;s assume we have some kind of event handler class (like a controller in MVC-terms) capable of handling commands events recognized by our <code>ProductListTopic</code>. Then its initializer could include the following configuration:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// Swift</span>
+<span class="nf">init</span><span class="p">(</span><span class="nv">eventHandler</span><span class="p">:</span> <span class="kt">ProductsEventHandler</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="c1">// add a recognizer for "previous" commands, to go back in the list</span>
+    <span class="k">self</span><span class="o">.</span><span class="nf">addCommandRecognizer</span><span class="p">(</span><span class="kt">SAYPreviousCommandRecognizer</span><span class="p">(</span><span class="nv">responseTarget</span><span class="p">:</span><span class="n">eventHandler</span><span class="p">,</span> 
+                                                                   <span class="nv">action</span><span class="p">:</span><span class="s">"handlePrevious:"</span><span class="p">))</span>
+
+    <span class="c1">// add a recognizer to "next" commands, to go forward in the list</span>
+    <span class="k">self</span><span class="o">.</span><span class="nf">addCommandRecognizer</span><span class="p">(</span><span class="kt">SAYNextCommandRecognizer</span><span class="p">(</span><span class="nv">responseTarget</span><span class="p">:</span><span class="n">eventHandler</span><span class="p">,</span> 
+                                                               <span class="nv">action</span><span class="p">:</span><span class="s">"handleNext:"</span><span class="p">))</span>
+
+    <span class="c1">// add a recognizer for "select" commands, to select an item in the list</span>
+    <span class="k">self</span><span class="o">.</span><span class="nf">addCommandRecognizer</span><span class="p">(</span><span class="kt">SAYSelectCommandRecognizer</span><span class="p">(</span><span class="nv">responseTarget</span><span class="p">:</span><span class="n">eventHandler</span><span class="p">,</span> 
+                                                                 <span class="nv">action</span><span class="p">:</span><span class="s">"handleSelect:"</span><span class="p">))</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="c1">// Objective-C
+</span><span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithEventHandler</span><span class="p">:(</span><span class="n">ProductTopicEventHandler</span> <span class="o">*</span><span class="n">eventHandler</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="c1">// add a recognizer for "previous" commands, to go back in the list
+</span>    <span class="p">[</span><span class="n">self</span> <span class="nf">addCommandRecognizer</span><span class="p">:</span>
+        <span class="p">[[</span><span class="n">SAYPreviousCommandRecognizer</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithResponseTarget</span><span class="p">:</span><span class="n">eventHandler</span><span class="p">,</span> 
+                                                              <span class="nf">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nf">handlePrevious</span><span class="p">:)]];</span>
+
+    <span class="c1">// add a recognizer to "next" commands, to go forward in the list
+</span>    <span class="p">[</span><span class="n">self</span> <span class="nf">addCommandRecognizer</span><span class="p">:</span>
+        <span class="p">[[</span><span class="n">SAYNextCommandRecognizer</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithResponseTarget</span><span class="p">:</span><span class="n">eventHandler</span><span class="p">,</span> 
+                                                          <span class="nf">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nf">handleNext</span><span class="p">:)]];</span>
+
+    <span class="c1">// add a recognizer for "select" commands, to select an item in the list
+</span>    <span class="p">[</span><span class="n">self</span> <span class="nf">addCommandRecognizer</span><span class="p">:</span>
+        <span class="p">[[</span><span class="n">SAYSelectCommandRecognizer</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithResponseTarget</span><span class="p">:</span><span class="n">eventHandler</span><span class="p">,</span> 
+                                                            <span class="nf">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nf">handleSelect</span><span class="p">:)]];</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>And with that, we have a tidy conversation topic encapsulating all the input and output logic to allow a user to interface with a list of items.</p>
+
+<h3>Managing the interface hierarchy</h3>
+
+<p>The final responsibility of a conversation topic is to manage its collection of subtopics. This hierarchical strucutre allows topics to delegate lower-level UI concerns to their children downstream. When asked for available command recognizers, they will respond both with both their own and their subtopics&#39; recognizers. In addition, they listen to their subtopics&#39; audio events, arranging and passing them on as a single sequence as if the events originated from themselves. They can also insert their own audio events into the sequence if desired.</p>
+
+<p>This capability lets us take advantage of the power of composition to build complex conversational interfaces from simple building blocks.</p>
+
+<p>At first blush, this might not be as intuitive as composing a hierarchy of subviews, so let&#39;s make it more concrete with an example: we&#39;ll add search capabilities to our shopping app example. When the user issues a search command, let&#39;s make the app search the product database and present a list of matches to the user. </p>
+
+<p>We could pull this off by tacking features onto our <code>ProductListTopic</code> class to recognize search commands. We could also change its <code>speakProductTitles:</code> method to be a bit more conversational and preface the list with an introduction like &quot;Here&#39;s what I found matching your query:&quot; to the list.</p>
+
+<p>But do we really need to bloat our perfectly-concise <code>ProductListTopic</code> class with all of this? Not if we use composition. Instead, let&#39;s create a new class that handles the search commands and introductory message itself, and set <code>ProductListTopic</code> as a subtopic. We&#39;ll call this new class the <code>ProductSearchTopic</code>. Let&#39;s step through a simple implementation of it in Swift:</p>
+
+<p><em>[TODO: Add diagram of this simple hierarchy]</em></p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// Swift</span>
+<span class="kd">class</span> <span class="kt">ProductSearchTopic</span><span class="p">:</span> <span class="kt">SAYConversationTopic</span>
+    <span class="nf">init</span><span class="p">(</span><span class="nv">eventHandler</span><span class="p">:</span> <span class="kt">ProductTopicEventHandler</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// set up the search recognizer</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">addCommandRecognizer</span><span class="p">(</span><span class="kt">SAYSearchCommandRecognizer</span><span class="p">(</span><span class="nv">responseTarget</span><span class="p">:</span> <span class="n">eventHandler</span><span class="p">,</span>
+                                                                     <span class="nv">action</span><span class="p">:</span> <span class="s">"handleSearch:"</span><span class="p">)</span>
+
+        <span class="c1">// create the subtopic to handle the list of results</span>
+        <span class="k">let</span> <span class="nv">listTopic</span> <span class="o">=</span> <span class="kt">ProductListTopic</span><span class="p">(</span><span class="nv">eventHandler</span><span class="p">:</span> <span class="n">eventHandler</span><span class="p">)</span>
+
+        <span class="c1">// by adding it as a subtopic, we are implicitly doing two things:</span>
+        <span class="c1">// 1. adding its command recognizers to our collection</span>
+        <span class="c1">// 2. listening for, and passing on, our subtopic's audio events (potentially with modification: see below)</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">addSubtopic</span><span class="p">(</span><span class="n">listTopic</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">// This is a base SAYConversationTopic function that is called to pass on a subtopics'</span>
+    <span class="c1">// audio events. Override it to modify the message.</span>
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">subtopic</span><span class="p">(</span><span class="nv">subtopic</span><span class="p">:</span> <span class="kt">SAYConversationTopic</span><span class="p">,</span>
+                           <span class="n">didPostEventSequence</span> <span class="nv">incomingSeq</span><span class="p">:</span> <span class="kt">SAYAudioEventSequence</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="c1">// preface the message with this introduction</span>
+        <span class="k">let</span> <span class="nv">prefaceEvent</span> <span class="o">=</span> <span class="kt">SAYSpeechEvent</span><span class="p">(</span><span class="nv">utteranceString</span><span class="p">:</span> <span class="s">"Here's what I found matching your query:"</span><span class="p">)</span>
+        <span class="k">let</span> <span class="nv">outgoingSeq</span> <span class="o">=</span> <span class="kt">SAYAudioEventSequence</span><span class="p">(</span><span class="nv">events</span><span class="p">:[</span><span class="n">prefaceEvent</span><span class="p">])</span>
+
+        <span class="c1">// the incoming sequence is our subtopic's list of search results</span>
+        <span class="c1">// add them to our outgoing sequence</span>
+        <span class="n">outgoingSeq</span><span class="o">.</span><span class="nf">appendSequence</span><span class="p">(</span><span class="n">incomingSeq</span><span class="p">)</span>
+
+        <span class="k">self</span><span class="o">.</span><span class="nf">postEvents</span><span class="p">(</span><span class="n">outgoingSeq</span><span class="p">)</span>
+    <span class="p">}</span>
+</code></pre></div>
+<h3>Conversation Manager Integration</h3>
+
+<p>Thanks to this composability and its conformance to both <code>SAYVerbalCommandRegistry</code> and <code>SAYAudioSource</code>, a single conversation topic can serve as the &quot;root&quot; for the entire application. Just configure the system&#39;s conversation manager as the application launches:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// Swift</span>
+<span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSObject</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="k">let</span> <span class="nv">systemManager</span> <span class="o">=</span> <span class="kt">SAYConversationManager</span><span class="o">.</span><span class="nf">systemManager</span><span class="p">()</span>
+    <span class="k">let</span> <span class="nv">rootTopic</span> <span class="o">=</span> <span class="cm">/* your root conversation topic */</span>
+    <span class="n">systemManager</span><span class="o">.</span><span class="n">commandRegistry</span> <span class="o">=</span> <span class="n">rootTopic</span>
+    <span class="n">systemManager</span><span class="o">.</span><span class="nf">addAudioSource</span><span class="p">(</span><span class="n">rootTopic</span><span class="p">,</span> <span class="nv">forTrack</span><span class="p">:</span><span class="kt">SAYAudioTrackMainIdentifier</span><span class="p">)</span>   
+<span class="p">}</span>
+</code></pre></div>
+<h2>Coming soon...</h2>
+
+<p>A lot can be built with just these basic units, but this is just a start. Expect even more features in the future, including:</p>
+
+<ul>
+<li><p>Built-in Topics: The example <code>SAYConversationTopic</code> subclasses we built above are generic enough to be used in many contexts. Future versions of SayKit will include fully-fleshed out standards like those ready for use.</p></li>
+<li><p>UIKit Integration: It&#39;s no accident that many SayKit APIs bear a resemblance to UIKit APIs. Not only does this lessen the difficulty in adopting SayKit, but the parallels allows for seamless integration possibilities with the two frameworks.</p></li>
+<li><p>Dialogue files: Instead of scattered in-line declarations of speech output, a topic could be paired with a text-based file that includes dialogue options tailored to its particular domain (think .xib files, but for speech). This file format will include features tailored to natural speech production, keeping fiddly output text processing out of your code.</p></li>
+</ul>
+
+<p>To read more about planned features, <a href="/roadmap/">visit our release roadmap</a>.</p>
+
+<hr>
+
+<h2>Next Steps</h2>
+
+<p>Thanks for joining us on this in-depth tour of SayKit&#39;s major features. </p>
+
+<p>If you&#39;re looking for even more, take a look at our <a href="/#developer-resources">other developer resources</a>.</p>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="container">
+
+    <!-- <h2>SayKit SDK (Developer Preview)</h2> -->
+
+      <div class="col-md-4">
+        <ul class="contact-list">
+          <li>SayKit SDK (Developer Preview)</li>
+          <li><a href="mailto:engineering@conversantlabs.com">engineering@conversantlabs.com</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-4">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/ConversantLabs"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">ConversantLabs</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/ConversantLabs"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">ConversantLabs</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="col-md-4">
+        <p>The conversational UI framework for voice enabled applications on iOS.
+</p>
+      </div>
+    
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

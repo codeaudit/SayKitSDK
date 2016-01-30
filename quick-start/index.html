@@ -6,13 +6,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>SayKit SDK</title>
+	<title>SayKit Installation</title>
 	<meta name="description" content="The conversational UI framework for voice enabled applications on iOS.
 ">
 
 	<!-- Jekyll defaults -->
 	<link rel="stylesheet" href="/css/main.css">
-	<link rel="canonical" href="http://developer.conversantlabs.com/">
+	<link rel="canonical" href="http://developer.conversantlabs.com/quick-start/">
 	<!-- <link rel="alternate" type="application/rss+xml" title="SayKit SDK (Developer Preview)" href="http://developer.conversantlabs.com/feed.xml"> -->
 
 	<!-- Bootstrap CDN -->
@@ -64,30 +64,69 @@
 
     <div class="container">
     	<div class="col-md-9">
-      <h1>SayKit SDK (Developer Preview)</h1>
+      <h1>Installation Guide</h1>
 
-<p>The conversational UI framework for voice enabled applications on iOS.</p>
+<h2>1. Download the SDK</h2>
 
-<p><strong>Current version: 0.8.0</strong></p>
+<p>Download the SayKit SDK <a href="https://github.com/ConversantLabs/SayKitSDK/archive/master.zip">here</a>.</p>
 
-<p>We&#39;re excited to offer a preview of the SayKit framework as we prepare it for production release. Though we&#39;re still rolling out a couple features, streamlining some APIs, and sprucing up our docs, it&#39;s fully ready for use today.</p>
-
-<p>Since we&#39;re actively iterating as we march to version 1.0, the SDK will be frequently updated with new features. <a href="http://www.conversantlabs.com/download">Sign up here</a> to be kept in the loop.</p>
-
-<p>We are eager to hear your thoughts or feedback. Please drop us a line at <a href="mailto:engineering@conversantlabs.com">engineering@conversantlabs.com</a>. Also, please post any bugs in our <a href="https://github.com/ConversantLabs/SayKitSDK/issues">Github issue tracker</a>.</p>
-
-<h2><a name="developer-resources"></a> Developer Resources</h2>
-
-<p>What are you looking to do?</p>
+<h2>2. Add the SayKit framework to your project</h2>
 
 <ul>
-<li><strong>Jump in</strong>: <a href="/quick-start/">Quick Start</a></li>
-<li><strong>Familiarize yourself</strong>: <a href="/tour/">SayKit tour</a></li>
-<li><strong>Learn by doing</strong>: <a href="#">Step-by-step tutorial</a></li>
-<li><strong>Read the headers</strong>: <a href="/documentation/html/">API documentation</a></li>
-<li><strong>Go deep</strong>: <a href="#">In-depth Developer guides</a> <em>(coming soon)</em></li>
-<li><strong>Glimpse the future</strong>: <a href="/roadmap/">Feature roadmap</a></li>
+<li>In Xcode, File -&gt; Add Files to &quot;Project&quot;.</li>
+<li>Navigate to where you downloaded the framework, and select <code>SayKitSDK.framework</code>. The framework should now appear on the left, in Xcode&#39;s Project Navigator pane.</li>
+<li>Select the project in the Navigator pane, select your target, and go to the Build Phases tab.</li>
+<li>Under &quot;Link Binary With Libraries&quot;, make sure <code>SayKitSDK.framework</code> is in the list.</li>
+<li>Under &quot;Embed Frameworks&quot;, make sure <code>SayKitSDK.framework</code> is in the list.</li>
+<li>If using Swift, create a bridging header that includes <code>&lt;SayKit/SayKit.h&gt;</code>. See <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html#//apple_ref/doc/uid/TP40014216-CH10-ID156">Apple&#39;s guide on Importing Objective-C into Swift</a> for more details.</li>
 </ul>
+
+<p><em>// TODO: add Xcode screenshots/video</em></p>
+
+<h2>3. Configure the Conversation Manager</h2>
+
+<p>The conversation manager provides the foundation for SayKit&#39;s integration with your application code.</p>
+
+<blockquote>
+<p>If this is the first you&#39;re hearing about a so-called &quot;Conversation Manager&quot;, you need to stop and learn a bit more about SayKit! <a href="/#developer-resources">Take a look at our developer resources</a>.</p>
+</blockquote>
+
+<p>Each SayKit app has a default manager ready and waiting, accessibile as <code>[SAYConversationManager systemManager]</code>. A typical app will require two pieces of configuration on this manager:</p>
+
+<ol>
+<li>An audio event source (conforming to the <code>SAYAudioEventSource</code> protocol). This provides an outlet for audible events (e.g. speech, sound effects) to be presented to the user. These are </li>
+<li>A command registry (conforming to the <code>SAYVerbalCommandRegistry</code> protocol). This provides SayKit&#39;s speech recognition systems with a set of command recognizers.</li>
+</ol>
+
+<p>The particular configuration you&#39;ll want will depend on your application&#39;s needs, but as a simple example, let&#39;s set up the manager to use a simple flat command recognizer catalog (<code>SAYCommandRecognizerCatalog</code>) and sound board (<code>SAYSoundBoard</code>) on the main audio track.</p>
+
+<p>Objective-C:
+````objc
+SAYCommandRecognizerCatalog *catalog = [[SAYCommandRecognizerCatalog alloc] init];
+[[SAYConversationManager systemManager] addAudioSource:soundBoard forTrack:SAYAudioTrackMainIdentifier];</p>
+
+<p>SAYSoundBoard *soundBoard = [[SAYSoundBoard alloc] init];
+[[SAYConversationManager systemManager] setCommandRegistry:catalog];
+````</p>
+
+<p>Swift:
+````swift
+let catalog = SAYCommandRecognizerCatalog()
+SAYConversationManager.systemManager().commandRegistry = catalog</p>
+
+<p>let soundBoard = SAYSoundBoard()
+SAYConversationManager.systemManager().addAudioSource(soundBoard, forTrack:SAYAudioTrackMainIdentifier)
+````</p>
+
+<p>Typically, this configuration would go in your AppDelegate&#39;s <code>application:didFinishLaunchingWithOptions:</code> method.</p>
+
+<h2>4. Go!</h2>
+
+<p>Now you&#39;re all ready to go!</p>
+
+<p>Add voice commands to your Todo list app. Make your RSS app read the news aloud. Create a chat bot friend. The sky&#39;s the limit.</p>
+
+<p>Now, if you are looking for a bit more help on where to go next: <a href="/#developer-resources">check out our developer resources</a>.</p>
 
       </div>
     </div>

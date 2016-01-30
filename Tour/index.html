@@ -6,13 +6,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>SayKit SDK</title>
+	<title>SayKit Tour</title>
 	<meta name="description" content="The conversational UI framework for voice enabled applications on iOS.
 ">
 
 	<!-- Jekyll defaults -->
 	<link rel="stylesheet" href="/css/main.css">
-	<link rel="canonical" href="http://developer.conversantlabs.com/">
+	<link rel="canonical" href="http://developer.conversantlabs.com/tour/">
 	<!-- <link rel="alternate" type="application/rss+xml" title="SayKit SDK (Developer Preview)" href="http://developer.conversantlabs.com/feed.xml"> -->
 
 	<!-- Bootstrap CDN -->
@@ -64,30 +64,38 @@
 
     <div class="container">
     	<div class="col-md-9">
-      <h1>SayKit SDK (Developer Preview)</h1>
+      <h1>SayKit Tour</h1>
 
-<p>The conversational UI framework for voice enabled applications on iOS.</p>
+<blockquote>
+<p>Welcome to the developer preview tour! We&#39;ll be fleshing out this document and including more extensive developer guides as we prepare this developer preview for full public release.</p>
 
-<p><strong>Current version: 0.8.0</strong></p>
+<p>For now, enjoy your tour, and feel free to drop us a line to let us know what you think.</p>
+</blockquote>
 
-<p>We&#39;re excited to offer a preview of the SayKit framework as we prepare it for production release. Though we&#39;re still rolling out a couple features, streamlining some APIs, and sprucing up our docs, it&#39;s fully ready for use today.</p>
+<h2>So, you want to have a talking app...</h2>
 
-<p>Since we&#39;re actively iterating as we march to version 1.0, the SDK will be frequently updated with new features. <a href="http://www.conversantlabs.com/download">Sign up here</a> to be kept in the loop.</p>
+<p>At the most basic level, a conversational UI has only two requirements: a way to listen to user speech and a way to speak back to the user.</p>
 
-<p>We are eager to hear your thoughts or feedback. Please drop us a line at <a href="mailto:engineering@conversantlabs.com">engineering@conversantlabs.com</a>. Also, please post any bugs in our <a href="https://github.com/ConversantLabs/SayKitSDK/issues">Github issue tracker</a>.</p>
+<p>On the surface, that’s not much:</p>
 
-<h2><a name="developer-resources"></a> Developer Resources</h2>
+<ol>
+<li>Grab a speech recognizer library</li>
+<li>Grab a speech synthesizer library</li>
+<li>?</li>
+<li>Profit!</li>
+</ol>
 
-<p>What are you looking to do?</p>
+<p>There are plenty of off-the shelf solutions to steps 1 &amp; 2. Step 3 though? Now that&#39;s a different story. </p>
 
-<ul>
-<li><strong>Jump in</strong>: <a href="/quick-start/">Quick Start</a></li>
-<li><strong>Familiarize yourself</strong>: <a href="/tour/">SayKit tour</a></li>
-<li><strong>Learn by doing</strong>: <a href="#">Step-by-step tutorial</a></li>
-<li><strong>Read the headers</strong>: <a href="/documentation/html/">API documentation</a></li>
-<li><strong>Go deep</strong>: <a href="#">In-depth Developer guides</a> <em>(coming soon)</em></li>
-<li><strong>Glimpse the future</strong>: <a href="/roadmap/">Feature roadmap</a></li>
-</ul>
+<p>Once you know what the user said, <strong>what do you do with it</strong>? How do you extract meaning from it? Who should be responsible for responding to the user&#39;s commands? Should different agents handle different types of commands? How should you design that?</p>
+
+<p>What if you <strong>want your app to carry on a dialogue with the user</strong>? How do you design that without creating a complete rat&#39;s nest of conditionals and callbacks? If you want your app to have a conversational feel, how will you avoid making it sound like a machine reading from a script?</p>
+
+<p>If your app is non-trivial, <strong>how will you organize all of this</strong>? If you have a complex visual hierarchy, how will you integrate this new audio interface with it? How will you ensure different areas play nicely with each other and share the speaker? How will you keep it DRY and avoid repeating logic in your visual and audio UIs?</p>
+
+<p>SayKit is here to help you answer all of these questions (and many more). Continue with your tour to learn more.</p>
+
+<p><a href="/tour/overview/">Next - Overview &gt;&gt;</a></p>
 
       </div>
     </div>

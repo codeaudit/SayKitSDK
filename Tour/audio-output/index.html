@@ -6,13 +6,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>SayKit SDK</title>
+	<title>SayKit Tour - Audio Output</title>
 	<meta name="description" content="The conversational UI framework for voice enabled applications on iOS.
 ">
 
 	<!-- Jekyll defaults -->
 	<link rel="stylesheet" href="/css/main.css">
-	<link rel="canonical" href="http://developer.conversantlabs.com/">
+	<link rel="canonical" href="http://developer.conversantlabs.com/tour/audio-output/">
 	<!-- <link rel="alternate" type="application/rss+xml" title="SayKit SDK (Developer Preview)" href="http://developer.conversantlabs.com/feed.xml"> -->
 
 	<!-- Bootstrap CDN -->
@@ -64,30 +64,51 @@
 
     <div class="container">
     	<div class="col-md-9">
-      <h1>SayKit SDK (Developer Preview)</h1>
+      <h1>Audio Output</h1>
 
-<p>The conversational UI framework for voice enabled applications on iOS.</p>
+<p>One major hurdle in building applications with rich speech &amp; audio output is that timing concerns begin to dominate application logic. Synchronizing queued speech utterances, multiple sound clips, and background music with an interactive application is very challenging to get right. SayKit’s audio UI tools are built with an eye towards reducing this friction so a developer can concentrate more on user experience and less on nuts and bolts. </p>
 
-<p><strong>Current version: 0.8.0</strong></p>
+<h2>Audio Flow</h2>
 
-<p>We&#39;re excited to offer a preview of the SayKit framework as we prepare it for production release. Though we&#39;re still rolling out a couple features, streamlining some APIs, and sprucing up our docs, it&#39;s fully ready for use today.</p>
+<p>// TODO: add figure showing Event traveling from Source --&gt; Listener/Manager --&gt; Track</p>
 
-<p>Since we&#39;re actively iterating as we march to version 1.0, the SDK will be frequently updated with new features. <a href="http://www.conversantlabs.com/download">Sign up here</a> to be kept in the loop.</p>
+<h3>Events</h3>
 
-<p>We are eager to hear your thoughts or feedback. Please drop us a line at <a href="mailto:engineering@conversantlabs.com">engineering@conversantlabs.com</a>. Also, please post any bugs in our <a href="https://github.com/ConversantLabs/SayKitSDK/issues">Github issue tracker</a>.</p>
+<p>To achieve this, all of the sounds that SayKit produces is made of the same &quot;stuff&quot;: <strong>Audio Events</strong>. Rather than considering speech synthesizers, audio files, and even durations of silence as separate entities in need of coordination, all of these concepts are exposed as subclasses of <code>SAYAudioEvent</code>.</p>
 
-<h2><a name="developer-resources"></a> Developer Resources</h2>
+<h3>Tracks</h3>
 
-<p>What are you looking to do?</p>
+<p>Events are transformed into actual sound after being queued up on <em>Audio Tracks</em>. Each <em>event</em> added to a <code>SAYAudioTrack</code> is presented through the device&#39;s speaker, one-by-one. The <em>conversation manager</em> coordinates a prioritized set of these tracks. Higher priority tracks are permitted to play sounds before lower priority ones.</p>
 
-<ul>
-<li><strong>Jump in</strong>: <a href="/quick-start/">Quick Start</a></li>
-<li><strong>Familiarize yourself</strong>: <a href="/tour/">SayKit tour</a></li>
-<li><strong>Learn by doing</strong>: <a href="#">Step-by-step tutorial</a></li>
-<li><strong>Read the headers</strong>: <a href="/documentation/html/">API documentation</a></li>
-<li><strong>Go deep</strong>: <a href="#">In-depth Developer guides</a> <em>(coming soon)</em></li>
-<li><strong>Glimpse the future</strong>: <a href="/roadmap/">Feature roadmap</a></li>
-</ul>
+<h3>Sources</h3>
+
+<p>Who produces these <em>events</em>? Well, <em>Audio Event Sources</em>, of course. Classes that implement the <code>SAYAudioEventSource</code> protocol post sequences of audio events to anyone listening. The <a href="/tour/overview/#conversation-management"><em>conversation manager</em></a> is one such listener, and it associates each source with one of its <em>audio tracks</em>. It queues up each sequence of <em>events</em> it receives from a <em>source</em> to its corresponding <em>track</em>.</p>
+
+<p>One example source is a class called the <code>SAYSoundBoard</code>. Sound boards are simple objects that can produce individual sounds: specifically speech and tones. When a sound board is asked to produce a sound, it creates the corresponding audio event and posts it to all of its listeners.</p>
+
+<p>Let&#39;s use a sound board to sum it all up with an example:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// Swift</span>
+<span class="k">let</span> <span class="nv">soundBoard</span> <span class="o">=</span> <span class="kt">SAYSoundBoard</span><span class="p">()</span>    
+
+<span class="c1">// The system manager has a "Main" track built-in.</span>
+<span class="k">let</span> <span class="nv">manager</span> <span class="o">=</span> <span class="kt">SAYConversationManager</span><span class="o">.</span><span class="nf">systemManager</span><span class="p">()</span>
+<span class="n">manager</span><span class="o">.</span><span class="nf">addAudioSource</span><span class="p">(</span><span class="n">soundBoard</span><span class="p">,</span> <span class="nv">forTrack</span><span class="p">:</span><span class="kt">SAYAudioTrackMainIdentifier</span><span class="p">)</span>
+
+<span class="n">soundBoard</span><span class="o">.</span><span class="nf">speakText</span><span class="p">(</span><span class="s">"Hello, world!"</span><span class="p">)</span>   
+
+<span class="c1">// It speaks! </span>
+<span class="c1">// (Well, technically it tells the manager what it wants to say, and the manager queues it up.) </span>
+<span class="c1">// It *indirectly* speaks!</span>
+</code></pre></div>
+<p>While this might seem like a bit of overheard just to play a sound, when an application finds itself with a set of priority-driven, hierarchically-structured audio sources (and as it grows, <em>it will</em>), boiling eveything down into events, tracks, and sources pays huge dividends.</p>
+
+<p>... But we&#39;ll get to that.</p>
+
+<hr>
+
+<p>We&#39;ve got the basics down now. But don&#39;t leave the tour quite yet. At the next stop, we&#39;ll bring it all together when we introduce SayKit&#39;s special sauce: Conversation Topics.</p>
+
+<p><a href="/tour/conversation-topics/">Next - Conversation Topics &gt;&gt;</a></p>
 
       </div>
     </div>
