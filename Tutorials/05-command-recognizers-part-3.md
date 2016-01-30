@@ -71,4 +71,4 @@ Other parameter types will be supported in the near future.
 
 Now let's leave Standard command recognizers behind, and learn how to create your very own custom command recognizers!
 
-[Next - Custom Command Recognizers >>](./05-command-recognizers-part-4.md)
+[Next - Custom Command Recognizers >>](./06-command-recognizers-part-4.md)

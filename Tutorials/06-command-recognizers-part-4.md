@@ -30,8 +30,9 @@ greetingsRecognizer.addTextMatcher(SAYBlockCommandMatcher { text -> SAYCommandSu
 
 ___
 
-Now that our command registry is loaded up with command recognizers, our app can recognize what's being said and act accordingly. But what if the app already knows that the user wants to, say, perform a search, and just needs to prompt them for the search query? 
 
-That sounds like a job for voice requests!
+Now that our command registry is loaded up with command recognizers, our app can recognize what's being said and act accordingly.
 
-[Next - Voice Requests >>](./06-voice-requests.md)
+With these basic building blocks in place, we can start talking about organizing our conversations at a higher level. Our main tool for that is the Conversation Topic!
+
+[Next - Conversation Topics >>](./07-conversation-topics.md)

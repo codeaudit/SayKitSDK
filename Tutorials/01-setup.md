@@ -69,6 +69,6 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 }
 ```
 
-Now that we're all set up, let's get to the real meat of a conversational interface: command recognizers and voice requests!
+Now that we're all set up, let's get to the real meat of a conversational interface: voice requests and command recognizers!
 
-[Next - Command Recognizers >>](./02-command-recognizers-part-1.md)
+[Next - Voice Requests >>](./02-voice-requests.md)

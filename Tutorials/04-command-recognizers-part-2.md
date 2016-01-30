@@ -46,6 +46,10 @@ return SAYVoiceRequestResponse(feedbackPrompt: feedbackPrompt, followupRequest: 
 // ...
 ```
 
+>On the topic of voice requests, recall from our [earlier discussion](#) that we use voice requests to ask the user parameter-focused questions like "What color would you like?" or "How many servings?". Turns out that voice requests still play an important role with command recognition! Every time you've tapped the microphone button, you were presented with a *command* request, implicitly asking the question "What would you like to do next?".
+
+>The request presented on a microphone tap is a `SAYVerbalCommandRequest`, which implements the `SAYVoiceRequest` protocol. Its creation and presentation is handled behind-the-scenes, unlike other voice requests that we're responsible for creating and presenting.
+
 We can do a lot using standard recognizers, but let's look into how we can customize command recognizers even more.
 
-[Next - Extending Standard Command Recognizers >>](./02-command-recognizers-part-3.md)
+[Next - Extending Standard Command Recognizers >>](./05-command-recognizers-part-3.md)

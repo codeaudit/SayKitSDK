@@ -1,16 +1,14 @@
 # Voice Requests
 
-Finally, we get to hook up those UIButtons we created way back in the Setup section! Hold on for a few more paragraphs, though - we need to cover some voice request basics:
+Before we hook up those UIButtons we need to cover some voice request basics:
 
-Voice requests play an important role in the question-and-answer process. We've actually interacted with them already in our previous discussion on command recognizers. Every time you've tapped the microphone button, you were presented with a *command* request, implicitly asking the question "What would you like to do next?". As you'll see in this section, we can also create parameter-focused voice requests that ask much more specific questions like "What color would you like?", "How many servings?", or "Are you sure?".
+Voice requests play an important role in the question-and-answer process.  As you'll see in this section, we can also create parameter-focused voice requests that ask much more specific questions like "What color would you like?", "How many servings?", or "Are you sure?".
 
 `SAYVoiceRequest` is a protocol whose implementations define a `prompt` to present to the user, and have underlying components that can recognize speech (`recognitionService`), interpret speech into text (`interpreter`), and react to the interpreted result (`responder`). Using these components, SayKit creates a cohesive dialogue flow.
 
-The request presented on a microphone tap is a `SAYVerbalCommandRequest`, which implements the `SAYVoiceRequest` protocol. Its creation and presentation was handled behind-the-scenes in the previous section on command recognizers, though in the upcoming parameter requests we are responsible for the creation and presentation of the request.
-
 SayKit comes with several other `SAYVoiceRequest` implementations, including `SAYStringRequest`, `SAYSelectRequest`, `SAYNumericalRequest`, `SAYConfirmationRequest`, and `SAYPatternMatchRequest`. Your own custom parameter requests can be created by implementing the `SAYVoiceRequest` methods. The `result` in each's `action` block is relevant to its corresponding request. For example, a `SAYNumericalRequest`'s result is a number, while a `SAYStringRequest`'s result is a string.
 
-For these examples, we're simply presenting requests as the result of button taps. In your own apps, they might be triggered by some other event, or as part of a [followup request](./02-command-recognizers.md#followup-requests).
+For these examples, we're simply presenting requests as the result of button taps. In your own apps, they might be triggered by some other event, or as part of a [followup request](./04-command-recognizers-part-2.md#followup-requests).
 
 
 ## Confirmation Request
@@ -137,4 +135,9 @@ viewController.soundBoard = soundBoard
 // ...
 ```
 
-[Next - Conversation Topics >>](./04-conversation-topics.md)
+____
+
+
+Voice requests are great for asking the user for information, but how do we know what the user wants to do in the first place? If you guessed Command Recognizers, you're right!
+
+[Next - Command Recognizers >>](./03-command-recognizers-part-1.md)
