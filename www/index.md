@@ -19,7 +19,7 @@ We are eager to hear your thoughts or feedback. Please drop us a line at [engine
 
 What are you looking to do?
 
-- **Jump in**: [Installation guide](#installation-guide)
+- **Jump in**: [Quick Start](/quick-start/)
 - **Familiarize yourself**: [SayKit tour]({{ "/tour/" | prepend: site.baseurl }})
 - **Learn by doing**: [Step-by-step tutorial](#)
 - **Read the headers**: [API documentation](https://github.com/ConversantLabs/SayKitSDK/tree/master/API%20Reference/html)
