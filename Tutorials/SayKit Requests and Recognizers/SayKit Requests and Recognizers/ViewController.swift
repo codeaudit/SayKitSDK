@@ -114,7 +114,8 @@ class ViewController: UIViewController {
     {
         let request = SAYStringRequest(promptText:"What recipe would you like to search for?") { result in
             if let recipeString = result {
-                self.updateAppResultLabelWithText("Received command:\n[Search for \(recipeString)]")
+                let followupRequest = self.followupRequestForRecipe(recipeString)
+                SAYConversationManager.systemManager().presentVoiceRequest(followupRequest)
             }
             else {
                 /* ... */
@@ -179,6 +180,18 @@ class ViewController: UIViewController {
         else {
             /* ... */
         }
+    }
+    
+    private func followupRequestForRecipe(recipe: String) -> SAYConfirmationRequest
+    {
+        let followupRequest = SAYConfirmationRequest(promptText: "Are you sure you want to search for \"\(recipe)\"?", action: { result in
+            if let doIt = result as? Bool {
+                if doIt { self.updateAppResultLabelWithText("Received command:\n[Search for \(recipe)]") }
+                else    { self.updateAppResultLabelWithText("Received command:\n[Don't search for \(recipe)]") }
+            }
+        })
+        
+        return followupRequest
     }
     
     private func updateAppResultLabelWithText(text: String)

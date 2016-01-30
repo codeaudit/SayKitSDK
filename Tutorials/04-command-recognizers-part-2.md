@@ -2,7 +2,7 @@
 
 ## Followup Requests
 
-Sometimes we may need to prompt the user for clarification. A common scenario is when the user leaves out some information that we need (User: _"I choose you, Pikachu!"_, App: _"Did you mean Toby Pikachu or Susan Pikachu?"_). In such cases, we can respond to the user with a followup voice request.
+[Followup requests](./02-voice-requests.md#string-request-with-followup-request) are useful when we need to prompt the user for clarification and can be included as part of our response to a user's command.
 
 In previous examples we created our command recognizers using the `initWithResponseTarget:action:` initializer and the `initWithActionBlock:` initializer. Here we'll use a third alternative: the `initWithResponseBuilder` initializer, which accepts a block that accepts a `SAYCommand` and returns a `SAYVoiceRequestResponse`. Given a user command, this block _builds_ a _response_ for the app, hence the name "response builder".
 

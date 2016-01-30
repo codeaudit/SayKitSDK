@@ -8,6 +8,7 @@
 3. [Voice Requests](./02-voice-requests.md)
   * [Confirmation Request](./02-voice-requests.md#confirmation-request)
   * [String Request](./02-voice-requests.md#string-request)
+  * [String Request (with Followup Request)](./02-voice-requests.md#string-request-with-followup-request)
   * [Select Request](./02-voice-requests.md#select-request)
   * [Select Request (with Aliases)](./02-voice-requests.md#select-request-with-aliases)
   * [SoundBoard (Bonus!)](./02-voice-requests.md#soundboard-bonus)
