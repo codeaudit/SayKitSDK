@@ -6,12 +6,14 @@ Voice requests play an important role in the question-and-answer process.  As yo
 
 `SAYVoiceRequest` is a protocol whose implementations define a `prompt` to present to the user, and have underlying components that can recognize speech (`recognitionService`), interpret speech into text (`interpreter`), and react to the interpreted result (`responder`). Using these components, SayKit creates a cohesive dialogue flow.
 
+## Standard Voice Requests
+
 SayKit comes with several preconfigured `SAYVoiceRequest` implementations, including `SAYStringRequest`, `SAYSelectRequest`, `SAYNumericalRequest`, `SAYConfirmationRequest`, and `SAYPatternMatchRequest`. Your own custom parameter requests can be created by implementing the `SAYVoiceRequest` protocol. The type of the `result` in each's `action` block depends on its request. For example, a `SAYNumericalRequest`'s result is a number, while a `SAYStringRequest`'s result is a string.
 
 For these examples, we're simply presenting requests as the result of button taps. In your own apps, they might be triggered by some other event, or as part of a [followup request](./04-command-recognizers-part-2.md#followup-requests).
 
 
-## Confirmation Request
+### Confirmation Request
 
 A confirmation request will ask the user a question and expect a yes-or-no response in return. If we get an invalid response, the request will try again (though this behavior can be tweaked). In this case, the `action` block's `result` represents a Bool (though wrapped in an NSNumber because SayKit is an Objective-C SDK).
 
@@ -34,7 +36,7 @@ Once we create the request, we call our the `presentVoiceRequest:` method of the
 }
 ```
 
-## String Request
+### String Request
 
 A string request does what it sounds like: it asks the user for a string! The `action` block's `result` is a String.
 
@@ -54,7 +56,7 @@ A string request does what it sounds like: it asks the user for a string! The `a
 }
 ```
 
-## String Request (with Followup Request)
+#### String Request (with Followup Request)
 
 Sometimes we may need to prompt the user for clarification. A common scenario is when the user leaves out some information that we need (User: _"I choose you, Pikachu!"_, App: _"Did you mean Toby Pikachu or Susan Pikachu?"_). In such cases, we can respond to the user with a followup voice request.
 
@@ -89,7 +91,7 @@ private func followupRequestForRecipe(recipe: String) -> SAYConfirmationRequest
 }
 ```
 
-## Select Request
+### Select Request
 How do we present the user with a list of options to choose from?
 
 In a visual-based app, we might build a table view, hook it up to a data source, present it with a table view controller, and respond to a tap on one of the cells via its delegate. Using SayKit, all we need is a `SAYSelectRequest` and an array of options.
@@ -115,7 +117,7 @@ Any speech matching one of the options will result in a `SAYSelectResult`, which
 }
 ```
 
-## Select Request (with Aliases)
+#### Select Request (with Aliases)
 
 Instead of using a flat array of item labels to select from, we can also define aliases for each label. If the user speaks an item's alias, it is treated the same as if they selected the item directly. Using aliases, you can easily handle alternative names for the same item. 
 
