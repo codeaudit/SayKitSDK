@@ -1,6 +1,6 @@
 # Command Recognizers - Part 3
 
-## Extending Standard Command Recognizers
+## Extending Standard Recognizers
 
 These standard command recognizers are great! But of course they're not going to cover every situation, so let's look at how we can make our own.
 
