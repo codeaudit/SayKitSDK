@@ -2,7 +2,7 @@
 
 ## Custom Command Recognizers
 
-### Implementing `SAYCustomCommandRecognizer`
+### Using `SAYCustomCommandRecognizer`
 
 Another way to customize our recognizers is to make our own! The procedure is almost identical to the previous `selectRecognizer` example, but our new recognizer will rely completely on text matchers. 
 
