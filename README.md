@@ -33,6 +33,7 @@ Download the SayKit SDK [here](https://github.com/ConversantLabs/SayKitSDK/archi
 - Select the project in the Navigator pane, select your target, and go to the Build Phases tab.
 - Under "Link Binary With Libraries", make sure `SayKitSDK.framework` is in the list.
 - Under "Embed Frameworks", make sure `SayKitSDK.framework` is in the list.
+- In the General tab under "Embedded Binaries", add `SayKitSDK.framework` if needed.
 - If using Swift, create a bridging header that includes `<SayKit/SayKit.h>`. See [Apple's guide on Importing Objective-C into Swift](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html#//apple_ref/doc/uid/TP40014216-CH10-ID156) for more details.
 
 *// TODO: add Xcode screenshots/video*
