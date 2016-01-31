@@ -1,3 +1,9 @@
+---
+layout: default
+title: "SayKit Tutorial -- Command Recognizers: Part 1"
+permalink: "/tutorial/03-command-recognizers-part-1/"
+---
+
 # Command Recognizers - Part 1
 
 In graphical apps, users interact by tapping or swiping the screen. If they tap a button, they probably intend to trigger an action associated with that button, which makes our job simple: do the action!
@@ -12,7 +18,7 @@ But we don't typically worry about these steps when we create a visual app using
 
 SayKit has a set of predefined commands that it can recognize, like "Help", "Search", and "Select". Each of these standard recognizers is a subclass of `SAYVerbalCommandRecognizer`, which knows what to do with commands of its assigned `commandType`. We'll demonstrate how to use standard command recognizers, as well as how to add our own customizations.
 
-In this part of the tutorial, we'll add command recognizers directly to the Conversation Manager's command registry, since we're using a flat `SAYCommandRecognizerCatalog`. In more complex apps, we might register command recognizers with a Conversation Topic instead. Check out the [Conversation Topic Tutorial](./07-conversation-topics.md) for more information.
+In this part of the tutorial, we'll add command recognizers directly to the Conversation Manager's command registry, since we're using a flat `SAYCommandRecognizerCatalog`. In more complex apps, we might register command recognizers with a Conversation Topic instead. Check out the [Conversation Topic Tutorial]({{ "/tutorial/07-conversation-topics/" | prepend: site.baseurl }}) for more information.
 
 First, let's get a handle on the system's conversation manager. In `ViewController`'s `viewDidLoad`:
 
@@ -42,7 +48,7 @@ Recall that our `presentResultText:` method is just a helper that updates our fe
 
 Commands that include parameters, such as the speech rate in the built-in "Set Speech Rate to X" command, can be accessed in the action method by including a `SAYCommand` argument in the method signature.
 
-A `SAYCommand` is a representation of a command issued by the user, and consists of an identifying `type` and a `parameters` dictionary. In this example, our `SAYSetSpeechRateCommandRecognizer` is preconfigured to respond to commands with the type `SAYStandardCommandSetSpeechRate`. We can expect to find the new speech rate stored in `parameters` with the key `SAYSetSpeechRateCommandRecognizerParameterSpeechRate`. Take a look at the [`SAYStandardCommandLibrary.h`](https://github.com/ConversantLabs/SayKitSDK/blob/master/SayKit.framework/Headers/SAYStandardCommandLibrary.h) header for a full list of standard command string constants.
+A `SAYCommand` is a representation of a command issued by the user, and consists of an identifying `type` and a `parameters` dictionary. In this example, our `SAYSetSpeechRateCommandRecognizer` is preconfigured to respond to commands with the type `SAYStandardCommandSetSpeechRate`. We can expect to find the new speech rate stored in `parameters` with the key `SAYSetSpeechRateCommandRecognizerParameterSpeechRate`. Take a look at _SAYStandardCommandLibrary.h_ for a full list of standard command string constants.
 
 ```swift
 override func viewDidLoad() {
@@ -81,4 +87,4 @@ In addition to the target/action-style initializer for command recognizers, you 
 
 But wait, there's more we can do with standard command recognizers, and it involves followup requests!
 
-[Next - Command Recognizers with Followup Requests >>](./04-command-recognizers-part-2.md)
+[Next - Command Recognizers with Followup Requests >>]({{ "/tutorial/04-command-recognizers-part-2/" | prepend: site.baseurl }})

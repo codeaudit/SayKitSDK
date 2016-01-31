@@ -1,8 +1,14 @@
+---
+layout: default
+title: "SayKit Tutorial -- Command Recognizers: Part 2"
+permalink: "/tutorial/04-command-recognizers-part-2/"
+---
+
 # Command Recognizers - Part 2
 
 ## Followup Requests
 
-[Followup requests](./02-voice-requests.md#string-request-with-followup-request) are useful when we need to prompt the user for clarification and can be included as part of our response to a user's command.
+[Followup requests]({{ "/tutorial/02-voice-requests/#string-request-with-followup-request" | prepend: site.baseurl }}) are useful when we need to prompt the user for clarification and can be included as part of our response to a user's command.
 
 In previous examples we created our command recognizers using the `initWithResponseTarget:action:` initializer and the `initWithActionBlock:` initializer. Here we'll use a third alternative: the `initWithResponseBuilder` initializer, which accepts a block that accepts a `SAYCommand` and returns a `SAYVoiceRequestResponse`. Given a user command, this block _builds_ a _response_ for the app, hence the name "response builder".
 
@@ -46,10 +52,10 @@ return SAYVoiceRequestResponse(feedbackPrompt: feedbackPrompt, followupRequest: 
 // ...
 ```
 
->On the topic of voice requests, recall from our [earlier discussion](./02-voice-requests.md) that we use voice requests to ask the user parameter-focused questions like "What color would you like?" or "How many servings?". Turns out that voice requests still play an important role with command recognition! Every time you've tapped the microphone button, you were presented with a *command* request, implicitly asking the question "What would you like to do next?".
+>On the topic of voice requests, recall from our [earlier discussion]({{ "/tutorial/02-voice-requests/" | prepend: site.baseurl }}) that we use voice requests to ask the user parameter-focused questions like "What color would you like?" or "How many servings?". Turns out that voice requests still play an important role with command recognition! Every time you've tapped the microphone button, you were presented with a *command* request, implicitly asking the question "What would you like to do next?".
 
 >The request presented on a microphone tap is a `SAYVerbalCommandRequest`, which implements the `SAYVoiceRequest` protocol. Its creation and presentation is handled behind-the-scenes, unlike other voice requests that we're responsible for creating and presenting.
 
 We can do a lot using standard recognizers, but let's look into how we can customize command recognizers even more.
 
-[Next - Extending Standard Command Recognizers >>](./05-command-recognizers-part-3.md)
+[Next - Extending Standard Command Recognizers >>]({{ "/tutorial/05-command-recognizers-part-3" | prepend: site.baseurl }})

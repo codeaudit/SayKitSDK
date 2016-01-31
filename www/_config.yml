@@ -18,6 +18,9 @@ github_username:  ConversantLabs
 # Build settings
 exclude: ["README.md"]
 markdown: redcarpet
+redcarpet: 
+  # standard Github Markdown parsing behaviors
+  extensions: ["no_intra_emphasis", "tables", "autolink", "strikethrough", "with_toc_data"] 
 # markdown: kramdown
 # kramdown:
 #   input: GFM

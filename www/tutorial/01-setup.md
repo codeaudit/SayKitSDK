@@ -1,3 +1,9 @@
+---
+layout: default
+title: SayKit Tutorial -- Setup
+permalink: "/tutorial/01-setup/"
+---
+
 # Setup
 In visual apps, we use `AppDelegate`'s `application:didFinishLaunchingWithOptions:` method to initialize our graphical user interface, all contained within a `UIWindow`. This is also a great place to set up SayKit's conversational equivalent, the `SAYConversationManager`.
 
@@ -11,12 +17,12 @@ The rest of the GUI will be a series of UIButtons that we'll use to start sample
 
 Finally, we need one last button that the user can tap to begin talking to the app. Luckily for us, SayKit comes with a pre-packaged microphone button as part of the `SAYCommandBarController` container class. We'll make this container the root view controller of the application, and set our `ViewController` as the content of a Command Bar Controller.
 
-![Storyboard setup](./assets/storyboard-setup.png)
+![Storyboard setup]({{ "/tutorial/assets/storyboard-setup.png" | prepend: site.baseurl }})
 
 Let’s get started!
 
 - Create a new single-view application
-- Add the SayKit framework, following the [Installation Guide](https://github.com/ConversantLabs/SayKitSDK/blob/master/README.md#installation-guide)
+- Add the SayKit framework, following the [Installation Guide]({{ "/quick-start/"  | prepend: site.baseurl }})
 - Setup the GUI like in the image above. We'll hook up the buttons' IBActions shortly.
 - In `AppDelegate.m`, setup a `SAYCommandBarController` as the window's root view controller. The `SAYCommandBarController` behaves like a container view controller similar to a `UITabBarController`. In this case, the `contentViewController` is our `ViewController`.
 
@@ -128,4 +134,4 @@ ____
 
 Now that we're all set up, let's get to the real meat of a conversational interface: voice requests and command recognizers!
 
-[Next - Voice Requests >>](./02-voice-requests.md)
+[Next - Voice Requests >>]({{ "/tutorial/02-voice-requests/" | prepend: site.baseurl }})

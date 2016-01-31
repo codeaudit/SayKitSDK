@@ -1,3 +1,9 @@
+---
+layout: default
+title: SayKit Tutorial -- Voice Requests
+permalink: "/tutorial/02-voice-requests/"
+---
+
 # Voice Requests
 
 Before we hook up those UIButtons we need to cover some voice request basics:
@@ -8,7 +14,7 @@ Voice requests play an important role in the question-and-answer process.  As yo
 
 SayKit comes with several preconfigured `SAYVoiceRequest` implementations, including `SAYStringRequest`, `SAYSelectRequest`, `SAYNumericalRequest`, `SAYConfirmationRequest`, and `SAYPatternMatchRequest`. Your own custom parameter requests can be created by implementing the `SAYVoiceRequest` protocol. The type of the `result` in each's `action` block depends on its request. For example, a `SAYNumericalRequest`'s result is a number, while a `SAYStringRequest`'s result is a string.
 
-For these examples, we're simply presenting requests as the result of button taps. In your own apps, they might be triggered by some other event, or as part of a [followup request](./04-command-recognizers-part-2.md#followup-requests).
+For these examples, we're simply presenting requests as the result of button taps. In your own apps, they might be triggered by some other event, or as part of a [followup request]({{ "/tutorial/04-command-recognizers-part-2" | prepend: site.baseurl }}).
 
 
 ## Confirmation Request
@@ -142,4 +148,4 @@ ____
 
 Voice requests are great for asking the user for information, but how do we know what the user wants to do in the first place? If you guessed Command Recognizers, you're right!
 
-[Next - Command Recognizers >>](./03-command-recognizers-part-1.md)
+[Next - Command Recognizers >>]({{"/tutorial/03-command-recognizers-part-1" | prepend: site.baseurl }})
