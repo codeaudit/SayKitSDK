@@ -216,8 +216,8 @@ private func searchAppUsingQuery(query: String) -> [String]
 }
 ```
 
-### Intercepting Subtopic Events
-All posted events of a `SAYConversationTopic` will pass to its parent via the parent's `subtopic:didPostEventSequence:` method. (Earlier, when we had only a single conversation topic, the event sequence went straight to the Conversation Manager.) We can override this method to allow us to transform a subtopic's output.
+### Intercepting Subtopic Audio
+All events posted by a `SAYConversationTopic` will bubble up to its parent via the parent's `subtopic:didPostEventSequence:` method. (Earlier, when we had only a single conversation topic, the event sequence went straight to the Conversation Manager.) We can override this method to allow us to transform a subtopic's output.
 
 Let's add a little introduction ("Here's what I found matching your query") to the subtopic's list of items.
 
