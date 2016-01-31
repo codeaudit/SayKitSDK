@@ -10,7 +10,7 @@ title: SayKit SDK (Developer Preview)
 email: engineering@conversantlabs.com
 description: > # this means to ignore newlines until "baseurl:"
   The conversational UI framework for voice enabled applications on iOS.
-baseurl: "/moocow" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://developer.conversantlabs.com" # the base hostname & protocol for your site
 twitter_username: ConversantLabs
 github_username:  ConversantLabs
