@@ -1,10 +1,8 @@
 # Command Recognizers - Part 3
 
-## Custom Command Recognizers
+## Extending Standard Command Recognizers
 
 These standard command recognizers are great! But of course they're not going to cover every situation, so let's look at how we can make our own.
-
-### Extending Standard Command Recognizers
 
 The most straightforward way to add our customization is to piggy-back on an existing standard command recognizer. Suppose we have a `SAYSelectCommandRecognizer` setup like so:
 ```swift
