@@ -14,12 +14,22 @@
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a href="{{ '/quick-start/' | prepend: site.baseurl }}">Quick Start</a></li>
-          <li><a href="{{ '/tour/' | prepend: site.baseurl }}">Tour</a></li>
-          <li><a href="{{ '/tutorial/' | prepend: site.baseurl }}">Tutorial</a></li>
-          <li><a href="{{ '/documentation/html/' | prepend: site.baseurl }}">API Documentation</a></li>
+          <li class="{% if page.url contains '/quick-start/' %}active{% endif %}">
+            <a href="{{ '/quick-start/' | prepend: site.baseurl }}">Quick Start</a>
+          </li>
+          <li class="{% if page.url contains '/tour/' %}active{% endif %}">
+            <a href="{{ '/tour/' | prepend: site.baseurl }}">Tour</a>
+          </li>
+          <li class="{% if page.url contains '/tutorial/' %}active{% endif %}">
+            <a href="{{ '/tutorial/' | prepend: site.baseurl }}">Tutorial</a>
+          </li>
+          <li class="{% if page.url contains '/documentation/' %}active{% endif %}">
+            <a href="{{ '/documentation/html/' | prepend: site.baseurl }}">API Documentation</a>
+          </li>
           <!-- <li><a href="{{ '/Developer Guides/' | prepend: site.baseurl }}">Developer Guides</a></li> -->
-          <li><a href="{{ '/roadmap/' | prepend: site.baseurl }}">Roadmap</a></li>
+          <li class="{% if page.url contains '/roadmap/' %}active{% endif %}">
+            <a href="{{ '/roadmap/' | prepend: site.baseurl }}">Roadmap</a>
+          </li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
