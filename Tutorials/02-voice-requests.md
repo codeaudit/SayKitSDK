@@ -6,7 +6,7 @@ Voice requests play an important role in the question-and-answer process.  As yo
 
 `SAYVoiceRequest` is a protocol whose implementations define a `prompt` to present to the user, and have underlying components that can recognize speech (`recognitionService`), interpret speech into text (`interpreter`), and react to the interpreted result (`responder`). Using these components, SayKit creates a cohesive dialogue flow.
 
-SayKit comes with several other `SAYVoiceRequest` implementations, including `SAYStringRequest`, `SAYSelectRequest`, `SAYNumericalRequest`, `SAYConfirmationRequest`, and `SAYPatternMatchRequest`. Your own custom parameter requests can be created by implementing the `SAYVoiceRequest` methods. The `result` in each's `action` block is relevant to its corresponding request. For example, a `SAYNumericalRequest`'s result is a number, while a `SAYStringRequest`'s result is a string.
+SayKit comes with several preconfigured `SAYVoiceRequest` implementations, including `SAYStringRequest`, `SAYSelectRequest`, `SAYNumericalRequest`, `SAYConfirmationRequest`, and `SAYPatternMatchRequest`. Your own custom parameter requests can be created by implementing the `SAYVoiceRequest` protocol. The type of the `result` in each's `action` block depends on its request. For example, a `SAYNumericalRequest`'s result is a number, while a `SAYStringRequest`'s result is a string.
 
 For these examples, we're simply presenting requests as the result of button taps. In your own apps, they might be triggered by some other event, or as part of a [followup request](./04-command-recognizers-part-2.md#followup-requests).
 
