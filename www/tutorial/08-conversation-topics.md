@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "SayKit Tutorial -- Conversation Topics"
-permalink: "/tutorial/07-conversation-topics"
+permalink: "/tutorial/08-conversation-topics/"
 ---
 
 # Conversation Topics

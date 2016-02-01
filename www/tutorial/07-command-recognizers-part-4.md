@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "SayKit Tutorial -- Command Recognizers: Part 4"
-permalink: "/tutorial/07-command-recognizers-part-4"
+permalink: "/tutorial/07-command-recognizers-part-4/"
 ---
 
 # Command Recognizers - Part 4

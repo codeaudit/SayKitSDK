@@ -6,13 +6,13 @@ permalink: "/tutorial/03-voice-request-responses/"
 
 # Voice Request Responses and Turn-Taking
 
-Recall the [String Request (with Followup Request)]({{ "tutorial/02-voice-request#string-request-with-followup-request"}}) that we created using the convenience initializer, `initWithPromptText:action:`. In that example, we directly presented a followup confirmation request from within the action block via `SAYConversationManager`'s `presentVoiceRequest:` method. This is a fairly inflexible solution, though it worked fine in that simple case.
+Recall the [String Request (with Followup Request)]({{ "/tutorial/02-voice-requests#string-request-with-followup-request" | prepend: site.baseurl }}) that we created using the convenience initializer, `initWithPromptText:action:`. In that example, we directly presented a followup confirmation request from within the action block via `SAYConversationManager`'s `presentVoiceRequest:` method. This is a fairly inflexible solution, though it worked fine in that simple case.
 
 But what if we want to give the user a chance to change their answer? What if we want to customize how we respond to the user beyond what the standard voice requests do? We could maybe pull this off through some messy if/else statements, but there's a better way!
 
 #### Responder and Responses
 
-SayKit helps construct a back-and-forth dialogue by allowing us to define our own implementation of `SAYVoiceRequestResponder`. The responder is responsible for deciding what to do with the interpreted result of the [voice request session]({{ "tour/02-voice-requests#voice-request-flow"}}).
+SayKit helps construct a back-and-forth dialogue by allowing us to define our own implementation of `SAYVoiceRequestResponder`. The responder is responsible for deciding what to do with the interpreted result of the [voice request session]({{ "/tour/02-voice-requests#voice-request-flow" | prepend: site.baseurl }}).
 
 All of the standard requests we've used so far have actually shared an implementation of `SAYVoiceRequestResponder` called `SAYStandardRequestResponder`, which lives in the standard request base class, `SAYStandardVoiceRequest`. When we initialize a standard request, we can customize the standard responder via `SAYStandardVoiceRequest`'s `initWithPrompt:responder:` initializer.
 
