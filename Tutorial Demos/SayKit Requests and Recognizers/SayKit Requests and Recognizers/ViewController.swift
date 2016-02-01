@@ -260,10 +260,8 @@ class ViewController: UIViewController {
     private func responseForRequest(voiceRequest: SAYVoiceRequest, withValidationErrors validationErrors: [SAYValidationError]) -> SAYVoiceRequestResponse
     {
         if let validationErrorReason = validationErrors.first?.reason {
-            let feedbackPrompt = SAYVoicePrompt(message: "\(validationErrorReason)")
-            return SAYVoiceRequestResponse(feedbackPrompt: feedbackPrompt, followupRequest: voiceRequest) {
-                print("Validation error dump: \(validationErrors)")
-            }
+            let feedbackPrompt = SAYVoicePrompt(message: validationErrorReason)
+            return SAYVoiceRequestResponse(feedbackPrompt: feedbackPrompt, followupRequest: voiceRequest, action: nil)
         }
         else {
             // Something went wrong. Repeat the request.

@@ -97,6 +97,8 @@ private func followupRequestForRecipe(recipe: String) -> SAYConfirmationRequest
 }
 ```
 
+Be sure to check out the [next section]({{ "/tutorial/03-voice-request-responses" | prepend: site.baseurl }}) for a more in-depth discussion on turn-taking dialogues.
+
 ### Select Request
 How do we present the user with a list of options to choose from?
 
@@ -147,6 +149,7 @@ We organize our labels and aliases using a struct-like class, `SAYSelectOption`,
 
 ____
 
+// TODO: Revise transition
 
 Voice requests are great for asking the user for information, but how do we know what the user wants to do in the first place? If you guessed Command Recognizers, you're right!
 
