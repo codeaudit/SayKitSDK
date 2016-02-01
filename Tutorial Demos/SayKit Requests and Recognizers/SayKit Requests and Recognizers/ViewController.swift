@@ -147,6 +147,39 @@ class ViewController: UIViewController {
         SAYConversationManager.systemManager().presentVoiceRequest(request)
     }
     
+    @IBAction func selectRequestWithTurnTaking(sender: AnyObject)
+    {
+        let options = [SAYSelectOption(label: "Blue", aliases: ["Ocean"]),
+                       SAYSelectOption(label: "Green", aliases: ["Forest", "Emerald"]),
+                       SAYSelectOption(label: "Purple")]
+        
+        let selectPrompt = SAYVoicePrompt(message: "What color would you like?")
+        
+        let selectResponder = SAYStandardRequestResponder(successResponder: { (interpretationValue, voiceRequest) -> SAYVoiceRequestResponse in
+            if let selectedOption = interpretationValue?.selectedOption {
+                let selectedColor = selectedOption.label
+                
+                let feedbackPrompt = SAYVoicePrompt(message: "You picked: \"\(selectedColor)\".")
+                let followupRequest = self.followupRequest(voiceRequest, toConfirmSelection: selectedColor)
+                
+                return SAYVoiceRequestResponse(feedbackPrompt: feedbackPrompt, followupRequest: followupRequest, action: nil)
+            }
+            else {
+                // Something went wrong. Repeat the request.
+                return SAYVoiceRequestResponse(followupRequest: voiceRequest)
+            }
+        }, invalidResponder: { (validationErrors, voiceRequest) -> SAYVoiceRequestResponse in
+            return self.responseForRequest(voiceRequest, withValidationErrors: validationErrors)
+        }) {
+            // Failure action:
+            self.presentResultText("Aborted your color selection request.")
+        }
+        
+        let selectRequest = SAYSelectRequest(options: options, prompt: selectPrompt, responder: selectResponder)
+        
+        SAYConversationManager.systemManager().presentVoiceRequest(selectRequest)
+    }
+
     @IBAction func soundBoardButtonTapped(sender: AnyObject)
     {
         soundBoard?.speakText("Hello world!")
@@ -192,6 +225,50 @@ class ViewController: UIViewController {
         })
         
         return followupRequest
+    }
+    
+    private func followupRequest(selectionRequest: SAYVoiceRequest, toConfirmSelection selectedColor: String) -> SAYConfirmationRequest
+    {
+        let prompt = SAYVoicePrompt(message: "Are you sure?")
+        
+        let confirmationResponder = SAYStandardRequestResponder(successResponder: { (interpretationValue, voiceRequest) -> SAYVoiceRequestResponse in
+            if let doIt = interpretationValue as? Bool {
+                if doIt {
+                    // Success! Done.
+                    self.presentResultText("Received command:\n[Select color: \"\(selectedColor)\"]")
+                    return SAYVoiceRequestResponse.terminalResponseWithAction(nil)
+                }
+                else {
+                    // Let the user pick a different color. Repeat the original request.
+                    return SAYVoiceRequestResponse(followupRequest: selectionRequest)
+                }
+            }
+            else {
+                // Something went wrong. Repeat the request.
+                return SAYVoiceRequestResponse(followupRequest: voiceRequest)
+            }
+        }, invalidResponder: { (validationErrors, voiceRequest) -> SAYVoiceRequestResponse in
+            return self.responseForRequest(voiceRequest, withValidationErrors: validationErrors)
+        }) {
+            // Failure action:
+            self.presentResultText("Aborted confirmation for the color: \"\(selectedColor)\".")
+        }
+        
+        return SAYConfirmationRequest(prompt: prompt, responder: confirmationResponder)
+    }
+    
+    private func responseForRequest(voiceRequest: SAYVoiceRequest, withValidationErrors validationErrors: [SAYValidationError]) -> SAYVoiceRequestResponse
+    {
+        if let validationErrorReason = validationErrors.first?.reason {
+            let feedbackPrompt = SAYVoicePrompt(message: "\(validationErrorReason)")
+            return SAYVoiceRequestResponse(feedbackPrompt: feedbackPrompt, followupRequest: voiceRequest) {
+                print("Validation error dump: \(validationErrors)")
+            }
+        }
+        else {
+            // Something went wrong. Repeat the request.
+            return SAYVoiceRequestResponse(followupRequest: voiceRequest)
+        }
     }
     
     private func presentResultText(text: String)
