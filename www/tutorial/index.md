@@ -13,7 +13,7 @@ title: SayKit Tutorial
   * [GUI Setup]({{ "/tutorial/01-setup#gui-setup" | prepend: site.baseurl }})
   * [Conversation Manager Setup]({{ "/tutorial/01-setup#conversation-manager-setup" | prepend: site.baseurl }})
 3. [Voice Requests]({{ "/tutorial/02-voice-requests" | prepend: site.baseurl }})
-  * [SoundBoard]({{ "/tutorial/02-voice-requests#soundboard" | prepend: site.baseurl }})
+  * [SoundBoard]({{ "/tutorial/01-setup#soundboard" | prepend: site.baseurl }})
   * [Confirmation Request]({{ "/tutorial/02-voice-requests#confirmation-request" | prepend: site.baseurl }})
   * [String Request]({{ "/tutorial/02-voice-requests#string-request" | prepend: site.baseurl }})
   * [Select Request]({{ "/tutorial/02-voice-requests#select-request" | prepend: site.baseurl }})
