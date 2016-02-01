@@ -38,7 +38,7 @@ title: SayKit Tutorial
     - [Audio Events]({{ "/tutorial/08-conversation-topics#audio-events" | prepend: site.baseurl }})
   * [Conversation Topic Hierarchy: Product Search]({{ "/tutorial/08-conversation-topics#conversation-topic-hierarchy-product-search" | prepend: site.baseurl }})
     - [Building the Hierarchy]({{ "/tutorial/08-conversation-topics#building-the-hierarchy" | prepend: site.baseurl }})
-    - [Intercepting Subtopic Events]({{ "/tutorial/08-conversation-topics#intercepting-subtopic-events" | prepend: site.baseurl }})
+    - [Intercepting Subtopic Audio]({{ "/tutorial/08-conversation-topics#intercepting-subtopic-audio" | prepend: site.baseurl }})
 6. [Wrapping Up!]({{ "/tutorial/08-conversation-topics#wrapping-up" | prepend: site.baseurl }})
 
 

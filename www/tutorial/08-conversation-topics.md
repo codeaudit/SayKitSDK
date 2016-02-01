@@ -142,7 +142,7 @@ viewController.listTopic = rootTopic
 ```
 
 ## Conversation Topic Hierarchy: Product Search
-We now have an app with a single conversation topic that manages some basic interactions with a list of items. What if instead we want a conversation topic that can perform a search and return a list of results? Almost all of the functionality we need is already there in `ProductListTopic`, so we could keep adding to it. But let's avoid bloat and explore [conversation topic hierarchies]({{ "tour/conversation-topics#managing-the-interface-hierarchy" | prepend: site.baseurl }}) by creating a new topic, `ProductSearchTopic`. We'll reuse our `ProductListTopic` as its subtopic, which will let us easily compose our final response to our new "Search" command.
+We now have an app with a single conversation topic that manages some basic interactions with a list of items. What if instead we want a conversation topic that can perform a search and return a list of results? Almost all of the functionality we need is already there in `ProductListTopic`, so we could keep adding to it. But let's avoid bloat and explore [conversation topic hierarchies]({{ "/tour/conversation-topics#managing-the-interface-hierarchy" | prepend: site.baseurl }}) by creating a new topic, `ProductSearchTopic`. We'll reuse our `ProductListTopic` as its subtopic, which will let us easily compose our final response to our new "Search" command.
 
 ### Building the Hierarchy
 Let's replace our Conversation Manager's root topic with an instance of `ProductSearchTopic`, and add a subtopic to it:
