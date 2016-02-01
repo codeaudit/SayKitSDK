@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "SayKit Tutorial -- Command Recognizers: Part 4"
-permalink: "/tutorial/06-command-recognizers-part-4"
+permalink: "/tutorial/07-command-recognizers-part-4"
 ---
 
 # Command Recognizers - Part 4
@@ -41,4 +41,4 @@ Now that our command registry is loaded up with command recognizers, our app can
 
 With these basic building blocks in place, we can start talking about organizing our conversations at a higher level. Our main tool for that is the Conversation Topic!
 
-[Next - Conversation Topics >>]({{ "/tutorial/07-conversation-topics/" | prepend: site.baseurl }})
+[Next - Conversation Topics >>]({{ "/tutorial/08-conversation-topics/" | prepend: site.baseurl }})

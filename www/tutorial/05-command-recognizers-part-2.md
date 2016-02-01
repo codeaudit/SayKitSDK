@@ -1,14 +1,14 @@
 ---
 layout: default
 title: "SayKit Tutorial -- Command Recognizers: Part 2"
-permalink: "/tutorial/04-command-recognizers-part-2/"
+permalink: "/tutorial/05-command-recognizers-part-2/"
 ---
 
 # Command Recognizers - Part 2
 
 ## Followup Requests
 
-[Followup requests]({{ "/tutorial/02-voice-requests/#string-request-with-followup-request" | prepend: site.baseurl }}) are useful when we need to prompt the user for clarification and can be included as part of our response to a user's command.
+[Followup requests]({{ "/tutorial/03-voice-request-responses#voice-request-responses-and-turn-taking" | prepend: site.baseurl }}) are useful when we need to prompt the user for clarification and can be included as part of our response to a user's command.
 
 In previous examples we created our command recognizers using the `initWithResponseTarget:action:` initializer and the `initWithActionBlock:` initializer. Here we'll use a third alternative: the `initWithResponseBuilder` initializer, which accepts a block that accepts a `SAYCommand` and returns a `SAYVoiceRequestResponse`. Given a user command, this block _builds_ a _response_ for the app, hence the name "response builder".
 
@@ -58,4 +58,4 @@ return SAYVoiceRequestResponse(feedbackPrompt: feedbackPrompt, followupRequest: 
 
 We can do a lot using standard recognizers, but let's look into how we can customize command recognizers even more.
 
-[Next - Extending Standard Command Recognizers >>]({{ "/tutorial/05-command-recognizers-part-3" | prepend: site.baseurl }})
+[Next - Extending Standard Command Recognizers >>]({{ "/tutorial/06-command-recognizers-part-3" | prepend: site.baseurl }})

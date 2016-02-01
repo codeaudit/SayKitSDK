@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "SayKit Tutorial -- Command Recognizers: Part 1"
-permalink: "/tutorial/03-command-recognizers-part-1/"
+permalink: "/tutorial/04-command-recognizers-part-1/"
 ---
 
 # Command Recognizers - Part 1
@@ -18,7 +18,7 @@ But we don't typically worry about these steps when we create a visual app using
 
 SayKit has a set of predefined commands that it can recognize, like "Help", "Search", and "Select". Each of these standard recognizers is a subclass of `SAYVerbalCommandRecognizer`, which knows what to do with commands of its assigned `commandType`. We'll demonstrate how to use standard command recognizers, as well as how to add our own customizations.
 
-In this part of the tutorial, we'll add command recognizers directly to the Conversation Manager's command registry, since we're using a flat `SAYCommandRecognizerCatalog`. In more complex apps, we might register command recognizers with a Conversation Topic instead. Check out the [Conversation Topic Tutorial]({{ "/tutorial/07-conversation-topics/" | prepend: site.baseurl }}) for more information.
+In this part of the tutorial, we'll add command recognizers directly to the Conversation Manager's command registry, since we're using a flat `SAYCommandRecognizerCatalog`. In more complex apps, we might register command recognizers with a Conversation Topic instead. Check out the [Conversation Topic Tutorial]({{ "/tutorial/08-conversation-topics/" | prepend: site.baseurl }}) for more information.
 
 First, let's get a handle on the system's conversation manager. In `ViewController`'s `viewDidLoad`:
 
@@ -87,4 +87,4 @@ In addition to the target/action-style initializer for command recognizers, you 
 
 But wait, there's more we can do with standard command recognizers, and it involves followup requests!
 
-[Next - Command Recognizers with Followup Requests >>]({{ "/tutorial/04-command-recognizers-part-2/" | prepend: site.baseurl }})
+[Next - Command Recognizers with Followup Requests >>]({{ "/tutorial/05-command-recognizers-part-2/" | prepend: site.baseurl }})

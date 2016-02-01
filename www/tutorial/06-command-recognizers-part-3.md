@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "SayKit Tutorial -- Command Recognizers: Part 3"
-permalink: "/tutorial/05-command-recognizers-part-3/"
+permalink: "/tutorial/06-command-recognizers-part-3/"
 ---
 
 # Command Recognizers - Part 3
@@ -76,4 +76,4 @@ commandRegistry.addCommandRecognizer(selectRecognizer)
 
 Now let's leave Standard command recognizers behind, and learn how to create your very own custom command recognizers!
 
-[Next - Custom Command Recognizers >>]({{ "/tutorial/06-command-recognizers-part-4/" | prepend: site.baseurl }})
+[Next - Custom Command Recognizers >>]({{ "/tutorial/07-command-recognizers-part-4/" | prepend: site.baseurl }})

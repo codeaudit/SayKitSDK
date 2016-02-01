@@ -6,13 +6,13 @@ permalink: "/tutorial/03-voice-request-responses/"
 
 # Voice Request Responses and Turn-Taking
 
-Recall the [String Request (with Followup Request)](./02-voice-request.md#string-request-with-followup-request) that we created using the convenience initializer, `initWithPromptText:action:`. In that example, we directly presented a followup confirmation request from within the action block via `SAYConversationManager`'s `presentVoiceRequest:` method. This is a fairly inflexible solution, though it worked fine in that simple case.
+Recall the [String Request (with Followup Request)]({{ "tutorial/02-voice-request#string-request-with-followup-request"}}) that we created using the convenience initializer, `initWithPromptText:action:`. In that example, we directly presented a followup confirmation request from within the action block via `SAYConversationManager`'s `presentVoiceRequest:` method. This is a fairly inflexible solution, though it worked fine in that simple case.
 
 But what if we want to give the user a chance to change their answer? What if we want to customize how we respond to the user beyond what the standard voice requests do? We could maybe pull this off through some messy if/else statements, but there's a better way!
 
 #### Responder and Responses
 
-SayKit helps construct a back-and-forth dialogue by allowing us to define our own implementation of `SAYVoiceRequestResponder`. The responder is responsible for deciding what to do with the interpreted result of the [voice request session]({{ "tour/02-voice-requests.md#voice-request-flow"}}).
+SayKit helps construct a back-and-forth dialogue by allowing us to define our own implementation of `SAYVoiceRequestResponder`. The responder is responsible for deciding what to do with the interpreted result of the [voice request session]({{ "tour/02-voice-requests#voice-request-flow"}}).
 
 All of the standard requests we've used so far have actually shared an implementation of `SAYVoiceRequestResponder` called `SAYStandardRequestResponder`, which lives in the standard request base class, `SAYStandardVoiceRequest`. When we initialize a standard request, we can customize the standard responder via `SAYStandardVoiceRequest`'s `initWithPrompt:responder:` initializer.
 
@@ -154,4 +154,10 @@ let selectResponder = SAYStandardRequestResponder(successResponder: /*...*/, inv
 }
 ```
 
-// TODO: Transition
+With our new responder fully in place, we can now create our own version of `SAYSelectRequest` that will respond exactly how we want it do, followups and all! We're constantly working to [improve the process]( {{"/roadmap#declarative-dialogues" | prepend: site.baseurl }}) of defining a dialogue flow, and a `SAYVoiceRequestResponse`-based procedure is a well-structured improvement over, say, scattered calls to the Conversation Manager's `presentVoiceRequest:`.
+
+____
+
+Voice requests are great for asking the user for information, but how do we know what the user wants to do in the first place? If you guessed Command Recognizers, you're right!
+
+[Next - Command Recognizers >>]({{"/tutorial/04-command-recognizers-part-1" | prepend: site.baseurl }})
