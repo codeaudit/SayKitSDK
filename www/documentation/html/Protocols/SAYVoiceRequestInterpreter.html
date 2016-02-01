@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>SAYSelectResult Class Reference</title>
+		<title>SAYVoiceRequestInterpreter Protocol Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">SAYSelectResult Class Reference</h1>
+				<h1 class="hideInXcode">SAYVoiceRequestInterpreter Protocol Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -37,20 +37,13 @@
 	
 	
 	
-	<option value="properties">Properties</option>
-	
-	<option value="//api/name/selectedIndex">&nbsp;&nbsp;&nbsp;&nbsp;selectedIndex</option>
-	
-	<option value="//api/name/selectedOption">&nbsp;&nbsp;&nbsp;&nbsp;selectedOption</option>
-	
-	
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/initWithSelectedIndex:selectedOption:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithSelectedIndex:selectedOption:</option>
+	<option value="//api/name/voiceRequest:interpretResult:completion:">&nbsp;&nbsp;&nbsp;&nbsp;- voiceRequest:interpretResult:completion:</option>
 	
 	
 	
@@ -74,21 +67,13 @@
 
 
 
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/selectedIndex">selectedIndex</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/selectedOption">selectedOption</a></span></li>
-	
-</ul></li>
-
 
 
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithSelectedIndex:selectedOption:">initWithSelectedIndex:selectedOption:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/voiceRequest:interpretResult:completion:">voiceRequest:interpretResult:completion:</a></span></li>
 	
 </ul></li>
 
@@ -97,7 +82,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="SAYSelectResult Class Reference" name="top"></a>
+				<a title="SAYVoiceRequestInterpreter Protocol Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -106,18 +91,18 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">SAYSelectResult Class Reference</h1>
+						<h1 class="title title-header">SAYVoiceRequestInterpreter Protocol Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Inherits from</td>
+	<td class="specification-title">Conforms to</td>
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">SAYSelectResult.h</td>
+	<td class="specification-value">SAYVoiceRequestInterpreter.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -127,7 +112,14 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Encapsulates result data from a completed <a href="../Classes/SAYSelectRequest.html"><code>SAYSelectRequest</code></a></p>
+						<ul>
+<li><p>The <code>SAYVoiceRequestInterpreter</code> protocol describes a class capable of transforming the raw results of speech recognition into a more useful form for the application to use. This higher-level form is encapsulated in a <a href="../Classes/SAYInterpretation.html"><code>SAYInterpretation</code></a>, which holds the result as well as other relevant data discovered during the interpretation process.</p>
+
+<p> For example, an interpreter might be tasked with classify speech as either having a &ldquo;yes&rdquo; or &ldquo;no&rdquo; intent, transforming the text into a boolean value stored inside the <a href="../Classes/SAYInterpretation.html"><code>SAYInterpretation</code></a>. If the user speech has no clear intent, the interpretation could instead hold a validation error describing the reason no intent could be interpreted.</p>
+
+<p> Interpreters are al</p></li>
+</ul>
+
 					</div>
 					
 					
@@ -145,22 +137,10 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/selectedOption">&nbsp;&nbsp;selectedOption</a></code>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/selectedIndex">&nbsp;&nbsp;selectedIndex</a></code>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/initWithSelectedIndex:selectedOption:">&ndash;&nbsp;initWithSelectedIndex:selectedOption:</a></code>
+		<code><a href="#//api/name/voiceRequest:interpretResult:completion:">&ndash;&nbsp;voiceRequest:interpretResult:completion:</a></code>
 	</span>
 	
-	
+	<span class="task-item-suffix">required method</span>
 </li>
 						</ul>
 						
@@ -169,94 +149,6 @@
 					
 					
 					
-					
-					<div class="section section-methods">
-						<a title="Properties" name="properties"></a>
-						<h2 class="subtitle subtitle-methods">Properties</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/selectedIndex" title="selectedIndex"></a>
-	<h3 class="subsubtitle method-title">selectedIndex</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Index of selected option. Set to NSNotFound when no selection was made.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSUInteger selectedIndex</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Index of selected option. Set to NSNotFound when no selection was made.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYSelectResult.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/selectedOption" title="selectedOption"></a>
-	<h3 class="subsubtitle method-title">selectedOption</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Full representation of option selected by the user.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) SAYSelectOption *selectedOption</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Full representation of option selected by the user.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYSelectResult.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
 					
 					
 					
@@ -267,18 +159,18 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/initWithSelectedIndex:selectedOption:" title="initWithSelectedIndex:selectedOption:"></a>
-	<h3 class="subsubtitle method-title">initWithSelectedIndex:selectedOption:</h3>
+	<a name="//api/name/voiceRequest:interpretResult:completion:" title="voiceRequest:interpretResult:completion:"></a>
+	<h3 class="subsubtitle method-title">voiceRequest:interpretResult:completion:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Initializer for a new <code>SAYSelectOptionResult</code> representing a successful selection.</p>
+		<p>The sole method required by the <code>SAYVoiceRequestInterpreter</code> protocol. It consumes the result of a speech recognition process, and produces an interpretation of that speech suitable for it&rsquo;s source voice request.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (instancetype)initWithSelectedIndex:(NSUInteger)<em>selectedIndex</em> selectedOption:(SAYSelectOption *)<em>selectedOption</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)voiceRequest:(id&lt;SAYVoiceRequest&gt;)<em>voiceRequest</em> interpretResult:(id&lt;SAYSpeechRecognitionResult&gt;)<em>result</em> completion:(void ( ^ ) ( SAYInterpretation *))<em>completion</em></code></div>
 
     
 	
@@ -286,23 +178,23 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>selectedIndex</em></dt>
-			<dd><p>Index of selected option</p></dd>
+			<dt><em>voiceRequest</em></dt>
+			<dd><p>The source voice request</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>selectedOption</em></dt>
-			<dd><p>Selected option itself</p></dd>
+			<dt><em>result</em></dt>
+			<dd><p>Raw result produced by the <a href="../Protocols/SAYSpeechRecognitionService.html"><code>SAYSpeechRecognitionService</code></a> used in this request</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completion</em></dt>
+			<dd><p>Completion block, <strong>must</strong> be called when interpretation finishes.</p></dd>
 		</dl>
 		
 	</div>
 	
 	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The newly-initiated <code>SAYSelectOptionResult</code></p>
-	</div>
 	
 	
 	
@@ -310,7 +202,9 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializer for a new <code>SAYSelectOptionResult</code> representing a successful selection.</p>
+		<p>The sole method required by the <code>SAYVoiceRequestInterpreter</code> protocol. It consumes the result of a speech recognition process, and produces an interpretation of that speech suitable for it&rsquo;s source voice request.</p>
+
+<p>Oftentimes, this process can be intensive, needing external services to help with the interpretation. As a result, this method is an asyncrhnous, accepting a callback block to be called when the process completes.</p>
 	</div>
 	
 	
@@ -321,7 +215,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SAYSelectResult.h</code><br />
+		<code class="declared-in-ref">SAYVoiceRequestInterpreter.h</code><br />
 	</div>				
 	
 	

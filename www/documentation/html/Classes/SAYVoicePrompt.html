@@ -26,6 +26,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -35,6 +37,20 @@
 	
 	
 	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/displayMessage">&nbsp;&nbsp;&nbsp;&nbsp;displayMessage</option>
+	
+	<option value="//api/name/spokenMessage">&nbsp;&nbsp;&nbsp;&nbsp;spokenMessage</option>
+	
+	<option value="//api/name/supplementalViewController">&nbsp;&nbsp;&nbsp;&nbsp;supplementalViewController</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/promptWithMessage:">&nbsp;&nbsp;&nbsp;&nbsp;+ promptWithMessage:</option>
 	
 	
 	
@@ -42,6 +58,12 @@
 	<option value="instance_methods">Instance Methods</option>
 	
 	<option value="//api/name/init">&nbsp;&nbsp;&nbsp;&nbsp;- init</option>
+	
+	<option value="//api/name/initWithDisplayMessage:spokenMessage:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithDisplayMessage:spokenMessage:</option>
+	
+	<option value="//api/name/initWithMessage:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithMessage:</option>
+	
+	<option value="//api/name/isEqualToVoicePrompt:">&nbsp;&nbsp;&nbsp;&nbsp;- isEqualToVoicePrompt:</option>
 	
 	
 	
@@ -52,6 +74,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -63,13 +87,35 @@
 
 
 
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/displayMessage">displayMessage</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/spokenMessage">spokenMessage</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/supplementalViewController">supplementalViewController</a></span></li>
+	
+</ul></li>
 
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/promptWithMessage:">promptWithMessage:</a></span></li>
+	
+</ul></li>
 
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init">init</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithDisplayMessage:spokenMessage:">initWithDisplayMessage:spokenMessage:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithMessage:">initWithMessage:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isEqualToVoicePrompt:">isEqualToVoicePrompt:</a></span></li>
 	
 </ul></li>
 
@@ -108,6 +154,14 @@
                     
                     
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The <code>SAYVoicePrompt</code> describes a prompt designed for the application to present to the user, often in the form of a question. It contains a message to be displayed, a message to be spoken (often echoing the displayed message), and an optional view controller for the sake of adding custom visuals to the prompt.</p>
+					</div>
+					
+					
+					
 					
 					
 					<div class="section section-tasks">
@@ -121,7 +175,49 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
+		<code><a href="#//api/name/displayMessage">&nbsp;&nbsp;displayMessage</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/spokenMessage">&nbsp;&nbsp;spokenMessage</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/supplementalViewController">&nbsp;&nbsp;supplementalViewController</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/promptWithMessage:">+&nbsp;promptWithMessage:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithMessage:">&ndash;&nbsp;initWithMessage:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithDisplayMessage:spokenMessage:">&ndash;&nbsp;initWithDisplayMessage:spokenMessage:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isEqualToVoicePrompt:">&ndash;&nbsp;isEqualToVoicePrompt:</a></code>
 	</span>
 	
 	
@@ -134,7 +230,198 @@
 					
 					
 					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/displayMessage" title="displayMessage"></a>
+	<h3 class="subsubtitle method-title">displayMessage</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Text to be displayed</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSAttributedString *displayMessage</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Text to be displayed</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoicePrompt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/spokenMessage" title="spokenMessage"></a>
+	<h3 class="subsubtitle method-title">spokenMessage</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Message to be spoken</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) AVSpeechUtterance *spokenMessage</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Message to be spoken</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoicePrompt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/supplementalViewController" title="supplementalViewController"></a>
+	<h3 class="subsubtitle method-title">supplementalViewController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>An optional view controller to be paired along with the verbal messages, in order to supplement them with custom visuals. The supplemental view can include controls, creating an opportunity for touch-based responses to prompts.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) UIViewController *supplementalViewController</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>An optional view controller to be paired along with the verbal messages, in order to supplement them with custom visuals. The supplemental view can include controls, creating an opportunity for touch-based responses to prompts.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoicePrompt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
 					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/promptWithMessage:" title="promptWithMessage:"></a>
+	<h3 class="subsubtitle method-title">promptWithMessage:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Factory method to create a simple prompt with the same message to be spoken and displayed.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (instancetype)promptWithMessage:(NSString *)<em>message</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd><p>Message to be both spoken and displayed.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new <code>SAYVoicePrompt</code> instance with the given message.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Factory method to create a simple prompt with the same message to be spoken and displayed.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoicePrompt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
 					
 					
 					
@@ -178,6 +465,179 @@
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/initWithDisplayMessage:spokenMessage:" title="initWithDisplayMessage:spokenMessage:"></a>
+	<h3 class="subsubtitle method-title">initWithDisplayMessage:spokenMessage:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates an returns a prompt with a potentially different message for display and speech purposes.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (instancetype)initWithDisplayMessage:(NSAttributedString *)<em>displayMessage</em> spokenMessage:(AVSpeechUtterance *)<em>spokenMessage</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>displayMessage</em></dt>
+			<dd><p>Attributed text message to be displayed</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>spokenMessage</em></dt>
+			<dd><p>Message as a speech utterance</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new <code>SAYVoicePrompt</code> instance with the given message componenets.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates an returns a prompt with a potentially different message for display and speech purposes.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoicePrompt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithMessage:" title="initWithMessage:"></a>
+	<h3 class="subsubtitle method-title">initWithMessage:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates and returns a simple prompt with the same message to be spoken and displayed.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (instancetype)initWithMessage:(NSString *)<em>message</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd><p>message Message to be both spoken and displayed.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new <code>SAYVoicePrompt</code> instance with the given message.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates and returns a simple prompt with the same message to be spoken and displayed.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoicePrompt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isEqualToVoicePrompt:" title="isEqualToVoicePrompt:"></a>
+	<h3 class="subsubtitle method-title">isEqualToVoicePrompt:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Equality method specific to <code>SAYVoicePrompt</code> classes.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isEqualToVoicePrompt:(SAYVoicePrompt *)<em>voicePrompt</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>voicePrompt</em></dt>
+			<dd><p>Other prompt to test for equality.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if the prompter are equal (that is their underlying message and view controllers are equal); NO otherwise.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Equality method specific to <code>SAYVoicePrompt</code> classes.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoicePrompt.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
@@ -196,7 +656,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2016 Conversant Labs. All rights reserved. (Last updated: 2016-01-25)</span><br />
+						<p><span class="copyright">&copy; 2016 Conversant Labs. All rights reserved. (Last updated: 2016-01-31)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</span></p>
 						

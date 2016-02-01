@@ -1,0 +1,861 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>SAYConversationManager Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2.1 (build 1333)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">SayKit </a></h1>
+				<a id="developerHome" href="../index.html">Conversant Labs</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">SAYConversationManager Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/commandRegistry">&nbsp;&nbsp;&nbsp;&nbsp;commandRegistry</option>
+	
+	<option value="//api/name/trackCoordinator">&nbsp;&nbsp;&nbsp;&nbsp;trackCoordinator</option>
+	
+	<option value="//api/name/window">&nbsp;&nbsp;&nbsp;&nbsp;window</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/systemManager">&nbsp;&nbsp;&nbsp;&nbsp;+ systemManager</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/addAudioSource:forTrack:">&nbsp;&nbsp;&nbsp;&nbsp;- addAudioSource:forTrack:</option>
+	
+	<option value="//api/name/initWithTrackCoordinator:window:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithTrackCoordinator:window:</option>
+	
+	<option value="//api/name/presentVoiceRequest:">&nbsp;&nbsp;&nbsp;&nbsp;- presentVoiceRequest:</option>
+	
+	<option value="//api/name/presentVoiceRequest:fromViewController:">&nbsp;&nbsp;&nbsp;&nbsp;- presentVoiceRequest:fromViewController:</option>
+	
+	<option value="//api/name/removeAudioSource:">&nbsp;&nbsp;&nbsp;&nbsp;- removeAudioSource:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Audio Output Coordination">Audio Output Coordination</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Voice Request Presentation">Voice Request Presentation</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Voice Command Management">Voice Command Management</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/commandRegistry">commandRegistry</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/trackCoordinator">trackCoordinator</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/window">window</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/systemManager">systemManager</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addAudioSource:forTrack:">addAudioSource:forTrack:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithTrackCoordinator:window:">initWithTrackCoordinator:window:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/presentVoiceRequest:">presentVoiceRequest:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/presentVoiceRequest:fromViewController:">presentVoiceRequest:fromViewController:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeAudioSource:">removeAudioSource:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="SAYConversationManager Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">SAYConversationManager Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">SAYAudioEventListener</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">SAYConversationManager.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>As the foundation of the SayKit stack, the <code>SAYConversationManager</code> class integrates application-wide interfaces for audio track coordination, voice request presentation, and verbal command availability.</p>
+
+<p>The provided <a href="#//api/name/systemManager"><code>systemManager</code></a> should be the only instance of this class needed for the vast majority of applications.</p>
+
+<h2>Audio Source Configuration</h2>
+
+<p>The <code>SAYConversationManager</code> conforms to the <a href="../Protocols/SAYAudioEventListener.html"><code>SAYAudioEventListener</code></a> protocol, sending any audio event sequences from its registered sources to their respective tracks for audio production. To enable this connection, a source must be explicitly added to a manager (and connected to one of the tracks supported by it&rsquo;s track coordinator). This is configuration is often done during app initialization. For more details, see the documentation for <a href="../Protocols/SAYAudioEventSource.html"><code>SAYAudioEventSource</code></a> and <a href="../Classes/SAYAudioTrackCoordinator.html"><code>SAYAudioTrackCoordinator</code></a>.</p>
+
+<p>The <a href="#//api/name/trackCoordinator"><code>trackCoordinator</code></a> on the application-wide <a href="#//api/name/systemManager"><code>systemManager</code></a> is preconfigured with two tracks: the &ldquo;main&rdquo; and &ldquo;voice request&rdquo; track. The &ldquo;main&rdquo; track is intended for typical application speech and the &ldquo;voice request&rdquo; track is intended for audio out during voice requests (i.e. prompts and microphone activation sounds). These two tracks can be referenced with the string constants <code>SAYAudioTrackMainIdentifier</code> and <code>SAYAudioTrackVoiceRequestIdentifier</code>, respectively.</p>
+
+<h2>Voice Command Configuration</h2>
+
+<p>To support voice commands, applications must explicitly set the manager&rsquo;s <a href="#//api/name/commandRegistry"><code>commandRegistry</code></a>. This collaborator is tasked with being the central authority on available voice commands. See the documentation for the <a href="../Protocols/SAYVerbalCommandRegistry.html"><code>SAYVerbalCommandRegistry</code></a> protocol for more details.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/systemManager">+&nbsp;systemManager</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithTrackCoordinator:window:">&ndash;&nbsp;initWithTrackCoordinator:window:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Audio Output Coordination" name="task_Audio Output Coordination"></a>
+						<h3 class="subsubtitle task-title">Audio Output Coordination</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addAudioSource:forTrack:">&ndash;&nbsp;addAudioSource:forTrack:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeAudioSource:">&ndash;&nbsp;removeAudioSource:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/trackCoordinator">&nbsp;&nbsp;trackCoordinator</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Voice Request Presentation" name="task_Voice Request Presentation"></a>
+						<h3 class="subsubtitle task-title">Voice Request Presentation</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/window">&nbsp;&nbsp;window</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/presentVoiceRequest:">&ndash;&nbsp;presentVoiceRequest:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/presentVoiceRequest:fromViewController:">&ndash;&nbsp;presentVoiceRequest:fromViewController:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Voice Command Management" name="task_Voice Command Management"></a>
+						<h3 class="subsubtitle task-title">Voice Command Management</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/commandRegistry">&nbsp;&nbsp;commandRegistry</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/commandRegistry" title="commandRegistry"></a>
+	<h3 class="subsubtitle method-title">commandRegistry</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Provides the a set of <code>SAYCommandRecognizer</code> instances that are available for use at any given time.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, nullable) id&lt;SAYVerbalCommandRegistry&gt; commandRegistry</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Provides the a set of <code>SAYCommandRecognizer</code> instances that are available for use at any given time.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYConversationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/trackCoordinator" title="trackCoordinator"></a>
+	<h3 class="subsubtitle method-title">trackCoordinator</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The agent coordinating the set of audio tracks available for queuing events onto.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly, nonnull) SAYAudioTrackCoordinator *trackCoordinator</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The agent coordinating the set of audio tracks available for queuing events onto.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYConversationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/window" title="window"></a>
+	<h3 class="subsubtitle method-title">window</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Used as a provider for the application&rsquo;s root view controller, from which typical voice requests are presented.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly, nonnull) UIWindow *window</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Used as a provider for the application&rsquo;s root view controller, from which typical voice requests are presented.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYConversationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/systemManager" title="systemManager"></a>
+	<h3 class="subsubtitle method-title">systemManager</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the persistent system manager, which is typically the only instance needed in a SayKit application.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (SAYConversationManager *)systemManager</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the persistent system manager, which is typically the only instance needed in a SayKit application.</p>
+
+<p>It is preconfigured to use the <a href="#//api/name/window">window</a> provided by the application&rsquo;s <code>UIApplicationDelegate</code> and a track coordinator with a tracks named <code>SAYAudioTrackMainIdentifier</code> and <code>SAYAudioTrackVoiceRequestIdentifier</code>.
+*
+*  @return The persistent conversation manager</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYConversationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/addAudioSource:forTrack:" title="addAudioSource:forTrack:"></a>
+	<h3 class="subsubtitle method-title">addAudioSource:forTrack:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Tells the receiver to begin listening to the given source, passing it&rsquo;s posted audio event sequences to the specified track.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)addAudioSource:(id&lt;SAYAudioEventSource&gt;)<em>source</em> forTrack:(NSString *)<em>trackIdentifier</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>source</em></dt>
+			<dd><p>A source that produces <code>SAYAudioEventSequence</code>s for playback</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>trackIdentifier</em></dt>
+			<dd><p>Name of a track managed by the receiver&rsquo;s <a href="#//api/name/trackCoordinator"><code>trackCoordinator</code></a>. If an unknown track name is provided, the source&rsquo;s events will not produce audio.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Tells the receiver to begin listening to the given source, passing it&rsquo;s posted audio event sequences to the specified track.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYConversationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithTrackCoordinator:window:" title="initWithTrackCoordinator:window:"></a>
+	<h3 class="subsubtitle method-title">initWithTrackCoordinator:window:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initializes a <code>SAYConversationManager</code> with an <a href="#//api/name/trackCoordinator"><code>trackCoordinator</code></a> and <a href="#//api/name/window"><code>window</code></a>, used to integrate a SayKit application with the respective device interfaces.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (instancetype)initWithTrackCoordinator:(SAYAudioTrackCoordinator *)<em>trackCoordinator</em> window:(UIWindow *)<em>window</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>trackCoordinator</em></dt>
+			<dd><p>The <code>trackCoodinator</code> to manage audio output</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>window</em></dt>
+			<dd><p>The primary <a href="#//api/name/window"><code>window</code></a> responsible for the application&rsquo;s visual content</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The newly initialized manager</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Initializes a <code>SAYConversationManager</code> with an <a href="#//api/name/trackCoordinator"><code>trackCoordinator</code></a> and <a href="#//api/name/window"><code>window</code></a>, used to integrate a SayKit application with the respective device interfaces.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYConversationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/presentVoiceRequest:" title="presentVoiceRequest:"></a>
+	<h3 class="subsubtitle method-title">presentVoiceRequest:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Present the given voice request. This is a convenience method for <code>presentVoiceRequest:fromViewController that uses the root view controller attached to the receiver's</code>window`.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)presentVoiceRequest:(id&lt;SAYVoiceRequest&gt;)<em>voiceRequest</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>voiceRequest</em></dt>
+			<dd><p>A <a href="../Protocols/SAYVoiceRequest.html"><code>SAYVoiceRequest</code></a>-conforming class instance to be immediately presented to the screen and speaker.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Present the given voice request. This is a convenience method for <code>presentVoiceRequest:fromViewController that uses the root view controller attached to the receiver's</code>window`.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYConversationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/presentVoiceRequest:fromViewController:" title="presentVoiceRequest:fromViewController:"></a>
+	<h3 class="subsubtitle method-title">presentVoiceRequest:fromViewController:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Present the given voice request, using the given view controller to present the <code>UIViewController</code> associated with the active request.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)presentVoiceRequest:(id&lt;SAYVoiceRequest&gt;)<em>voiceRequest</em> fromViewController:(UIViewController *)<em>viewController</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>voiceRequest</em></dt>
+			<dd><p>A <a href="../Protocols/SAYVoiceRequest.html"><code>SAYVoiceRequest</code></a>-conforming class instance to be immediately presented to the screen and speaker.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Present the given voice request, using the given view controller to present the <code>UIViewController</code> associated with the active request.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYConversationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeAudioSource:" title="removeAudioSource:"></a>
+	<h3 class="subsubtitle method-title">removeAudioSource:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Tells the receiver to stop listening to the given source. In essence, this disconnects the source from it&rsquo;s output track.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)removeAudioSource:(id&lt;SAYAudioEventSource&gt;)<em>source</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>source</em></dt>
+			<dd><p>The source to silence</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Tells the receiver to stop listening to the given source. In essence, this disconnects the source from it&rsquo;s output track.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYConversationManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+                    
+                    
+
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2016 Conversant Labs. All rights reserved. (Last updated: 2016-01-31)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,814 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>SAYConversationTopic Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2.1 (build 1333)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">SayKit </a></h1>
+				<a id="developerHome" href="../index.html">Conversant Labs</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">SAYConversationTopic Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/subtopics">&nbsp;&nbsp;&nbsp;&nbsp;subtopics</option>
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/addCommandRecognizer:">&nbsp;&nbsp;&nbsp;&nbsp;- addCommandRecognizer:</option>
+	
+	<option value="//api/name/addSubtopic:">&nbsp;&nbsp;&nbsp;&nbsp;- addSubtopic:</option>
+	
+	<option value="//api/name/postEvents:">&nbsp;&nbsp;&nbsp;&nbsp;- postEvents:</option>
+	
+	<option value="//api/name/removeAllSubtopics">&nbsp;&nbsp;&nbsp;&nbsp;- removeAllSubtopics</option>
+	
+	<option value="//api/name/removeCommandRecognizer:">&nbsp;&nbsp;&nbsp;&nbsp;- removeCommandRecognizer:</option>
+	
+	<option value="//api/name/removeSubtopic:">&nbsp;&nbsp;&nbsp;&nbsp;- removeSubtopic:</option>
+	
+	<option value="//api/name/subtopic:didPostEventSequence:">&nbsp;&nbsp;&nbsp;&nbsp;- subtopic:didPostEventSequence:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Available Voice Commands">Available Voice Commands</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Audio Production">Audio Production</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Interface Hierarchy">Interface Hierarchy</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/subtopics">subtopics</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addCommandRecognizer:">addCommandRecognizer:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addSubtopic:">addSubtopic:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postEvents:">postEvents:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeAllSubtopics">removeAllSubtopics</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeCommandRecognizer:">removeCommandRecognizer:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeSubtopic:">removeSubtopic:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/subtopic:didPostEventSequence:">subtopic:didPostEventSequence:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="SAYConversationTopic Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">SAYConversationTopic Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">SAYAudioEventSource<br />SAYVerbalCommandRegistry</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">SAYConversationTopic.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<ul>
+<li><p>The <code>SAYConversationTopic</code> is the organizational building block for SayKit audio interfaces. It acts much like a <code>UIView</code>, abstracting and composing input and output UI details into a logical container.</p>
+
+<p> In most cases, this class is to be subclassed, adding configuration and methods tailored to context-specific interface concerns.</p>
+
+<p> A conversation topic has three primary responsibilities:</p>
+
+<ol>
+<li>Defining audio output</li>
+<li>Handling voice input</li>
+<li>Managing the interface hierarchy: composing <a href="#//api/name/subtopics">subtopics</a> capable of handling lower-level UI concerns</li>
+</ol>
+
+
+<p> ## Defining Audio Output</p>
+
+<p> Topics conform to the <a href="../Protocols/SAYAudioEventSource.html"><code>SAYAudioEventSource</code></a> protocol, so they can post audio sequences specific to and localized for their interface concerns.</p>
+
+<p> ## Handling Voice Input</p>
+
+<p> Topics also conform to the <a href="../Protocols/SAYVerbalCommandRegistry.html"><code>SAYVerbalCommandRegistry</code></a> protocol, so they are able to collect and provide a set of command recognizers relevant only to their concerns.</p>
+
+<p> ## Managing Interface Hierarchy</p>
+
+<p> Topics have <a href="#//api/name/subtopics">subtopics</a>, allowing them to delegate lower-level UI concerns to collaborators downstream.  When asked for available command recognizers, they will respond both with both their own and their subtopics' recognizers. In addition, they listen to their subtopics' audio events, arranging and passing them on as a single sequence as if the events originated from themselves. They can also insert their own audio events into the sequence if desired.</p>
+
+<p> This capability lets us take advantage of the power of composition to build complex conversational interfaces from simple building blocks.</p></li>
+</ul>
+
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Available Voice Commands" name="task_Available Voice Commands"></a>
+						<h3 class="subsubtitle task-title">Available Voice Commands</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addCommandRecognizer:">&ndash;&nbsp;addCommandRecognizer:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeCommandRecognizer:">&ndash;&nbsp;removeCommandRecognizer:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Audio Production" name="task_Audio Production"></a>
+						<h3 class="subsubtitle task-title">Audio Production</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/postEvents:">&ndash;&nbsp;postEvents:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Interface Hierarchy" name="task_Interface Hierarchy"></a>
+						<h3 class="subsubtitle task-title">Interface Hierarchy</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/subtopics">&nbsp;&nbsp;subtopics</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addSubtopic:">&ndash;&nbsp;addSubtopic:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeSubtopic:">&ndash;&nbsp;removeSubtopic:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeAllSubtopics">&ndash;&nbsp;removeAllSubtopics</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/subtopic:didPostEventSequence:">&ndash;&nbsp;subtopic:didPostEventSequence:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/subtopics" title="subtopics"></a>
+	<h3 class="subsubtitle method-title">subtopics</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Array of subtopics directly underneath the receiver.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSArray&lt;SAYConversationTopic*&gt; *subtopics</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Array of subtopics directly underneath the receiver.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYConversationTopic.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/addCommandRecognizer:" title="addCommandRecognizer:"></a>
+	<h3 class="subsubtitle method-title">addCommandRecognizer:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a command recognizer to the registry represented by the receiver.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)addCommandRecognizer:(SAYVerbalCommandRecognizer *)<em>commandRecognizer</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>commandRecognizer</em></dt>
+			<dd><p>Command recognizer to associate with the topic.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Add a command recognizer to the registry represented by the receiver.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYConversationTopic.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addSubtopic:" title="addSubtopic:"></a>
+	<h3 class="subsubtitle method-title">addSubtopic:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a topic to the end of the receiver&rsquo;s <a href="#//api/name/subtopics"><code>subtopics</code></a> array.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)addSubtopic:(SAYConversationTopic *)<em>topic</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>topic</em></dt>
+			<dd><p>The <code>SAYConversationTopic</code> instance to add to the hierarchy</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Add a topic to the end of the receiver&rsquo;s <a href="#//api/name/subtopics"><code>subtopics</code></a> array.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYConversationTopic.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/postEvents:" title="postEvents:"></a>
+	<h3 class="subsubtitle method-title">postEvents:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<ul>
+<li>Posts the given event sequence to all listeners. This is accomplished via methods defined by the <a href="../Protocols/SAYAudioEventSource.html"><code>SAYAudioEventSource</code></a> protocol, which the receiver conforms to.</li>
+</ul>
+
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)postEvents:(SAYAudioEventSequence *)<em>eventSequence</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<ul>
+<li><p>Posts the given event sequence to all listeners. This is accomplished via methods defined by the <code>SAYAudioEventSource</code> protocol, which the receiver conforms to.</p>
+
+<p> Note that although this is a public method, it is typically better to expose this functionality in subclasses via higher-level methods, relying on the subclass to call this method on the base implementation.</p>
+
+<p> For example, for collaborators:</p>
+
+<pre><code> [topic speakHelpMessage];
+</code></pre>
+
+<p> would typically be preferable to:</p>
+
+<pre><code> SAYSpeechEvent *helpEvent = [SAYSpeechEvent eventWithUtteranceString:@"... help message ..."];
+ SAYAudioEventSequence *sequence = [SAYAudioEventSequence sequenceWithEvents:@[event]];
+ [topic postEvents:sequence];
+</code></pre>
+
+<p>*</p></li>
+<li>@param eventSequence Event sequence to be posted</li>
+</ul>
+
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYConversationTopic.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeAllSubtopics" title="removeAllSubtopics"></a>
+	<h3 class="subsubtitle method-title">removeAllSubtopics</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Empty all <a href="#//api/name/subtopics"><code>subtopics</code></a> from the receiver.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)removeAllSubtopics</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Empty all <a href="#//api/name/subtopics"><code>subtopics</code></a> from the receiver.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYConversationTopic.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeCommandRecognizer:" title="removeCommandRecognizer:"></a>
+	<h3 class="subsubtitle method-title">removeCommandRecognizer:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Remove a command recognizer from the registry represented by the receiver.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)removeCommandRecognizer:(SAYVerbalCommandRecognizer *)<em>commandRecognizer</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>commandRecognizer</em></dt>
+			<dd><p>Command recognizer to disassociate from the topic.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Remove a command recognizer from the registry represented by the receiver.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYConversationTopic.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeSubtopic:" title="removeSubtopic:"></a>
+	<h3 class="subsubtitle method-title">removeSubtopic:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Remove a topic from the receiver&rsquo;s <a href="#//api/name/subtopics"><code>subtopics</code></a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)removeSubtopic:(SAYConversationTopic *)<em>topic</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>topic</em></dt>
+			<dd><p>The <code>SAYConversationTopic</code> instance to remove to the hierarchy</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Remove a topic from the receiver&rsquo;s <a href="#//api/name/subtopics"><code>subtopics</code></a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYConversationTopic.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/subtopic:didPostEventSequence:" title="subtopic:didPostEventSequence:"></a>
+	<h3 class="subsubtitle method-title">subtopic:didPostEventSequence:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<ul>
+<li>Notifies the receiver that one of its <a href="#//api/name/subtopics">subtopics</a> has posted audio events.
+*</li>
+<li>This method acts as an override point to allow topics to re-arrange or modify a sequence before the sequence is passed onto its listeners. If not overridden, its default behavior is to simply concatenate all incoming sequences together and send them on as one ongoing sequence.</li>
+</ul>
+
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)subtopic:(SAYConversationTopic *)<em>subtopic</em> didPostEventSequence:(SAYAudioEventSequence *)<em>sequence</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<ul>
+<li>Notifies the receiver that one of its <a href="#//api/name/subtopics">subtopics</a> has posted audio events.
+*</li>
+<li><p>This method acts as an override point to allow topics to re-arrange or modify a sequence before the sequence is passed onto its listeners. If not overridden, its default behavior is to simply concatenate all incoming sequences together and send them on as one ongoing sequence.</p>
+
+<p> If adding custom behavior, you are expected to post the outgoing events manually (typically by calling <code>postEvents:</code>). Otherwise, the events will not be passed up to the next listener.
+*</p></li>
+<li>@param subtopic Subtopic which has posted the audio events</li>
+<li>@param sequence Sequence of audio events</li>
+</ul>
+
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYConversationTopic.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+                    
+                    
+
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2016 Conversant Labs. All rights reserved. (Last updated: 2016-01-31)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

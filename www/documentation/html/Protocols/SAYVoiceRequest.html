@@ -26,6 +26,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -38,6 +40,8 @@
 	<option value="properties">Properties</option>
 	
 	<option value="//api/name/interpreter">&nbsp;&nbsp;&nbsp;&nbsp;interpreter</option>
+	
+	<option value="//api/name/prompt">&nbsp;&nbsp;&nbsp;&nbsp;prompt</option>
 	
 	<option value="//api/name/recognitionService">&nbsp;&nbsp;&nbsp;&nbsp;recognitionService</option>
 	
@@ -56,6 +60,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -70,6 +76,8 @@
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/interpreter">interpreter</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/prompt">prompt</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/recognitionService">recognitionService</a></span></li>
 	
@@ -113,6 +121,53 @@
                     
                     
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The <code>SAYVoiceRequest</code> protocol integrates the set of collaborators necessary to complete a single  SayKit voice request session. Any class conforming to this protocol can be a voice request by providing values for each property.</p>
+
+<h2>Request Stages</h2>
+
+<p>Each voice request process flows through the following four stages in order, each one represented by a collaborating agent:</p>
+
+<ol>
+<li>Prompting: The application displays and speaks a message before beginning speech recognition. This <a href="#//api/name/prompt"><code>prompt</code></a> can include custom visuals by attaching a supplemental view to it.</li>
+<li>Speech Recognition: The application activates the microphone and connects to a <code>speechRecognition</code> service to translate audio into a text representation of the speech.</li>
+<li>Interpretation: Given the speech in text form, in <a href="#//api/name/interpreter"><code>interpreter</code></a> can attempt to transform the text into a value more meaningful to the application (e.g. from the text &ldquo;Yes&rdquo; into a <code>true</code> Boolean value).</li>
+<li>Responding: Given the interpreted value, how should the application respond? Should it perform some kind of action, or ask the user another question? The <a href="#//api/name/responder"><code>responder</code></a> defines this behavior.</li>
+</ol>
+
+
+<p>For the record, the <a href="../Classes/SAYVoiceRequestController.html"><code>SAYVoiceRequestController</code></a> class manages the flow between these stages, but this is handled automatically.</p>
+
+<h2>Supported Data Types Between Stages</h2>
+
+<p>Some of collaborating agents' protocols deal in general types, but it is very important to be aware of the concrete data types that the actual agents will consume and produce. in particular:</p>
+
+<ul>
+<li>If successful in recognizing speech, the <code>speechRecognizer</code> will produce an instance conforming to the <a href="../Protocols/SAYSpeechRecognitionResult.html"><code>SAYSpeechRecognitionResult</code></a> protocol. This simple protocol only mandates a string property, but it can be expanded to include more metadata. The corresponding <a href="#//api/name/interpreter"><code>interpreter</code></a> consumes a type conforming to <a href="../Protocols/SAYSpeechRecognitionResult.html"><code>SAYSpeechRecognitionResult</code></a> as input when performing its interpretation routine, so it can take advantage of that metadata if paired with a compatible <code>speechRecognizer</code>.</li>
+<li>The <a href="#//api/name/interpreter"><code>interpreter</code></a> produces a <a href="../Classes/SAYInterpretation.html"><code>SAYInterpretation</code></a> instance, which wraps a value of type <code>id</code> along with other potentially relevant interpretation data. This underlying value represents the ultimate &ldquo;result&rdquo; of the voice request which the <a href="#//api/name/responder"><code>responder</code></a> must be able to handle. As a result, this <a href="#//api/name/responder"><code>responder</code></a> should be wired with awareness of the value type underlying the interpretation it is consuming. For example, the <a href="#//api/name/responder"><code>responder</code></a> of a <a href="../Classes/SAYConfirmationRequest.html"><code>SAYConfirmationRequest</code></a> should be expecting an interpretation whose value is of type <code>NSNumber</code> (either @0 or @1).</li>
+</ul>
+
+
+<p>Since Objective-C has no language-level generics support, it is the responsibility of the developer to ensure type compatability constraints are being respected across collaborators. A future Swift-specific library will bring this type-checking to the compilation-level with true generics support.</p>
+
+<p>See the documentation below for each collaborator for more details.</p>
+
+<p>A set of concrete standard SayKit voice requests classes exist, these classes include:</p>
+
+<ul>
+<li><a href="../Classes/SAYStringRequest.html"><code>SAYStringRequest</code></a></li>
+<li><a href="../Classes/SAYConfirmationRequest.html"><code>SAYConfirmationRequest</code></a></li>
+<li><a href="../Classes/SAYSelectRequest.html"><code>SAYSelectRequest</code></a></li>
+<li><a href="../Classes/SAYNumericalRequest.html"><code>SAYNumericalRequest</code></a></li>
+<li><a href="../Classes/SAYPatternMatchRequest.html"><code>SAYPatternMatchRequest</code></a></li>
+</ul>
+
+					</div>
+					
+					
+					
 					
 					
 					<div class="section section-tasks">
@@ -125,6 +180,12 @@
 
 						<ul class="task-list">
 							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/prompt">&nbsp;&nbsp;prompt</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	<span class="task-item-suffix">required method</span>
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/recognitionService">&nbsp;&nbsp;recognitionService</a></code>
 	</span>
@@ -162,7 +223,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Delegate responsible for interpeting speech input into a usable result</p>
+		<p>Agent responsible for translating the text from user speech into a form useful for the application.</p>
 	</div>		
 	
     
@@ -179,7 +240,50 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Delegate responsible for interpeting speech input into a usable result</p>
+		<p>Agent responsible for translating the text from user speech into a form useful for the application.</p>
+
+<p>This instance must be capable of consuming the particular <a href="../Protocols/SAYSpeechRecognitionResult.html"><code>SAYSpeechRecognitionResult</code></a> type that it&rsquo;s associated <code>speechRecognizer</code> will produce. This interpretation process produces an object of type <a href="../Classes/SAYInterpretation.html"><code>SAYInterpretation</code></a>, which wraps an value of unspecified type. This interpretation will be consumed by the paired <a href="#//api/name/responder"><code>responder</code></a> type.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYVoiceRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/prompt" title="prompt"></a>
+	<h3 class="subsubtitle method-title">prompt</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The prompt to present at the beginning of the request. Conceptually, this provides the application&rsquo;s &ldquo;turn&rdquo; in a dialogue.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly, nullable) SAYVoicePrompt *prompt</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The prompt to present at the beginning of the request. Conceptually, this provides the application&rsquo;s &ldquo;turn&rdquo; in a dialogue.</p>
 	</div>
 	
 	
@@ -203,7 +307,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Underlying service responsible for recognizing speech</p>
+		<p>Service responsible for managing speech recognition.</p>
 	</div>		
 	
     
@@ -220,7 +324,9 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Underlying service responsible for recognizing speech</p>
+		<p>Service responsible for managing speech recognition.</p>
+
+<p>Upon successful speech recognition, the service will produce an object conforming to the <a href="../Protocols/SAYSpeechRecognitionResult.html"><code>SAYSpeechRecognitionResult</code></a> protocol, which only requires a string property representing the recognized speech. This result will be consumed by the paired <a href="#//api/name/interpreter"><code>interpreter</code></a>.</p>
 	</div>
 	
 	
@@ -244,7 +350,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Delegate responsible for reacting to the interpreted result (and potentially generating the next turn).</p>
+		<p>Agent responsible for responding to the interpreted user speech. This response can take many forms, including feedback messaging, application logic, and/or a followup request (see the <code>SAYVoiceRequestResponder</code> protocol for details).</p>
 	</div>		
 	
     
@@ -261,7 +367,9 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Delegate responsible for reacting to the interpreted result (and potentially generating the next turn).</p>
+		<p>Agent responsible for responding to the interpreted user speech. This response can take many forms, including feedback messaging, application logic, and/or a followup request (see the <code>SAYVoiceRequestResponder</code> protocol for details).</p>
+
+<p>This instance will consume <a href="../Classes/SAYInterpretation.html"><code>SAYInterpretation</code></a> objects. It should expect these interpretations to wrap a value of a particular type, dictated by the associated <a href="../Protocols/SAYVoiceRequest.html#//api/name/interpreter"><code>interpreter</code></a> that built it.</p>
 	</div>
 	
 	
@@ -300,7 +408,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2016 Conversant Labs. All rights reserved. (Last updated: 2016-01-25)</span><br />
+						<p><span class="copyright">&copy; 2016 Conversant Labs. All rights reserved. (Last updated: 2016-01-31)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</span></p>
 						
