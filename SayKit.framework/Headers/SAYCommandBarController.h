@@ -12,7 +12,6 @@
 
 @class SAYCommandBar;
 @class SAYConversationManager;
-@class SAYVoiceRequestPresenter;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,11 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) SAYCommandBar *commandBar;
 
 /**
- *  The instance responsible for presenting and activating the underlying `SAYVerbalCommandRequest`.
- 
-    Defaults to SayKit's default `SAYVoiceRequestPresenter`.
+ *  The conversation manager to handle the execution of user requests
  */
-
 @property (nonatomic, strong) SAYConversationManager *conversationManager;
 
 /**
