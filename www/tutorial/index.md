@@ -50,7 +50,7 @@ You can access all of this code in our Tutorial Demos, [posted withour Developer
 The tutorial workspace, _SayKitTutorials.xcworkspace_, contains two projects: 
 
 - _SayKit Requests and Recognizers_: This project demonstrates some of SayKit's basic tools within a trivial app skeleton, allowing us to concentrate on the tools themselves.
-- _SayKit Conversation Topics_: This one provides the bones of more substanial SayKit app, showing off a simple conversation topic hierarchy.
+- _SayKit Conversation Topics_: This one provides the bones of more substancial SayKit app, showing off a simple conversation topic hierarchy.
 
 We begin with _SayKit Requests and Recognizers_. Open it up and play around as you follow along!
 
