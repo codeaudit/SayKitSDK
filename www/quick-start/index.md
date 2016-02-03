@@ -15,7 +15,7 @@ Download the SayKit SDK [here](https://github.com/ConversantLabs/SayKitSDK/archi
 - Navigate to where you downloaded the framework, and select `SayKitSDK.framework`. The framework should now appear on the left, in Xcode's Project Navigator pane.
 - Select the project in the Navigator pane, select your target, and go to the Build Phases tab.
 - Under "Link Binary With Libraries", make sure `SayKitSDK.framework` is in the list.
-- Under "Embed Frameworks", make sure `SayKitSDK.framework` is in the list.
+- In the General tab, under "Embed Frameworks", make sure `SayKitSDK.framework` is in the list.
 - If using Swift, create a bridging header that includes `<SayKit/SayKit.h>`. See [Apple's guide on Importing Objective-C into Swift](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html#//apple_ref/doc/uid/TP40014216-CH10-ID156) for more details.
 
 *// TODO: add Xcode screenshots/video*
@@ -34,22 +34,22 @@ Each SayKit app has a default manager ready and waiting, accessibile as `[SAYCon
 The particular configuration you'll want will depend on your application's needs, but as a simple example, let's set up the manager to use a simple flat command recognizer catalog (`SAYCommandRecognizerCatalog`) and sound board (`SAYSoundBoard`) on the main audio track.
 
 Objective-C:
-````objc
+```objc
 SAYCommandRecognizerCatalog *catalog = [[SAYCommandRecognizerCatalog alloc] init];
 [[SAYConversationManager systemManager] addAudioSource:soundBoard forTrack:SAYAudioTrackMainIdentifier];
 
 SAYSoundBoard *soundBoard = [[SAYSoundBoard alloc] init];
 [[SAYConversationManager systemManager] setCommandRegistry:catalog];
-````
+```
 
 Swift:
-````swift
+```swift
 let catalog = SAYCommandRecognizerCatalog()
 SAYConversationManager.systemManager().commandRegistry = catalog
 
 let soundBoard = SAYSoundBoard()
 SAYConversationManager.systemManager().addAudioSource(soundBoard, forTrack:SAYAudioTrackMainIdentifier)
-````
+```
 
 Typically, this configuration would go in your AppDelegate's `application:didFinishLaunchingWithOptions:` method.
 
