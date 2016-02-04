@@ -15,7 +15,7 @@ What are you looking to do?
 
 - **Jump in**: [Installation guide](#installation-guide)
 - **Familiarize yourself**: [SayKit tour](https://github.com/ConversantLabs/SayKitSDK/blob/master/Tour/00-intro.md)
-- **Learn by doing**: [Step-by-step tutorial](#)
+- **Learn by doing**: [Step-by-step tutorial](http://developer.conversantlabs.com/tutorial/)
 - **Read the headers**: [API documentation](https://github.com/ConversantLabs/SayKitSDK/tree/master/API%20Reference/html)
 - **Go deep**: [In-depth Developer guides](#) *(coming soon)*
 - **Glimpse the future**: [Feature roadmap](https://github.com/ConversantLabs/SayKitSDK/blob/master/roadmap.md)
