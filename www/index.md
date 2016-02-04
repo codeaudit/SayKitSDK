@@ -21,7 +21,7 @@ What are you looking to do?
 
 - **Jump in**: [Quick Start]({{ "/quick-start/" | prepend: site.baseurl }})
 - **Familiarize yourself**: [SayKit tour]({{ "/tour/" | prepend: site.baseurl }})
-- **Learn by doing**: [Step-by-step tutorial](#)
+- **Learn by doing**: [Step-by-step tutorial]({{ "/tutorial/" | prepend: site.baseurl }})
 - **Read the headers**: [API documentation]({{ "/documentation/html/" | prepend: site.baseurl }})
 - **Go deep**: [In-depth Developer guides](#) *(coming soon)*
 - **Glimpse the future**: [Feature roadmap]({{ "/roadmap/" | prepend: site.baseurl }})
