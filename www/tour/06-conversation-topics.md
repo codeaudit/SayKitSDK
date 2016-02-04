@@ -133,7 +133,7 @@ But do we really need to bloat our perfectly-concise `ProductListTopic` class wi
 
 *[TODO: Add diagram of this simple hierarchy]*
 
-````swift
+```swift
 // Swift
 class ProductSearchTopic: SAYConversationTopic
     init(eventHandler: ProductTopicEventHandler) {

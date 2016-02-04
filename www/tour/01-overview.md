@@ -14,15 +14,15 @@ SayKit enables developers to create applications where the user interaction is a
 
 The `SAYConversationManager` is the keystone of the SayKit framework. Each SayKit app has a default manager ready and waiting, accessible as a class-level property:
 
-````objc
+```objc
 // Objective-C
 [SAYConversationManager systemManager]
-````
+```
 
-````swift
+```swift
 // Swift
 SAYConversationManager.systemManager()
-````
+```
 
 Much like `UIWindow` for UIKit, the manager acts as the logical root of the user interface, administering and coordinating both the input (listening) and output (speaking) roles of the conversational UI. Also, much like `UIWindow`, you can ignore its presence most of the time after some minor configuration at app launch.
 

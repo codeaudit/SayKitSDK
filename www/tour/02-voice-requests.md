@@ -14,7 +14,7 @@ _TODO: add figure with simple scenario highlighting a voice request_
 
 Voice Requests can be initiated by sending one to the conversation manager. For example, if the application needs to ask the user for permission to do something, it can create a `SAYConfirmationRequest`, like so:
 
-````swift
+```swift
 // Swift
 let request = SAYConfirmationRequest(promptText: "Are you sure?") { result in
 	if let doIt = result as? Bool {
@@ -23,11 +23,11 @@ let request = SAYConfirmationRequest(promptText: "Are you sure?") { result in
 	}
 }
 SAYConversationManager.systemManager().presentVoiceRequest(request)
-````
+```
 
 If the app needs the user to choose a color for the shirt she just added to her cart, it can use a `SAYSelectRequest`:
 
-````swift
+```swift
 // Swift
 let request = SAYSelectRequest(
     itemLabels: ["Blue", "Green", "Purple"],
@@ -35,7 +35,7 @@ let request = SAYSelectRequest(
         // add it to the cart with the given color choice
     }
 SAYConversationManager.systemManager().presentVoiceRequest(request)
-````
+```
 
 Many voice requests have supplemental visual controls that are automatically presented to the screen when a question is asked. In the case of the select request above, a set of tappable buttons will appear on screen, one per option.
 

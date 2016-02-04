@@ -14,7 +14,7 @@ Recognizer instances can be modified by adding **Text Matchers** to them. In ess
 
 As a quick example let's say we're building a Pokémon-themed email app (as you do), and we want to add a recipient to a message by recognizing the following command: "I choose you, John Smith!". SayKit already provides the `SAYSelectCommandRecognizer`, which recognizes when the user wants to make a selection, but it wasn't necessarily built with Pokémon trainers in mind. So what can we do?
 
-````swift
+```swift
 // Swift, using a closure-style callback
 
 // create the recognizer with an action block
@@ -25,9 +25,9 @@ let selectRecognizer = SAYSelectCommandRecognizer() { command in
 // add our special pattern, note the "name" parameter
 let pattern = "i choose you @name"
 selectRecognizer.addTextMatcher(SAYPatternCommandMatcher(pattern: pattern))
-````
+```
 
-````objc
+```objc
 // Objective-C, using a target/action-style callback
 
 - (void)addRecipent:(SAYCommand *command) {
@@ -45,7 +45,7 @@ selectRecognizer.addTextMatcher(SAYPatternCommandMatcher(pattern: pattern))
 	// add our special pattern, note the "name" parameter
 	NSString *pattern = @"i choose you @name";
 	selectRecognizer.addTextMatcher([SAYPatternCommandMatcher matcherWithPattern:pattern]);
-````
+```
 
 Done! Assuming you have a bunch of Pokémon in your address book, you've now got the very best email client.
 
@@ -81,7 +81,7 @@ Just like [any other voice request]({{ "/tour/voice-requests/#voice-request-flow
 
 We'll illustrate with an example of a "Help" command. If we're able to help, the app needs to know what the user needs help with. Let's find out by asking directly. Followup responses to the rescue!
 
-````swift
+```swift
 // Swift, using a closure-style callback
 
 // Of course, we're here to help!
@@ -99,9 +99,9 @@ commandRegistry.addCommandRecognizer(SAYHelpCommandRecognizer { command -> SAYVo
         return SAYVoiceRequestResponse.terminalResponseWithAction({/* ... */})
     }
 })
-````
+```
 
-````objc
+```objc
 // Objective-C, using a target/action-style callback
 
 // Note the signature: action selectors can have a (SAYVoiceCommandResponse *) return type
@@ -122,7 +122,7 @@ commandRegistry.addCommandRecognizer(SAYHelpCommandRecognizer { command -> SAYVo
 	helpRecognizer = [[SAYHelpCommandRecognizer alloc] initWithResponseTarget:self 
                                                                            action:@selector(provideHelp:)];
 ...
-````
+```
 
 Sure, it's a bit more involved, but your app just got a lot more responsive with those few new lines of code.
 

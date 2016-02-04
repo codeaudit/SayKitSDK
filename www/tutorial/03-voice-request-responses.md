@@ -12,7 +12,7 @@ But what if we want to give the user a chance to change their answer? What if we
 
 #### Responder and Responses
 
-SayKit helps construct a back-and-forth dialogue by allowing us to define our own implementation of `SAYVoiceRequestResponder`. The responder is responsible for deciding what to do with the interpreted result of the [voice request session]({{ "/tour/02-voice-requests#voice-request-flow" | prepend: site.baseurl }}).
+SayKit helps construct a back-and-forth dialogue by allowing us to define our own implementation of `SAYVoiceRequestResponder`. The responder is responsible for deciding what to do with the interpreted result of the [voice request session]({{ "/tour/voice-requests#voice-request-flow" | prepend: site.baseurl }}).
 
 All of the standard requests we've used so far have actually shared an implementation of `SAYVoiceRequestResponder` called `SAYStandardRequestResponder`, which lives in the standard request base class, `SAYStandardVoiceRequest`. When we initialize a standard request, we can customize the standard responder via `SAYStandardVoiceRequest`'s `initWithPrompt:responder:` initializer.
 

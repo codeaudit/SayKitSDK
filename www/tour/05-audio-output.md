@@ -27,7 +27,7 @@ One example source is a class called the `SAYSoundBoard`. Sound boards are simpl
 
 Let's use a sound board to sum it all up with an example:
 
-````swift
+```swift
 // Swift
 let soundBoard = SAYSoundBoard()	
 
@@ -40,7 +40,7 @@ soundBoard.speakText("Hello, world!")
 // It speaks! 
 // (Well, technically it tells the manager what it wants to say, and the manager queues it up.) 
 // It *indirectly* speaks!
-````
+```
 
 While this might seem like a bit of overheard just to play a sound, when an application finds itself with a set of priority-driven, hierarchically-structured audio sources (and as it grows, *it will*), boiling eveything down into events, tracks, and sources pays huge dividends.
 
