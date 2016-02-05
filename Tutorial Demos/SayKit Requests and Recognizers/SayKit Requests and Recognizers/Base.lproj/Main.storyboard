@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SayKit_Requests_and_Recognizers" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result of app logic goes here" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRl-mp-RkN">
+                                <rect key="frame" x="189" y="36" width="222" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrX-9k-oWp">
+                                <rect key="frame" x="226" y="189" width="149" height="30"/>
+                                <state key="normal" title="Confirmation Request"/>
+                                <connections>
+                                    <action selector="confirmationRequestButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZDB-Zs-eHH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wue-O4-pYU">
+                                <rect key="frame" x="249" y="235" width="102" height="30"/>
+                                <state key="normal" title="String Request"/>
+                                <connections>
+                                    <action selector="stringRequestButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ecc-Uo-P7D"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5Z-kU-1eC">
+                                <rect key="frame" x="248" y="281" width="104" height="30"/>
+                                <state key="normal" title="Select Request"/>
+                                <connections>
+                                    <action selector="selectRequestButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Pb-Oh-Ekb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CiC-da-oZm">
+                                <rect key="frame" x="217" y="327" width="166" height="30"/>
+                                <state key="normal" title="Select Request (Aliases)"/>
+                                <connections>
+                                    <action selector="selectRequestAliasesButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pAz-4l-ZhG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W88-Xx-wKZ">
+                                <rect key="frame" x="200" y="373" width="200" height="30"/>
+                                <state key="normal" title="Select Request (Turn-Taking)"/>
+                                <connections>
+                                    <action selector="selectRequestWithTurnTaking:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Rr-vj-BKe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahc-lz-OFw">
+                                <rect key="frame" x="223" y="419" width="154" height="30"/>
+                                <state key="normal" title="Speak via Soundboard"/>
+                                <connections>
+                                    <action selector="soundBoardButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Fi-h2-dQa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Wue-O4-pYU" firstAttribute="centerX" secondItem="FrX-9k-oWp" secondAttribute="centerX" id="8Z0-67-Fnt"/>
+                            <constraint firstItem="CiC-da-oZm" firstAttribute="top" secondItem="j5Z-kU-1eC" secondAttribute="bottom" constant="16" id="9Vm-9A-RWH"/>
+                            <constraint firstItem="CRl-mp-RkN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" priority="750" id="AkF-ro-4oh"/>
+                            <constraint firstItem="CiC-da-oZm" firstAttribute="centerX" secondItem="j5Z-kU-1eC" secondAttribute="centerX" id="E4C-Oe-j17"/>
+                            <constraint firstItem="Wue-O4-pYU" firstAttribute="top" secondItem="FrX-9k-oWp" secondAttribute="bottom" constant="16" id="KQS-6W-W3D"/>
+                            <constraint firstItem="ahc-lz-OFw" firstAttribute="centerX" secondItem="W88-Xx-wKZ" secondAttribute="centerX" id="KtF-Ne-BPZ"/>
+                            <constraint firstItem="j5Z-kU-1eC" firstAttribute="top" secondItem="Wue-O4-pYU" secondAttribute="bottom" constant="16" id="OAD-B2-gFX"/>
+                            <constraint firstItem="j5Z-kU-1eC" firstAttribute="centerX" secondItem="Wue-O4-pYU" secondAttribute="centerX" id="XeJ-Iy-air"/>
+                            <constraint firstItem="FrX-9k-oWp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YOv-kr-GDR"/>
+                            <constraint firstItem="FrX-9k-oWp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-96" id="hS7-wP-hPw"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="CRl-mp-RkN" secondAttribute="trailing" priority="750" id="nPn-Zk-KsM"/>
+                            <constraint firstItem="CRl-mp-RkN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="rGP-kM-Nca"/>
+                            <constraint firstItem="ahc-lz-OFw" firstAttribute="top" secondItem="W88-Xx-wKZ" secondAttribute="bottom" constant="16" id="u9c-bT-6ah"/>
+                            <constraint firstItem="CRl-mp-RkN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uH2-9G-Xuv"/>
+                            <constraint firstItem="W88-Xx-wKZ" firstAttribute="centerX" secondItem="CiC-da-oZm" secondAttribute="centerX" id="zZ4-AX-h8t"/>
+                            <constraint firstItem="W88-Xx-wKZ" firstAttribute="top" secondItem="CiC-da-oZm" secondAttribute="bottom" constant="16" id="zq7-Rc-ep8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cl9-2E-sJI"/>
+                    <connections>
+                        <outlet property="appResultLabel" destination="CRl-mp-RkN" id="KvO-Yp-rRZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="333" y="416"/>
+        </scene>
+    </scenes>
+</document>
