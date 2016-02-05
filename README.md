@@ -1,6 +1,8 @@
 # SayKit SDK (Developer Preview)
 The conversational UI framework for voice enabled applications on iOS.
 
+**Current version: 0.8.1**
+
 We're excited to offer a preview of the SayKit framework as we prepare it for production release. Though we're still rolling out a couple features, streamlining some APIs, and sprucing up our docs, it's fully ready for use today.
 
 Since we're actively iterating as we march to version 1.0, the SDK will be frequently updated with new features. [Sign up here](http://www.conversantlabs.com/download) to be kept in the loop.
