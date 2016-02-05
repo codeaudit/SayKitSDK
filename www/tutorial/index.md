@@ -18,7 +18,7 @@ title: SayKit Tutorial
   * [String Request]({{ "/tutorial/02-voice-requests#string-request" | prepend: site.baseurl }})
   * [Select Request]({{ "/tutorial/02-voice-requests#select-request" | prepend: site.baseurl }})
   * [Voice Request Responses and Turn-Taking]({{ "/tutorial/03-voice-request-responses" | prepend: site.baseurl }})
-    - [Responder and Responses]({{ "/tutorial/03-voice-request-responses#responder-and-responses" | prepend: site.baseurl }})
+    - [Standard Request Responder]({{ "/tutorial/03-voice-request-responses#standard-request-responder" | prepend: site.baseurl }})
     - [Select Request with Turn-Taking]({{ "/tutorial/03-voice-request-responses#select-request-with-turn-taking" | prepend: site.baseurl }})
     - [Success Responder]({{ "/tutorial/03-voice-request-responses#success-responder" | prepend: site.baseurl }})
     - [Invalid Responder]({{ "/tutorial/03-voice-request-responses#invalid-responder" | prepend: site.baseurl }})

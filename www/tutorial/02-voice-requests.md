@@ -62,43 +62,6 @@ A string request does what it sounds like: it asks the user for a string! The `a
 }
 ```
 
-#### String Request (with Followup Request)
-
-Sometimes we may need to prompt the user for clarification. A common scenario is when the user leaves out some information that we need (User: _"I choose you, Pikachu!"_, App: _"Did you mean Toby Pikachu or Susan Pikachu?"_). In such cases, we can respond to the user with a followup voice request.
-
-Let's add a followup to the string request we just made:
-
-```swift
-@IBAction func stringRequestButtonTapped(sender: AnyObject)
-{
-    let request = SAYStringRequest(promptText:"What recipe would you like to search for?") { result in
-        if let recipeString = result {
-            let followupRequest = self.followupRequestForRecipe(recipeString)
-            SAYConversationManager.systemManager().presentVoiceRequest(followupRequest)
-        }
-        else {
-            /* ... */
-        }
-    }
-    
-    SAYConversationManager.systemManager().presentVoiceRequest(request)
-}
-
-private func followupRequestForRecipe(recipe: String) -> SAYConfirmationRequest
-{
-    let followupRequest = SAYConfirmationRequest(promptText: "Are you sure you want to search for \"\(recipe)\"?", action: { result in
-        if let doIt = result as? Bool {
-            if doIt { self.presentResultText("Received command:\n[Search for \(recipe)]") }
-            else    { self.presentResultText("Received command:\n[Don't search for \(recipe)]") }
-        }
-    })
-    
-    return followupRequest
-}
-```
-
-Be sure to check out the [next section]({{ "/tutorial/03-voice-request-responses" | prepend: site.baseurl }}) for a more in-depth discussion on turn-taking dialogues.
-
 ### Select Request
 How do we present the user with a list of options to choose from?
 
@@ -149,6 +112,6 @@ We organize our labels and aliases using a struct-like class, `SAYSelectOption`,
 
 ____
 
-We've just covered several relatively simple examples of one-off voice requests. But what if we want to create a deeper dialogue? Check out the next section, where we expand on the idea of [followup requests](#string-request-with-followup-request) using `SAYVoiceRequestResponse`s.
+We've just covered several relatively simple examples of one-off voice requests. But what if we want to create a deeper dialogue?
 
 [Next - Voice Request Responses and Turn-Taking >>]({{"/tutorial/03-voice-request-responses" | prepend: site.baseurl }})

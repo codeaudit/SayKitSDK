@@ -33,7 +33,6 @@ Let’s get started!
             /* ...setup Conversation Manager (see below)... */
 
             // Grab the initial view controller set up by the storyboard
-            window = UIWindow(frame: UIScreen.mainScreen().bounds)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let viewController = storyboard.instantiateInitialViewController()
             
@@ -41,6 +40,8 @@ Let’s get started!
             let commandBarController = SAYCommandBarController()
             commandBarController.contentViewController = viewController
             
+            // Set the window's root view controller
+            window = UIWindow(frame: UIScreen.mainScreen().bounds)            
             window?.rootViewController = commandBarController
             window?.makeKeyAndVisible()
 
