@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SAYConversationManager.systemManager().addAudioSource(soundBoard, forTrack:SAYAudioTrackMainIdentifier)
         
         // Grab the initial view controller set up by the storyboard
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateInitialViewController() as! ViewController
         viewController.soundBoard = soundBoard
@@ -32,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let commandBarController = SAYCommandBarController()
         commandBarController.contentViewController = viewController
         
+        // Set the window's root view controller
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.rootViewController = commandBarController
         window?.makeKeyAndVisible()
         

@@ -114,8 +114,7 @@ class ViewController: UIViewController {
     {
         let request = SAYStringRequest(promptText:"What recipe would you like to search for?") { result in
             if let recipeString = result {
-                let followupRequest = self.followupRequestForRecipe(recipeString)
-                SAYConversationManager.systemManager().presentVoiceRequest(followupRequest)
+                self.presentResultText("Received command:\n[Search for \"\(recipeString)\"]")
             }
             else {
                 /* ... */
@@ -155,7 +154,8 @@ class ViewController: UIViewController {
         
         let selectPrompt = SAYVoicePrompt(message: "What color would you like?")
         
-        let selectResponder = SAYStandardRequestResponder(successResponder: { (interpretationValue, voiceRequest) -> SAYVoiceRequestResponse in
+        let selectResponder = SAYStandardRequestResponder()
+        selectResponder.successResponder = { (interpretationValue, voiceRequest) -> SAYVoiceRequestResponse in
             if let selectedOption = interpretationValue?.selectedOption {
                 let selectedColor = selectedOption.label
                 
@@ -168,11 +168,9 @@ class ViewController: UIViewController {
                 // Something went wrong. Repeat the request.
                 return SAYVoiceRequestResponse(followupRequest: voiceRequest)
             }
-        }, invalidResponder: { (validationErrors, voiceRequest) -> SAYVoiceRequestResponse in
-            return self.responseForRequest(voiceRequest, withValidationErrors: validationErrors)
-        }) {
-            // Failure action:
-            self.presentResultText("Aborted your color selection request.")
+        }
+        selectResponder.failureAction = { voiceRequest in
+            self.presentResultText("Aborted your color selection request")
         }
         
         let selectRequest = SAYSelectRequest(options: options, prompt: selectPrompt, responder: selectResponder)
@@ -215,23 +213,12 @@ class ViewController: UIViewController {
         }
     }
     
-    private func followupRequestForRecipe(recipe: String) -> SAYConfirmationRequest
-    {
-        let followupRequest = SAYConfirmationRequest(promptText: "Are you sure you want to search for \"\(recipe)\"?", action: { result in
-            if let doIt = result as? Bool {
-                if doIt { self.presentResultText("Received command:\n[Search for \(recipe)]") }
-                else    { self.presentResultText("Received command:\n[Don't search for \(recipe)]") }
-            }
-        })
-        
-        return followupRequest
-    }
-    
     private func followupRequest(selectionRequest: SAYVoiceRequest, toConfirmSelection selectedColor: String) -> SAYConfirmationRequest
     {
         let prompt = SAYVoicePrompt(message: "Are you sure?")
         
-        let confirmationResponder = SAYStandardRequestResponder(successResponder: { (interpretationValue, voiceRequest) -> SAYVoiceRequestResponse in
+        let confirmationResponder = SAYStandardRequestResponder()
+        confirmationResponder.successResponder = { (interpretationValue, voiceRequest) -> SAYVoiceRequestResponse in
             if let doIt = interpretationValue as? Bool {
                 if doIt {
                     // Success! Done.
@@ -247,26 +234,12 @@ class ViewController: UIViewController {
                 // Something went wrong. Repeat the request.
                 return SAYVoiceRequestResponse(followupRequest: voiceRequest)
             }
-        }, invalidResponder: { (validationErrors, voiceRequest) -> SAYVoiceRequestResponse in
-            return self.responseForRequest(voiceRequest, withValidationErrors: validationErrors)
-        }) {
-            // Failure action:
+        }
+        confirmationResponder.failureAction = { voiceRequest in
             self.presentResultText("Aborted confirmation for the color: \"\(selectedColor)\".")
         }
         
         return SAYConfirmationRequest(prompt: prompt, responder: confirmationResponder)
-    }
-    
-    private func responseForRequest(voiceRequest: SAYVoiceRequest, withValidationErrors validationErrors: [SAYValidationError]) -> SAYVoiceRequestResponse
-    {
-        if let validationErrorReason = validationErrors.first?.reason {
-            let feedbackPrompt = SAYVoicePrompt(message: validationErrorReason)
-            return SAYVoiceRequestResponse(feedbackPrompt: feedbackPrompt, followupRequest: voiceRequest, action: nil)
-        }
-        else {
-            // Something went wrong. Repeat the request.
-            return SAYVoiceRequestResponse(followupRequest: voiceRequest)
-        }
     }
     
     private func presentResultText(text: String)
