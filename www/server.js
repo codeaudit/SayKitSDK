@@ -7,7 +7,7 @@ var fs = require('fs')
 
 
 
-app.use(express.static('public'));
+app.use(express.static('_site'));
 
 
 app.get('/', function(req, res){
