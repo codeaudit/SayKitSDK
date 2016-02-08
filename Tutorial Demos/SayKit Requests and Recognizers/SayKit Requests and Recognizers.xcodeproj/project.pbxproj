@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8327C88E1C5AB5BD006CAB0A /* SayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8327C88C1C5AB5B9006CAB0A /* SayKit.framework */; };
-		8327C88F1C5AB5BD006CAB0A /* SayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8327C88C1C5AB5B9006CAB0A /* SayKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		831E36761C691B3300DA63AB /* SayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831E36721C691B1A00DA63AB /* SayKit.framework */; };
+		831E36771C691B3300DA63AB /* SayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 831E36721C691B1A00DA63AB /* SayKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		83ED79071C57DB7E00DFB815 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ED79061C57DB7E00DFB815 /* AppDelegate.swift */; };
 		83ED79091C57DB7E00DFB815 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ED79081C57DB7E00DFB815 /* ViewController.swift */; };
 		83ED790E1C57DB7E00DFB815 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83ED790D1C57DB7E00DFB815 /* Assets.xcassets */; };
@@ -23,7 +23,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8327C88F1C5AB5BD006CAB0A /* SayKit.framework in Embed Frameworks */,
+				831E36771C691B3300DA63AB /* SayKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -31,7 +31,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8327C88C1C5AB5B9006CAB0A /* SayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SayKit.framework; sourceTree = "<group>"; };
+		831E36721C691B1A00DA63AB /* SayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SayKit.framework; sourceTree = "<group>"; };
 		83ED79031C57DB7E00DFB815 /* SayKit Requests and Recognizers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SayKit Requests and Recognizers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83ED79061C57DB7E00DFB815 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83ED79081C57DB7E00DFB815 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8327C88E1C5AB5BD006CAB0A /* SayKit.framework in Frameworks */,
+				831E36761C691B3300DA63AB /* SayKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +57,7 @@
 		83ED78FA1C57DB7E00DFB815 = {
 			isa = PBXGroup;
 			children = (
-				8327C88C1C5AB5B9006CAB0A /* SayKit.framework */,
+				831E36721C691B1A00DA63AB /* SayKit.framework */,
 				83ED79051C57DB7E00DFB815 /* SayKit Requests and Recognizers */,
 				83ED79041C57DB7E00DFB815 /* Products */,
 			);
@@ -278,6 +278,10 @@
 					Requests,
 					and,
 					Recognizers,
+					"$(PROJECT_DIR)/SayKit",
+					Requests,
+					and,
+					Recognizers,
 				);
 				INFOPLIST_FILE = "SayKit Requests and Recognizers/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -294,6 +298,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/SayKit",
+					Requests,
+					and,
+					Recognizers,
 					"$(PROJECT_DIR)/SayKit",
 					Requests,
 					and,

@@ -12,12 +12,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ *  The `SAYIntepretation` class is value type, containing either the result of a voice request interpretation, or a set of validation errors that prevented such an interpretation.
+ */
 @interface SAYInterpretation : NSObject
 
 /**
  *  Underlying interpretted value.
- 
-    Convention is to set this to nil when a validation error has occured, but nil can also be used to represent a "valid" absence of value as well.
+ *
+ *  Convention is to set this to nil when a validation error has occured, but nil can also be used to represent a "valid" absence of value as well.
  */
 @property (nonatomic, strong, readonly, nullable) id value;
 

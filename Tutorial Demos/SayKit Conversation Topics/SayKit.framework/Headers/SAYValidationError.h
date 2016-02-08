@@ -10,6 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ *  A `SAYValidationError` is a simple value type used to represent interpretation issues, typically due to user speech not an intent the interpreter can discern.
+ */
 @interface SAYValidationError : NSObject
 
 @property (nonatomic, copy, readonly) NSString *type;

@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  The `SAYVoiceRequestPresenter` is responsible for integrating all system components necessary to presenting and activate a `SAYVoiceRequest`.
+ 
+    @warning Note that this is a fairly "internal" SayKit class, not typically needed for developer manipulation. The API of this class is expected to change significantly before version 1.0 is released.
  */
 @interface SAYVoiceRequestPresenter : NSObject
 
@@ -25,11 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
  *  Recognition manager to be provided to all presented requests. To ensure the manager is idle when presenting, no other parts of the application should interact with it.
  */
 @property (nonatomic, strong) SAYSpeechRecognitionManager *recognitionManager;
-
-/**
- *  Listener to receive and present audio events (e.g. prompt speech)
- */
-@property (nonatomic, strong) id<SAYAudioEventListener> audioEventPresenter;
 
 /**
  *  Initiates a `SAYVoiceRequestPresenter` with the given request manager and output audio track.
