@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		elthqbhk+T4Cao6hRomNDoEBxRg=
+		JRngrjiAcPtNQ8Hodtyp8++ypn4=
 		</data>
 		<key>Headers/SAYAPIKeyManager.h</key>
 		<data>
@@ -142,7 +142,7 @@
 		</data>
 		<key>Headers/SAYInterpretation.h</key>
 		<data>
-		nxDkFG1J2HzZVq1QameGBUATdqU=
+		a5RtmgilY4tave3cfW6qGELENFo=
 		</data>
 		<key>Headers/SAYManagedSynthesizer.h</key>
 		<data>
@@ -294,7 +294,7 @@
 		</data>
 		<key>Headers/SAYValidationError.h</key>
 		<data>
-		rmWdHqgxtF2t3DpP92rx2aL7eKQ=
+		eaxVaJXAFOkAd3oMs4ivPNbC3EQ=
 		</data>
 		<key>Headers/SAYVerbalCommandRecognizer.h</key>
 		<data>
@@ -310,7 +310,7 @@
 		</data>
 		<key>Headers/SAYVoicePrompt.h</key>
 		<data>
-		siwjvcBTxm2TFWQfSkFTmJLy/R4=
+		wwFGN1SoCyotE79Q+3B95NKgIic=
 		</data>
 		<key>Headers/SAYVoiceRequest.h</key>
 		<data>
@@ -322,7 +322,7 @@
 		</data>
 		<key>Headers/SAYVoiceRequestInterpreter.h</key>
 		<data>
-		fMz3GFUhhNtNHYn7snp6i2LUfWg=
+		df7Y+85la5A+7EZbfYGS20r8aTQ=
 		</data>
 		<key>Headers/SAYVoiceRequestPresenter.h</key>
 		<data>
@@ -330,7 +330,7 @@
 		</data>
 		<key>Headers/SAYVoiceRequestResponder.h</key>
 		<data>
-		N6BmOrHbNUc0dPALxLZNIGzRlME=
+		cLPRQoBurmiq5Pve/J81tmnwrjk=
 		</data>
 		<key>Headers/SAYVoiceRequestResponse.h</key>
 		<data>
@@ -358,7 +358,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		6p9iCuwNz+ZFJgEJyxzwH1bNF4w=
+		i9do5rzBPOJJHn1M0ZvA35bV+oI=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -398,15 +398,15 @@
 		</data>
 		<key>SAYCommandBar.nib</key>
 		<data>
-		CHUEumyP8ZSk2jOOI39R56sLa7E=
+		WDl8kpEaO38FYODyZ5xFL4Yz430=
 		</data>
 		<key>SAYConfirmationContentViewController.nib</key>
 		<data>
-		Ap/MoRzl82Gh5U4uEG4lP7j8yu8=
+		O161TW2utXrr/1mag59h9IH9djw=
 		</data>
 		<key>SAYVoiceRequestView.nib</key>
 		<data>
-		F1DM2BwDGeyLMgvQ5wRH4y2mD78=
+		flTPB70wV3ncneaIX6aT4FZWZFU=
 		</data>
 		<key>SayKitAPIServer.cer</key>
 		<data>
@@ -433,7 +433,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		elthqbhk+T4Cao6hRomNDoEBxRg=
+		JRngrjiAcPtNQ8Hodtyp8++ypn4=
 		</data>
 		<key>Headers/SAYAPIKeyManager.h</key>
 		<data>
@@ -569,7 +569,7 @@
 		</data>
 		<key>Headers/SAYInterpretation.h</key>
 		<data>
-		nxDkFG1J2HzZVq1QameGBUATdqU=
+		a5RtmgilY4tave3cfW6qGELENFo=
 		</data>
 		<key>Headers/SAYManagedSynthesizer.h</key>
 		<data>
@@ -721,7 +721,7 @@
 		</data>
 		<key>Headers/SAYValidationError.h</key>
 		<data>
-		rmWdHqgxtF2t3DpP92rx2aL7eKQ=
+		eaxVaJXAFOkAd3oMs4ivPNbC3EQ=
 		</data>
 		<key>Headers/SAYVerbalCommandRecognizer.h</key>
 		<data>
@@ -737,7 +737,7 @@
 		</data>
 		<key>Headers/SAYVoicePrompt.h</key>
 		<data>
-		siwjvcBTxm2TFWQfSkFTmJLy/R4=
+		wwFGN1SoCyotE79Q+3B95NKgIic=
 		</data>
 		<key>Headers/SAYVoiceRequest.h</key>
 		<data>
@@ -749,7 +749,7 @@
 		</data>
 		<key>Headers/SAYVoiceRequestInterpreter.h</key>
 		<data>
-		fMz3GFUhhNtNHYn7snp6i2LUfWg=
+		df7Y+85la5A+7EZbfYGS20r8aTQ=
 		</data>
 		<key>Headers/SAYVoiceRequestPresenter.h</key>
 		<data>
@@ -757,7 +757,7 @@
 		</data>
 		<key>Headers/SAYVoiceRequestResponder.h</key>
 		<data>
-		N6BmOrHbNUc0dPALxLZNIGzRlME=
+		cLPRQoBurmiq5Pve/J81tmnwrjk=
 		</data>
 		<key>Headers/SAYVoiceRequestResponse.h</key>
 		<data>
@@ -821,15 +821,15 @@
 		</data>
 		<key>SAYCommandBar.nib</key>
 		<data>
-		CHUEumyP8ZSk2jOOI39R56sLa7E=
+		WDl8kpEaO38FYODyZ5xFL4Yz430=
 		</data>
 		<key>SAYConfirmationContentViewController.nib</key>
 		<data>
-		Ap/MoRzl82Gh5U4uEG4lP7j8yu8=
+		O161TW2utXrr/1mag59h9IH9djw=
 		</data>
 		<key>SAYVoiceRequestView.nib</key>
 		<data>
-		F1DM2BwDGeyLMgvQ5wRH4y2mD78=
+		flTPB70wV3ncneaIX6aT4FZWZFU=
 		</data>
 		<key>SayKitAPIServer.cer</key>
 		<data>

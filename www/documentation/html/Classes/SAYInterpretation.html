@@ -48,6 +48,20 @@
 	
 	
 	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/interpretationWithErrors:">&nbsp;&nbsp;&nbsp;&nbsp;+ interpretationWithErrors:</option>
+	
+	<option value="//api/name/interpretationWithValue:">&nbsp;&nbsp;&nbsp;&nbsp;+ interpretationWithValue:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/init">&nbsp;&nbsp;&nbsp;&nbsp;- init</option>
+	
+	<option value="//api/name/initWithValue:validationErrors:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithValue:validationErrors:</option>
 	
 	
 	
@@ -83,7 +97,23 @@
 
 
 
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/interpretationWithErrors:">interpretationWithErrors:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/interpretationWithValue:">interpretationWithValue:</a></span></li>
+	
+</ul></li>
 
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init">init</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithValue:validationErrors:">initWithValue:validationErrors:</a></span></li>
+	
+</ul></li>
 
 
 			</ul>
@@ -153,6 +183,30 @@
 		<code><a href="#//api/name/isValid">&nbsp;&nbsp;isValid</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/interpretationWithValue:">+&nbsp;interpretationWithValue:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/interpretationWithErrors:">+&nbsp;interpretationWithErrors:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithValue:validationErrors:">&ndash;&nbsp;initWithValue:validationErrors:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+	</span>
+	
 	
 </li>
 						</ul>
@@ -296,7 +350,233 @@
 					
 					
 					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/interpretationWithErrors:" title="interpretationWithErrors:"></a>
+	<h3 class="subsubtitle method-title">interpretationWithErrors:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Factory initializer for an interpretation containing validation errors and no <a href="#//api/name/value">value</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (instancetype)interpretationWithErrors:(NSArray&lt;SAYValidationError*&gt; *)<em>validationErrors</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>validationErrors</em></dt>
+			<dd><p>List of errors encountered that prevented a <a href="#//api/name/value">value</a> from being interpreted</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new interpretation with the given validation errors</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Factory initializer for an interpretation containing validation errors and no <a href="#//api/name/value">value</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYInterpretation.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/interpretationWithValue:" title="interpretationWithValue:"></a>
+	<h3 class="subsubtitle method-title">interpretationWithValue:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Factory initializer for an interpretation containing a <a href="#//api/name/value">value</a> and no validation errors.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (instancetype)interpretationWithValue:(nullable id)<em>value</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>value</em></dt>
+			<dd><p>Intepreted <a href="#//api/name/value">value</a></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new interpretation with the given <a href="#//api/name/value">value</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Factory initializer for an interpretation containing a <a href="#//api/name/value">value</a> and no validation errors.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYInterpretation.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
 					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="subsubtitle method-title">init</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Unsupported. Use either a factory method or the designated initializer.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (instancetype)init</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Unsupported. Use either a factory method or the designated initializer.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYInterpretation.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithValue:validationErrors:" title="initWithValue:validationErrors:"></a>
+	<h3 class="subsubtitle method-title">initWithValue:validationErrors:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initializes a new interpretation. Typically, at least one of the parameters are nil.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (instancetype)initWithValue:(nullable id)<em>value</em> validationErrors:(NSArray&lt;SAYValidationError*&gt; *)<em>validationErrors</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>value</em></dt>
+			<dd><p>Interpretated <a href="#//api/name/value">value</a></p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>validationErrors</em></dt>
+			<dd><p>List of validation errors (which typically prevented a <a href="#//api/name/value">value</a> from being interpreted)</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new interpretation</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Initializes a new interpretation. Typically, at least one of the parameters are nil.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SAYInterpretation.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
 					
 					
                     
@@ -314,7 +594,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2016 Conversant Labs. All rights reserved. (Last updated: 2016-01-31)</span><br />
+						<p><span class="copyright">&copy; 2016 Conversant Labs. All rights reserved. (Last updated: 2016-03-16)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</span></p>
 						

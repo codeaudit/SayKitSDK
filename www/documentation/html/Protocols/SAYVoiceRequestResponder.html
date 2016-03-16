@@ -1,0 +1,282 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>SAYVoiceRequestResponder Protocol Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2.1 (build 1333)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">SayKit </a></h1>
+				<a id="developerHome" href="../index.html">Conversant Labs</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">SAYVoiceRequestResponder Protocol Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="SAYVoiceRequestResponder Protocol Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">SAYVoiceRequestResponder Protocol Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">SAYVoiceRequestResponder.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<ul>
+<li><p>The <code>SAYVoiceRequestResponder</code> protocol describes the three types of messages that can occur at the end of a voice request cycle. A class that conforms to <code>SAYVoiceRequestResponder</code> is responsible for receiving these messages and prescribing a response to them.</p>
+
+<p> ## Responders Build Responses</p>
+
+<p> Note that conforming classes are not intended to <em>directly</em> take action in response to these message. Rather, they are to define a response and pass it along, wrapped up in <code>SAYVoiceRequestResponse</code> instance. These responses include three properties, all optional:</p>
+
+<ul>
+<li>A <strong>feedback prompt</strong>, which is a message presented to the user before the request is dismissed, or a follow-up request starts a new cycle</li>
+<li>An <strong>action</strong>, which is a block called after the request is dismissed, or before a follow-up request starts a new cycle</li>
+<li>A <strong>follow-up request</strong>, which is a new request that will begin immediately after the other two properties are executed</li>
+</ul>
+
+
+<p> ## Response cases</p>
+
+<p> Each request cycle will end in one (and only one) of three ways. Each method defined by this protocol corresponds to one of these cases:</p>
+
+<ol>
+<li>The request was able to receive and attempt to interpret user speech.</li>
+<li>The request failed due to a speech recognition error.</li>
+<li>The request was cancelled by outside means (e.g. the user hitting a cancel button)</li>
+</ol>
+
+
+<p> Each of these is discussed more below.</p>
+
+<p> ### Responding to Interpretations</p>
+
+<p> Assuming speech recognition succeeded, the voice request was able to employ its <a href="../Protocols/SAYVoiceRequestInterpreter.html"><code>SAYVoiceRequestInterpreter</code></a> to try to transform user speech into an actionable value, wrapped up in a <a href="../Classes/SAYInterpretation.html"><code>SAYInterpretation</code></a> instance. (If this is unfamiliar, see the documentation for <a href="../Classes/SAYInterpretation.html"><code>SAYInterpretation</code></a> before continuing with this section.)</p>
+
+<p> This interpretation is then handed over to the <code>SAYVoiceRequestResponder</code>, via the <code>voiceRequest:respondToInterpretation:</code> method. The receiver is responsible for unpacking the interpretation and deciding how to respond. This responsibility includes creating a response when the interpretation failed because user intent couldn&rsquo;t be determined (for example, defining a follow-up request to reprompt the user).</p>
+
+<p> Through this method, the <a href="../Protocols/SAYVoiceRequestInterpreter.html"><code>SAYVoiceRequestInterpreter</code></a> and <code>SAYVoiceRequestResponder</code> work together closely. As a result, the two classes typically have a shared contextual &ldquo;understanding&rdquo; between them. More concretely, a paired responder and interpreter will typically share knowledge about the data type stored inside the <a href="../Classes/SAYInterpretation.html"><code>SAYInterpretation</code></a> instance passed between them. In addition, they will often share knowledge about expected validation error types that may be inside the <code>SAYInterpration</code> &ndash; that way, the responder will be able to properly communicate interpretation problems with users.</p>
+
+<p> ### Responding to Recognition Errors</p>
+
+<p> If speech recognition failed, there is nothing to interpret, so the <code>SAYVoiceRequestResponder</code> is consulted immediately for a response by sending it the <code>voiceRequest:respondToRecognitionError:</code> message. The receiver is tasked with constructing an appropriate response to this failure, consulting the details stored in the error parameter if necessary.</p>
+
+<p> Typically, in the event of a transient error (e.g. server glitch), the responder will direct the app to try again by constructing a response that re-issuing the original request as a follow-up. If the error is unlikely to be resolved by trying again (e.g. no network connectivity), the response may just be a feedback message with no follow-up request.</p>
+
+<p> ### Responding to Cancellation</p>
+
+<p> A request can be cancelled at any time. This will typically be due to the user simply wanting to cancel it directly. To notify the responder that the request was cancelled, its <code>respondToCancellationOfVoiceRequest:</code> method is called.</p>
+
+<p> Unlike with the cases above, the responder is not able to dictate the next step in the response cycle. It has already been decided that the request is terminating and there will be no follow-up. As a result, only a subset of a full <code>SAYVoiceRequestResponse</code> is applicable: the action block. Hence, the return type of this method is just an optional <a href="../Blocks/SAYVoiceRequestResponseAction.html"><code>SAYVoiceRequestResponseAction</code></a>.</p>
+
+<p> ## Reducing Boilerplate</p>
+
+<p> Although <code>SAYVoiceRequestResponder</code>-conforming classes typically have some context-specific logic when it comes to handling the given interpretation types its expected to handle, a lot of the other behavior expected from a responder class is fairly boilerplate. Validation errors usually  summon a &ldquo;try again&rdquo; response; speech recognition errors are typically met with informational error messages to the user and no follow-up request; and so on.</p>
+
+<p> To obviate the need for such boilerplate, these common behaviors are typically captured in a base class from which actual response classes are derived. Or, in the case of many of SayKit&rsquo;s standard <a href="../Protocols/SAYVoiceRequest.html"><code>SAYVoiceRequest</code></a>, a single generic responder class, the <code>SAYStandardRequestResponder</code> is used. See the documentation for <code>SAYStandardRequestResponder</code> for details on customizing it for your own use.</p></li>
+</ul>
+
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+                    
+                    
+                    
+                    
+
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2016 Conversant Labs. All rights reserved. (Last updated: 2016-03-16)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
